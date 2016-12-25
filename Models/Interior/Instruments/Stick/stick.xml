@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+	<PropertyList>
+
+	<path>stick.ac</path>
+	
+   <animation>
+		<type>select</type>
+		<object-name>stick.cz1.001</object-name>
+		<object-name>stick.cz2.001</object-name>
+		<object-name>stick.cz3.001</object-name>
+		<object-name>stick.cz4.001</object-name>
+		<object-name>stick.cz5.001</object-name>
+		<object-name>stick.cz6.001</object-name>
+		<object-name>stick.cz7.001</object-name>
+		<object-name>stick.cz8.001</object-name>
+		<object-name>stick.cz9.001</object-name>
+		<object-name>stick.cz10.001</object-name>
+		<object-name>stick.cz11.001</object-name>
+		<object-name>stick.cz12.001</object-name>
+		<object-name>stick.cz13.001</object-name>
+		<condition>
+			<not>
+			<property>sim/current-view/internal</property>
+			</not>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>10</max-m>
+	</animation>
+
+</PropertyList>

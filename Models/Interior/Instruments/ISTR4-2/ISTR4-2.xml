@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>ISTR4-2.ac</path>
+
+<animation>
+ <type>material</type>
+ <object-name>ISTR4-2.DC1</object-name>
+ <object-name>ISTR4-2.DC2</object-name>
+ <object-name>ISTR4-2.DC3</object-name>
+ <object-name>scale</object-name>
+ <object-name>ISTR4-2.tape</object-name>
+ <object-name>ISTR4-2.scale</object-name>
+ <object-name>ISTR4-2.tankmarker1</object-name>
+ <object-name>ISTR4-2.tankmarker3</object-name>
+ <object-name>ISTR4-2.tankmarkerKr</object-name>
+ <object-name>ISTR4-2.tankmarkerPTB</object-name>
+ <emission>
+  <red>0.8</red>
+  <green>0.8</green>
+  <blue>0.8</blue>
+  
+ </emission>
+</animation>
+
+<animation>
+ <type>material</type>
+ <object-name>screws</object-name>
+ <emission>
+  <red>0.8</red>
+  <green>0.8</green>
+  <blue>0.8</blue>
+  
+ </emission>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.tankPTB</object-name>
+ <condition>
+  
+    <less-than>
+     <property>/consumables/fuel/tank[7]/level-gal_us</property>
+     <value>35</value>
+    </less-than>
+   
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.tankKr</object-name>
+ <condition>
+  
+     <less-than>
+      <property>/consumables/fuel/tank[5]/level-gal_us</property>
+      <value>40</value>
+     </less-than>
+     <less-than>
+      <property>/consumables/fuel/tank[6]/level-gal_us</property>
+      <value>40</value>
+     </less-than>
+  
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.tank3</object-name>
+ <condition>
+  
+    <less-than>
+     <property>/consumables/fuel/tank[2]/level-gal_us</property>
+     <value>200</value>
+    </less-than>
+  
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.tank1</object-name>
+ <condition>
+  
+    <less-than>
+     <property>/consumables/fuel/tank[0]/level-gal_us</property>
+     <value>50</value>
+    </less-than>
+  
+ </condition>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>ISTR4-2.tape</object-name>
+ <property>consumables/fuel/total-fuel-kg</property>
+ <factor>0.0001245</factor>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>ISTR4-2.scale</object-name>
+ <property>consumables/fuel/total-fuel-kg</property>
+ <factor>0.000083</factor>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.LampOPT</object-name>
+
+</animation>
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.LampTEK</object-name>
+
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.LampT</object-name>
+ 
+</animation>
+<animation>
+ <type>select</type>
+ <object-name>ISTR4-2.LampR</object-name>
+ 
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>ISTR4-2.lever1</object-name>
+ <property>mig29/controls/ISTR4/OPT-TEK</property>
+ <interpolation>
+  <entry><ind>0</ind><dep>-20</dep></entry>
+  <entry><ind>1</ind><dep> 20</dep></entry>
+ </interpolation>
+ <center>
+  <x-m>0.001</x-m>
+  <y-m>-0.175</y-m>
+  <z-m>0.040</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>ISTR4-2.lever2</object-name>
+ <property>mig29/controls/ISTR4/T-R</property>
+ <interpolation>
+  <entry><ind>0</ind><dep>-20</dep></entry>
+  <entry><ind>1</ind><dep> 20</dep></entry>
+ </interpolation>
+ <center>
+  <x-m>0.001</x-m>
+  <y-m>0.000</y-m>
+  <z-m>-0.059</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>0</y>
+  <z>1</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>ISTR4-2.DC1</object-name>
+ <property>fdm/jsbsim/systems/fuel/tek</property>
+ <factor>0.0001</factor>
+ <step>1000.0</step>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>ISTR4-2.DC2</object-name>
+ <property>fdm/jsbsim/systems/fuel/tek</property>
+ <factor>0.001</factor>
+ <step>100.0</step>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>ISTR4-2.DC3</object-name>
+ <property>fdm/jsbsim/systems/fuel/tek</property>
+ <factor>0.01</factor>
+ <step>10.0</step>
+ <axis>
+  <x> 0</x>
+  <y>-1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>pick</type>
+ <object-name>ISTR4-2.cz1</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/ISTR4/OPT-TEK</property>
+   <value>1</value>
+  </binding>
+ </action>
+</animation>
+<animation>
+ <type>pick</type>
+ <object-name>ISTR4-2.cz2</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/ISTR4/OPT-TEK</property>
+   <value>0</value>
+  </binding>
+ </action>
+</animation>
+
+<animation>
+ <type>pick</type>
+ <object-name>ISTR4-2.cz3</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/ISTR4/T-R</property>
+   <value>0</value>
+  </binding>
+ </action>
+</animation>
+<animation>
+ <type>pick</type>
+ <object-name>ISTR4-2.cz4</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/ISTR4/T-R</property>
+   <value>1</value>
+  </binding>
+ </action>
+</animation>
+
+</PropertyList>

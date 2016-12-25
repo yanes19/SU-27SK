@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+
+<!-- Countermeasures -->
+
+  <submodel>
+    <name>flares</name>
+    <model>Aircraft/SU-27SK/Models/Stores/Countermeasures/flare.xml</model>
+    <trigger>ai/submodels/submodel/flare-release</trigger>
+    <speed>10</speed>
+    <repeat>true</repeat>
+    <delay>0.2</delay>
+    <count>50</count>
+    <x-offset>-25.0</x-offset>
+    <y-offset>2.8</y-offset>
+    <z-offset>-5</z-offset>
+    <yaw-offset>150.0</yaw-offset>
+	<pitch-offset>-70</pitch-offset> 
+    <life>5</life>
+    <buoyancy>35</buoyancy>
+    <eda>1.0</eda>
+  </submodel>
+  
+ <submodel>
+    <name>flares</name>
+    <model>Aircraft/SU-27SK/Models/Stores/Countermeasures/flare.xml</model>
+    <trigger>ai/submodels/submodel/flare-release</trigger>
+    <speed>10</speed>
+    <repeat>true</repeat>
+    <delay>0.2</delay>
+    <count>50</count>
+    <x-offset>-25.0</x-offset>
+    <y-offset>-2.8</y-offset>
+    <z-offset>-5</z-offset>
+    <yaw-offset>210</yaw-offset>
+	<pitch-offset>-70</pitch-offset> 
+    <life>5</life>
+    <buoyancy>8</buoyancy>
+    <eda>1.0</eda>
+  </submodel>
+  
+  <submodel>
+    <name>trajectory marker</name>
+    <model>Aircraft/SU-27SK/Models/Trajectory-Marker.xml</model>
+    <trigger>ai/submodels/trajectory-markers</trigger>
+    <speed>0</speed>
+    <repeat>true</repeat>
+    <delay>1.0</delay>
+    <count>-1</count>
+    <x-offset>-40.0</x-offset>
+    <y-offset>0</y-offset>
+    <z-offset>0.10</z-offset>
+    <yaw-offset>0.0</yaw-offset>
+    <pitch-offset>0.0</pitch-offset>
+    <eda>1000000000.00</eda>
+    <life>900</life>
+    <buoyancy>32</buoyancy>
+    <wind>false</wind>
+    <aero-stabilised>false</aero-stabilised>
+  </submodel>
+  
+<!--
+ <model>
+  <name>R-27R</name>
+  <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.ac</path>
+  <offsets>
+   <x-m> 2.36 </x-m>
+   <y-m> 3.193846154</y-m>
+   <z-m>-0.5445</z-m>
+  </offsets>
+ </model>
+-->
+<!-- Chute -->
+<!--
+  <submodel>
+    <name>parachute</name>
+    <model>Aircraft/SU-27SK/Models/Stores/DrogChute/parachute.xml</model>
+    <trigger>fdm/jsbsim/fcs/parachute_reef-cmd-norm</trigger>
+    <speed>0</speed>
+    <repeat>false</repeat>
+    <delay>600</delay>
+    <count>1</count>
+    <x-offset> -80 </x-offset>
+    <y-offset>  0 </y-offset>
+    <z-offset>  1 </z-offset>
+    <eda>0.1</eda>
+    <life>100</life>
+    <buoyancy>32</buoyancy>
+    <wind>true</wind>
+    <pitch-offset>0</pitch-offset>
+    <yaw-offset>0</yaw-offset>
+    <slaved>true</slaved>
+  </submodel>
+-->
+  
+  
+ 
+
+</PropertyList>

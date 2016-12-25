@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>KI-13.ac</path>
+
+<animation>
+ <type>material</type>
+ <object-name>KI-13.face</object-name>
+ <object-name>line</object-name>
+ <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+ <emission>
+  <red>0.8</red>
+  <green>0.8</green>
+  <blue>0.8</blue>
+  
+ </emission>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>KI-13.face</object-name>
+ <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+ <factor>1</factor>
+ <center>
+  <x-m>0.000</x-m>
+  <y-m>0.000</y-m>
+  <z-m>0.000</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>0</y>
+  <z>1</z>
+ </axis>
+</animation>
+
+</PropertyList>

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+ <path>mfd-buttons.ac</path>
+ 
+<animation>
+  <type>pick</type>
+  <object-name>L1</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>instrumentation/MFD[0]/situana/heading-mag</property>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>L2</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>instrumentation/MFD[0]/situana/tracking</property>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>L4</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>instrumentation/MFD[0]/situana/map-selected</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>C1</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/MFD[0]/page-selected</property>
+    <value>fuel</value>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>C4</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/MFD[0]/page-selected</property>
+    <value>enav</value>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>C3</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/MFD[0]/page-selected</property>
+    <value>hydraulic</value>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>C5</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/MFD[0]/page-selected</property>
+    <value>frequencies</value>
+    </binding>
+  </action>
+</animation>
+<!--
+<animation>
+  <type>pick</type>
+  <object-name>R1</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/MFD[0]/menu-selected</property>
+    <value>norm</value>
+    </binding>
+  </action>
+</animation>
+-->
+</PropertyList>

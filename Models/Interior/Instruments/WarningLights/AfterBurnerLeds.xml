@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <name>AfterBurnerLeds</name>
+ <path>AfterBurnerLeds.ac</path>
+ 
+	<animation>
+	 <type>select</type> 
+	 <object-name>ENG1.AfterBurner.led.lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>engines/engine[0]/augmentation</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>
+	
+	<animation>
+	 <type>material</type> 
+	 <object-name>ENG1.AfterBurner.led.lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>engines/engine[0]/augmentation</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>ENG2.AfterBurner.led.lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>engines/engine[1]/augmentation</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	<animation>
+	 <type>material</type> 
+	 <object-name>ENG2.AfterBurner.led.lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>engines/engine[1]/augmentation</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+ 
+</PropertyList>

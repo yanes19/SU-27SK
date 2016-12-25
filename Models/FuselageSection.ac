@@ -1,0 +1,27 @@
+AC3Db
+MATERIAL "mat3" rgb 1 1 1  amb 0.117647 0.117647 0.117647  emis 0 0 0  spec 0.752941 0.752941 0.752941  shi 0  trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "object"
+loc -1.83211 -1.14728 -1.8321
+rot 1 0 0  0 0 1  0 -1 0
+crease 45.000000
+kids 1
+OBJECT poly
+name "object"
+rot 1 0 0  0 1 0  0 0 1
+texture "Su-27_Flanker_P01.png"
+crease 45.000000
+numvert 3
+3.85298 1.46716 1.55632
+4.71303 1.64338 1.28223
+3.85285 1.5555 1.43269
+numsurf 1
+SURF 0x0
+mat 0
+refs 3
+2 0.88923 -0.31614
+0 0.89573 -0.31614
+1 0.88132 -0.27094
+kids 0

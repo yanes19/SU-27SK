@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+	<PropertyList>
+
+	<path>pedals.ac</path>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CPT-L-pedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>0.07</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CPT-R-pedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>0.07</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+
+
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>5</max-m>
+	</animation>
+
+</PropertyList>

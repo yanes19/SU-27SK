@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+
+<!--
+-->
+
+<PropertyList>
+
+ <name>Digital Reheat monitor display</name>
+ <w-base>40</w-base>
+ <h-base>10</h-base>
+
+ <params>
+  <eng-num>/engines/engine[0]/engine-num</eng-num>
+  <rht-select>/controls/engines/engine[0]/afterburner</rht-select>
+ </params>
+
+ <layers>
+
+  <layer>
+   <name>background</name>
+   <texture>
+    <path>Aircraft/SU-37/Panels/Instruments/Textures/trans-orange-bg.rgb</path>
+   </texture>
+    <w>180</w>
+    <h>40</h>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>90</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Title</name>
+   <type>text</type>
+   <point-size>18</point-size>
+   <color>
+    <red>1.0</red>
+    <green>0.0</green>
+    <blue>0.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>Eng: </text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>0</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-10</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Number</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>7</point-size>
+   <color>
+    <red>1.0</red>
+    <green>0.0</green>
+    <blue>0.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property alias="../../../../../params/eng-num"/>
+     <format>%01.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>50</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-6</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>RHT-Title</name>
+   <type>text</type>
+   <point-size>18</point-size>
+   <color>
+    <red>1.0</red>
+    <green>0.0</green>
+    <blue>0.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>REHT: </text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>65</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-10</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>REHT display</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>7</point-size>
+   <color>
+    <red>1.0</red>
+    <green>0.0</green>
+    <blue>0.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property alias="../../../../../params/rht-select"/>
+     <format>%01.2f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>130</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-6</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+</PropertyList>

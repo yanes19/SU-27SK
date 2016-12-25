@@ -1,0 +1,605 @@
+<?xml version="1.0"?>
+
+<!--
+-->
+
+<PropertyList>
+
+  <name>Digital Engine monitor display</name>
+  <w-base>380</w-base>
+  <h-base>40</h-base>
+
+  <params>
+    <eng-num>/engines/engine[0]/engine-num</eng-num>
+    <pt-select>/engines/engine[0]/prop-thrust</pt-select>
+    <n1-select>/engines/engine[0]/n1</n1-select>
+    <n2-select>/engines/engine[0]/n2</n2-select>
+    <ff-select>/engines/engine[0]/fuel-flow-gph</ff-select>
+    <th-select>/engines/engine[0]/throttle-norm</th-select>
+    <rh-select>/engines/engine[0]/reheat-norm</rh-select>
+    <egt-select>/controls/engines/engine[0]/egt-degf</egt-select>
+  </params>
+
+  <layers>
+
+    <layer>
+      <name>background</name>
+      <texture>
+        <path>Aircraft/SU-37/Panels/Instruments/Textures/trans-dgrey-bg.rgb</path>
+      </texture>
+      <w>380</w>
+      <h>40</h>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>0</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>EN: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-185</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>3</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Number</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/eng-num"/>
+          <format>%01.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-150</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>PT-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PT: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-185</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-16</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Prop Thrust display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/pt-select"/>
+          <format>%05.f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-150</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-17</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Th-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Th: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-90</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>3</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Th display - </name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/th-select"/>
+          <format>%01.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-55</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>RH-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Rh: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-90</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-16</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <equals>
+          <property alias="../../../../../params/rh-select"/>
+          <value>0.0</value>
+        </equals>
+      </condition>
+      <name>Rh display equal 0</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/rh-select"/>
+          <format>%01.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-55</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-17</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <greater-than>
+          <property alias="../../../../../params/rh-select"/>
+          <value>0.0</value>
+        </greater-than>
+      </condition>
+      <name>Rh display greater-than 0</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.5</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/rh-select"/>
+          <format>%01.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-55</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-17</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>N1-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>N1:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>3</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>N1 display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/n1-select"/>
+          <format>%03.f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <greater-than>
+          <property alias="../../../../../params/n1-select"/>
+          <value>100.0</value>
+        </greater-than>
+      </condition>
+      <name>N1 display greater -than 100</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/n1-select"/>
+          <format>%03.f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>N2-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>N2:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-16</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>N2 display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/n2-select"/>
+          <format>%03.f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-17</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <greater-than>
+          <property alias="../../../../../params/n2-select"/>
+          <value>100.0</value>
+        </greater-than>
+      </condition>
+      <name>N2 display than 100</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/n2-select"/>
+          <format>%03.f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-17</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>EGT-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>EGT: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>75</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>3</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>EGT display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/egt-select"/>
+          <format>%04.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>130</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>FF-Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>FF: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>75</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-16</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>FF display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/ff-select"/>
+          <format>%05.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>130</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-17</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+  </layers>
+
+</PropertyList>

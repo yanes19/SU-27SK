@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>LightsDialog</name>
+	<layout>vbox</layout>
+	<x>-100</x>
+	<y>-100</y>
+  <pref-width>350</pref-width>
+
+  <group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>External lights control</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<legend></legend>
+			<default>1</default>
+			<keynum>27</keynum>
+			<border>2</border>
+
+			<binding>
+				<command>nasal</command>
+				<script>L159.lights_dialog.close()</script>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+
+	<hrule><whatever/></hrule>
+
+  <group>
+    <layout>hbox</layout>
+    
+    <empty><pref-width>4</pref-width></empty>
+
+    <checkbox>
+      <width>30</width>
+      <height>30</height>
+      <property>/controls/lighting/nav-lights</property>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </checkbox>
+    <button>
+      <halign>left</halign>
+      <legend>Nav lights</legend>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/lighting/nav-lights</property>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </button>
+	
+    <empty><pref-width>22</pref-width></empty>
+
+	<checkbox>
+      <width>30</width>
+      <height>30</height>
+      <property>/controls/lighting/beacon</property>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </checkbox>
+	<button>
+		<halign>left</halign>
+		<legend>Beacon</legend>
+		
+		<binding>
+			<command>property-toggle</command>
+        	<property>/controls/lighting/beacon</property>
+		</binding>
+		<binding>
+        <command>dialog-update</command>
+      </binding>
+	</button>
+
+	<empty><stretch>1</stretch></empty>
+	
+	</group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><pref-width>4</pref-width></empty>
+
+	<checkbox>
+      <width>30</width>
+      <height>30</height>
+      <property>/controls/lighting/landing-lights</property>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </checkbox>
+    <button>
+      <halign>left</halign>
+      <legend>Landing lights</legend>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/lighting/landing-lights</property>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </button>
+    
+    <empty><pref-width>0</pref-width></empty>
+    
+    <checkbox>
+      <width>30</width>
+      <height>30</height>
+      <property>/controls/lighting/taxi-light</property>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </checkbox>
+    <button>
+      <halign>left</halign>
+      <legend>Taxi light/Probe light</legend>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/lighting/taxi-light</property>
+      </binding>
+      <binding>
+        <command>dialog-update</command>
+      </binding>
+    </button>
+
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+  </group>
+  
+  <empty><pref-height>5</pref-height></empty>
+  
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+
+    <button>
+      <halign>center</halign>
+      <legend>Close</legend>
+      <binding>
+        <command>nasal</command>
+        <script>L159.lights_dialog.close()</script>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    <default>true</default>
+    </button>
+
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+  </group>
+	<empty><pref-height>3</pref-height></empty>
+</PropertyList>

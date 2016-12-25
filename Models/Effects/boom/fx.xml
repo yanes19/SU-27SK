@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<path>effect.ac</path>
+
+	
+<!-- ******************************************************************* -->
+<!-- Condensation                                                        -->
+<!-- ******************************************************************* -->
+
+	<!-- shock waves -->
+
+	<animation>
+      <type>select</type>
+      <object-name>ShockWave</object-name>
+      <condition>
+         <and>
+            <not>
+                                     <or> 
+               <less-than>
+                  <property>/velocities/mach</property>
+                  <value>0.89</value>
+               </less-than>
+               <greater-than>
+                  <property>/velocities/mach</property>
+                  <value>1.05</value>
+               </greater-than>
+                                     </or> 
+            </not>
+            <less-than>
+               <property>/position/altitude-ft</property>
+               <value>5000.0</value>
+            </less-than>
+         </and>
+      </condition>
+	  
+	    <attach>world</attach>
+
+  <placer>
+   <type>point</type>
+  </placer>
+   </animation>
+
+   
+
+</PropertyList>

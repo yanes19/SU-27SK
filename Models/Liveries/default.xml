@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Default</name>
+        <texture>Liveries/Su-27_Flanker_P01.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

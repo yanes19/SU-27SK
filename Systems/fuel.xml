@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+ 
+<system name="Fuel">
+<!-- tank[1] collector tank connected to the engines fuel pump,
+ tank[0], tank[2],tank[3] and tank[4] feeds the collector through valves.
+Negative Gs (<-0.5g) cuts the supply to the collector tanks -->
+
+   <property value="1">propulsion/tank[0]/collector-valve</property>
+   <property value="1">propulsion/tank[2]/collector-valve</property>
+   <property value="1">propulsion/tank[3]/collector-valve</property>
+   <property value="1">propulsion/tank[4]/collector-valve</property>
+   
+  <function name="propulsion/tank[4]/tnk0-qt">
+		<description>quotient towards tank0</description>
+		<quotient>
+			<property>propulsion/tank[4]/contents-lbs</property>
+			<property>propulsion/tank[0]/contents-lbs</property>
+		</quotient>
+   
+  </function>
+
+
+  <channel name="Fuel pumping">    
+
+    <switch>
+			<!-- Tank[0] to Collector tank[1]  -->
+      <default value="-7"/>
+      <test logic="OR" value="0">
+				/controls/engines/engine/fuel-pump EQ 0
+				/controls/engines/engine[1]/fuel-pump EQ 0
+				
+        propulsion/tank[0]/collector-valve EQ 0
+        propulsion/tank[0]/contents-lbs LE 0
+        propulsion/tank[1]/contents-lbs GE 9170.23 <!-- 1 lb below capacity -->
+        accelerations/Nz LE -0.5
+      </test>
+      <output>propulsion/tank[0]/external-flow-rate-pps</output>
+    </switch>
+
+    <switch>
+			<!-- Tank[2] to Collector tank[1]  -->
+      <default value="-7"/>
+      <test logic="OR" value="0">
+				/controls/engines/engine/fuel-pump EQ 0
+				/controls/engines/engine[1]/fuel-pump EQ 0
+				propulsion/tank[0]/contents-lbs GE 1	<!-- Needed for sequencing -->
+				propulsion/tank[4]/contents-lbs GE 1	<!-- Needed for sequencing -->		
+				
+        propulsion/tank[2]/collector-valve EQ 0
+        propulsion/tank[2]/contents-lbs LE 0
+        propulsion/tank[1]/contents-lbs GE 9170.23 <!-- 1 lb below capacity -->
+        accelerations/Nz LE -0.5 
+      </test>
+      <output>propulsion/tank[2]/external-flow-rate-pps</output>
+    </switch>
+    
+    <switch>
+			<!-- Tank[3] to Collector tank[1]  -->
+      <default value="-7"/>
+      <test logic="OR" value="0">
+				/controls/engines/engine/fuel-pump EQ 0
+				/controls/engines/engine[1]/fuel-pump EQ 0	
+				propulsion/tank[0]/contents-lbs GE 1	<!-- Needed for sequencing -->
+				propulsion/tank[4]/contents-lbs GE 1	<!-- Needed for sequencing -->		
+				
+        propulsion/tank[3]/collector-valve EQ 0
+        propulsion/tank[3]/contents-lbs LE 0
+        propulsion/tank[1]/contents-lbs GE 9170.23 <!-- 1 lb below capacity -->
+        accelerations/Nz LE -0.5 
+      </test>
+      <output>propulsion/tank[3]/external-flow-rate-pps</output>
+    </switch>
+    
+    <switch>
+			<!-- Tank[4] to Collector tank[1]  -->
+      <default value="-7"/>
+      <test logic="OR" value="0">
+				/controls/engines/engine/fuel-pump EQ 0
+				/controls/engines/engine[1]/fuel-pump EQ 0	
+				/fdm/jsbsim/propulsion/tank[4]/tnk0-qt LE 0.57	<!-- Needed for sequencing -->	
+				
+        propulsion/tank[4]/collector-valve EQ 0
+        propulsion/tank[4]/contents-lbs LE 0
+        propulsion/tank[1]/contents-lbs GE 9170.23 <!-- 1 lb below capacity -->
+        accelerations/Nz LE -0.5 
+      </test>
+      <output>propulsion/tank[4]/external-flow-rate-pps</output>
+    </switch>
+
+    <summer>
+      <input>-propulsion/tank[0]/external-flow-rate-pps</input>
+      <input>-propulsion/tank[2]/external-flow-rate-pps</input>
+      <input>-propulsion/tank[3]/external-flow-rate-pps</input>
+      <input>-propulsion/tank[4]/external-flow-rate-pps</input>
+      <output>propulsion/tank[1]/external-flow-rate-pps</output>
+    </summer>  
+
+  </channel>      
+
+</system>

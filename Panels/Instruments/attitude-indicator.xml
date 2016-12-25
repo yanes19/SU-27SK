@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+
+<!--
+Improved artificial horizon instrument.
+Mar 20 2000
+Martin Dressler dr@musicabona.cz
+Artificial horizont from C172RG small versionn
+GPL
+_______________________________________________________________________________
+
+Based on Default by David Megginson, david@megginson.com.
+
+This is an instrument configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the instrument's layers and actions.
+
+Each instrument is composed of layers stacked on top of each other.
+A layer may be a texture (with transparent parts to show the layers
+underneath), text, or a special layer that switches between two
+others (say, to turn an indicator light on or off).  Each layer can
+move independently in proportion to a property value, and text
+can be generated from property values as well: all of the layer's
+movements are defined as transformations.
+
+Actions are hotspots on the instrument that will respond to a mouse
+click.  Actions always modify the values of properties, either by
+adjusting them, toggling them, or swaping them with other
+properties' values.
+-->
+
+<!--
+	This is a hack of the AI instrument that uses orientation/roll &
+	orientation/pitch for it's inputs as the generic instrumentation
+	relies upon engine rpm to work.
+-->	 
+<PropertyList>
+
+ <name>Amended C172RG-mini Artifical horizon</name>
+
+ <w-base>128</w-base>
+ <h-base>128</h-base>
+
+ <layers>
+  <layer>
+   <name>background</name>
+   <texture>
+    <path>Aircraft/Instruments/Textures/attitude-indicator.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.0</y1>
+    <x2>0.5</x2>
+    <y2>0.5</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property>/orientation/roll-deg</property>
+     <min>-360.0</min>
+     <max>360.0</max>
+     <scale>-1</scale>
+    </transformation>
+   </transformations>
+  </layer>
+  <layer>
+   <name>pitch</name>
+   <texture>
+    <path>Aircraft/Instruments/Textures/attitude-indicator.rgb</path>
+    <x1>0.5</x1>
+    <y1>0.0</y1>
+    <x2>0.875</x2>
+    <y2>0.25</y2>
+   </texture>
+   <w>92</w>
+   <h>62</h>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property>/orientation/roll-deg</property>
+     <min>-360.0</min>
+     <max>360.0</max>
+     <scale>-1</scale>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <property>/orientation/pitch-deg</property>
+     <min>-20.0</min>
+     <max>20.0</max>
+     <scale>-1.075</scale>
+     <offset>0</offset>
+    </transformation>
+   </transformations>
+  </layer> 
+  <layer>
+   <name>roll</name>
+   <texture>
+    <path>Aircraft/Instruments/Textures/attitude-indicator.rgb</path>
+    <x1>0.5</x1>
+    <y1>0.5</y1>
+    <x2>1.0</x2>
+    <y2>1.0</y2>
+   </texture>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property>/orientation/roll-deg</property>
+     <min>-360.0</min>
+     <max>360.0</max>
+     <scale>-1</scale>
+    </transformation>
+   </transformations>
+  </layer>
+  <layer>
+   <name>plane</name>
+   <texture>
+    <path>Aircraft/Instruments/Textures/attitude-indicator.rgb</path>
+    <x1>0.5</x1>
+    <y1>0.25</y1>
+    <x2>0.75</x2>
+    <y2>0.40625</y2>
+   </texture>
+   <h>42</h>
+   <w>66</w>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+     <offset>-17</offset>
+    </transformation>
+   </transformations>
+  </layer>
+  <layer>
+   <name>foreground</name>
+   <texture>
+    <path>Aircraft/Instruments/Textures/attitude-indicator.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.5</y1>
+    <x2>0.5</x2>
+    <y2>1.0</y2>
+   </texture>
+  </layer> 
+ </layers>
+
+ <actions>
+  <action>
+   <name>fine lower</name>
+   <button>0</button>
+   <x>-11</x>
+   <y>-62</y>
+   <w>11</w>
+   <h>22</h>
+  <binding>
+  <command>property-adjust</command>
+   <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+   <step>-0.5</step>
+   <min>-5</min>
+   <max>5</max>
+   <wrap>false</wrap>
+  </binding>
+  </action>
+  
+  <action>
+   <name>coarse lower</name>
+   <button>1</button>
+   <x>-11</x>
+   <y>-62</y>
+   <w>11</w>
+   <h>22</h>
+  <binding>
+  <command>property-adjust</command>
+   <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+   <step>-5</step>
+   <min>-5</min>
+   <max>5</max>
+   <wrap>false</wrap>
+  </binding>
+  </action>
+
+  <action>
+   <name>fine raise</name>
+   <button>0</button>
+   <x>0</x>
+   <y>-62</y>
+   <w>11</w>
+   <h>22</h>
+  <binding>
+  <command>property-adjust</command>
+   <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+   <step>0.5</step>
+   <min>-5</min>
+   <max>5</max>
+   <wrap>false</wrap>
+  </binding>
+ </action>
+
+  <action>
+   <name>coarse raise</name>
+   <button>1</button>
+   <x>0</x>
+   <y>-62</y>
+   <w>11</w>
+   <h>22</h>
+  <binding>
+  <command>property-adjust</command>
+   <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+   <step>5</step>
+   <min>-5</min>
+   <max>5</max>
+   <wrap>false</wrap>
+  </binding>
+ </action>
+
+</actions>
+
+</PropertyList>

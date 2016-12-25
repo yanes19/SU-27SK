@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+ 
+<!-- su-27 Keyboard controls -->
+<PropertyList>
+	
+	<key n="32">
+	  <name>Ctrl-Space</name>
+	  <desc>Engage AP auto-leveller</desc>
+	  <mod-ctrl>
+    <binding>
+      <command>nasal</command>
+      <script>ACS.SAU_AutoLevel();</script>
+    </binding>
+    </mod-ctrl>
+  </key>
+  
+ <key n="43">
+  <name>+</name>
+  <desc>Fire selected wcs weapon</desc>
+  <binding>
+    <command>nasal</command>
+    <script>guns.fire_MG(1);</script>
+  </binding>
+ </key>
+  
+ <key n="76">
+  <name>L</name>
+  <desc>Toggle Nav lights</desc>
+  <binding>
+   <command>property-toggle</command>
+   <property>controls/lighting/nav-lights-switch</property>
+  </binding>
+  <mod-ctrl>
+		<desc>Toggle flashing beacons lights</desc>
+  <binding>
+   <command>property-toggle</command>
+   <property>controls/lighting/beacon-switch</property>
+  </binding>
+  </mod-ctrl>
+ </key>
+ 
+	<key n="80">
+	  <name>P</name>
+	  <desc>Parachute release</desc>
+      <binding>
+       <command>property-assign</command>
+      <property>controls/flight/drag-chute</property>
+       <value type="bool">true</value>
+      </binding>
+  </key>
+
+   <key n="99">
+    <name>c</name>
+    <desc>Canopy open/close</desc>
+    <binding>
+      <command>nasal</command>
+      <script>su27.canopy.toggle();</script>
+    </binding>
+  </key>
+  
+  
+	<key n="108">
+	<name>l</name>
+	 <desc>Toggle flashing beacons lights</desc>
+	  <binding>
+	   <command>property-toggle</command>
+	   <property>controls/lighting/beacon-switch</property>
+	  </binding>
+	 <mod-up>
+		<binding>
+		 <command>property-assign</command>
+		<property>ai/submodels/submodel/flare-release</property>
+		 <value type="bool">false</value>
+		</binding>
+	 </mod-up>
+	</key>
+	
+<!--
+	<key n="70">
+     <name>F</name>
+    <desc>FuelHose</desc>
+    <binding>
+      <command>nasal</command>
+   <script>SU-27.FuelHose.toggle();</script>
+    </binding>
+  </key> 
+-->
+	<key n="117">
+	  <name>U</name>
+	  <desc>Toggle smoke</desc>
+	  <binding>
+      <command>nasal</command>
+      <script>
+			WCS.smoke_launcher();
+      </script>
+	  </binding>
+  </key>
+  
+  <key n="125">
+     <name>}</name>
+     <desc>Engine Autostart</desc>
+	<binding>
+		<command>nasal</command>
+		 <script>
+				engines.autostart();
+		 </script>
+	</binding>
+  </key>
+  
+  <key n="36">
+  <name>$</name>
+  <desc>Cycle Mfd(IPK) ranges</desc>
+  <binding>
+ <command>property-cycle</command>
+ <property>instrumentation/efis/inputs/range-nm</property>
+ <value type="int">10</value>
+ <value type="int">20</value>
+ <value type="int">50</value>
+ <value type="int">100</value>
+ <value type="int">150</value>
+</binding>
+ </key>
+ 
+ <key n="82">
+  <name>R</name>
+  <desc>Toggle Radar On/Off</desc>
+  <binding>
+   <command>property-toggle</command>
+   <property>su-27/instrumentation/N010-radar/emitting</property>
+  </binding>
+ </key>
+ 
+ <key n="122">
+  <name>z</name>
+  <desc>Increase view distance</desc>
+  <repeatable type="bool">true</repeatable>
+   <binding>
+   <command>nasal</command>
+    <script>
+		setprop("sim/current-view/z-offset-m",200)
+	  </script>
+  </binding>
+ </key>
+ 
+ <key n="357">
+  <name>Up</name>
+  <desc>Elevator down or decrease autopilot altitude</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>
+     if (getprop("/sim/freeze/replay-state"))
+       controls.speedup(1);
+     else
+       controls.incElevator(0.05, -100)
+   </script>
+  </binding>
+  <mod-shift>
+   <desc>Look forward</desc>
+   <binding>
+    <command>property-assign</command>
+    <property>/sim/current-view/goal-heading-offset-deg</property>
+    <property>/sim/view/config/front-direction-deg</property>
+   </binding>
+  </mod-shift>
+ </key>
+ 
+ <key n="359">
+  <name>Down</name>
+  <desc>Elevator up or increase autopilot altitude</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>
+     if (getprop("/sim/freeze/replay-state"))
+       controls.speedup(-1);
+     else
+       controls.incElevator(-0.05, 100)
+   </script>
+  </binding>
+  <mod-shift>
+   <desc>Look backwards</desc>
+   <binding>
+    <command>property-assign</command>
+    <property>/sim/current-view/goal-heading-offset-deg</property>
+    <property>/sim/view/config/back-direction-deg</property>
+   </binding>
+  </mod-shift>
+ </key>
+ 
+ <key n="360">
+  <name>PageUp</name>
+  <desc>Increase throttle or autopilot autothrottle</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>
+		controls.incThrottle(0.2, 1.0);
+   </script>
+  </binding>
+  <mod-shift>
+   <desc>Look front right</desc>
+   <binding>
+    <command>property-assign</command>
+    <property>/sim/current-view/goal-heading-offset-deg</property>
+    <property>/sim/view/config/front-right-direction-deg</property>
+   </binding>
+  </mod-shift>
+ </key>
+
+ <key n="361">
+  <name>PageDown</name>
+  <desc>Decrease throttle or autopilot autothrottle</desc>
+  <repeatable type="bool">true</repeatable>
+  <binding>
+   <command>nasal</command>
+   <script>
+		controls.incThrottle(-0.2, 1.0);
+   </script>
+  </binding>
+  <mod-shift>
+   <desc>Look back right</desc>
+   <binding>
+    <command>property-assign</command>
+    <property>/sim/current-view/goal-heading-offset-deg</property>
+    <property>/sim/view/config/back-right-direction-deg</property>
+   </binding>
+  </mod-shift>
+ </key>
+ 
+<!--
+ Need Re-order 
+-->
+ <key n="74"> 
+  <name>J</name>
+  <desc>Jettison Drag Parachute</desc>
+  <binding> 
+   <command>property-assign</command>
+   <property>fdm/jsbsim/fcs/parachute/drop_cmd</property>
+   <value type="double">1.0</value>
+  </binding>
+ </key>
+ <key n="106"> 
+  <name>j</name>
+  <desc>Deploy Drag Parachute</desc>
+  <binding> 
+   <command>property-assign</command>
+   <property>fdm/jsbsim/fcs/parachute_reef-cmd-norm</property>
+   <value type="double">1.0</value>
+  </binding>
+ </key>
+
+</PropertyList>

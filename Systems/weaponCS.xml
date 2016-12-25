@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+ 
+<!-- Weapon Control system -->
+<PropertyList>
+	<Gsh-gun type="int" ></Gsh-gun>
+	<pylon1>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon1>
+	
+	<pylon2>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon2>
+	
+	<pylon3>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon3>
+	
+	<pylon4>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon4>
+	
+	<pylon5>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon5>
+	
+	<pylon6>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon6>
+	
+	<pylon7>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon7>
+	
+	<pylon8>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon8>
+	
+	<pylon9>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon9>
+	
+	<pylon10>
+		<load type="string"></load>
+		<launch type="bool"></launch>
+		<jettison type="bool"></jettison>
+	</pylon10>
+
+
+	
+</PropertyList>

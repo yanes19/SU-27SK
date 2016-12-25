@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<!-- Указатель угла атаки и перегрузки - УАП-7 -->
+<!-- 2011, Сергей "Mercenary_Mercury" Салов -->
+<!-- 2016, Edited by Yanes Bechir -->
+
+<PropertyList>
+
+ <path>UAP-7.ac</path>
+
+
+ <animation>
+  <type>material</type>
+  <object-name>G-indic-Gload-needle</object-name>
+  <object-name>G-indic-aoa-needle</object-name>
+  <object-name>G-indicator.face</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+  </emission>
+ </animation>
+
+
+<!--
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass</object-name>
+ </animation>
+-->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>G-indic-aoa-needle</object-name>
+  <property>/orientation/alpha-deg</property>
+  <interpolation>
+   <entry><ind>-5</ind><dep>-18.5</dep></entry>
+   <entry><ind> 0</ind><dep>  0.0</dep></entry>
+   <entry><ind>30</ind><dep>134.5</dep></entry>
+  </interpolation>
+  <axis>
+   <x>-1</x>
+   <y> 0</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+
+<!--
+ <animation>
+  <type>rotate</type>
+  <object-name>UAP-7.needle2</object-name>
+  <property>/fdm/jsbsim/accelerations/Nz</property>
+  <interpolation>
+   <entry><ind>-4</ind><dep>-25.0</dep></entry>
+   <entry><ind> 0</ind><dep>  0.0</dep></entry>
+   <entry><ind>10</ind><dep>135.5</dep></entry>
+  </interpolation>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+-->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>G-indic-Gload-needle</object-name>
+  <property>fdm/jsbsim/forces/load-factor</property>
+  <interpolation>
+		<entry><ind> -9</ind><dep> -113</dep></entry>
+    <entry><ind> 0</ind><dep>  0.0</dep></entry>
+		<entry><ind>9</ind><dep>113</dep></entry>
+  </interpolation>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+<!--
+ <animation>
+  <type>pick</type>
+  <object-name>UAP-7.cz1</object-name>
+  <visible>false</visible>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>mig29/instrumentation/UAP/pilot-g-max</property>
+    <value>1.0</value>
+   </binding>
+  </action>
+ </animation>
+-->
+
+</PropertyList>

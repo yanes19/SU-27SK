@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>vortex.ac</path>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>vortex</object-name>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>vortex</object-name>
+  <condition>
+   <and>
+   <greater-than>
+    <property>/orientation/alpha-deg</property>
+    <value>9.0</value>
+   </greater-than>
+   <greater-than>
+    <property>/velocities/airspeed-kt</property>
+    <value>50.0</value>
+   </greater-than>
+   </and>
+  </condition>
+ </animation>
+
+ <!-- *** LoD *** -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>1000</max-m>
+ </animation>
+
+</PropertyList>

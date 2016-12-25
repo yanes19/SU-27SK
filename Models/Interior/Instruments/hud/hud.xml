@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+  
+
+<model>
+    <path>hud.ac</path>
+	<offsets>
+      <x-m> 0 </x-m>
+      <y-m>0 </y-m>
+      <z-m>0 </z-m>
+    </offsets>
+  </model>
+  
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <!-- Replace 'HUD.l.canvas' with the object the canvas is placed on -->
+  <object-name>hudglass</object-name>
+</effect>
+
+  <animation>
+  <type>material</type>
+  <object-name>hudglass</object-name>
+  <emission>
+   <red>1</red>
+   <green>1</green>
+   <blue>1</blue>
+  </emission>
+ </animation>
+  
+
+
+</PropertyList>
+

@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+
+<!-- Дублёр авиагоризонта - ДА-200 -->
+<!-- 2011, Сергей "Mercenary_Mercury" Салов -->
+
+<PropertyList>
+
+ <path>DA-200.ac</path>
+
+
+  <animation>
+  <type>material</type>
+  <object-name>Face</object-name>
+  <object-name>DA-200.Needle1</object-name>
+  <object-name>DA-200.Needle2</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Face</object-name>
+  <object-name>DA-200.Needle1</object-name>
+  <object-name>DA-200.Needle2</object-name>
+  <object-name>DA-200.skidball</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>mig29/systems/cockpitlighting/instruments-norm</factor-prop>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Screws</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+   <factor-prop>mig29/systems/cockpitlighting/panel-norm</factor-prop>
+  </emission>
+ </animation>
+
+ <effect>
+  <inherits-from>Aircraft/MiG-29_9-12/Models/Effects/model-transparent</inherits-from>
+  <object-name>glass</object-name>
+ </effect>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>DA-200.Needle2</object-name>
+  <property>velocities/vertical-speed-fps</property>
+  <interpolation>
+   <entry><ind>-200</ind><dep>-140.5</dep></entry><!--200-->
+   <entry><ind>-150</ind><dep>-119.4</dep></entry><!--150-->
+   <entry><ind>-100</ind><dep> -99.5</dep></entry><!--100-->
+   <entry><ind> -50</ind><dep> -78.7</dep></entry><!-- 50-->
+   <entry><ind> -35</ind><dep> -66.5</dep></entry>
+   <entry><ind> -20</ind><dep> -49.5</dep></entry><!-- 20-->
+   <entry><ind> -10</ind><dep> -33.5</dep></entry><!-- 10-->
+   <entry><ind>  -5</ind><dep> -16.5</dep></entry><!--  5-->
+   <entry><ind>   0</ind><dep>   0.0</dep></entry><!--  0-->
+   <entry><ind>   5</ind><dep>  16.5</dep></entry><!--  5-->
+   <entry><ind>  10</ind><dep>  33.5</dep></entry><!-- 10-->
+   <entry><ind>  20</ind><dep>  49.5</dep></entry><!-- 20-->
+   <entry><ind>  35</ind><dep>  66.5</dep></entry>
+   <entry><ind>  50</ind><dep>  78.7</dep></entry><!-- 50-->
+   <entry><ind> 100</ind><dep>  99.5</dep></entry><!--100-->
+   <entry><ind> 150</ind><dep> 119.4</dep></entry><!--150-->
+   <entry><ind> 200</ind><dep> 140.5</dep></entry><!--200-->
+  </interpolation>
+  <axis>
+   <x>-1</x>
+   <y> 0</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>DA-200.Needle1</object-name>
+  <property>instrumentation/turn-indicator/indicated-turn-rate</property>
+  <factor>22.5</factor>
+  <min-deg>-22.5</min-deg>
+  <max-deg> 22.5</max-deg>
+  <center>
+   <x-m> 0.000</x-m>
+   <y-m> 0.000</y-m>
+   <z-m>-0.02432</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+<!--Side slip-->
+ <animation>
+  <type>rotate</type>
+  <object-name>DA-200.skidball</object-name>
+  <property>instrumentation/slip-skid-ball/indicated-slip-skid</property>
+  <factor>5.4</factor>
+  <min-deg>-30</min-deg>
+  <max-deg> 30</max-deg>
+  <center>
+   <x-m>0.00</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.04</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+</PropertyList>

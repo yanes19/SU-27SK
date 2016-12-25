@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>TFA-popup</name>
+  <modal>false</modal>
+  <layout>vbox</layout>
+
+  <text>
+    <label>SU-27 Terrain Following-Avoidance popup</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>Extend Mode</legend>
+      <default>true</default>
+      <key>e</key>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/terrain-radar/settings/mode</property>
+        <value>extend</value>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>AGL-clearance</object-name>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>Hi-elevation markers</object-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Continuous mode</legend>
+      <key>c</key>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/terrain-radar/settings/mode</property>
+        <value>continuous</value>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>AGL-clearance</object-name>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>Hi-elevation markers</object-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <input>
+      <name>AGL-clearance</name>
+      <label>AGL Clearance (ft)</label>
+      <property>/autopilot/settings/target-agl-ft</property>
+    </input>
+
+    <checkbox>
+      <name>Hi-elevation markers</name>
+      <halign>center</halign>
+      <label>Enable Hi-elevation markers</label>
+      <property>/instrumentation/terrain-radar/settings/hi-elev-markers</property>
+    </checkbox>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>press the first letter, or return for default</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>Extend mode (default) is slightly less accurate than</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label>Continuous mode but is more economical in terms of</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label>resource usage</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+</PropertyList>

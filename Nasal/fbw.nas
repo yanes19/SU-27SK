@@ -1,0 +1,187 @@
+#########################################
+## SDU-10 FLY BY WIRE SYSTEM FOR SU-27 ##
+#########################################
+##       Designed by Yanes Bechir      ##
+#########################################
+
+# CONSTANTS
+
+var RAD2DEG = 57.2957795;
+var DEG2RAD = 0.0174532925;
+var INCREMENT = 0.001;
+
+# helpers:
+
+##
+# a wrapper to determine if a value is within a certain range
+# usage:in_range(1,[min,max] );
+# e.g.: in_range(1, [-1,+1] );
+#
+var in_range = func(value, range) {
+ var min=range[0];
+ var max=range[1];
+ return ((value <= min) and (value >= max));
+}
+
+var fbw = {
+	init : func { 
+        me.UPDATE_INTERVAL = INCREMENT; 
+        me.loopid = 0; 
+		me.throttle = 0;
+		me.throttlefix = 0;
+		me.throttleinit = 0;
+		me.targetthrottle = 0;
+		me.turnthrottlefix = 0;
+		me.targetaileron = 0;
+		me.targetelevator = 0;
+		me.targetrudder = 0;
+		me.adjustelevators = 0;
+		me.stabilize = 0;
+
+		me.stabpitch = 0;
+		me.stabroll = 0;
+
+		me.disconnectannounce = 0;
+		# use a vector of throttles, this can be later on used to support more than
+		# just two engines
+		me.throttles = [nil,nil]; 
+
+
+
+## Initialize with FBW Activated
+
+setprop("/controls/fbw-fcs/active", 1);
+#setprop("/controls/fbw-fcs/rudder", 1);
+#setprop("/controls/fbw-fcs/yaw-damper", 1);
+#setprop("/controls/fbw-fcs/bank-limit", 35);
+
+## Initialize Control Surfaces
+
+setprop("/fdm/jsbsim/fcs/aileron-fbw-output", 0);
+setprop("/fdm/jsbsim/fcs/rudder-fbw-output", 0);
+setprop("/fdm/jsbsim/fcs/elevator-fbw-output", 0);
+
+        me.reset(); 
+}, 
+	update : func {
+
+var fcs = "/fdm/jsbsim/fcs/";
+
+## Fix Damp Rate according to Framerate
+
+#me.fpsfix = 1;
+#if (getprop("/sim/frame-rate") != nil) me.fpsfix = 25 / getprop("/sim/frame-rate");
+
+## Bank Limit Setting
+
+me.banklimit = getprop("/controls/fbw-fcs/bank-limit");
+
+## Position and Orientation
+
+me.altitudeagl = getprop("/position/altitude-agl-ft");
+
+var altitudemsl = getprop("/position/altitude-ft");
+
+var pitch = getprop("/orientation/pitch-deg");
+me.roll = getprop("/orientation/roll-deg");
+
+var airspeedkt = getprop("/velocities/airspeed-kt");
+
+## Flight Control System Properties
+
+
+var ailtrim = getprop("/controls/flight/aileron-trim");
+
+me.aileronin = getprop(fcs~"aileron-cmd-norm");
+me.elevatorin =  getprop(fcs~"elevator-cmd-norm");
+me.rudderin = getprop(fcs~"rudder-cmd-norm");
+
+### FBW Output (actual surface positions)
+
+#me.aileronout = getprop(fcs~"aileron-fbw-output");
+#me.elevatorout =  getprop(fcs~"elevator-fbw-output");
+#me.rudderout = getprop(fcs~"rudder-fbw-output");
+
+## Autopilot locks :
+#var APAltitudeLock = getprop("autopilot/locks/altitude");
+#var APHeadingLock = getprop("autopilot/locks/heading");
+#var APThrottleLock = getprop("autopilot/locks/speed");
+
+### Engine Throttle Positions
+
+#me.throttles[0] = getprop("controls/engines/engine[0]/throttle");
+#me.throttles[1] = getprop("controls/engines/engine[1]/throttle");
+
+## This is where the FBW actually does its job ;)
+
+me.check_if_active();
+
+if (getprop("/controls/fbw-fcs/active")) {
+me.disconnectannounce = 0;
+var ElevTrimFix = 0;
+var AoALimiterFix = 0;
+var GLoadLimiterFix =0;
+
+var pitchFix = airspeedkt/pitch/100;
+var ElevTrim = getprop("/controls/flight/elevator-trim");
+var PitchRateDeg = getprop("orientation/pitch-rate-degps");
+var airspeedkt = getprop("/velocities/airspeed-kt");
+var LoadFactor = getprop("fdm/jsbsim/forces/load-factor");
+#Anti-stall helper 
+
+
+#if ((pitch > 15)and (pitchFix < 0.09)) {setprop("controls/flight/elevator-trim",pitchFix)}
+#else {setprop("controls/flight/elevator-trim",0)}
+
+#pitch angle limiter helper 
+#if ((airspeedkt> 250)and(PitchRateDeg or 8 > 10 )) {
+#	ElevTrimFix = ElevTrim + 0.03;
+#	setprop("controls/flight/elevator-trim",ElevTrimFix) }
+
+#if (getprop("fdm/jsbsim/forces/load-factor") < -3 ) {
+#	ElevTrimFix = ElevTrim + 0.03;
+#	setprop("controls/flight/elevator-trim",ElevTrimFix) }
+#if ( > 1 ) {
+#	ElevTrimFix = ElevTrim - 0.03;
+#	setprop("controls/flight/elevator-trim",ElevTrimFix)}
+if((PitchRateDeg != nil)and(PitchRateDeg > 0)){
+	AoALimiterFix = PitchRateDeg /80;
+	}
+	GLoadLimiterFix = -LoadFactor/20;
+	ElevTrimFix	= GLoadLimiterFix + AoALimiterFix;
+setprop("controls/flight/elevator-trim",ElevTrimFix)
+}
+},
+
+
+check_if_active : func {
+### The Fly-by--wire only works when it is active.Pilot have the option to disable fly-by-wire and use power-by-wire* in case of emergencies. The Fly By Wire Configuration includes: On/Off, Bank Limit and Rudder Control.
+
+## Turn on Fly By Wire only if we have power
+
+	if (getprop("/systems/electrical/outputs/efis") != nil) {
+	  if (getprop("/systems/electrical/outputs/efis") < 9) {
+	  setprop("/controls/fbw-fcs/active", 0);
+	  if (me.disconnectannounce == 0) {
+	    screen.log.write("Fly By Wire Disconnected!", 1, 0, 0);
+	    me.disconnectannounce = 1;
+	  }
+	}
+	}
+},
+
+    reset : func {
+        me.loopid += 1;
+        me._loop_(me.loopid);
+    },
+    _loop_ : func(id) {
+        id == me.loopid or return;
+        me.update();
+        settimer(func { me._loop_(id); }, me.UPDATE_INTERVAL);
+    }
+
+};
+
+fbw.init();
+print("SDU-10 Fly-By-Wire system Initialized");
+

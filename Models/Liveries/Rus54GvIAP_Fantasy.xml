@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Russian Air Force 54 GvIAP (Fantasy)</name>
+        <texture>Liveries/Rus54GvIAP_Fantasy.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

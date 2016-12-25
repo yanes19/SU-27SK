@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<!-- R-27R                                      -->
+<!-- Sergey "Mercenary_Mercury" Salov, Dec 2012 -->
+
+<PropertyList>
+
+ <path>R-27R.ac</path>
+
+ <nasal>
+  <load>
+   ##############################################################################
+   # The on-load Nasal is not executed when this file is loaded as the user
+   # aircraft.
+   ##############################################################################
+   var rplayer = cmdarg();
+   # Set up property aliases for animations.
+   rplayer.getNode("mig29/weapons/podv/T2", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[28]"));
+   ##############################################################################
+  </load>
+ </nasal>
+
+<!--
+ <animation>
+  <type>select</type>
+  <object-name>R-27R</object-name>
+  <object-name>RuliR</object-name>
+  <object-name>UzelKrep1R</object-name>
+  <object-name>UzelKrep2R</object-name>
+  <object-name>UzelKrep3R</object-name>
+  <condition>
+   <equals>
+    <property>su-27/WCS/pylon9</property>
+    <value>R-27R</value>
+   </equals>
+  </condition>
+ </animation>
+-->
+
+<!-- <model>
+  <name>R-27R_smoke</name>
+  <path>Aircraft/MiG-29_9-12/Models/Effects/R-27R_2_smoke.xml</path>
+  <offsets>
+   <x-m>2.415</x-m>
+   <y-m>0.0  </y-m>
+   <z-m>0.0  </z-m>
+  </offsets>
+ </model>-->
+
+</PropertyList>

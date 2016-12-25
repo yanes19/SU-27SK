@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <name>UpperLeds</name>
+ <path>UpperLeds.ac</path>
+ 
+
+<!--AoA and max G Warning-->
+	<animation>
+	 <type>select</type> 
+	 <object-name>LED.AoA-G.Max.Lit</object-name>
+	 <condition>
+	   <greater-than>
+	   <property>orientation/alpha-deg</property>
+	   <value>25</value>
+	   </greater-than>
+	 </condition>
+	</animation>
+
+	<animation>
+	 <type>material</type> 
+	 <object-name>LED.AoA-G.Max.Lit</object-name>
+	 <condition>
+	   <greater-than>
+	   <property>orientation/alpha-deg</property>
+	   <value>0</value>
+	   </greater-than>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+
+<!--SDU incidents warning-->
+	<animation>
+	 <type>select</type> 
+	 <object-name>LED.SDU.Lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>systems/SAU/ready</property>
+	   <value>true</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>
+
+	<animation>
+	 <type>material</type> 
+	 <object-name>LED.SDU.Lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>systems/SAU/ready</property>
+	   <value>true</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+<!--(Engine) fire warning-->
+	<animation>
+	 <type>select</type> 
+	 <object-name>LED.Fire.Lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>sim/crashed</property>
+	   <value>true</value>
+	   </equals>
+	 </condition>
+	</animation>
+
+	<animation>
+	 <type>material</type> 
+	 <object-name>LED.Fire.Lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>sim/crashed</property>
+	   <value>true</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+<!--Hydrolics failure warning-->
+	<animation>
+	 <type>select</type> 
+	 <object-name>LED.Hydrolics.Lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>systems/hydraulic/serviceable</property>
+	   <value>true</value>
+	   </equals>
+	   </not>
+	 </condition>
+	</animation>
+
+	<animation>
+	 <type>material</type> 
+	 <object-name>LED.Hydrolics.Lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>systems/hydraulic/serviceable</property>
+	   <value>true</value>
+	   </equals>
+	   </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+
+<!--SAU failure warning-->
+	<animation>
+	 <type>select</type> 
+	 <object-name>LED.SAU.Lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>systems/SAU/ready</property>
+	   <value>true</value>
+	   </equals>
+	   </not>
+	 </condition>
+	</animation>
+
+	<animation>
+	 <type>material</type> 
+	 <object-name>LED.SAU.Lit</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>systems/SAU/ready</property>
+	   <value>true</value>
+	   </equals>
+	   </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+ 
+</PropertyList>

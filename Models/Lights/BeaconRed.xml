@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <model>
+    <name>BeaconRedFlare</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Flares/Beacon-Red-flare.xml</path>
+  </model>
+
+  <model>
+    <name>BeaconRedRemb</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Rembrandt/Beacon-remb.xml</path>
+  </model>
+  
+
+  
+  <animation>
+    <type>select</type>
+    <object-name>BeaconRedFlare</object-name>
+    <object-name>BeaconRedRemb</object-name>
+    <condition>
+      <and>
+        <property>lightpack/beacon-state/state</property>
+        <not><property>sim/crashed</property></not>
+      </and>
+    </condition>
+  </animation>
+  
+
+
+</PropertyList>

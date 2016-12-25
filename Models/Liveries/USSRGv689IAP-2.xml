@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">USSR 689 GvIAP-2</name>
+        <texture>Liveries/USSRGv689IAP-2.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

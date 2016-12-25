@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+	
+<model>
+	<path>mfd-ipv.ac</path>
+</model>
+ 
+
+ <animation>
+  <type>rotate</type>
+  <object-name>IPV.lever.Tact-Nav</object-name>
+  <property>instrumentation/radar/enabled</property>
+  <interpolation>
+   <entry><ind>1</ind><dep> 10</dep></entry>
+   <entry><ind>0</ind><dep>-10</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>0.1000</x-m>
+   <y-m>0.0160</y-m>
+   <z-m>0.0583</z-m>
+  </center>
+  <axis>
+   <x> 0</x>
+   <y>-1</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+
+ 
+ <animation>
+  <type>pick</type>
+  <object-name>IPV.lever.Tact-Nav</object-name>
+  <visible>1</visible>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>su-27/instrumentation/IPV-mode</property>
+		<value type="string">NAV</value>
+		<value type="string">TACTICAL</value>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/radar/enabled</property>
+
+   </binding>
+  </action>
+ </animation>
+ 
+<animation>
+<type>select</type>
+<object-name>IPV.ekran</object-name>
+	<condition>
+		<equals>
+		<property>su-27/instrumentation/IPV-mode</property>
+		<value>NAV</value>
+		</equals>   
+	</condition>
+</animation>
+ 
+ 
+</PropertyList>
+

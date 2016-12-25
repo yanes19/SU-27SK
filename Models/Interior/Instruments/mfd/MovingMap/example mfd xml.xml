@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+  
+
+<model>
+    <path>Your MFD screen AC file Path here</path>
+	<offsets>
+      <x-m> 0 </x-m>
+      <y-m>0 </y-m>
+      <z-m>0 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- code to  include the moving map  shown below -->
+  
+  <model>
+    <path>Aircraft/Your aircraft/Models/Interior/Panel/Screen or MFD's folder/terrain-map-pixel.xml</path>
+	<offsets>
+      <x-m> 0.068 </x-m>
+      <y-m>0 </y-m>
+      <z-m>0.005 </z-m>
+	  <pitch-offset>-13</pitch-offset>
+    </offsets>
+  </model>
+  
+
+
+
+</PropertyList>
+

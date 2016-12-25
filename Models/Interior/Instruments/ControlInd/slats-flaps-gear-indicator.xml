@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>flaps-slats-indicator.ac</path>
+  
+	<animation>
+	 <type>select</type> 
+	 <object-name>A.Brake.lit_Plane.005</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>surface-positions/speedbrake-pos-norm</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>flaps.left.lit_Plane.009</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>surface-positions/flap-pos-norm</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>flaps.right.lit_Plane.008</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>surface-positions/flap-pos-norm</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>gear.1.lit_Plane.012</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>gear/gear/position-norm</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>gear.2.lit_Plane.006</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>gear/gear[1]/position-norm</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>gear.3.lit_Plane.007</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>gear/gear[2]/position-norm</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>gears.failure</object-name>
+	 <condition>
+	   <equals>
+	   <property>gear/serviceable</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>spoiler.left.lit_Plane.010</object-name>
+	 <object-name>spoiler.right.lit_Plane.011</object-name>
+	 <condition>
+	   <greater-than>
+	   <property>surface-positions/slat-pos-norm</property>
+	   <value>0</value>
+	   </greater-than>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+
+</PropertyList>

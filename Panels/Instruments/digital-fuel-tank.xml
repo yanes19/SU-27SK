@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+
+<!--
+-->
+
+<PropertyList>
+
+ <name>Digital Fuel Tank monitor display</name>
+ <w-base>40</w-base>
+ <h-base>10</h-base>
+
+ <params>
+  <tank-num>/consumables/fuel/tank[0]/tank-num</tank-num>
+  <gal-select>/consumables/fuel/tank[0]/level-gal_us</gal-select>
+  <lbs-select>/consumables/fuel/tank[0]/level-lbs</lbs-select>
+ </params>
+
+ <layers>
+
+  <layer>
+   <name>background</name>
+   <texture>
+    <path>Aircraft/SU-37/Panels/Instruments/Textures/trans-purple-bg.rgb</path>
+   </texture>
+    <w>196</w>
+    <h>40</h>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>98</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Title</name>
+   <type>text</type>
+   <point-size>18</point-size>
+   <color>
+    <red>0.5</red>
+    <green>0.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>Tank: </text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>0</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Number</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>7</point-size>
+   <color>
+    <red>0.5</red>
+    <green>0.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property alias="../../../../../params/tank-num"/>
+     <format>%01.0f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>60</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>4</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Gal-Title</name>
+   <type>text</type>
+   <point-size>18</point-size>
+   <color>
+    <red>0.5</red>
+    <green>0.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>Gal: </text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>80</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Gal display</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>7</point-size>
+   <color>
+    <red>0.5</red>
+    <green>0.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property alias="../../../../../params/gal-select"/>
+     <format>%05.f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>140</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>4</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>LBS-Title</name>
+   <type>text</type>
+   <point-size>18</point-size>
+   <color>
+    <red>0.5</red>
+    <green>0.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>literal</type>
+     <text>LBS: </text>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>80</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-20</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>LBS display</name>
+   <type>text</type>
+   <font>led</font>
+   <point-size>7</point-size>
+   <color>
+    <red>0.5</red>
+    <green>0.0</green>
+    <blue>1.0</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property alias="../../../../../params/lbs-select"/>
+     <format>%05.f</format>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>140</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-16</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+</PropertyList>

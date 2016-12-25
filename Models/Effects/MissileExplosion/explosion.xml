@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<PropertyList>
+
+  <model>
+    <path>Aircraft/SU-27SK/Models/Effects/MissileExplosion/explosionFire.xml</path>
+  </model>
+
+  <model>
+    <path>Aircraft/SU-27SK/Models/Effects/MissileExplosion/explosionSmoke.xml</path>
+  </model>
+
+</PropertyList>

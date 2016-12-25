@@ -1,0 +1,826 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>SPO-15LM.ac</path>
+
+<animation>
+ <type>material</type>
+ <object-name>SPO-15LM.case</object-name>
+ <emission>
+  <red>0.8</red>
+  <green>0.8</green>
+  <blue>0.8</blue>
+  <factor-prop>mig29/systems/cockpitlighting/panel-norm</factor-prop>
+ </emission>
+</animation>
+
+<animation>
+ <type>material</type>
+ <object-name>SPO-15LM.ThreatML1</object-name>
+ <object-name>SPO-15LM.ThreatML2</object-name>
+ <object-name>SPO-15LM.ThreatML3</object-name>
+ <object-name>SPO-15LM.ThreatML4</object-name>
+ <object-name>SPO-15LM.ThreatML5</object-name>
+ <object-name>SPO-15LM.ThreatMR1</object-name>
+ <object-name>SPO-15LM.ThreatMR2</object-name>
+ <object-name>SPO-15LM.ThreatMR3</object-name>
+ <object-name>SPO-15LM.ThreatMR4</object-name>
+ <object-name>SPO-15LM.ThreatMR5</object-name>
+ <object-name>SPO-15LM.ThreatSL1</object-name>
+ <object-name>SPO-15LM.ThreatSL2</object-name>
+ <object-name>SPO-15LM.ThreatSL3</object-name>
+ <object-name>SPO-15LM.ThreatSL4</object-name>
+ <object-name>SPO-15LM.ThreatSL5</object-name>
+ <object-name>SPO-15LM.ThreatSR1</object-name>
+ <object-name>SPO-15LM.ThreatSR2</object-name>
+ <object-name>SPO-15LM.ThreatSR3</object-name>
+ <object-name>SPO-15LM.ThreatSR4</object-name>
+ <object-name>SPO-15LM.ThreatSR5</object-name>
+ <object-name>SPO-15LM.MNF</object-name>
+ <object-name>SPO-15LM.IzlType1</object-name>
+ <object-name>SPO-15LM.IzlType2</object-name>
+ <object-name>SPO-15LM.IzlType3</object-name>
+ <object-name>SPO-15LM.IzlType4</object-name>
+ <object-name>SPO-15LM.IzlType5</object-name>
+ <object-name>SPO-15LM.IzlType6</object-name>
+ <object-name>SPO-15LM.IzlTypeP</object-name>
+ <object-name>SPO-15LM.IzlTypeX</object-name>
+ <object-name>SPO-15LM.IzlTypeC</object-name>
+ <object-name>SPO-15LM.IzlTypeF</object-name>
+ <object-name>SPO-15LM.IzlTypeH</object-name>
+ <object-name>SPO-15LM.IzlTypeZ</object-name>
+ <object-name>SPO-15LM.IzlPwr01</object-name>
+ <object-name>SPO-15LM.IzlPwr02</object-name>
+ <object-name>SPO-15LM.IzlPwr03</object-name>
+ <object-name>SPO-15LM.IzlPwr04</object-name>
+ <object-name>SPO-15LM.IzlPwr05</object-name>
+ <object-name>SPO-15LM.IzlPwr06</object-name>
+ <object-name>SPO-15LM.IzlPwr07</object-name>
+ <object-name>SPO-15LM.IzlPwr08</object-name>
+ <object-name>SPO-15LM.IzlPwr09</object-name>
+ <object-name>SPO-15LM.IzlPwr10</object-name>
+ <object-name>SPO-15LM.IzlPwr11</object-name>
+ <object-name>SPO-15LM.IzlPwr12</object-name>
+ <object-name>SPO-15LM.IzlPwr13</object-name>
+ <object-name>SPO-15LM.IzlPwr14</object-name>
+ <object-name>SPO-15LM.IzlPwr15</object-name>
+ <object-name>SPO-15LM.losig</object-name>
+ <object-name>SPO-15LM.IzlPN</object-name>
+ <object-name>SPO-15LM.IzlPV</object-name>
+ <object-name>SPO-15LM.SOff</object-name>
+ <emission>
+  <red>1.0</red>
+  <green>1.0</green>
+  <blue>1.0</blue>
+  <factor-prop>mig29/systems/SPO-15LM/bright</factor-prop>
+ </emission>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatML1</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>340</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>5</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatML2</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>320</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>340</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatML3</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>290</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>320</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatML4</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>260</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>290</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatML5</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>170</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>260</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatMR1</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>355</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>20</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatMR2</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>20</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>40</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatMR3</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>40</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>70</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatMR4</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>70</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>100</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatMR5</object-name>
+ <condition>
+  <and>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>100</value>
+   </greater-than>
+   <less-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>190</value>
+   </less-than>
+  </and>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSL1</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSL2</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSL3</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSL4</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSL5</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSR1</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSR2</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSR3</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSR4</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.ThreatSR5</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/azimut_S-norm</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<!-- Serviceable marker -->
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.MNF</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/serviceable</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlType1</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izl</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlType2</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izl</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlType3</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izl</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlType4</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izl</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlType5</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izl</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlType6</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izl</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlTypeP</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlTypeX</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlTypeC</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlTypeF</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlTypeH</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlTypeZ</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr01</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.071428571</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr02</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.9999997</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr03</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.9999997</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr04</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.928571426</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr05</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.857142855</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr06</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.785714284</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr07</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.714285713</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr08</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.642857142</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr09</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.571428571</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr10</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.4999997</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr11</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.428571427</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr12</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.357142856</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr13</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.285714285</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr14</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.214285714</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPwr15</object-name>
+ <condition>
+  <greater-than>
+   <property>mig29/instrumentation/SPO-15LM/range_M-norm</property>
+   <value>0.142857143</value>
+  </greater-than>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.losig</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/losig</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPN</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/psN</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.IzlPV</object-name>
+ <condition>
+  <equals>
+   <property>mig29/instrumentation/SPO-15LM/psV</property>
+   <value>1</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>select</type>
+ <object-name>SPO-15LM.SOff</object-name>
+ <condition>
+  <equals>
+   <property>mig29/controls/SPO-15LM/volume</property>
+   <value>0.0</value>
+  </equals>
+ </condition>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>SPO-15LM.lever</object-name>
+ <property>mig29/controls/SPO-15LM/ruchn-kontr-avt</property>
+ <interpolation>
+  <entry><ind>0.0</ind><dep>-20.0</dep></entry>
+  <entry><ind>2.0</ind><dep> 20.0</dep></entry>
+ </interpolation>
+ <center>
+  <x-m> 0.000</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-0.040</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>0</y>
+  <z>1</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>pick</type>
+ <object-name>SPO-15LM.cz1</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/SPO-15LM/ruchn-kontr-avt</property>
+   <value>0</value>
+  </binding>
+ </action>
+</animation>
+<animation>
+ <type>pick</type>
+ <object-name>SPO-15LM.cz2</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/SPO-15LM/ruchn-kontr-avt</property>
+   <value>1</value>
+  </binding>
+ </action>
+</animation>
+<animation>
+ <type>pick</type>
+ <object-name>SPO-15LM.cz3</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>false</repeatable>
+  <binding>
+   <command>property-assign</command>
+   <property>mig29/controls/SPO-15LM/ruchn-kontr-avt</property>
+   <value>2</value>
+  </binding>
+ </action>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>SPO-15LM.knob</object-name>
+ <property>mig29/controls/SPO-15LM/bright</property>
+ <factor>36</factor>
+ <center>
+  <x-m> 0.0000</x-m>
+  <y-m> 0.0188</y-m>
+  <z-m>-0.0400</z-m>
+ </center>
+ <axis>
+  <x>-1</x>
+  <y> 0</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>pick</type>
+ <object-name>SPO-15LM.cz4</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>true</repeatable>
+  <binding>
+   <command>property-adjust</command>
+   <property>mig29/controls/SPO-15LM/bright</property>
+   <step>-0.05</step>
+   <min>0</min>
+   <max>1</max>
+  </binding>
+ </action>
+</animation>
+<animation>
+ <type>pick</type>
+ <object-name>SPO-15LM.cz5</object-name>
+ <visible>false</visible>
+ <action>
+  <button>0</button>
+  <repeatable>true</repeatable>
+  <binding>
+   <command>property-adjust</command>
+   <property>mig29/controls/SPO-15LM/bright</property>
+   <step>0.05</step>
+   <min>0</min>
+   <max>1</max>
+  </binding>
+ </action>
+</animation>
+
+</PropertyList>

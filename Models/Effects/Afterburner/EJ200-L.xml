@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+ <path>EJ200.ac</path>
+ 
+ 
+ 
+ <effect>
+   <inherits-from>Effects/model-transparent</inherits-from>
+   <condition>
+    <property>/sim/rendering/rembrandt/enabled</property>
+   </condition>
+   <object-name>ReheatInner</object-name>
+   <object-name>ReheatOuter</object-name>
+   <object-name>ExternalFlame</object-name>   
+  </effect>
+ 
+ <animation>
+   <type>select</type>
+   <object-name>ReheatInner</object-name>
+   <object-name>ReheatOuter</object-name>
+   <object-name>ExternalFlame</object-name>
+   <condition>
+    <greater-than>
+	 <property>/controls/engines/engine/throttle</property>
+	 <value>0.9</value>
+	</greater-than>
+   </condition>
+ </animation>
+ 
+ <animation>
+  <type>scale</type>
+  <object-name>ExternalFlame</object-name>
+  <property>sim/multiplay/generic/float[8]</property>
+  <x-min>0.2</x-min>
+  <y-min>0.9</y-min>
+  <z-min>0.9</z-min>
+  <x-factor>1.5</x-factor>
+  <y-factor>0.25</y-factor>
+  <z-factor>0.25</z-factor>
+ </animation>
+ 
+ <animation>
+  <object-name>ExternalFlame</object-name>
+  <type>spin</type>
+  <property>engines/engine[0]/augmentation</property>
+  <factor>259</factor>
+  <center>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0.04</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <object-name>ReheatOuter</object-name>
+  <object-name>ReheatInner</object-name>
+  <type>spin</type>
+  <property>engines/engine[0]/augmentation</property>
+  <factor>1000</factor>
+  <center>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0.04</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+   <type>material</type>
+   <object-name>ReheatInner</object-name>
+   <emission>
+    <red>1</red>
+    <green>0.1</green>
+    <blue>0.88</blue>
+   </emission>
+ </animation>
+ 
+ <animation>
+   <type>material</type>
+   <object-name>ReheatOuter</object-name>
+   <object-name>ExternalFlame</object-name>
+   <emission>
+    <red>1</red>
+    <green>1</green>
+    <blue>1</blue>
+   </emission>
+ </animation>
+ 
+  <animation>
+  <type>blend</type>
+  <object-name>ExternalFlame</object-name>
+  <property>sim/multiplay/generic/float[8]</property>
+  <factor>-0.6</factor>
+  <offset>1.0</offset>
+  <min>0.0</min>
+  <max>1.0</max>
+ </animation>
+  
+<!--
+ <animation>
+   <type>material</type>
+   <object-name>Engine</object-name>
+   <emission>
+    <red>0.65</red>
+	<green>0.0</green>
+	<blue>0.0</blue>
+    <factor-prop>sim/multiplay/generic/float[8]</factor-prop>
+   </emission>
+ </animation>
+-->
+
+
+</PropertyList>

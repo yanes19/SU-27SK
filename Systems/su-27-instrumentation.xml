@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+ 
+<!-- Su-27 Insrumentation helper -->
+<PropertyList>
+	<IPV-mode>NAV</IPV-mode>
+	<N010-radar><emitting type="bool">false</emitting></N010-radar>
+	<HUD>
+	<mode>EnRoute</mode>
+	</HUD>
+</PropertyList>

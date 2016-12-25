@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+	
+	<name>acs-panel</name>
+	<path>acs-panel.ac</path>
+
+  <animation><!--ACS.Button.RESET-AP-->
+  <type>pick</type>
+  <object-name>ACS.Button.RESET-AP</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>ACS.SAU_Reset();</script>
+		</binding>
+  </action>
+ </animation> 
+  
+  <animation><!--ACS.Button.BARO-ALT-->
+  <type>pick</type>
+  <object-name>ACS.Button.BARO-ALT</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>ACS.HoldBaroAlt();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+  <animation><!--ACS.Button.AUTO-->
+  <type>pick</type>
+  <object-name>ACS.Button.AUTO</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>ACS.SAU_Auto();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+ <animation><!--ACS.Button.LAND-->
+  <type>pick</type>
+  <object-name>ACS.Button.LAND</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>ACS.SAU_Land();</script>
+		</binding>
+  </action>
+ </animation> 
+ 
+<animation><!--ACS.Button.NAVIG-->
+  <type>pick</type>
+  <object-name>ACS.Button.NAVIG</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>ACS.SAUNavigHold();</script>
+		</binding>
+  </action>
+ </animation> 
+ 
+ <animation><!--ACS.Button.NAV1-->
+  <type>pick</type>
+  <object-name>ACS.Button.RadioNav</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>ACS.SAU_Nav1Follow();</script>
+		</binding>
+  </action>
+ </animation> 
+ 
+ <animation><!--ACS-FCS.switchHandle-->
+  <type>pick</type>
+  <object-name>ACS-FCS.switchHandle</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>systems/SAU/active</property>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>ACS.SAU_Reset();</script>
+    </binding>
+  </action>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>ACS-FCS.switchHandle</object-name>
+  <property>systems/SAU/active</property>
+  <factor>-55</factor>
+  <center>
+   <x-m>0.025</x-m>
+   <y-m>-0.00</y-m>
+   <z-m>-0.025</z-m>
+  </center>
+  <axis>
+   <x>-0.1</x>
+   <y> 1</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+ 
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>ACS.LED.BARO-ALT</object-name>
+	 <condition>
+	   <equals>
+	   <property>autopilot/locks/altitude</property>
+	   <value>altitude-hold</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>ACS.LED.VS</object-name>
+	 <condition>
+	   <equals>
+	   <property>autopilot/locks/altitude</property>
+	   <value>vertical-speed-hold</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>ACS.LED.NAVIG</object-name>
+	 <condition>
+		 <and>
+	   <equals>
+	   <property>autopilot/locks/heading</property>
+	   <value>true-heading-hold</value>
+	   </equals>
+	   <equals>
+	   <property>autopilot/route-manager/active</property>
+	   <value>1</value>
+	   </equals>
+	   </and>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>ACS.LED.AUTO</object-name>
+	 <condition>
+	   <equals>
+	   <property>autopilot/locks/altitude</property>
+	   <value>pitch-hold</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>ACS.LED.LAND</object-name>
+	 <condition>
+	   <equals>
+	   <property>autopilot/locks/heading</property>
+	   <value>LOC</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>ACS.LED.RadioNav</object-name>
+	 <condition>
+	   <equals>
+	   <property>autopilot/locks/heading</property>
+	   <value>nav1-hold</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+  <type>shader</type>
+  <object-name>ACS.LED.BARO-ALT</object-name>
+  <shader>chrome</shader>
+  <texture>led.lit.png</texture>
+ </animation>
+ 
+ 	<animation>
+  <type>shader</type>
+  <object-name>ACS.LED.AUTO</object-name>
+  <shader>chrome</shader>
+  <texture>led.lit.png</texture>
+ </animation>
+
+</PropertyList>

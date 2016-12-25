@@ -1,0 +1,20 @@
+AC3Db
+MATERIAL "ac3dmat1" rgb 1 1 1  amb 1 1 1  emis 0.3 0.3 0.3  spec 1 1 1  shi 100  trans 0.3
+OBJECT world
+kids 1
+OBJECT poly
+name "vortex"
+loc -0.709619 1.35064 4.83702
+crease 45.000000
+numvert 3
+0.749802 -1.36518 -4.85417
+5.06074 -0.748134 -4.85417
+0.749152 -1.29522 -4.81572
+numsurf 1
+SURF 0x20
+mat 0
+refs 3
+2 0 1
+1 1 1
+0 0 0
+kids 0

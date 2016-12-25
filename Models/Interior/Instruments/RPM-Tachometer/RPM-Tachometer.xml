@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <name>RPM-Tachometer</name>
+ <path>Tachometer.ac</path>
+ 
+ <animation>
+ <type>rotate</type>
+ <object-name>Eng1-RPM-Needle</object-name>
+ <property>fdm/jsbsim/propulsion/engine[0]/n2</property>
+ <center>
+  <x-m> 0.000</x-m>
+  <y-m>-0.000</y-m>
+  <z-m> 0.000</z-m>
+ </center>
+ <axis>
+  <x> -1</x>
+  <y> 0</y>
+  <z> 0</z>
+ </axis>
+
+ <interpolation>
+  <entry><ind>0</ind><dep>0</dep></entry>
+  <entry><ind>10</ind><dep>33</dep></entry>
+  <entry><ind>20</ind><dep>63.8</dep></entry>
+  <entry><ind>40</ind><dep>128</dep></entry>
+  <entry><ind>60</ind><dep>188</dep></entry>
+  <entry><ind>80</ind><dep>250</dep></entry>
+  <entry><ind>100</ind><dep>310</dep></entry>
+<!--
+  <entry><ind>105</ind><dep>326</dep></entry>
+-->
+ </interpolation>
+
+</animation>
+ <animation>
+ <type>rotate</type>
+ <object-name>Eng2-RPM-Needle</object-name>
+ <property>fdm/jsbsim/propulsion/engine[1]/n2</property>
+ <center>
+  <x-m> 0.00</x-m>
+  <y-m> 0.00</y-m>
+  <z-m> 0.00</z-m>
+ </center>
+ <axis>
+  <x> -1</x>
+  <y> 0</y>
+  <z> 0</z>
+ </axis>
+ <interpolation>
+  <entry><ind>0</ind><dep>0</dep></entry>
+  <entry><ind>10</ind><dep>33</dep></entry>
+  <entry><ind>20</ind><dep>63.8</dep></entry>
+  <entry><ind>40</ind><dep>128</dep></entry>
+  <entry><ind>60</ind><dep>188</dep></entry>
+  <entry><ind>80</ind><dep>250</dep></entry>
+  <entry><ind>100</ind><dep>310</dep></entry>
+<!--
+  <entry><ind>105</ind><dep>326</dep></entry>
+-->
+ </interpolation>
+</animation>
+
+  <animation>
+  <type>material</type>
+  <object-name>Eng2-RPM-Needle</object-name>
+  <object-name>Eng1-RPM-Needle</object-name>
+  <object-name>face</object-name>
+  <emission>
+   <red>0.8</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+  </emission>
+ </animation>
+ </PropertyList>

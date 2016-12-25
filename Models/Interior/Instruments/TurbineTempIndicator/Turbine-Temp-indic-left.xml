@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>TurbineTempIndic</name>
+	<path>Turbine-Temp-indic-left.ac</path>
+	
+	<animation>
+ <type>rotate</type>
+ <object-name>Turbine-Needle-right.001</object-name>
+ <property>engines[0]/engine[0]/egt-degf</property>
+ <center>
+  <x-m> 0.000</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-0.000</z-m>
+ </center>
+ <axis>
+  <x> -1</x>
+  <y> 0</y>
+  <z> 0</z>
+ </axis>
+ <interpolation>
+  <entry><ind>0</ind><dep>0</dep></entry>
+  <entry><ind>1370</ind><dep>255</dep></entry>
+<!--
+  <entry><ind>20</ind><dep>63</dep></entry>
+  <entry><ind>40</ind><dep>128</dep></entry>
+  <entry><ind>50</ind><dep>159</dep></entry>
+  <entry><ind>80</ind><dep>250</dep></entry>
+  <entry><ind>100</ind><dep>310</dep></entry>
+  <entry><ind>105</ind><dep>326</dep></entry>
+-->
+ </interpolation>
+</animation>
+</PropertyList>

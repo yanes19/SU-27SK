@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <model>
+    <name>BeaconRedFlare</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Flares/Beacon-Red-flare.xml</path>
+  </model>
+
+  <model>
+    <name>BeaconRedRemb</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Rembrandt/Beacon-remb.xml</path>
+  </model>
+  
+  <model>
+    <name>BeaconGreenFlare</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Flares/Beacon-Green-flare.xml</path>
+    <offsets>
+     <x-m> 16.12 </x-m>
+      <y-m>  7.5</y-m>
+      <z-m> 0.32</z-m>
+      <pitch-deg>6</pitch-deg>
+    </offsets>
+  </model>
+  
+  <animation>
+    <type>select</type>
+    <object-name>BeaconRedFlare</object-name>
+    <object-name>BeaconRedRemb</object-name>
+    <condition>
+      <and>
+        <property>lightpack/beacon-state/state</property>
+        <not><property>sim/crashed</property></not>
+      </and>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>BeaconGreenFlare</object-name>
+    <object-name>BeaconRedRemb</object-name>
+    <condition>
+      <and>
+        <property>lightpack/beacon-state/state</property>
+        <not><property>sim/crashed</property></not>
+      </and>
+    </condition>
+  </animation>
+
+</PropertyList>

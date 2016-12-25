@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+  <path>Gears-handle.ac</path>
+  
+  
+   <animation>
+  <type>rotate</type>
+  <object-name>ld-gear-handle</object-name>
+  <property>controls/gear/gear-down</property>
+   <interpolation>
+    <entry><ind>0</ind><dep>-30</dep></entry>
+    <entry><ind>1</ind><dep> 20</dep></entry>
+   </interpolation>
+  <center>
+   <x-m> -0.010</x-m>
+   <y-m> 0.00</y-m>
+   <z-m> 0.000</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>pick</type>
+  <object-name>ld-gear-handle</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+    <command>property-toggle</command>
+    <property>controls/gear/gear-down</property>
+    </binding>
+  </action>
+ </animation>
+</PropertyList>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Russian Knights Display Team</name>
+        <texture>Liveries/RussianKnights.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

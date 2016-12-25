@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!-- R-73                                       -->
+<!-- Sergey "Mercenary_Mercury" Salov, Jan 2013 -->
+
+<PropertyList>
+
+ <path>R-73.ac</path>
+
+ <nasal>
+  <load>
+   ##############################################################################
+   # The on-load Nasal is not executed when this file is loaded as the user
+   # aircraft.
+   ##############################################################################
+   var rplayer = cmdarg();
+   # Set up property aliases for animations.
+   rplayer.getNode("mig29/weapons/podv/T5", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[31]"));
+   ##############################################################################
+  </load>
+ </nasal>
+
+ <animation>
+  <type>select</type>
+  <object-name>R-73</object-name>
+  <object-name>R-73.DUA1</object-name>
+  <object-name>R-73.DUA2</object-name>.
+  <object-name>R-73.DUA3</object-name>
+  <object-name>R-73.DUA4</object-name>
+  <object-name>R-73.Destabs</object-name>
+  <object-name>R-73.RuliP1</object-name>
+  <object-name>R-73.RuliP2</object-name>
+  <object-name>R-73.RuliP3</object-name>
+  <object-name>R-73.RuliP4</object-name>
+  <object-name>R-73.L</object-name>
+  <object-name>R-73.Krepl</object-name>
+  <object-name>R-73.Wings</object-name>
+  <object-name>R-73.RuliZ1</object-name>
+  <object-name>R-73.RuliZ2</object-name>
+  <object-name>R-73.RuliZ3</object-name>
+  <object-name>R-73.RuliZ4</object-name>
+  <object-name>R-73.Nozzle</object-name>
+  <object-name>R-73.ND1</object-name>
+  <object-name>R-73.ND2</object-name>
+  <object-name>R-73.ND3</object-name>
+  <object-name>R-73.ND4</object-name>
+  <condition>
+   <equals>
+    <property>mig29/weapons/podv/T5</property>
+    <value>4</value>
+   </equals>
+  </condition>
+ </animation>
+
+<!-- <model>
+  <name>R-73_smoke</name>
+  <path>Aircraft/MiG-29_9-12/Models/Effects/R-73_smoke.xml</path>
+  <offsets>
+   <x-m>1.438</x-m>
+   <y-m>0.0  </y-m>
+   <z-m>0.0  </z-m>
+  </offsets>
+ </model>-->
+
+</PropertyList>

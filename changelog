@@ -1,0 +1,14 @@
+
+-several FDM improvements.
+-radar properties structure improved .
+-Hud obsolete targets markers bug fixed .
+-Hud now shows Radar emission indicator .
+-SAU (autopilot)Nav1-hold implemented .
+-G-load indicator now working accuratly.
+-Realistic fuel system.
+-Hud elements improved.
+-radar HUD target markers now more accurate.
+
+
+*11/10/2016 version dev0.1:
+

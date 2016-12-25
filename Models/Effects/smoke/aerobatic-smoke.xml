@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+	
+<!--	aerobatic smokes Pylon7 -->
+<model><!--	Blue aerobatic smoke Pylon7 -->
+  <name>P7_aerobatic_smoke_blue</name> 
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke/smokeB.xml</path>
+  <offsets>
+		<x-m> 15.400 </x-m>
+		<y-m> -7.570 </y-m>
+		<z-m> 0.156  </z-m>
+  </offsets>
+</model>
+
+<model><!--	Yellow aerobatic smoke Pylon7 -->
+  <name>P7_aerobatic_smoke_yellow</name> 
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke/smokeY.xml</path>
+  <offsets>
+		<x-m> 15.400 </x-m>
+		<y-m> -7.570 </y-m>
+		<z-m> 0.156  </z-m>
+  </offsets>
+</model>
+
+<model><!--	Red aerobatic smoke Pylon7 -->
+  <name>P7_aerobatic_smoke_red</name> 
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke/smokeR.xml</path>
+  <offsets>
+		<x-m> 15.400 </x-m>
+		<y-m> -7.570 </y-m>
+		<z-m> 0.156  </z-m>
+  </offsets>
+</model>
+
+
+<animation> <!--	select animation for Blue aerobatic smoke Pylon7 -->
+	<type>select</type>
+	<object-name>P7_aerobatic_smoke_blue</object-name>
+	<condition>
+		<and>
+			<equals>
+				<property>sim/multiplay/generic/int[0]</property>
+				<value>3</value>
+			</equals>
+			<equals>
+				<property>sim/weight[6]/selected</property>
+				<value>smoke-blue</value>
+			</equals>
+			<equals>
+				<property>su-27/WCS/pylon7/launch</property>
+				<value>true</value>
+			</equals>
+		</and>
+	</condition>
+</animation>
+
+<animation> <!--	select animation for Yellow aerobatic smoke Pylon7 -->
+	<type>select</type>
+	<object-name>P7_aerobatic_smoke_yellow</object-name>
+	<condition>
+		<and>
+			<equals>
+				<property>sim/multiplay/generic/int[0]</property>
+				<value>3</value>
+			</equals>
+			<equals>
+				<property>sim/weight[6]/selected</property>
+				<value>smoke-yellow</value>
+			</equals>
+			<equals>
+				<property>su-27/WCS/pylon7/launch</property>
+				<value>true</value>
+			</equals>
+		</and>
+	</condition>
+</animation>
+
+<animation> <!--	select animation for Red aerobatic smoke Pylon7 -->
+	<type>select</type>
+	<object-name>P7_aerobatic_smoke_red</object-name>
+	<condition>
+		<and>
+			<equals>
+				<property>sim/multiplay/generic/int[0]</property>
+				<value>3</value>
+			</equals>
+			<equals>
+				<property>sim/weight[6]/selected</property>
+				<value>smoke-red</value>
+			</equals>
+			<equals>
+				<property>su-27/WCS/pylon7/launch</property>
+				<value>true</value>
+			</equals>
+		</and>
+	</condition>
+</animation>
+
+<!--	aerobatic smokes Pylon8 -->
+
+<model><!--	Blue aerobatic smoke Pylon8 -->
+  <name>P8_aerobatic_smoke_blue</name> 
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke/smokeB.xml</path>
+  <offsets>
+		<x-m> 15.400 </x-m>
+		<y-m>  7.570 </y-m>
+		<z-m> 0.156  </z-m>
+  </offsets>
+</model>
+
+<model><!--	Yellow aerobatic smoke Pylon8 -->
+  <name>P8_aerobatic_smoke_yellow</name>
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke/smokeY.xml</path>
+  <offsets>
+		<x-m> 15.400 </x-m>
+		<y-m> 7.570  </y-m>
+		<z-m> 0.156  </z-m>
+  </offsets>
+</model>
+
+<model><!--	Red aerobatic smoke Pylon8 -->
+  <name>P8_aerobatic_smoke_red</name> 
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke/smokeR.xml</path>
+  <offsets>
+		<x-m> 15.400 </x-m>
+		<y-m>  7.570 </y-m>
+		<z-m> 0.156  </z-m>
+  </offsets>
+</model>
+
+<animation> <!--	select animation for Blue aerobatic smoke Pylon8 -->
+	<type>select</type>
+	<object-name>P8_aerobatic_smoke_blue</object-name>
+	<condition>
+		<and>
+			<equals>
+				<property>sim/multiplay/generic/int[0]</property>
+				<value>3</value>
+			</equals>
+			<equals>
+				<property>sim/weight[7]/selected</property>
+				<value>smoke-blue</value>
+			</equals>
+			<equals>
+				<property>su-27/WCS/pylon8/launch</property>
+				<value>true</value>
+			</equals>
+		</and>
+	</condition>
+</animation>
+
+<animation> <!--	select animation for Yellow aerobatic smoke Pylon8 -->
+	<type>select</type>
+	<object-name>P8_aerobatic_smoke_yellow</object-name>
+	<condition>
+		<and>
+			<equals>
+				<property>sim/multiplay/generic/int[0]</property>
+				<value>3</value>
+			</equals>
+			<equals>
+				<property>sim/weight[7]/selected</property>
+				<value>smoke-yellow</value>
+			</equals>
+			<equals>
+				<property>su-27/WCS/pylon8/launch</property>
+				<value>true</value>
+			</equals>
+		</and>
+	</condition>
+</animation>
+
+<animation> <!--	select animation for Red aerobatic smoke Pylon8 -->
+	<type>select</type>
+	<object-name>P8_aerobatic_smoke_red</object-name>
+	<condition>
+		<and>
+			<equals>
+				<property>sim/multiplay/generic/int[0]</property>
+				<value>3</value>
+			</equals>
+			<equals>
+				<property>sim/weight[7]/selected</property>
+				<value>smoke-red</value>
+			</equals>
+			<equals>
+				<property>su-27/WCS/pylon8/launch</property>
+				<value>true</value>
+			</equals>
+		</and>
+	</condition>
+</animation>
+
+</PropertyList>

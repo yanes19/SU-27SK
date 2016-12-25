@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Russian Air Force, 871 FR</name>
+        <texture>Liveries/RusAF871FR.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

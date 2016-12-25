@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+  
+
+<model>
+    <path>mfd.ac</path>
+	<offsets>
+      <x-m> 0 </x-m>
+      <y-m>0 </y-m>
+      <z-m>0 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/SU-37/Models/Interior/Instruments/mfd/terrain-map-pixel.xml</path>
+	<offsets>
+      <x-m> 0.085 </x-m>
+      <y-m>-0.015 </y-m>
+      <z-m>0.005 </z-m>
+	  <pitch-offset>-13</pitch-offset>
+    </offsets>
+  </model>
+  
+
+
+
+</PropertyList>
+

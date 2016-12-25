@@ -1,0 +1,47 @@
+<PropertyList>
+	
+
+ <name>MarkerSelector</name>
+ <path>MarkerSelector.ac</path>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>MS.lever</object-name>
+  <property>su-27/instrumentation/MarkerSelector/SelectedMarker</property>
+  <interpolation>
+   <entry><ind>-1</ind><dep>-25</dep></entry>
+   <entry><ind>0</ind><dep> 0</dep></entry>
+   <entry><ind>1</ind><dep> 25</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>0.0000</x-m>
+   <y-m>0.0000</y-m>
+   <z-m>0.0000</z-m>
+  </center>
+  <axis>
+   <x> 0</x>
+   <y> 0</y>
+   <z> 1</z>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>pick</type>
+  <object-name>MS.lever</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+   <binding>
+  <command>property-cycle</command>
+  <property>su-27/instrumentation/MarkerSelector/SelectedMarker</property>
+  <value>-1</value> <!--For inner marker-->
+  <value>0</value>	<!--For inner marker-->
+  <value>1</value>	<!--For inner marker-->
+</binding>
+  </action>
+ </animation>
+ 
+ 
+ 
+</PropertyList>

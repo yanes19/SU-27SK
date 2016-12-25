@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <model>
+    <name>BeaconGreenFlare</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Flares/Beacon-Green-flare.xml</path>
+  </model>
+  
+  <animation>
+    <type>select</type>
+    <object-name>BeaconGreenFlare</object-name>
+    
+    <condition>
+      <and>
+        <property>lightpack/beacon-state/state</property>
+        <not><property>sim/crashed</property></not>
+      </and>
+    </condition>
+  </animation>
+  
+</PropertyList>

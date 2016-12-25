@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Gromov Test Pilots Display Team</name>
+        <texture>Liveries/GromovTestPilots.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

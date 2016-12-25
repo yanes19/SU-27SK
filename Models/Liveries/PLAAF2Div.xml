@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">People’s Liberation Army Air Force, 2 Div.</name>
+        <texture>Liveries/PLAAF2Div.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

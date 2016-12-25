@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Blender
+GenericName=3D modeller
+Comment=3D modeling, animation, rendering and post-production
+Exec=/home/yanes/blender-2.76b-linux-glibc211-x86_64/blender %f
+Icon=blender
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;
+MimeType=application/x-blender;
+Name[en_US]=Blender-2.7b

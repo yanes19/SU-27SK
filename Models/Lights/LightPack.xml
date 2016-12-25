@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <!-- nav lights -->
+  <!-- green and red navigation lights, usually mounted on the wingtips -->
+  <!-- note: default orientation is up -->
+  <model>
+    <name>GreenLight</name>
+    <path>Aircraft/SU-27SK/Models/Lights/GreenLight.xml</path>
+    <offsets>
+      <x-m>16.12</x-m>
+      <y-m> 7.5</y-m>
+      <z-m> 0.32 </z-m>
+      <roll-deg>90</roll-deg>
+      <pitch-deg>-5</pitch-deg> <!-- due to roll, this tunes heading - I want it to point 5 deg more forward -->
+    </offsets>
+  </model>
+  <model>
+    <name>RedLight</name>
+    <path>Aircraft/SU-27SK/Models/Lights/RedLight.xml</path>
+    <offsets>
+       <x-m> 16.12 </x-m>
+      <y-m> -7.5</y-m>
+      <z-m> 0.32</z-m>
+      <roll-deg>90</roll-deg>
+      <pitch-deg>-5</pitch-deg> <!-- due to roll, this tunes heading - I want it to point 5 deg more forward -->
+    </offsets>
+  </model>
+  
+  <!-- beacon -->
+  <!-- bright red flashing light -->
+  <!-- note: default orientation is up -->
+  <model>
+    <name>BeaconRed</name>
+    <path>Aircraft/SU-27SK/Models/Lights/BeaconRed.xml</path>
+    <offsets>
+     <x-m> 16.12 </x-m>
+      <y-m> -7.5</y-m>
+      <z-m> 0.32</z-m>
+      <pitch-deg>6</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <name>BeaconGreen</name>
+    <path>Aircraft/SU-27SK/Models/Lights/BeaconGreen.xml</path>
+    <offsets>
+     <x-m> 16.12 </x-m>
+      <y-m>  7.5</y-m>
+      <z-m> 0.32</z-m>
+      <pitch-deg>6</pitch-deg>
+    </offsets>
+  </model>
+  
+  <!-- landing lights -->
+  <!-- a powerful front facing spotlight -->
+  <model>
+    <name>LandingLight1</name>
+    <path>Aircraft/SU-27SK/Models/Lights/LandingLight.xml</path>
+    <offsets>
+      <x-m>7.65</x-m>
+      <y-m>0.13</y-m>
+      <z-m>-0.48</z-m>
+      <pitch-deg>-6.25</pitch-deg>
+      <heading-deg>-10</heading-deg>   
+    </offsets>
+  </model>
+  <model>
+    <name>LandingLight2</name>
+    <path>Aircraft/SU-27SK/Models/Lights/LandingLight.xml</path>
+    <offsets>
+     <x-m>7.65</x-m>
+      <y-m>-0.13</y-m>
+      <z-m>-0.48</z-m>
+      <pitch-deg>-6.25</pitch-deg>
+      <heading-deg>10</heading-deg>
+    </offsets>
+  </model>
+  
+  <!-- taxi light -->
+  <!-- a weaker front facing spotlight, often mounted on the front gear -->
+  <model>
+    <name>TaxiLight</name>
+    <path>Aircraft/SU-27SK/Models/Lights/TaxiLight.xml</path>
+    <offsets>
+      <x-m>7.65</x-m>
+      <y-m>-0.13</y-m>
+      <z-m>-0.68</z-m>
+      <pitch-deg>-6.25</pitch-deg>
+      <heading-deg>0</heading-deg> 
+    </offsets>
+  </model>
+  <!-- front gear turning: include TaxiLight in the list of animated objects in the rotate animation of the gear in the top-level model XML file -->
+  <!-- retracted gear makes it dissapear - use only if mounted on front gear -->
+  <animation>
+    <type>select</type>
+    <object-name>TaxiLight</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[0]/position-norm</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <!-- probe light --> 
+  <!-- this is best included in the probe model xml file, not here - just an example -->
+  <!-- if you have an extendable/optional fuel probe, including this in its own model file makes sure the light moves/disappears together with the probe -->
+  <!-- in case of extendable probe, you might want to add a select animation (to turn off the light when not fully extended), similar as for the taxi light on the front gear -->
+  <!--><model>
+    <path>Aircraft/SU-27SK/Models/Lights/ProbeLight.xml</path>
+    <offsets>
+      <x-m>-4.4867</x-m>
+      <y-m>0.4922</y-m>
+      <z-m>-0.4929</z-m>
+    </offsets>
+  </model><-->
+  
+  <!-- strobes -->
+  <!-- a bright briefly flashing white light -->
+  <!-- note: default orientation is up -->
+ 
+<!--
+ <model>
+    <name>Strobe1</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Strobe.xml</path>
+    <offsets>
+      <x-m>-1.3412</x-m>
+      <y-m>4.8970</y-m>
+      <z-m>-0.7380</z-m>
+      <roll-deg>-90</roll-deg>
+      <pitch-deg>-3</pitch-deg> --><!-- due to roll, this tunes heading - I want it to point 3 deg more forward -->
+   <!-- </offsets>
+  </model>
+  <model>
+    <name>Strobe2</name>
+    <path>Aircraft/SU-27SK/Models/Lights/Strobe.xml</path>
+    <offsets>
+      <x-m>-1.3412</x-m>
+      <y-m>-4.8797</y-m>
+      <z-m>-0.7380</z-m>
+      <roll-deg>90</roll-deg>
+      <pitch-deg>-3</pitch-deg>--> <!-- due to roll, this tunes heading - I want it to point 3 deg more forward -->
+   <!-- </offsets>
+  </model>-->
+  
+  <!-- white light -->
+  <!-- a white stable light, usually used as a visibility feature on the tail -->
+  <!-- note: default orientation is up -->
+<!--  <model>
+    <name>WhiteLight</name>
+    <path>Aircraft/SU-27SK/Models/Lights/WhiteLight.xml</path>
+    <offsets>
+      <x-m>5.81421</x-m>
+      <y-m>0.00868</y-m>
+      <z-m>2.78899</z-m>
+      <pitch-deg>93</pitch-deg>
+    </offsets>
+  </model>-->
+
+</PropertyList>

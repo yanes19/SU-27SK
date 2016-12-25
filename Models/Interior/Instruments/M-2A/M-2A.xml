@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>M-2A.ac</path>
+
+<animation>
+ <type>material</type>
+ <object-name>face</object-name>
+ <object-name>M-2A.needle1</object-name>
+ <object-name>M-2A.needle2</object-name>
+ <emission>
+  <red>0.8</red>
+  <green>0.8</green>
+  <blue>0.8</blue>
+  
+ </emission>
+</animation>
+
+<animation>
+ <type>material</type>
+ <object-name>screws</object-name>
+ <emission>
+  <red>0.8</red>
+  <green>0.8</green>
+  <blue>0.8</blue>
+  
+ </emission>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>M-2A.needle1</object-name>
+ <!--property>mig29/instrumentation/M-2A/A</property-->
+ <property>controls/gear/brake-left</property>
+ <factor>180</factor>
+ <center>
+  <x-m> 0.000</x-m>
+  <y-m>-0.004</y-m>
+  <z-m> 0.000</z-m>
+ </center>
+ <axis>
+  <x>-1</x>
+  <y> 0</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>M-2A.needle2</object-name>
+ <!--property>mig29/instrumentation/M-2A/B</property-->
+   <property>controls/gear/brake-right</property>
+ <factor>180</factor>
+ <center>
+  <x-m>0.000</x-m>
+  <y-m>0.004</y-m>
+  <z-m>0.000</z-m>
+ </center>
+ <axis>
+  <x>-1</x>
+  <y> 0</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+</PropertyList>

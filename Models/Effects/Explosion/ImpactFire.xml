@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+Fire,
+xsaint
+    -->
+<PropertyList>
+
+<animation>
+  <type>rotate</type>
+  <object-name>fire</object-name>
+  <property>orientation/pitch-deg</property>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>rotate</type>
+  <object-name>fire</object-name>
+  <property>orientation/roll-deg</property>
+  <axis>
+    <x>1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<particlesystem>
+  <name>fire</name>
+  <texture>fire.rgb</texture>
+  <emissive>true</emissive>
+  <lighting>false</lighting>
+  <offsets>
+    <x-m>0</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+    <pitch-deg>0</pitch-deg>
+    <roll-deg>0</roll-deg>
+  </offsets>
+
+  <attach>world</attach>
+  
+  <placer>
+    <type>sector</type>
+    <radius-min-m>0.0</radius-min-m>
+    <radius-max-m>40</radius-max-m>
+    <phi-min-deg>0</phi-min-deg>
+    <phi-max-deg>360</phi-max-deg>
+  </placer>
+   
+  <shooter>
+    <theta-min-deg>0</theta-min-deg>
+    <theta-max-deg>360</theta-max-deg>
+    <phi-min-deg>0</phi-min-deg>
+    <phi-max-deg>180</phi-max-deg>
+    <speed>
+      <value>50</value>
+      <spread>75</spread>
+    </speed>
+    <rotation-speed>
+      <x-min-deg-sec>0</x-min-deg-sec>
+      <y-min-deg-sec>0</y-min-deg-sec>
+      <z-min-deg-sec>0</z-min-deg-sec>
+      <x-max-deg-sec>0</x-max-deg-sec>
+      <y-max-deg-sec>0</y-max-deg-sec>
+      <z-max-deg-sec>0</z-max-deg-sec>
+    </rotation-speed>
+  </shooter>
+   
+  <counter>
+    <particles-per-sec>
+      <value>30</value><!-- 60 -->
+      <spread>85</spread>
+    </particles-per-sec>
+  </counter>
+   
+  <align>billboard</align>
+   
+  <particle>
+    <start>
+      <color>
+        <red>
+          <value>0.6</value>
+        </red>
+        <green>
+          <value>0.6</value>
+        </green>
+        <blue>
+          <value>0.6</value>
+        </blue>
+        <alpha>
+          <value>0.2</value>
+        </alpha>
+      </color>
+      <size>
+        <value>15.0</value>
+      </size>
+    </start>
+    <end>
+      <color>
+        <red>
+          <value>0</value>
+        </red>
+        <green>
+          <value>0</value>
+        </green>
+        <blue>
+          <value>0</value>
+        </blue>
+        <alpha>
+          <value>0</value>
+        </alpha>
+      </color>
+      <size>
+        <value>50.0</value>
+      </size>
+    </end>
+    <life-sec>
+      <value>3</value>
+    </life-sec>
+    <mass-kg>1.8</mass-kg>
+    <radius-m>0.1</radius-m>
+    
+  </particle>
+   
+  <program>
+    <fluid>air</fluid>
+    <gravity type="bool">false</gravity>
+    <wind type="bool">true</wind>
+  </program>
+   
+</particlesystem>
+
+</PropertyList>

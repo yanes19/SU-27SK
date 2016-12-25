@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+<!-- This pilot is covered by CC licence -->
+
+<path>HDpilot.ac</path>
+
+ 
+<animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>300</max-m>
+    </animation>
+
+</PropertyList>
+

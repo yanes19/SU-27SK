@@ -1,0 +1,3168 @@
+<?xml version="1.0"?>
+
+<!--
+-->
+
+<PropertyList>
+
+  <name>AP/FCS instrument</name>
+  <w-base>340</w-base>
+  <h-base>130</h-base>
+
+  <layers>
+
+    <layer>
+      <name>background</name>
+      <texture>
+        <path>Aircraft/SU-37/Panels/Instruments/Textures/trans-dgrey-bg.rgb</path>
+      </texture>
+      <w>340</w>
+      <h>130</h>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>0</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Autopilot title -->
+    <layer>
+      <name>AP Title</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Autopilot</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>52</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- target title -->
+    <layer>
+      <name>Target Title</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Target</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>52</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Altitude modes -->
+<!-- Altitude lock - disengaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value></value>
+        </equals>
+      </condition>
+      <name>Altitude lock - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Altitude</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Altitude lock - engaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value></value>
+        </not-equals>
+      </condition>
+      <name>Altitude lock - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Altitude</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Altitude hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>altitude-hold</value>
+        </not-equals>
+      </condition>
+      <name>Altitude hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AH</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-100</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>altitude-hold</value>
+        </equals>
+      </condition>
+      <name>Altitude hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AH</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-100</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>altitude-hold</value>
+        </equals>
+      </condition>
+      <name>Altitude hold mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/internal/target-altitude-ft-filtered</property>
+          <format>%05.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- AGL hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>agl-hold</value>
+        </not-equals>
+      </condition>
+      <name>AGL hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TF</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-75</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>agl-hold</value>
+        </equals>
+      </condition>
+      <name>AGL hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TF</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-75</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>agl-hold</value>
+        </equals>
+      </condition>
+      <name>AGL hold mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-agl-ft</property>
+          <format>%05.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Pitch hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>pitch-hold</value>
+        </not-equals>
+      </condition>
+      <name>Pitch hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PH</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-50</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>pitch-hold</value>
+        </equals>
+      </condition>
+      <name>Pitch hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PH</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-50</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>pitch-hold</value>
+        </equals>
+      </condition>
+      <name>Pitch hold mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-pitch-deg</property>
+          <format>%02.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- AoA hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>aoa-hold</value>
+        </not-equals>
+      </condition>
+      <name>AoA hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AO</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-25</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>aoa-hold</value>
+        </equals>
+      </condition>
+      <name>AoA hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AO</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-25</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>aoa-hold</value>
+        </equals>
+      </condition>
+      <name>AoA hold mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-aoa-deg</property>
+          <format>%02.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- VFPS hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>vfps-hold</value>
+        </not-equals>
+      </condition>
+      <name>VFPS hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>VC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>vfps-hold</value>
+        </equals>
+      </condition>
+      <name>VFPS hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>VC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>vfps-hold</value>
+        </equals>
+      </condition>
+      <name>VFPS hold mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-climb-rate-fps</property>
+          <format>%03.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- GS1 hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>gs1-hold</value>
+        </not-equals>
+      </condition>
+      <name>GS1 hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>GS</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>25</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>gs1-hold</value>
+        </equals>
+      </condition>
+      <name>GS1 hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>GS</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>25</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>gs1-hold</value>
+        </equals>
+      </condition>
+      <name>GS1 hold mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-climb-rate-fps</property>
+          <format>%03.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Mach-climb mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>mach-climb</value>
+        </not-equals>
+      </condition>
+      <name>Mach-climb mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>MC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>50</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>mach-climb</value>
+        </equals>
+      </condition>
+      <name>Mach-climb mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>MC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>50</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/altitude</property>
+          <value>mach-climb</value>
+        </equals>
+      </condition>
+      <name>Mach-climb mode - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-climb-rate-fps</property>
+          <format>%03.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>38</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Heading modes -->
+<!-- Heading lock - disengaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value></value>
+        </equals>
+      </condition>
+      <name>Heading lock - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Heading</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Heading lock - engaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/heading</property>
+          <value></value>
+        </not-equals>
+      </condition>
+      <name>Heading lock - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Heading</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Wing-leveler mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/heading</property>
+          <value>wing-leveler</value>
+        </not-equals>
+      </condition>
+      <name>Wing leveler mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>WL</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-100</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>wing-leveler</value>
+        </equals>
+      </condition>
+      <name>Wing lelever mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>WL</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-100</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>wing-leveler</value>
+        </equals>
+      </condition>
+      <name>Wing-leveler - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/target-roll-deg</property>
+          <format>%02.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- True heading hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/heading</property>
+          <value>true-heading-hold</value>
+        </not-equals>
+      </condition>
+      <name>True heading hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TH</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-75</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>true-heading-hold</value>
+        </equals>
+      </condition>
+      <name>True heading hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TH</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-75</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>true-heading-hold</value>
+        </equals>
+      </condition>
+      <name>True heading-hold - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/true-heading-deg</property>
+          <format>%03.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- DG heading hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/heading</property>
+          <value>dg-heading-hold</value>
+        </not-equals>
+      </condition>
+      <name>DG heading hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>DG</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-50</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>dg-heading-hold</value>
+        </equals>
+      </condition>
+      <name>DG heading hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>DG</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-50</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>dg-heading-hold</value>
+        </equals>
+      </condition>
+      <name>DG heading-hold - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/settings/heading-bug-deg</property>
+          <format>%03.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Nav1 hold mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/heading</property>
+          <value>nav1-hold</value>
+        </not-equals>
+      </condition>
+      <name>Nav1 hold mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>NV</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-25</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>nav1-hold</value>
+        </equals>
+      </condition>
+      <name>Nav1 hold mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>NV</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-25</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>nav1-hold</value>
+        </equals>
+      </condition>
+      <name>Nav1-hold - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/internal/nav1-heading-error-deg-filtered</property>
+          <format>%03.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>24</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Separator -->
+    <layer>
+      <name>Separator</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>--------------------------------------------------------------</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>10</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS -->
+<!-- Title -->
+    <layer>
+      <name>FCS Title</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>FCS</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-4</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Stick mode - diengaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value></value>
+        </equals>
+      </condition>
+      <name>Stick mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>SMode:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value></value>
+        </not-equals>
+      </condition>
+      <name>Stick mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>SMode:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Direct mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value>direct</value>
+        </not-equals>
+      </condition>
+      <name>FCS Direct mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>DR</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-110</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value>direct</value>
+        </equals>
+      </condition>
+      <name>FCS Direct mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>DR</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-110</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Pitch mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value>pitch</value>
+        </not-equals>
+      </condition>
+      <name>FCS Pitch mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PT</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-85</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value>pitch</value>
+        </equals>
+      </condition>
+      <name>FCS Pitch mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PT</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-85</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS VFPS mode -->
+<!-- Disengaged -->
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value>vfps</value>
+        </not-equals>
+      </condition>
+      <name>FCS VFPS mode - disengaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>VC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-60</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/modes/stick</property>
+          <value>vfps</value>
+        </equals>
+      </condition>
+      <name>FCS VFPS mode - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>VC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-60</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Auto Take-off/landing -->
+<!-- Title -->
+    <layer>
+      <name>Auto take-off/landing title</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Auto take-off/landing</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-30</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Auto take-off -->
+<!-- Disabled -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/auto-take-off</property>
+          <value>disabled</value>
+        </equals>
+      </condition>
+      <name>Auto take-off - disabled</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TO</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Enabled -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/auto-take-off</property>
+          <value>enabled</value>
+        </equals>
+      </condition>
+      <name>Auto take-off - enabled</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TO</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/auto-take-off</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>Auto take-off - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>TO</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>115</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Auto landing -->
+<!-- Disabled -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/auto-landing</property>
+          <value>disabled</value>
+        </equals>
+      </condition>
+      <name>Auto landing - disabled</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>LD</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>140</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Enabled -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/auto-landing</property>
+          <value>enabled</value>
+        </equals>
+      </condition>
+      <name>Auto landing - enabled</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>LD</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>140</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/auto-landing</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>Auto landing - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>LD</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>140</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-18</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Pitch hold -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/pitch</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Pitch hold - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PT</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/pitch</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Pitch hold - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>PT</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/pitch</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS pitch hold - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/internal/target-pitch-deg-filtered</property>
+          <format>%02.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-140</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS VFPS hold -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/vfps</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS VFPS hold - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>VC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-65</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/vfps</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS VFPS hold - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>VC</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-65</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/vfps</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS VFPS hold - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/internal/target-climb-rate-fps-filtered</property>
+          <format>%03.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-40</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS roll hold -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/roll</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Roll hold - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>RL</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/roll</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Roll hold - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>RL</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/roll</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS roll hold - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/internal/target-roll-deg-filtered</property>
+          <format>%02.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>60</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-32</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Auto-flap -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-flaps</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-flaps - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AF</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-flaps</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-flaps - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AF</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-flaps</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-flaps - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/FCS/controls/flaperon-flaps-norm</property>
+          <format>%01.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-140</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Auto-slats -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-slats</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-slats - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AS</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-65</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-slats</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-slats - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AS</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-65</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-slats</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-slats - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/FCS/controls/slats-norm</property>
+          <format>%02.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-40</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Auto-speedbrake -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-speedbrake</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-speedbrake - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>SB</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-speedbrake</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-speedbrake - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>SB</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-speedbrake</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto speedbrake - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/FCS/controls/speedbrake-norm</property>
+          <format>%02.2f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>60</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Cubed input -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/cubed-input</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Cubed input - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>CI</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>135</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/cubed-input</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS cubed input - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>CI</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>135</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-46</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Auto-reheat -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-reheat</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-reheat - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AR</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-60</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Engaged -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-reheat</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-reheat - engaged</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>AR</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-165</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-60</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Target -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-reheat</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-reheat - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/FCS/controls/engines/engine[0]/reheat-norm</property>
+          <format>%01.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-140</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-60</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-reheat</property>
+          <value>engaged</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-reheat - target</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/autopilot/FCS/controls/engines/engine[1]/reheat-norm</property>
+          <format>%01.3f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-90</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-60</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- FCS Auto-spin-recovery -->
+<!-- Off -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-spin-recovery</property>
+          <value>off</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-spin-recovery - off</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>ASR</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-60</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Enabled -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/FCS/locks/auto-spin-recovery</property>
+          <value>enabled</value>
+        </equals>
+      </condition>
+      <name>FCS Auto-spin-recovery - enabled</name>
+      <type>text</type>
+      <point-size>12</point-size>
+      <color>
+        <red>1.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>ARS</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>35</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-60</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+  </layers>
+
+  <actions>
+<!-- Altitude -->
+    <action>
+      <name>Altitude-hold off</name>
+      <button>0</button>
+      <x>-168</x>
+      <y>35</y>
+      <w>60</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.altitude_hold_off()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle Altitude-hold</name>
+      <button>0</button>
+      <x>-104</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_altitude_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle AGL-hold</name>
+      <button>0</button>
+      <x>-79</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_agl_hold()</script>
+      </binding>
+      <binding>
+        <command>dialog-show</command>
+        <dialog-name>TFA-popup</dialog-name>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle Pitch-hold</name>
+      <button>0</button>
+      <x>-54</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_pitch_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle AoA-hold</name>
+      <button>0</button>
+      <x>-29</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_aoa_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle VFPS-hold</name>
+      <button>0</button>
+      <x>-4</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_vfps_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle GS1-hold</name>
+      <button>0</button>
+      <x>21</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_gs1_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle Mach-climb-hold</name>
+      <button>0</button>
+      <x>46</x>
+      <y>35</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_mc_hold()</script>
+      </binding>
+    </action>
+
+<!-- Heading -->
+    <action>
+      <name>Heading-hold off</name>
+      <button>0</button>
+      <x>-168</x>
+      <y>21</y>
+      <w>60</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.heading_hold_off()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle Wing-leveler</name>
+      <button>0</button>
+      <x>-104</x>
+      <y>21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_wing_leveler()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle True-heading-hold</name>
+      <button>0</button>
+      <x>-79</x>
+      <y>21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_true_heading_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle DG-heading-hold</name>
+      <button>0</button>
+      <x>-54</x>
+      <y>21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_dg_heading_hold()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle Nav1-hold</name>
+      <button>0</button>
+      <x>-29</x>
+      <y>21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_nav1_hold()</script>
+      </binding>
+    </action>
+
+<!-- FCS Stick modes -->
+    <action>
+      <name>Toggle Direct FCS Stick mode</name>
+      <button>0</button>
+      <x>-114</x>
+      <y>-21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.set_fcs_direct_stick_mode()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle Pitch FCS Stick mode</name>
+      <button>0</button>
+      <x>-89</x>
+      <y>-21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.set_fcs_pitch_stick_mode()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Toggle VFPS FCS Stick mode</name>
+      <button>0</button>
+      <x>-64</x>
+      <y>-21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.set_fcs_vfps_stick_mode()</script>
+      </binding>
+    </action>
+
+<!-- Auto take-off/landing -->
+    <action>
+      <name>Auto-take-off</name>
+      <button>0</button>
+      <x>111</x>
+      <y>-21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37AUTOTAKEOFF.autotakeoff()</script>
+      </binding>
+    </action>
+
+    <action>
+      <name>Auto-landing</name>
+      <button>0</button>
+      <x>136</x>
+      <y>-21</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37AUTOLAND.autoland()</script>
+      </binding>
+    </action>
+
+<!-- FCS Auto-flaps -->
+    <action>
+      <name>Toggle FCS Auto-flaps</name>
+      <button>0</button>
+      <x>-168</x>
+      <y>-49</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_fcs_auto_flaps()</script>
+      </binding>
+    </action>
+
+<!-- FCS Auto-slats -->
+    <action>
+      <name>Toggle FCS Auto-slats</name>
+      <button>0</button>
+      <x>-68</x>
+      <y>-49</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_fcs_auto_slats()</script>
+      </binding>
+    </action>
+
+<!-- FCS Auto-speedbrake -->
+    <action>
+      <name>Toggle FCS Auto-speedbrake</name>
+      <button>0</button>
+      <x>32</x>
+      <y>-49</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_fcs_auto_speedbrake()</script>
+      </binding>
+    </action>
+
+<!-- FCS Cubed Input -->
+    <action>
+      <name>Toggle FCS cubed input</name>
+      <button>0</button>
+      <x>132</x>
+      <y>-49</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_fcs_cubed_input()</script>
+      </binding>
+    </action>
+
+<!-- FCS Auto-reheat -->
+    <action>
+      <name>Toggle FCS Auto-reheat</name>
+      <button>0</button>
+      <x>-168</x>
+      <y>-64</y>
+      <w>25</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_fcs_auto_reheat()</script>
+      </binding>
+    </action>
+
+<!-- FCS Auto-spin-recovery -->
+    <action>
+      <name>Toggle FCS Auto-spin-recovery</name>
+      <button>0</button>
+      <x>32</x>
+      <y>-64</y>
+      <w>36</w>
+      <h>14</h>
+      <binding>
+        <command>nasal</command>
+        <script>SU37APFCS.toggle_fcs_auto_spin_recovery()</script>
+      </binding>
+    </action>
+
+  </actions>
+
+</PropertyList>

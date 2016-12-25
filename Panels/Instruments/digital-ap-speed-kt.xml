@@ -1,0 +1,772 @@
+<?xml version="1.0"?>
+
+<!--
+-->
+
+<PropertyList>
+
+  <name>Digital AP Speed Instrument</name>
+  <w-base>120</w-base>
+  <h-base>40</h-base>
+
+  <params>
+    <kias-disp>/autopilot/settings/target-speed-kt</kias-disp>
+    <kias-ctrl>/autopilot/settings/target-speed-kt</kias-ctrl>
+    <mach-disp>/autopilot/settings/target-mach</mach-disp>
+    <mach-ctrl>/autopilot/settings/target-mach</mach-ctrl>
+  </params>
+
+  <layers>
+
+    <layer>
+      <name>background</name>
+      <texture>
+        <path>Aircraft/SU-37/Panels/Instruments/Textures/trans-dgrey-bg.rgb</path>
+      </texture>
+      <w>120</w>
+      <h>40</h>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>0</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Incr 10 KIAS</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>+</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-59</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>7</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Decr 10 KIAS</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>-</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-59</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Incr 1 KIAS</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>+</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-49</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>7</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Decr 1 KIAS</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>-</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-49</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-2</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Incr 0.1 Mach</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>+</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-59</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-11</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Decr 0.1 Mach</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>-</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-59</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-20</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Incr 0.01 Mach</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>+</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-49</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-11</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Decr 0.01 Mach</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>-</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-49</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-20</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Select KIAS</name>
+      <type>text</type>
+      <point-size>14</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>K</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-39</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>4</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Select Mach</name>
+      <type>text</type>
+      <point-size>14</point-size>
+      <color>
+        <red>0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>M</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-39</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-15</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- KIAS hold -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/speed</property>
+          <value>speed-with-throttle</value>
+        </equals>
+      </condition>
+      <name>KIAS hold - engaged</name>
+      <type>text</type>
+      <point-size>14</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Kts:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-23</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>4</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/speed</property>
+          <value>speed-with-throttle</value>
+        </not-equals>
+      </condition>
+      <name>KIAS hold - disengaged</name>
+      <type>text</type>
+      <point-size>14</point-size>
+      <color>
+        <red>0.6</red>
+        <green>0.6</green>
+        <blue>0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Kts:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-23</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>4</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Mach hold -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/speed</property>
+          <value>mach-with-throttle</value>
+        </equals>
+      </condition>
+      <name>Mach hold - engaged</name>
+      <type>text</type>
+      <point-size>14</point-size>
+      <color>
+        <red>0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Mch:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-23</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-15</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/speed</property>
+          <value>mach-with-throttle</value>
+        </not-equals>
+      </condition>
+      <name>Mach hold - disengaged</name>
+      <type>text</type>
+      <point-size>14</point-size>
+      <color>
+        <red>0</red>
+        <green>0.6</green>
+        <blue>0.6</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Mch:</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-23</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-15</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- KIAS Display -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/speed</property>
+          <value>speed-with-throttle</value>
+        </equals>
+      </condition>
+      <name>KIAS display (KIAS hold engaged)</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>6</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/kias-disp"/>
+          <format>%04.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>20</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>3</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/speed</property>
+          <value>speed-with-throttle</value>
+        </not-equals>
+      </condition>
+      <name>KIAS display (KIAS hold disengaged)</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>6</point-size>
+      <color>
+        <red>0.6</red>
+        <green>0.6</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/kias-disp"/>
+          <format>%04.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>20</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>3</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+<!-- Mach Display -->
+    <layer>
+      <condition>
+        <equals>
+          <property>/autopilot/locks/speed</property>
+          <value>mach-with-throttle</value>
+        </equals>
+      </condition>
+      <name>AP Mach Speed display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>6</point-size>
+      <color>
+        <red>0</red>
+        <green>1.0</green>
+        <blue>1.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/mach-disp"/>
+          <format>%01.2f</format>
+        </chunk>
+        <chunk>
+          <type>literal</type>
+          <text>M</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>20</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-16</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <not-equals>
+          <property>/autopilot/locks/speed</property>
+          <value>mach-with-throttle</value>
+        </not-equals>
+      </condition>
+      <name>AP Mach Speed display</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>6</point-size>
+      <color>
+        <red>0</red>
+        <green>0.6</green>
+        <blue>0.6</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property alias="../../../../../params/mach-disp"/>
+          <format>%01.2f</format>
+        </chunk>
+        <chunk>
+          <type>literal</type>
+          <text>M</text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>20</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-16</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+  </layers>
+
+  <actions>
+
+    <action>
+      <name>Plus 10 KIAS</name>
+      <button>0</button>
+      <x>-59</x>
+      <y>10</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/kias-ctrl"/>
+        <step>10</step>
+        <min>0</min>
+        <max>2000</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Minus 10 KIAS</name>
+      <button>0</button>
+      <x>-59</x>
+      <y>0</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/kias-ctrl"/>
+        <step>-10</step>
+        <min>0</min>
+        <max>2000</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Plus 1 KIAS</name>
+      <button>0</button>
+      <x>-49</x>
+      <y>10</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/kias-ctrl"/>
+        <step>1</step>
+        <min>0</min>
+        <max>2000</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Minus 1 KIAS</name>
+      <button>0</button>
+      <x>-49</x>
+      <y>0</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/kias-ctrl"/>
+        <step>-1</step>
+        <min>0</min>
+        <max>2000</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Plus 0.1 Mach</name>
+      <button>0</button>
+      <x>-59</x>
+      <y>-9</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/mach-ctrl"/>
+        <step>0.1</step>
+        <min>0</min>
+        <max>2.0</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Minus 0.1 Mach</name>
+      <button>0</button>
+      <x>-59</x>
+      <y>-19</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/mach-ctrl"/>
+        <step>-0.1</step>
+        <min>0</min>
+        <max>2.0</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Plus 0.01 Mach</name>
+      <button>0</button>
+      <x>-49</x>
+      <y>-9</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/mach-ctrl"/>
+        <step>0.01</step>
+        <min>0</min>
+        <max>2.0</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Minus 0.01 Mach</name>
+      <button>0</button>
+      <x>-49</x>
+      <y>-19</y>
+      <w>9</w>
+      <h>9</h>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/mach-ctrl"/>
+        <step>-0.01</step>
+        <min>0</min>
+        <max>2.0</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+
+    <action>
+      <name>Select KIAS Hold</name>
+      <button>0</button>
+      <x>-40</x>
+      <y>0</y>
+      <w>14</w>
+      <h>19</h>
+      <binding>
+        <command>property-assign</command>
+        <property>autopilot/locks/speed</property>
+        <value type="string">speed-with-throttle</value>
+      </binding>
+    </action>
+
+    <action>
+      <name>Select Mach Hold</name>
+      <button>0</button>
+      <x>-40</x>
+      <y>-19</y>
+      <w>14</w>
+      <h>19</h>
+      <binding>
+        <command>property-assign</command>
+        <property>autopilot/locks/speed</property>
+        <value type="string">mach-with-throttle</value>
+      </binding>
+    </action>
+
+  </actions>
+
+</PropertyList>

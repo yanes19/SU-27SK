@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+ 
+<!-- su-27 avionics and lighting controls -->
+<PropertyList>
+
+	<lighting>
+		<nav-lights-switch type="bool">false</nav-lights-switch>
+		<beacon-switch type="bool">false</beacon-switch>
+	</lighting>
+
+	<fbw>
+		<active type="bool">1</active>
+		<yaw-damper type="int">1</yaw-damper>
+		<rudder type="int">1</rudder>
+		<bank-limit type="int">30</bank-limit> <!-- 30 degrees bank permitted -->
+	</fbw>
+	
+	  <armament>
+    <!--
+      note :
+        Missile property. the value here doesn't really count, beacause it's reloaded
+        by a Nasal for each missile. Anyway this is nessecary for variable declaration
+    -->
+    <missile>
+      <name>R-27R</name>
+      <address>Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.xml</address>
+      <addressNoSmoke>Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.xml</addressNoSmoke>
+      <addressExplosion>Aircraft/SU-27SK/Models/Effects/MissileExplosion/explosion.xml</addressExplosion>
+      <count type="int">0</count>
+      <nearest-target type="int"> -1 </nearest-target>
+      <sound-on-off type="bool">false</sound-on-off>
+      <sound-volume type="double"> 0.12 </sound-volume>
+      <target-range-nm type="double"> 0 </target-range-nm>
+      <max-detection-rng-nm type="int"> 45 </max-detection-rng-nm>
+      <!-- ' not real impact yet-->
+      <fov-deg type="int"> 25 </fov-deg>
+      <!-- ' seeker optical FOV -->
+      <detection-fov-deg type="int"> 60 </detection-fov-deg>
+      <!-- ' search pattern diameter (rosette scan) -->
+      <track-max-deg type="int"> 110 </track-max-deg>
+      <!-- ' seeker max total angular rotation -->
+      <max-g type="int"> 100 </max-g>
+      <!-- ' in turn -->
+      <thrust-lbs type="double"> 300 </thrust-lbs>
+      <!-- ' guess -->
+      <thrust-duration-sec type="int"> 30 </thrust-duration-sec>
+      <!-- ' Mk.36 Mod.7,8 -->
+      <weight-launch-lbs> 216 </weight-launch-lbs>
+      <weight-warhead-lbs> 30 </weight-warhead-lbs>
+      <drag-coeff type="double"> 0.05 </drag-coeff>
+      <!-- ' guess - original 0.05-->
+      <drag-area type="double"> 0.043 </drag-area>
+      <!-- ' sq ft -->
+      <maxExplosionRange type="int"> 200 </maxExplosionRange>
+      <!--
+        note :
+          due to the code, more the speed is important, more we need to have this
+          figure high
+      -->
+      <maxspeed type="double"> 4 </maxspeed>
+      <!-- ' in Mach -->
+      <life> 60 </life>
+      <!--
+        note :
+          "Fox1" for guided by the aircraft radar (semi active) AIM7,
+          "Fox2" for infrared AIM9,
+          "Fox3" for intern missile Radar AIM120, AIM54, A/G air to ground
+      -->
+      <fox>Fox 2</fox>
+      <!--
+        note :
+          if the missile fall before thrust start or if there is some kind of "rail"
+      -->
+      <rail type="bool">true</rail>
+      <!--
+        note :
+          for cruise missile, in feet.0 is off.below 10000 feet is terrain following
+      -->
+      <cruise_alt type="int"> 0 </cruise_alt>
+      <current-pylon type="int"> 0 </current-pylon>
+    </missile>
+    
+    <selected-weapon>R-27R</selected-weapon>
+    <trigger type="bool">false</trigger>
+    <master-arm type="bool">true</master-arm>
+    <!-- ' 0=OFF, 1=GUN, 2=A/A, 3=A/G -->
+    <stick-selector type="int">2</stick-selector>
+    <position-norm type="int">1</position-norm>
+    
+    <station n="0">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="1">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="2">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="3">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="4">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="5">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="6">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="7">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="8">
+      <release type="bool">false</release>
+    </station>
+    
+    <station n="9">
+      <release type="bool">false</release>
+    </station>
+    
+  </armament>
+
+</PropertyList>

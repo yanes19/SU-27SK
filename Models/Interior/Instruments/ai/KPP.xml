@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+
+<!-- Командно-Пилотажный Прибор - КПП -->
+<!-- 2011, Сергей "Mercenary_Mercury" Салов -->
+
+<PropertyList>
+
+ <path>KPP.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>AltitudeScale</object-name>
+  <object-name>CourseScale</object-name>
+  <object-name>PitchScale</object-name>
+  <object-name>KPP.AltitudeDirector</object-name>
+  <object-name>KPP.BankDirector</object-name>
+  <object-name>KPP.BlenkerK</object-name>
+  <object-name>KPP.BlenkerT</object-name>
+  <object-name>KPP.CourseDirector</object-name>
+  <object-name>KPP.PitchDirector</object-name>
+  <object-name>KPP.PitchAngleScale</object-name>
+  <object-name>KPP.Roll</object-name>
+  <object-name>KPP.RollDirector</object-name>
+  <object-name>KPP.Rollscale</object-name>
+  <object-name>KPP.skidball</object-name>
+  <object-name>KPP.skidbase</object-name>
+  <emission>
+   <red>  0.8</red>
+   <green>0.5</green>
+   <blue> 0.5</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>screws</object-name>
+  <emission>
+   <red>  0.8</red>
+   <green>0.8</green>
+   <blue> 0.8</blue>
+   <factor-prop>mig29/systems/cockpitlighting/panel-norm</factor-prop>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>KPP.ArrKnorLamp</object-name>
+  <emission>
+   <red>  1.0</red>
+   <green>1.0</green>
+   <blue> 1.0</blue>
+   <factor-prop>mig29/systems/cockpitlighting/annunciators-norm</factor-prop>
+  </emission>
+ </animation>
+
+<!--
+  <animation>
+  <type>Select</type>
+  <object-name>KPP.glass</object-name>
+    <condition>
+   <equals>
+    <property>instrumentation/attitude-indicator/serviceable</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+-->
+ 
+<!--
+ <effect>
+  <inherits-from>Aircraft/MiG-29_9-12/Models/Effects/model-transparent</inherits-from>
+  <object-name>KPP.glass</object-name>
+ </effect>
+-->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>KPP.Roll</object-name>
+  <property>orientation/roll-deg</property>
+  <axis>
+   <x>-1</x>
+   <y> 0</y>
+   <z> 0</z>
+  </axis>
+  <center>
+   <x-m>-0.036</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>KPP.PitchAngleScale</object-name>
+  <property>/orientation/pitch-deg</property>
+  <interpolation>
+   <entry><ind>-90.0</ind><dep>-139.21875</dep></entry>
+   <entry><ind> 90.0</ind><dep> 139.21875</dep></entry>
+  </interpolation>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  <center>
+   <x-m>-0.06</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>KPP.skidball</object-name>
+  <condition>
+   <not>
+    <property>instrumentation/attitude-indicator/caged-flag</property>
+   </not>
+  </condition>
+  <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+  <interpolation>
+   <entry><ind>-2.56</ind><dep>-9.216</dep></entry>
+   <entry><ind> 2.56</ind><dep> 9.216</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>0.00</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.06</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y> 0</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>KPP.PCK</object-name>
+  <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+  <factor>25</factor>
+  <center>
+   <x-m> 0.000</x-m>
+   <y-m> 0.046</y-m>
+   <z-m>-0.046</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y> 0</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>KPP.AltitudeDirector</object-name>
+  <property>mig29/o/snv</property>
+  <factor>0.0155</factor>
+  <min>-0.0155</min>
+  <max> 0.0155</max>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>KPP.CourseDirector</object-name>
+  <property>mig29/instrumentation/KPP/course-director</property>
+  <factor>0.0155</factor>
+  <min>-0.0155</min>
+  <max> 0.0155</max>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>KPP.PitchDirector</object-name>
+  <property>mig29/instrumentation/KPP/pitch-director</property>
+  <factor>0.028</factor>
+  <min>-0.028</min>
+  <max> 0.028</max>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>KPP.RollDirector</object-name>
+  <property>mig29/instrumentation/KPP/roll-director</property>
+  <factor>25</factor>
+  <min>-25.0</min>
+  <max> 25.0</max>
+  <center>
+   <x-m> 0.000</x-m>
+   <y-m> 0.000</y-m>
+   <z-m>-0.033</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>KPP.cz1</object-name>
+  <visible>false</visible>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/attitude-indicator/caged-flag</property>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>KPP.ArrKnorLamp</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>mig29/instrumentation/electrical/v27</property>
+     <value>18</value>
+    </greater-than>
+    <or>
+     <equals>
+      <property>mig29/controls/lighting/kontr_lamp</property>
+      <value>1</value>
+     </equals>
+     <equals>
+      <property>instrumentation/attitude-indicator/caged-flag</property>
+      <value>1</value>
+     </equals>
+    </or>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>KPP.BlenkerK</object-name>
+  <object-name>KPP.BlenkerT</object-name>
+  <condition>
+   <equals>
+    <property>instrumentation/attitude-indicator/serviceable</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>KPP.cz2</object-name>
+  <visible>false</visible>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+    <step>-0.5</step>
+    <min>0</min>
+    <max>10</max>
+   </binding>
+  </action>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>KPP.cz3</object-name>
+  <visible>false</visible>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+    <step>0.5</step>
+    <min>0</min>
+    <max>10</max>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>

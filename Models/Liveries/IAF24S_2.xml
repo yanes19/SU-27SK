@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Indian Air Force, 24 Sqdn.</name>
+        <texture>Liveries/IAF24S_2.png</texture>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

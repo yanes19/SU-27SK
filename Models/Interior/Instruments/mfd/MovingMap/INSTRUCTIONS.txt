@@ -1,0 +1,23 @@
+Basic  instructions for inclusion of the moving Map display.
+
+
+Place all the files from the MovingMap folder into your screen/MFD folder ready for use.
+Place the contents of the NASAL folder into your aircrafts NASAL folder.
+
+The map Grid can be found in the "res" folder as "terrain-map-pixel.ac".
+There is probably lots of stuff in the folder thats not needed.
+The example mfd XML shows a simple way of  linking the map to a blank screen. You will need to resize the terrain-map-pixel.ac to match your screen size using a 3d proggie.
+Using the offsets in your screens XML file you can fine tune the position of the map into the viewing area of your screen.
+Using the example instrumentation.xml you will find the code requied to be placed in your own aircrafts instrumantation  tabs.
+Dont forget to include the following into the NASAL area of your set file to activate the map :-
+
+
+
+<terrain-map>
+ 
+<file>Aircraft/YourAircraft/Nasal/terrain-map.nas</file>
+ 
+</terrain-map>
+
+
+good luck.

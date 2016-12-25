@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+	
+	<model>	
+		<name>PU-184-Radio-Panel</name>
+		<path>PU-184-Radio-Panel.ac</path>
+	</model>
+
+
+<!--
+  <animation>
+	<type>rotate</type>
+	<object-name>PU-184-Radio-Panel</object-name>
+	<property>constants/one</property>
+	<factor>90</factor>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>-1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  
+	<animation>
+	<type>rotate</type>
+	<object-name>PU-184-Radio-Panel</object-name>
+	<property>constants/one</property>
+	<factor>30</factor>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x> 0.0</x>
+      <y> 1.0</y>
+      <z> 0.0</z>
+    </axis>
+  </animation>
+-->
+  
+  
+</PropertyList>

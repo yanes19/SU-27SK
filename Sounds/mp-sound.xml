@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+ 
+<PropertyList>
+ 
+<fx>
+ 
+<!-- External Sounds -->
+  
+ <!-- Engines-->
+  
+    
+   <engine>
+      <name>engine-start-outside</name>
+      <mode>once</mode>
+      <path>Aircraft/SU-27/Sounds/su-startup.wav</path>
+       <condition>
+        <equals>
+         <property>sim/multiplay/generic/int[5]</property>
+         <value>1</value>
+        </equals>
+       </condition>
+  
+      <volume>
+        <property>engines/engine[0]/n2</property>
+        <factor> 0.09 </factor>
+        <min> 0.3 </min>
+        <max> 0.9 </max>
+      </volume>
+      <pitch>
+        <property>engines/engine[0]/n2</property>
+        <factor> 0.01 </factor>
+    <min> 0.0 </min>
+    <max> 0.9 </max>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+     
+     
+     
+    <engine>
+      <name>engine-start-outside1</name>
+      <mode>once</mode>
+      <path>Aircraft/SU-27/Sounds/su-startup.wav</path>
+      <condition>
+     <equals>
+         <property>sim/multiplay/generic/int[6]</property>
+         <value>1</value>
+        </equals>
+     </condition>
+  
+      <volume>
+        <property>engines/engine[1]/n2</property>
+        <factor> 0.09 </factor>
+        <min> 0.3 </min>
+        <max> 0.9 </max>
+      </volume>
+      <pitch>
+        <property>engines/engine[1]/n2</property>
+        <factor> 0.01 </factor>
+    <min> 0.0 </min>
+    <max> 0.9 </max>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+    
+    
+    
+  
+   <engine>
+   <name>Engine Exhaust</name>
+   <mode>looped</mode>
+   <path>Aircraft/SU-27/Sounds/engine-exhaust.wav</path>
+   <condition>
+ <equals>
+         <property>sim/multiplay/generic/int[5]</property>
+         <value>2</value>
+        </equals>
+   </condition>
+   <position>
+        <x>6.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <orientation>
+    <x>90.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+        <inner-angle>80.0</inner-angle>
+    <outer-angle>110.0</outer-angle>
+    <outer-gain>0.5</outer-gain>
+   </orientation>
+   <volume>
+        <property>engines/engine[0]/n2</property>
+        <factor>0.08</factor>
+        <min>0.4</min>
+    <max>1.0</max>
+   </volume>
+   <pitch>
+        <property>engines/engine[0]/n2</property>
+    <factor>0.005</factor>
+    <min>0</min>
+    <max>0.7</max>
+   </pitch>
+  </engine>
+   
+  <engine>
+   <name>Engine Exhaust1</name>
+   <mode>looped</mode>
+   <path>Aircraft/SU-27/Sounds/engine-exhaust.wav</path>
+   <condition>
+   <equals>
+         <property>sim/multiplay/generic/int[6]</property>
+         <value>2</value>
+        </equals>
+   </condition>
+   <position>
+        <x>6.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <orientation>
+    <x>90.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+        <inner-angle>80.0</inner-angle>
+    <outer-angle>110.0</outer-angle>
+    <outer-gain>0.5</outer-gain>
+   </orientation>
+   <volume>
+        <property>engines/engine[1]/n2</property>
+        <factor>0.08</factor>
+        <min>0.4</min>
+    <max>1.0</max>
+   </volume>
+   <pitch>
+        <property>engines/engine[1]/n2</property>
+    <factor>0.005</factor>
+    <min>0</min>
+    <max>0.7</max>
+   </pitch>
+  </engine>
+  
+ 
+     <engine>
+      <name>engine</name>
+      <path>Aircraft/SU-27/Sounds/jet-blast.wav</path>
+      <mode>looped</mode>
+        <condition>
+        <equals>
+         <property>sim/multiplay/generic/int[5]</property>
+         <value>2</value>
+        </equals>
+      </condition>
+       <position>
+    <x>18.6</x>
+    <y>-0.4</y>
+    <z>2.37</z>
+   </position>
+   <orientation>
+    <x>1.0</x>
+    <y>0.0</y>
+    <z>0</z>
+    <inner-angle>35.0</inner-angle>
+    <outer-angle>90</outer-angle>
+    <outer-gain>0.45</outer-gain>
+   </orientation>
+  
+   <volume>
+    <property>engines/engine[0]/n1</property>
+    <factor>0.014</factor>
+    <offset>-0.45</offset>
+   </volume>
+  
+   <reference-dist>20</reference-dist>
+   <max-dist>3000</max-dist>
+    </engine>
+     
+    <engine>
+      <name>engine1</name>
+      <path>Aircraft/SU-27/Sounds/jet-blast.wav</path>
+      <mode>looped</mode>
+      <condition>
+      <equals>
+         <property>sim/multiplay/generic/int[6]</property>
+         <value>2</value>
+        </equals>
+      </condition>
+       <position>
+    <x>18.6</x>
+    <y>0.4</y>
+    <z>2.37</z>
+   </position>
+   <orientation>
+    <x>1.0</x>
+    <y>0.0</y>
+    <z>0</z>
+    <inner-angle>35.0</inner-angle>
+    <outer-angle>90</outer-angle>
+    <outer-gain>0.45</outer-gain>
+   </orientation>
+  
+   <volume>
+    <property>engines/engine[1]/n1</property>
+    <factor>0.014</factor>
+    <offset>-0.45</offset>
+   </volume>
+  
+   <reference-dist>20</reference-dist>
+   <max-dist>3000</max-dist>
+    </engine>
+  
+ 
+  <!-- engine>
+   <name>Reheat</name>
+   <mode>looped</mode>
+   <path>Aircraft/SU-27/Sounds/reheat.wav</path>
+   <condition>
+     <property>engines/engine[0]/afterburner</property>
+           <not>
+        <property>/sim/current-view/internal</property>
+         
+           </not>
+   </condition>
+   <position>
+        <x>6.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <orientation>
+    <x>90.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+        <inner-angle>60.0</inner-angle>
+        <outer-angle>160.0</outer-angle>
+        <outer-gain>0.75</outer-gain>
+   </orientation>
+   <volume>
+        <offset>1</offset>
+    <min>0.3</min>
+    <max>1.0</max>
+   </volume>
+  </engine>
+   
+  <engine>
+   <name>Reheat1</name>
+   <mode>looped</mode>
+   <path>Aircraft/SU-27/Sounds/reheat.wav</path>
+   <condition>
+     <property>engines/engine[1]/afterburner</property>
+           <not>
+        <property>/sim/current-view/internal</property>
+         
+           </not>
+   </condition>
+   <position>
+        <x>6.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <orientation>
+    <x>90.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+        <inner-angle>60.0</inner-angle>
+        <outer-angle>160.0</outer-angle>
+        <outer-gain>0.75</outer-gain>
+   </orientation>
+   <volume>
+        <offset>1</offset>
+    <min>0.3</min>
+    <max>1.0</max>
+   </volume>
+  </engine -->
+ 
+ 
+    <!-- Sonic Boom -->
+  <sonicboom>
+   <name>Sonic Boom</name>
+    <mode>once</mode>
+   <path>Aircraft/T38/Sounds/sonicboom.wav</path>
+   <condition>
+   <and>
+        <greater-than>
+            <property>velocities/mach</property>
+            <value>1.0</value>
+        </greater-than>
+        <equals>
+            <property>/sim/current-view/internal</property>
+            <value>false</value>
+        </equals>
+    </and>
+   </condition>
+    <reference-dist>600.0</reference-dist>
+    <max-dist>6000.0</max-dist>
+  </sonicboom>
+ 
+ 
+<!-- flyby -->
+        <flyby>
+            <name>fly-by</name>
+            <mode>once</mode>
+            <path>Aircraft/SU-27/Sounds/flyby.wav</path>
+            <condition>
+                <and>
+        <greater-than>
+            <property>velocities/mach</property>
+            <value>0.8</value>
+        </greater-than>
+                <equals>
+                    <property>sim/current-view/view-number</property>
+                    <value>6</value>
+                </equals>
+                </and>
+                <not>
+            <property>/sim/current-view/internal</property>
+        <property>/engines/engine/out-of-fuel</property>
+        </not>
+        </condition>
+            <volume>
+                <property>velocities/airspeed-kt</property>
+                <factor>0.001</factor>
+            </volume>
+             
+        </flyby>
+         
+    <crash>
+  <name>intense ground contact</name>
+  <mode>once</mode>
+  <path>Sounds/crash.wav</path>
+  <property>sim/multiplay/generic/int[7]</property>
+  <volume>
+    <factor>1</factor>
+  </volume>
+  <pitch>
+    <factor>1.5</factor>
+  </pitch>
+</crash>  
+     
+     
+     
+    <engine1-wake-forward>
+  <name>Left Engine Wake</name>
+  <mode>looped</mode>
+  <path>Aircraft/SU-27/Sounds/wake.wav</path>
+  <condition>
+   <and>
+    <not>
+     <property>/sim/current-view/internal</property>
+    </not>
+    <or>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Fly-By View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View Look From</value>
+    </equals>
+    </or>
+   </and>
+  </condition>
+  <position>
+   <x>25</x>
+   <y>-0.5</y>
+   <z>0</z>
+   </position>
+   <orientation>
+    <x>1</x>
+    <y>0</y>
+    <z>0</z>
+    <inner-angle>15.0</inner-angle>
+    <outer-angle>90.0</outer-angle>
+    <outer-gain>0.025</outer-gain>
+   </orientation>
+   <volume>
+    <property>velocities/mach</property>
+    <factor>1.9</factor>
+    <offset>-0.3</offset>
+    <min>0.00</min>
+    <max>1.0</max>
+    </volume>
+  </engine1-wake-forward> 
+   
+  <engine1-wake-forward>
+  <name>Left Engine Wake Forward</name>
+  <mode>looped</mode>
+  <path>Aircraft/SU-27/Sounds/wake-fwd.wav</path>
+   <condition>
+   <and>
+    <not>
+     <property>/sim/current-view/internal</property>
+    </not>
+    <or>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Fly-By View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View Look From</value>
+    </equals>
+    </or>
+   </and>
+  </condition>
+  <delay-sec>0.7</delay-sec>
+  <position>
+   <x>-10</x>
+   <y>-0.5</y>
+   <z>0</z>
+   </position>
+   <orientation>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+    <inner-angle>90.0</inner-angle>
+    <outer-angle>250.0</outer-angle>
+    <outer-gain>0.1</outer-gain>
+   </orientation>
+   <volume>
+    <property>velocities/mach</property>
+    <factor>1.0</factor>
+    <offset>-0.25</offset>
+    <min>0.00</min>
+    <max>1.0</max>
+    </volume>
+  </engine1-wake-forward> 
+   
+  <engine1-wake-forward>
+  <name>Right Engine Wake</name>
+  <mode>looped</mode>
+  <path>Aircraft/SU-27/Sounds/wake.wav</path>
+  <condition>
+   <and>
+    <not>
+     <property>/sim/current-view/internal</property>
+    </not>
+    <or>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Fly-By View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View Look From</value>
+    </equals>
+    </or>
+   </and>
+  </condition>
+  <position>
+   <x>25</x>
+   <y>0.5</y>
+   <z>0</z>
+   </position>
+   <orientation>
+    <x>1</x>
+    <y>0</y>
+    <z>0</z>
+    <inner-angle>15.0</inner-angle>
+    <outer-angle>90.0</outer-angle>
+    <outer-gain>0.025</outer-gain>
+   </orientation>
+   <volume>
+    <property>velocities/mach</property>
+    <factor>1.9</factor>
+    <offset>-0.3</offset>
+    <min>0.00</min>
+    <max>1.0</max>
+    </volume>
+  </engine1-wake-forward> 
+   
+  <engine1-wake-forward>
+  <name>Right Engine Wake Forward</name>
+  <mode>looped</mode>
+  <path>Aircraft/SU-27/Sounds/wake-fwd.wav</path>
+   <condition>
+   <and>
+    <not>
+     <property>/sim/current-view/internal</property>
+    </not>
+    <or>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Fly-By View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View</value>
+    </equals>
+    <equals>
+     <property>/sim/current-view/name</property>
+     <value>Tower View Look From</value>
+    </equals>
+    </or>
+   </and>
+  </condition>
+  <position>
+   <x>-10</x>
+   <y>0.5</y>
+   <z>0</z>
+   </position>
+   <orientation>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+    <inner-angle>90.0</inner-angle>
+    <outer-angle>250.0</outer-angle>
+    <outer-gain>0.1</outer-gain>
+   </orientation>
+   <volume>
+    <property>velocities/mach</property>
+    <factor>1.0</factor>
+    <offset>-0.25</offset>
+    <min>0.00</min>
+    <max>1.0</max>
+    </volume>
+  </engine1-wake-forward> 
+     
+     
+</fx>
+ 
+</PropertyList>

@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+
+<!--
+-->
+
+<PropertyList>
+
+  <name>Digital Fuel Tot display</name>
+  <w-base>120</w-base>
+  <h-base>20</h-base>
+
+  <layers>
+
+    <layer>
+      <name>background</name>
+      <texture>
+        <path>Aircraft/SU-37/Panels/Instruments/Textures/trans-dgrey-bg.rgb</path>
+      </texture>
+      <w>120</w>
+      <h>20</h>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>0</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>Title</name>
+      <type>text</type>
+      <point-size>18</point-size>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>Fuel: </text>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>-55</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-6</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <greater-than>
+          <property>/consumables/fuel/total-fuel-norm</property>
+          <value>0.25</value>
+        </greater-than>
+      </condition>
+      <name>Fuel tot gal display > 0.25 norm</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/consumables/fuel/total-fuel-gals</property>
+          <format>%05.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-7</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <greater-than>
+          <property>/consumables/fuel/total-fuel-norm</property>
+          <value>0.5</value>
+        </greater-than>
+      </condition>
+      <name>Fuel tot gal display > 0.5 norm</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/consumables/fuel/total-fuel-gals</property>
+          <format>%05.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-7</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <condition>
+        <less-than>
+          <property>/consumables/fuel/total-fuel-norm</property>
+          <value>0.25</value>
+        </less-than>
+      </condition>
+      <name>Fuel tot gal display less-than 0.25 norm</name>
+      <type>text</type>
+      <font>led</font>
+      <point-size>7</point-size>
+      <color>
+        <red>1.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>number-value</type>
+          <property>/consumables/fuel/total-fuel-gals</property>
+          <format>%05.0f</format>
+        </chunk>
+      </chunks>
+      <transformations>
+        <transformation>
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+        <transformation>
+          <type>y-shift</type>
+          <offset>-7</offset>
+        </transformation>
+      </transformations>
+    </layer>
+
+  </layers>
+
+</PropertyList>
