@@ -1,12 +1,13 @@
-print("*** LOADING radar2.nas ... ***");
+#print("LOADING radar2.nas .");
 ################################################################################
 #
-#                        m2005-5's RADAR SETTINGS
+#           Customized version of radar2 for the Su-27SK
 #
 ################################################################################
 
 # Radar
 # Fabien BARBIER (5H1N0B1) September 2015
+# fitted to the Su-27SK by Yanes Bechir 2016
 # inspired by Alexis Bory (xiii)
 
 var UPDATE_PERIOD = 0.1; # update interval for engine init() functions

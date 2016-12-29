@@ -1,8 +1,8 @@
-print("*** LOADING weapons.nas ... ***");
+print("LOADING weapons.nas .");
 ################################################################################
 #
-#                        m2005-5's WEAPONS SETTINGS
-#
+#                        Su-27SK WEAPONS SETTINGS
+#							Thanks to the m2005-5's developpers
 ################################################################################
 
 var dt = 0;

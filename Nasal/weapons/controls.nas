@@ -1,8 +1,8 @@
-print("*** LOADING m2000-5-controls.nas ... ***");
+print("LOADING controls.nas .");
 ################################################################################
 #
-#                        m2005-5's CONTROLS SETTINGS
-#
+#                        Su-27SK CONTROLS SETTINGS
+#							Thanks to the m2005-5's developpers
 ################################################################################
 # The goal is to overwrite some controls in order of put it on a stick (and
 # even perhaps multiplex command on stick...)

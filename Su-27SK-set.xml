@@ -749,40 +749,7 @@ SU-27 simulation config.
     <livery>
 	   <file>Aircraft/SU-27SK/Nasal/liveries.nas</file>
     </livery>
- <!--	 
-    <aar> 
-       <file>Aircraft/Generic/aar.nas</file>
-    </aar>
-
-    <rwr>
-       <file>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/rwr.nas</file>
-    </rwr> 
-    <radardist>
-      <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
-    </radardist>
-
-    <radar>
-      <file>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/radar.nas</file> 
-    </radar>
-
-    <radar2>
-     <file>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/radar2.nas</file>
-    </radar2>  
-
-    <enav>
-      <file>Aircraft/SU-27SK/Nasal/enav.nas</file>
-    </enav>
-    <terrain-map>
-      <file>Aircraft/SU-27SK/Nasal/terrain-map.nas</file>
-    </terrain-map> 
-
-    <phd>
-      <file>Aircraft/SU-27SK/Nasal/phd.nas</file>
-    </phd>
-    <tfs>
-		<file>Aircraft/SU-27SK/Nasal/terrain_follow.nas</file>
-	</tfs>
--->		
+	
 	  <ACS>
      <file>Aircraft/SU-27SK/Nasal/SAU_ACS.nas</file>
     </ACS>
@@ -848,7 +815,7 @@ SU-27 simulation config.
     </guns>
  
     <m2000_controls>
-      <file>Aircraft/SU-27SK/Nasal/weapons/m2000-5-controls.nas</file>
+      <file>Aircraft/SU-27SK/Nasal/weapons/controls.nas</file>
     </m2000_controls>
     
     

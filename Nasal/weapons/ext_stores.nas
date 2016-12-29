@@ -1,8 +1,8 @@
-print("*** LOADING ext_stores.nas ... ***");
+print("LOADING ext_stores.nas .");
 ################################################################################
 #
-#                     m2005-5's EXTERNAL STORES SETTINGS
-#
+#                      Su-27SK EXTERNAL STORES MANAGER
+#						Thanks to the m2005-5's developpers
 ################################################################################
 
 # check then drop

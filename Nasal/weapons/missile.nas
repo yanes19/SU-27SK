@@ -1,11 +1,11 @@
-print("*** LOADING missile.nas ... ***");
+print("LOADING missile.nas .");
 ################################################################################
 #
-#                     m2005-5's MISSILE MANAGER
+#             Customized MISSILE MANAGER for the Su-27SK
 #
 ################################################################################
 
-var AcModel        = props.globals.getNode("sim/model/m2000-5", 1);
+var AcModel        = props.globals.getNode("sim/model/su-27SK", 1);
 var OurHdg         = props.globals.getNode("orientation/heading-deg");
 var OurRoll        = props.globals.getNode("orientation/roll-deg");
 var OurPitch       = props.globals.getNode("orientation/pitch-deg");

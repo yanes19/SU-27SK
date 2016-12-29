@@ -1,7 +1,7 @@
-print("*** LOADING Loading_missiles.nas ... ***");
+#print("LOADING Loading_missiles.nas .");
 ################################################################################
 #
-#                     m2005-5's LOADS AND MISSILES SETTINGS
+#                     Su-27SK  LOADS AND MISSILES PARAMETERS
 #
 ################################################################################
 

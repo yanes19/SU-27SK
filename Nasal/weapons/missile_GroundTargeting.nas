@@ -1,7 +1,8 @@
-print("*** LOADING missile_GroundTargeting.nas ... ***");
+print("LOADING missile_GroundTargeting.nas .");
 ################################################################################
 #
-#                     m2005-5's ADDING GROUND TARGET
+#                     Su-27SK ADDING GROUND TARGET MODULE
+#			   		  Thanks to the m2005-5's developpers
 #
 ################################################################################
 
