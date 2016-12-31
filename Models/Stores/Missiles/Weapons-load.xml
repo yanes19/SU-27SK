@@ -572,7 +572,7 @@
 		    <property>sim/weight[9]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
-				<not>
+				<not> 
 		    <property>controls/armament/station[9]/release</property>
 				</not>
 		   </and>
