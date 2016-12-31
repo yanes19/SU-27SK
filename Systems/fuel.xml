@@ -23,7 +23,7 @@ Negative Gs (<-0.5g) cuts the supply to the collector tanks -->
 
   <channel name="Fuel pumping">    
 
-    <switch>
+    <switch name="Tank0to collector">
 			<!-- Tank[0] to Collector tank[1]  -->
       <default value="-7"/>
       <test logic="OR" value="0">
@@ -38,7 +38,7 @@ Negative Gs (<-0.5g) cuts the supply to the collector tanks -->
       <output>propulsion/tank[0]/external-flow-rate-pps</output>
     </switch>
 
-    <switch>
+    <switch name="Tank2to collector">
 			<!-- Tank[2] to Collector tank[1]  -->
       <default value="-7"/>
       <test logic="OR" value="0">
@@ -55,7 +55,7 @@ Negative Gs (<-0.5g) cuts the supply to the collector tanks -->
       <output>propulsion/tank[2]/external-flow-rate-pps</output>
     </switch>
     
-    <switch>
+    <switch name="Tank3to collector">
 			<!-- Tank[3] to Collector tank[1]  -->
       <default value="-7"/>
       <test logic="OR" value="0">
@@ -72,7 +72,7 @@ Negative Gs (<-0.5g) cuts the supply to the collector tanks -->
       <output>propulsion/tank[3]/external-flow-rate-pps</output>
     </switch>
     
-    <switch>
+    <switch name="Tank4to collector">
 			<!-- Tank[4] to Collector tank[1]  -->
       <default value="-7"/>
       <test logic="OR" value="0">
