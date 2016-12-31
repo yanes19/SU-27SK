@@ -27,6 +27,8 @@ var Loading_missile = func(name)
     var rail              = "true";
     var cruisealt         = 0;
     
+###################CURRENTLY , ALL MISSILE SPECS STILL NEEDS FIXES !!!!!!!
+    
     if(name == "R-27R")
     {
         # R-27R :Medium Range Missile, NATO name :AA-10А Alamo ,by Vympel NPO , Soviet Union/Russia .
@@ -75,11 +77,11 @@ var Loading_missile = func(name)
         rail = "false";
         cruisealt = 0;
     }
-    elsif(name == "Matra R550 Magic 2")
+    elsif(name == "R-27ER")
     {
-        # Magic 2 max range 15 km for actual version. ->8 nm.. at mach 2.7 it's about 16 sec. I put a life of 35, and thurst duration to 3/4 the travel time.
-        address = "/Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2_smoke.xml";
-        NoSmoke = "/Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml";
+        # 
+        address = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R-smoke.xml";
+        NoSmoke = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.xml";
         maxdetectionrngnm = 8;                        # Not real Impact yet
         fovdeg = 25;                                  # seeker optical FOV
         detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
@@ -98,11 +100,11 @@ var Loading_missile = func(name)
         rail = "true";
         cruisealt = 0;
     }
-    elsif(name == "aim-9")
+    elsif(name == "R-27T")
     {
-        # aim-9 max range 18 km for actual version. ->9 nm.. at mach 2.5 it's about 21 sec. I put a life of 40, and thurst duration to 3/4 the travel time.
-        address = "/Aircraft/Mirage-2000/Missiles/aim-9/aim-9_smoke.xml";
-        NoSmoke = "/Aircraft/Mirage-2000/Missiles/aim-9/aim-9.xml";
+        # 
+        address = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R-smoke.xml";
+        NoSmoke = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.xml";
         maxdetectionrngnm = 9;                        # Not real Impact yet
         fovdeg = 25;                                  # seeker optical FOV
         detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
@@ -231,7 +233,7 @@ var Loading_missile = func(name)
         rail = "false";
         cruisealt = 40;
     }
-    elsif(name == "R-27ER")
+    elsif(name == "R-27ET")
     {
         # aim-54 max range 1884 km for actual version. ->100 nm.. at mach 5 it's about 108 sec. I put a life of 1120, and thurst duration to 3/4 the travel time.
         address = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R-smoke.xml";
