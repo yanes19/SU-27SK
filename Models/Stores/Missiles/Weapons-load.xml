@@ -30,6 +30,31 @@
    </animation>
    </overlay>
   </model>
+  <model>
+  <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 11.55 </x-m>
+      <y-m> 0.0 </y-m>
+      <z-m> -0.404 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+				<and>
+		   <equals>
+		    <property>sim/weight/selected</property>
+		    <value>R-27ER</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[0]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
 
 <!--Pylon 2 load-->
 
@@ -49,6 +74,32 @@
 		   <equals>
 		    <property>sim/weight[1]/selected</property>
 		    <value>R-27R</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[1]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
+ 
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 16.00 </x-m>
+      <y-m> 0.0 </y-m>
+      <z-m> -0.404 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[1]/selected</property>
+		    <value>R-27ER</value>
 		   </equals>
 				<not>
 		    <property>controls/armament/station[1]/release</property>
@@ -87,7 +138,32 @@
    </animation>
    </overlay>
   </model>
-  
+
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 14.000 </x-m>
+      <y-m> -4.836 </y-m>
+      <z-m> -0.24 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[2]/selected</property>
+		    <value>R-27ER</value>
+		   </equals>
+		   <not>
+		   <property>controls/armament/station[2]/release</property>
+		   </not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>  
   
 <!--Pylon 4 load-->
 
@@ -107,6 +183,32 @@
 		   <equals>
 		    <property>sim/weight[3]/selected</property>
 		    <value>R-27R</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[3]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
+  
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 14.000 </x-m>
+      <y-m> 4.836 </y-m>
+      <z-m> -0.24 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[3]/selected</property>
+		    <value>R-27ER</value>
 		   </equals>
 				<not>
 		    <property>controls/armament/station[3]/release</property>
@@ -145,6 +247,32 @@
    </animation>
    </overlay>
   </model> 
+  
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 14.800 </x-m>
+      <y-m> -6.490 </y-m>
+      <z-m> -0.02 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[4]/selected</property>
+		    <value>R-27ER</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[4]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
   
   <model>
     <name>R-73</name>
@@ -190,6 +318,32 @@
 		   <equals>
 		    <property>sim/weight[5]/selected</property>
 		    <value>R-27R</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[5]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
+  
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 14.800 </x-m>
+      <y-m> 6.490 </y-m>
+      <z-m> -0.02 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[5]/selected</property>
+		    <value>R-27ER</value>
 		   </equals>
 				<not>
 		    <property>controls/armament/station[5]/release</property>
@@ -372,6 +526,32 @@
    </overlay>
   </model>
   
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 13.550 </x-m>
+      <y-m> -1.235 </y-m>
+      <z-m> -1.324 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[8]/selected</property>
+		    <value>R-27ER</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[8]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
+  
   
 <!--Pylon 10 load-->
 
@@ -401,5 +581,29 @@
    </overlay>
   </model>
 
-
+  <model>
+    <name>R-27ER</name>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/R-27ER/R-27ER.xml</path>
+    <offsets>
+      <x-m> 13.550 </x-m>
+      <y-m>  1.235 </y-m>
+      <z-m> -1.324 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[9]/selected</property>
+		    <value>R-27ER</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[9]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
 </PropertyList>
