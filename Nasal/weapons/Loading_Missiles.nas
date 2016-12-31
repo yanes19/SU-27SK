@@ -29,35 +29,36 @@ var Loading_missile = func(name)
     
     if(name == "R-27R")
     {
-        # MICA max range 80 km for actual version. ->43 nm.. at mach 4 it's about 59 sec. I put a life of 120, and thurst duration to 3/4 the travel time, and have vectorial thurst (So 27 G more than a similar missile wich have not vectorial thurst)
+        # R-27R :Medium Range Missile, NATO name :AA-10А Alamo ,by Vympel NPO , Soviet Union/Russia .
+        #https://en.wikipedia.org/wiki/R-27_(air-to-air_missile)
         address = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R-smoke.xml";
         NoSmoke = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.xml";
         Explosion = "Aircraft/SU-27SK/Models/Effects/MissileExplosion/explosion.xml";
-        maxdetectionrngnm = 45;                      #  Not real Impact yet
-        fovdeg = 25;                                 # seeker optical FOV
+        maxdetectionrngnm = 18;                      #  Not real Impact yet
+        fovdeg = 65;                                 # seeker optical FOV
         detectionfovdeg = 180;                       # Search pattern diameter (rosette scan)
         trackmaxdeg = 110;                           # Seeker max total angular rotation
-        maxg = 27;                                   # In turn
+        maxg = 74;                                   # SEE :http://www.secretprojects.co.uk/forum/index.php?topic=60.60
         thrustlbs = 517;                             # guess
-        thrustdurationsec = 44;                      # Mk.36 Mod.7,8
+        thrustdurationsec = 44;                      # Not sure
         weightlaunchlbs = 216;
-        weightwarheadlbs = 30;
+        weightwarheadlbs = 39;
         dragcoeff = 0.065;                           # guess; original 0.05
         dragarea = 0.056;                            # sq ft
         maxExplosionRange = 50;                      # in meter ! Due to the code, more the speed is important, more we need to have this figure high
-        maxspeed = 4;                                # In Mach
+        maxspeed = 4.5;                              # In Mach
         life = 120;
-        fox = "Fox 3";
+        fox = "Fox 2";
         rail = "true";
         cruisealt = 0;
     }
     elsif(name == "R-73")
     {
-        # AIM 120 max range 72 km for actual version. ->39 nm.. at mach 4 it's about 53 sec. I put a life of 115, and thurst duration oo 3/4 the travel time.
+        # R-73 :short-range A2A,IR seeker, NATO name :AA-11 Archer , By Vympel NPO, Soviet Union/Russia .
         address = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R-smoke.xml";
         NoSmoke = "Aircraft/SU-27SK/Models/Stores/Missiles/R-27R/R-27R.xml";
-        maxdetectionrngnm = 38.8;                     # Not real Impact yet A little more than the MICA
-        fovdeg = 25;                                  # seeker optical FOV
+        maxdetectionrngnm = 12;                     # Not real Impact yet A little more than the MICA
+        fovdeg = 75;                                  # seeker optical FOV
         detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
         trackmaxdeg = 110;                            # Seeker max total angular rotation
         maxg = 15;                                    # In turn less than the MICA, coz it don't have vectorial thurst
