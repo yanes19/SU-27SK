@@ -3,6 +3,15 @@
 <!-- su-27 Keyboard controls -->
 <PropertyList>
 	
+	 <key n="4">
+	  <name>Ctrl-D</name>
+	  <desc>Toggle DirectInput Mode (FBW Disengengage)</desc>
+	  <binding>
+	   <command>property-toggle</command>
+	   <property>controls/fbw-fcs/active</property>
+	  </binding>
+	 </key>
+	
 	<key n="32">
 	  <name>Ctrl-Space</name>
 	  <desc>Engage AP auto-leveller</desc>
