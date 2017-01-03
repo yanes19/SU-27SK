@@ -8,12 +8,9 @@
 		<beacon-switch type="bool">false</beacon-switch>
 	</lighting>
 
-	<fbw>
+	<fbw-fcs>
 		<active type="bool">1</active>
-		<yaw-damper type="int">1</yaw-damper>
-		<rudder type="int">1</rudder>
-		<bank-limit type="int">30</bank-limit> <!-- 30 degrees bank permitted -->
-	</fbw>
+	</fbw-fcs>
 	
 	  <armament>
     <!--
