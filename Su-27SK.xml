@@ -82,6 +82,115 @@
       <z> -21.56 </z>
     </location>
   </pointmass> 
+
+   <pointmass name="pylon0-load">
+    <description> Weapon mass at pylon n:1</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>11.55</x>
+      <y> 0.00 </y>
+      <z>-0.404 </z>
+    </location>
+  </pointmass>
+  
+   <pointmass name="pylon1-load">
+    <description> Weapon mass at pylon n:2</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>16.00</x>
+      <y> 0.00 </y>
+      <z>-0.404 </z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon2-load">
+    <description> Weapon mass at pylon n:3</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>14.000</x>
+      <y>-4.836</y>
+      <z>-0.24 </z>
+    </location>
+  </pointmass>
+  <pointmass name="pylon3-load">
+    <description> Weapon mass at pylon n:4</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>14.000</x>
+      <y> 4.836</y>
+      <z>-0.240</z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon4-load">
+    <description> Weapon mass at pylon n:5</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>14.800</x>
+      <y>-6.490</y>
+      <z>-0.020</z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon5-load">
+    <description> Weapon mass at pylon n:6</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>14.800</x>
+      <y> 6.490</y>
+      <z>-0.020</z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon6-load">
+    <description> Weapon mass at pylon n:7</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>15.400</x>
+      <y>-7.570</y>
+      <z> 0.156</z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon7-load">
+    <description> Weapon mass at pylon n:8</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>15.400</x>
+      <y> 7.570</y>
+      <z> 0.156</z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon8-load">
+    <description> Weapon mass at pylon n:9</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>13.550</x>
+      <y>-1.235</y>
+      <z>-1.324</z>
+    </location>
+  </pointmass>
+  
+  <pointmass name="pylon9-load">
+    <description> Weapon mass at pylon n:10</description>
+    <weight unit="KG">0</weight>
+    <location name="POINTMASS" unit="M">
+      <x>13.550</x>
+      <y> 1.235</y>
+      <z>-1.324</z>
+    </location>
+  </pointmass>
+  
+   <pointmass name="pilot">
+    <description> Pilots body</description>
+    <weight unit="KG">80</weight>
+    <location name="POINTMASS" unit="M">
+      <x> 6.55</x>
+      <y> 0.00 </y>
+      <z>-0.404 </z>
+    </location>
+  </pointmass>
  </mass_balance>
 
  <ground_reactions>
