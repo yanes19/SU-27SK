@@ -112,6 +112,17 @@
   </model>
   
   <model>
+   <name>Trimmers.Leds</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/Trimmers.Leds.xml</path>
+	<offsets>
+      <x-m>4.296 </x-m>
+      <y-m>0.014 </y-m>
+      <z-m>0.930 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
    <name>TurbineTempIndic</name>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/TurbineTempIndicator/Turbine-Temp-indic-right.xml</path>
 	<offsets>

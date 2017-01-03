@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <name>Trimmers.Leds</name>
+ <path>Trimmers.Leds.ac</path>
+ 
+	<animation>
+	 <type>select</type> 
+	 <object-name>Trim.Ailerons.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/flight/aileron-trim</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	</animation>
+	
+	<animation>
+	 <type>material</type> 
+	 <object-name>Trim.Ailerons.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/flight/aileron-trim</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Trim.Elevators.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/flight/elevator-trim</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	</animation>
+	<animation>
+	 <type>material</type> 
+	 <object-name>Trim.Elevators.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/flight/elevator-trim</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Trim.Rudder.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/flight/rudder-trim</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	</animation>
+	<animation>
+	 <type>material</type> 
+	 <object-name>Trim.Rudder.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/flight/rudder-trim</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.5</red>	
+	  <green>0.5</green>	
+	  <blue>0.5</blue>
+	 </emission>
+	</animation>
+ 
+</PropertyList>
