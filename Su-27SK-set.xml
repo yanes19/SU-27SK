@@ -31,18 +31,18 @@ SU-27 simulation config.
 
     <virtual-cockpit archive="y">true</virtual-cockpit>
     
-		<gui><style><colors>
-			<splash-font>
-				<red>1.0</red>	
-				<green>1.00</green>
-				<blue>1.00</blue>								
-			</splash-font>									
-			<splash-screen>
-				<red>0.117</red>	
-				<green>0.19</green>
-				<blue>0.227</blue>
-			</splash-screen>								
-		</colors></style></gui>
+	<gui><style><colors>
+		<splash-font>
+			<red>1.0</red>	
+			<green>1.00</green>
+			<blue>1.00</blue>								
+		</splash-font>									
+		<splash-screen>
+			<red>0.117</red>	
+			<green>0.19</green>
+			<blue>0.227</blue>
+		</splash-screen>								
+	</colors></style></gui>
 		
 	  <rendering>
 			<redout>
