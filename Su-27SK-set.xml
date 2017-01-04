@@ -191,6 +191,7 @@ SU-27 simulation config.
 
       <model>
         <path>Aircraft/SU-27SK/Models/SU-27.xml</path>
+        <preload type="int">1</preload>
         <nozzle-animation type="float">1</nozzle-animation>
       </model>
 
