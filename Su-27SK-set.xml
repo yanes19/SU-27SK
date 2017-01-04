@@ -550,7 +550,20 @@ SU-27 simulation config.
     <type>float</type>
     <property type="string">Canopy/pos-norm</property>
    </signal>	
-		
+   <signal>
+    <type>float</type>
+    <property type="string">Canopy/pos-norm</property>
+   </signal>
+   
+    <signal>
+		<type>bool</type>
+		<property type="string">controls/engines/engine/augmentation</property>
+    </signal>
+    
+    <signal>
+		<type>bool</type>
+		<property type="string">controls/engines/engine[1]/augmentation</property>
+    </signal>
     </config>
   </flight-recorder>
   
