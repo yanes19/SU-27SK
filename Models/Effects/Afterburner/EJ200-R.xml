@@ -32,7 +32,7 @@
  <animation>
   <type>scale</type>
   <object-name>ExternalFlame</object-name>
-  <property>controls/engines/engine[1]/augmentation</property>
+  <property>engines/engine[1]/augmentation</property>
   <x-min>0.2</x-min>
   <y-min>0.9</y-min>
   <z-min>0.9</z-min>
@@ -44,7 +44,7 @@
  <animation>
   <object-name>ExternalFlame</object-name>
   <type>spin</type>
-  <property>controls/engines/engine[1]/augmentation</property>
+  <property>engines/engine[1]/augmentation</property>
   <factor>259</factor>
   <center>
    <x-m>0</x-m>
@@ -62,7 +62,13 @@
   <object-name>ReheatOuter</object-name>
   <object-name>ReheatInner</object-name>
   <type>spin</type>
-  <property>controls/engines/engine[1]/augmentation</property>
+   <condition>
+    <greater-than>
+	 <property>/controls/engines/engine[1]/throttle</property>
+	 <value>0.9</value>
+	</greater-than>
+   </condition>
+  <property>controls/engines/engine[1]/throttle</property>
   <factor>437</factor>
   <center>
    <x-m>0</x-m>
@@ -100,7 +106,7 @@
   <animation>
   <type>blend</type>
   <object-name>ExternalFlame</object-name>
-  <property>controls/engines/engine[1]/augmentation</property>
+  <property>engines/engine[1]/augmentation</property>
   <factor>-0.6</factor>
   <offset>1.0</offset>
   <min>0.0</min>
