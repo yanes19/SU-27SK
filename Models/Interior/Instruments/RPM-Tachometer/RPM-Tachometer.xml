@@ -8,7 +8,7 @@
  <animation>
  <type>rotate</type>
  <object-name>Eng1-RPM-Needle</object-name>
- <property>fdm/jsbsim/propulsion/engine[0]/n2</property>
+ <property>/engines/engine[0]/n2</property>
  <center>
   <x-m> 0.000</x-m>
   <y-m>-0.000</y-m>
@@ -37,7 +37,7 @@
  <animation>
  <type>rotate</type>
  <object-name>Eng2-RPM-Needle</object-name>
- <property>fdm/jsbsim/propulsion/engine[1]/n2</property>
+ <property>/engines/engine[1]/n2</property>
  <center>
   <x-m> 0.00</x-m>
   <y-m> 0.00</y-m>
