@@ -290,8 +290,8 @@ SU-27 simulation config.
         <line>Aircraft spawns with "Operational" fuel values = 50% of maximum.</line>
    <line></line>
    <line>Cruise speed: 870 mph (1,400 km/h) ( 750kts ) at 32,780 ft (10,000m) </line> 
-   <line>Max LevelSpeed  at altitude: 1,490 mph (2,400 km/h)at 32,780 ft (10,000 m), Mach 2.3</line>
-   <line>FCS not yet installed on this aircraft.</line>
+   <line>Max LevelSpeed at altitude: 1,490 mph (2,400 km/h)at 32,780 ft (10,000 m), Mach 2.3</line>
+   <line>FCS working at 80% efficienty on this aircraft.</line>
    <line></line>
    <line> </line>
    <line></line>
@@ -419,9 +419,9 @@ SU-27 simulation config.
 	      <z-m type="double"> 0.156  </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>			  <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>  			  <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
       <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
       <opt><name>R-73</name>      	      <lbs type="double">  230.00 </lbs></opt>
@@ -480,6 +480,24 @@ SU-27 simulation config.
 
     </weight>
 
+ <flight-recorder>
+  <replay-config type="int">0</replay-config>
+  <config n="0" include="Aircraft/Generic/flightrecorder/generic-jet.xml">
+   <signal>
+    <type>float</type>
+    <property type="string">canopy/position-norm</property>
+   </signal>
+   <signal>
+    <type>bool</type>
+    <property type="string">/engines/engine[0]/augmentation</property>
+   </signal>
+   <signal>
+    <type>bool</type>
+    <property type="string">/engines/engine[1]/augmentation</property>
+   </signal>
+  </config>
+  <taille type="int">50</taille>
+ </flight-recorder>
 
     </sim>
 	
@@ -544,29 +562,8 @@ SU-27 simulation config.
 		<zero type="int">0</zero>
 		<one type="int">1</one>
   </constants>
-  <flight-recorder>
-	<replay-config type="int">0</replay-config>
-	<config n="0" include="/Aircraft/Generic/flightrecorder/generic-jet.xml">
-	<signal>
-    <type>float</type>
-    <property type="string">Canopy/pos-norm</property>
-   </signal>	
-   <signal>
-    <type>float</type>
-    <property type="string">Canopy/pos-norm</property>
-   </signal>
-   
-    <signal>
-		<type>bool</type>
-		<property type="string">controls/engines/engine/augmentation</property>
-    </signal>
-    
-    <signal>
-		<type>bool</type>
-		<property type="string">controls/engines/engine[1]/augmentation</property>
-    </signal>
-    </config>
-  </flight-recorder>
+
+
   
   <su-27>
   <instrumentation include="Systems/su-27-instrumentation.xml"/>
