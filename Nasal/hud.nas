@@ -10,8 +10,8 @@ var clamp = func(x, min, max) { return x < min ? min : (x > max ? max : x); }
 var HUD = {
   canvas_settings: {
     "name": "HUD",
-    "size": [1024, 1024],
-    "view": [480, 360],
+    "size": [1024,1024],
+    "view": [256,256],
     "mipmapping": 1
   },
   new: func(placement)
@@ -27,27 +27,27 @@ var HUD = {
     m.root =
       m.canvas.createGroup()
               .setScale(1, 1/math.cos(25 * math.pi/180))
-              .setTranslation(240, 180)
+              .setTranslation(0, 0)
               .set("font", "lucida.txf")
               .setDouble("character-size", 18)
               .setDouble("character-aspect-ration", 0.9)
               .set("stroke", "rgba(0,255,0,0.9)");
               
     #######################
-    var filename = "Aircraft/SU-27SK/Models/Interior/Instruments/hud/hudSymbol.svg";
+    var filename = "Aircraft/SU-27SK/Models/Interior/Instruments/hud/Su-27SK-HUD.svg";
     # Create a group for the parsed elements
     
     m.svg = m.canvas.createGroup();
     canvas.parsesvg(m.svg, filename);
     #m.svg.setTranslation(240, 82);
-		m.svg.setScale(1.3);
+		m.svg.setScale(1);
 		#m.EnRouteGroup = m.get_element("EnRoute");
 		
-		m.attitudeInd =m.get_element("Attitude");
+	m.attitudeInd =m.get_element("Attitude");
     m.HdgScale = m.get_element("heading-scale"); 
     m.NavDirector = m.get_element("Nav-director");
     m.Rdr_Indicator = m.get_element("Rdr-Indicator");
-    m.accel_pointer = m.get_element("accel-pointer");
+#    m.accel_pointer = m.get_element("accel-pointer");
     m.tgt1Marker = m.get_element("tgt1-marker");
     m.tgt2Marker = m.get_element("tgt2-marker");
     m.tgt3Marker = m.get_element("tgt3-marker");
@@ -82,16 +82,16 @@ var HUD = {
     m.airspeed =
       m.text.createChild("text")
             .setAlignment("center-top")
-            .setTranslation(-180,  -120)
+            .setTranslation(30,5)
             #.setFont("Liberation Sans Narrow")
-            .setFontSize(18,1.0);
+            .setFontSize(10,1.0);
  
 #    # Altitude
     m.altitude =
       m.text.createChild("text")
             .setAlignment("center-top")
-            .setTranslation(180,  -120)
-            .setFontSize(18,1.0);
+            .setTranslation(220,5) #(right,Top)
+            .setFontSize(10,1.0);
             
  
     # Vertical speed
@@ -103,7 +103,7 @@ var HUD = {
 		# Pitch
     m.pitch =
       m.text.createChild("text")
-            .setFontSize(14, 0.9)
+            .setFontSize(8, 0.9)
             .setAlignment("right-center")
             .setTranslation(180, -5);
             
@@ -120,16 +120,16 @@ var HUD = {
             .setAlignment("right-center")
             .setTranslation(220, 70);
  
-    # Waterline / Pitch indicator
-      m.root.createChild("path")
-            .moveTo(-24, 0)
-            .horizTo(-8)
-            .lineTo(-4, 6)
-            .lineTo(0, 0)
-            .lineTo(4, 6)
-            .lineTo(8, 0)
-            .horizTo(24)
-            .setStrokeLineWidth(0.9);
+#    # Waterline / Pitch indicator
+#      m.root.createChild("path")
+#            .moveTo(-24, 0)
+#            .horizTo(-8)
+#            .lineTo(-4, 6)
+#            .lineTo(0, 0)
+#            .lineTo(4, 6)
+#            .lineTo(8, 0)
+#            .horizTo(24)
+#            .setStrokeLineWidth(0.9);
  
     # Horizon
     m.horizon_group = m.root.createChild("group");
@@ -140,9 +140,9 @@ var HUD = {
  
     # Horizon line
     m.horizon_group.createChild("path")
-                   .moveTo(-170, 0)
-                   .horizTo(170)
-                   .setStrokeLineWidth(1.5);
+                   .moveTo(45, 0)
+                   .horizTo(200)
+                   .setStrokeLineWidth(1.0);
                    
 
     m.input = {
@@ -216,14 +216,14 @@ var HUD = {
     me.altitude.setText(sprintf("%2d", me.input.altitude.getValue()));
 #    me.vertical_speed.setText(sprintf("%.1f", me.input.vs.getValue() * 60.0 / 1000));
  
-    var rad_alt = me.input.rad_alt.getValue();
-    if( rad_alt and rad_alt < 5000 ) # Only show below 5000AGL
-      rad_alt = sprintf("R %4d", rad_alt);
-    else
-      rad_alt = nil;
-    me.rad_alt.setText(rad_alt);
+##    var rad_alt = me.input.rad_alt.getValue();
+##    if( rad_alt and rad_alt < 5000 ) # Only show below 5000AGL
+##      rad_alt = sprintf("R %4d", rad_alt);
+##    else
+##      rad_alt = nil;
+##    me.rad_alt.setText(rad_alt);
  
-    #me.hdg.setText(sprintf("%03d", me.input.hdg.getValue()));
+##    #me.hdg.setText(sprintf("%03d", me.input.hdg.getValue()));
     
     me.HdgScale.setTranslation(0, me.input.hdg.getValue()/180);
     
@@ -234,26 +234,26 @@ var HUD = {
 				me.heading_tape_position = (360-me.input.hdg.getValue())*54/10;
     me.HdgScale.setTranslation (me.heading_tape_position,0);
             
-    me.h_trans.setTranslation(0, 1.8 * me.input.pitch.getValue()+10);
+    me.h_trans.setTranslation(0, 1.8 * me.input.pitch.getValue()+100);
  
     var rot = -me.input.roll.getValue() * math.pi / 180.0;
-    #me.h_rot.setRotation(rot);
+#    me.h_rot.setRotation(rot);
     me.pitch.setText(sprintf("%d", me.input.pitch.getValue()));
-    me.pitch.setTranslation(180, 1.8 * me.input.pitch.getValue()-10);
+    me.pitch.setTranslation(180, 1.8 * me.input.pitch.getValue()+90);
     me.attitudeInd.setRotation(-rot);
-    #Acceleration cue
-    if (me.input.acc.getValue() < -1){me.accel_pointer.setTranslation(-18,0)};
-    if (me.input.acc.getValue() > 1) {me.accel_pointer.setTranslation(18,0)};
-    #me.accel_pointer.setTranslation(me.input.acc.getValue() ,0);
+##    #Acceleration cue
+##    if (me.input.acc.getValue() < -1){me.accel_pointer.setTranslation(-18,0)};
+##    if (me.input.acc.getValue() > 1) {me.accel_pointer.setTranslation(18,0)};
+##    #me.accel_pointer.setTranslation(me.input.acc.getValue() ,0);
     
     if (me.input.route_active.getValue() ==1)
-						me.NavDirector.setTranslation(me.input.route_deflection.getValue()*10,-100);
+						me.NavDirector.setTranslation(me.input.route_deflection.getValue()*10,-150);
 						
-	if (me.input.route_active.getValue() ==1)
-		me.DistTo.setText(sprintf("%2.1f", me.input.DistanceToWP.getValue()*1.852));
+##	if (me.input.route_active.getValue() ==1)
+##		me.DistTo.setText(sprintf("%2.1f", me.input.DistanceToWP.getValue()*1.852));
 		
-	if (me.input.DME_InRange.getValue() ==1 and me.input.route_active.getValue() == 0)
-		me.DistTo.setText(sprintf("%2.1f", me.input.DME_Distance.getValue()*1.852));
+##	if (me.input.DME_InRange.getValue() ==1 and me.input.route_active.getValue() == 0)
+##		me.DistTo.setText(sprintf("%2.1f", me.input.DME_Distance.getValue()*1.852));
 			
 			
 		var radarON= getprop("su-27/instrumentation/N010-radar/emitting");
@@ -273,16 +273,16 @@ var HUD = {
 		}
 		if (radarON == 0){me.Rdr_Indicator.setVisible(0);}else {me.Rdr_Indicator.setVisible(1);}
 		
-		#**************TARGET1 MARKER *********************#
+#		#**************TARGET1 MARKER *********************#
 		var target1_x = getprop("instrumentation/radar2/targets/aircraft/h-offset");
 		var target1_z = getprop("instrumentation/radar2/targets/aircraft/v-offset");
 		if (target1_x or 0 > 0 and radarON ==1)
 		{
 			if (radarON == 1){
 						me.tgt1Marker.setVisible(1);
-						me.tgt1Marker.setTranslation(target1_x*25, -130+ -target1_z*15);}
+						me.tgt1Marker.setTranslation(target1_x*20, -145+ -target1_z*15);}
 		}
-		#**************TARGET2 MARKER *********************#
+#		#**************TARGET2 MARKER *********************#
 		var target2_x = getprop("instrumentation/radar2/targets/aircraft[1]/h-offset");
 		var target2_z = getprop("instrumentation/radar2/targets/aircraft[1]/v-offset");
 		if (target2_x or 0 > 0 and radarON ==1)
@@ -291,7 +291,7 @@ var HUD = {
 						me.tgt2Marker.setVisible(1);
 						me.tgt2Marker.setTranslation(target2_x*15, -130+ -target2_z*15);}
 		}
-		#**************TARGET3 MARKER *********************#
+#		#**************TARGET3 MARKER *********************#
 		var target3_x = getprop("instrumentation/radar2/targets/aircraft[2]/h-offset");
 		var target3_z = getprop("instrumentation/radar2/targets/aircraft[2]/v-offset");
 		if (target3_x or 0 > 0 and radarON ==1)
@@ -300,7 +300,7 @@ var HUD = {
 						me.tgt3Marker.setVisible(1);
 						me.tgt3Marker.setTranslation(target3_x*15, -130+ -target3_z*15);}
 		}
-		#**************TARGET4 MARKER *********************#
+#		#**************TARGET4 MARKER *********************#
 		var target4_x = getprop("instrumentation/radar2/targets/aircraft[3]/h-offset");
 		var target4_z = getprop("instrumentation/radar2/targets/aircraft[3]/v-offset");
 		if (target4_x or 0 > 0 and radarON ==1)
@@ -309,7 +309,7 @@ var HUD = {
 						me.tgt4Marker.setVisible(1);
 						me.tgt4Marker.setTranslation(target4_x*15, -130+ -target4_z*15);}
 		}
-		#**************TARGET5 MARKER *********************#
+#		#**************TARGET5 MARKER *********************#
 		var target5_x = getprop("instrumentation/radar2/targets/aircraft[4]/h-offset");
 		var target5_z = getprop("instrumentation/radar2/targets/aircraft[4]/v-offset");
 		if (target5_x or 0 > 0 and radarON ==1)
@@ -318,7 +318,7 @@ var HUD = {
 						me.tgt5Marker.setVisible(1);
 						me.tgt5Marker.setTranslation(target5_x*15, -130+ -target5_z*15);}
 		}
-		#**************TARGET6 MARKER *********************#
+#		#**************TARGET6 MARKER *********************#
 		var target6_x = getprop("instrumentation/radar2/targets/aircraft[5]/h-offset");
 		var target6_z = getprop("instrumentation/radar2/targets/aircraft[5]/v-offset");
 		if (target6_x or 0 > 0 and radarON ==1)
@@ -327,7 +327,7 @@ var HUD = {
 						me.tgt6Marker.setVisible(1);
 						me.tgt6Marker.setTranslation(target6_x*15, -130+ -target6_z*15);}
 		}
-		#**************TARGET7 MARKER *********************#
+#		#**************TARGET7 MARKER *********************#
 		var target7_x = getprop("instrumentation/radar2/targets/aircraft[6]/h-offset");
 		var target7_z = getprop("instrumentation/radar2/targets/aircraft[6]/v-offset");
 		if (target7_x or 0 > 0 and radarON ==1)
@@ -336,7 +336,7 @@ var HUD = {
 						me.tgt7Marker.setVisible(1);
 						me.tgt7Marker.setTranslation(target7_x*15, -130+ -target7_z*15);}
 		}
-		#**************TARGET8 MARKER *********************#
+#		#**************TARGET8 MARKER *********************#
 		var target8_x = getprop("instrumentation/radar2/targets/aircraft[7]/h-offset");
 		var target8_z = getprop("instrumentation/radar2/targets/aircraft[7]/v-offset");
 		if (target8_x or 0 > 0 and radarON ==1)
@@ -345,7 +345,7 @@ var HUD = {
 						me.tgt8Marker.setVisible(1);
 						me.tgt8Marker.setTranslation(target8_x*15, -130+ -target8_z*15);}
 		}
-		#**************TARGET9 MARKER *********************#
+#		#**************TARGET9 MARKER *********************#
 		var target9_x = getprop("instrumentation/radar2/targets/aircraft[8]/h-offset");
 		var target9_z = getprop("instrumentation/radar2/targets/aircraft[8]/v-offset");
 		if (target9_x or 0 > 0 and radarON ==1)
@@ -354,7 +354,7 @@ var HUD = {
 						me.tgt9Marker.setVisible(1);
 						me.tgt9Marker.setTranslation(target9_x*15, -130+ -target9_z*15);}
 		}
-		#**************TARGET10 MARKER *********************#
+#		#**************TARGET10 MARKER *********************#
 		var target10_x = getprop("instrumentation/radar2/targets/aircraft[9]/h-offset");
 		var target10_z = getprop("instrumentation/radar2/targets/aircraft[9]/v-offset");
 		if (target10_x or 0 > 0 and radarON ==1)
