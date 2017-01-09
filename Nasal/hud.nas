@@ -5,8 +5,11 @@
 var pow2 = func(x) { return x * x; };
 var vec_length = func(x, y) { return math.sqrt(pow2(x) + pow2(y)); };
 var round0 = func(x) { return math.abs(x) > 0.01 ? x : 0; };
-var clamp = func(x, min, max) { return x < min ? min : (x > max ? max : x); }
- 
+var clamp = func(x, min, max) { return x < min ? min : (x > max ? max : x); };
+var Kts2KmH = func(x){if(x!= nil){return x * 1.85283} else {return 0} };
+var KmH2Kts = func(x){return x * 0.53995};
+var ft2m = func(x){if(x!= nil){return x * 0.3048}else {return 0}};
+var m2ft = func(x){return x * 3.2808};
 var HUD = {
   canvas_settings: {
     "name": "HUD",
@@ -39,15 +42,14 @@ var HUD = {
     
     m.svg = m.canvas.createGroup();
     canvas.parsesvg(m.svg, filename);
-    #m.svg.setTranslation(240, 82);
-		m.svg.setScale(1);
-		#m.EnRouteGroup = m.get_element("EnRoute");
-		
+    m.svg.setTranslation(9,0);
+	m.svg.setScale(1);
+	#m.EnRouteGroup = m.get_element("EnRoute");
 	m.attitudeInd =m.get_element("Attitude");
     m.HdgScale = m.get_element("heading-scale"); 
     m.NavDirector = m.get_element("Nav-director");
     m.Rdr_Indicator = m.get_element("Rdr-Indicator");
-#    m.accel_pointer = m.get_element("accel-pointer");
+    m.accel_pointer = m.get_element("accel-pointer");
     m.tgt1Marker = m.get_element("tgt1-marker");
     m.tgt2Marker = m.get_element("tgt2-marker");
     m.tgt3Marker = m.get_element("tgt3-marker");
@@ -58,48 +60,46 @@ var HUD = {
     m.tgt8Marker = m.get_element("tgt8-marker");
     m.tgt9Marker = m.get_element("tgt9-marker");
     m.tgt10Marker = m.get_element("tgt10-marker");
-         
-        
-#    m.svg_symbol = m.root.createChild("group");
-#			canvas.parsesvg(m.svg_symbol, filename);    
+  
     #########################################    
     m.text =
       m.root.createChild("group")
             .set("fill", "rgba(0,255,0,0.9)");
-            
-#    # Heading
-#    m.hdg =
-#      m.text.createChild("text")
-#            .setDrawMode(3)
-#            .setPadding(2)
-#            .setAlignment("center-top")
-#            .setTranslation(0, -120);
         
 
 
- 
+ #Coordinares are from top left .setTranslation(left,Top)
     # Airspeed
     m.airspeed =
       m.text.createChild("text")
             .setAlignment("center-top")
-            .setTranslation(30,5)
+            .setTranslation(30,30)#(left,Top)
             #.setFont("Liberation Sans Narrow")
-            .setFontSize(10,1.0);
+            .setFontSize(16,1.5);
+            
+    #AP Airspeed Setting
+    m.APairspeed =
+      m.text.createChild("text")
+            .setAlignment("center-top")
+            .setTranslation(30,15)#(left,Top)
+            #.setFont("Liberation Sans Narrow")
+            .setFontSize(12,1.4);
  
 #    # Altitude
     m.altitude =
       m.text.createChild("text")
             .setAlignment("center-top")
-            .setTranslation(220,5) #(right,Top)
-            .setFontSize(10,1.0);
+            .setTranslation(220,30) #(left,Top)
+            .setFontSize(16,1.5);
             
- 
-    # Vertical speed
-#    m.vertical_speed =
-#      m.text.createChild("text")
-#            .setFontSize(10, 0.9)
-#            .setAlignment("right-center")
-#            .setTranslation(205, 50);
+    #AP Altitude Setting
+    m.APaltitude =
+      m.text.createChild("text")
+            .setAlignment("center-top")
+            .setTranslation(220,15)#(left,Top)
+            #.setFont("Liberation Sans Narrow")
+            .setFontSize(12,1.4);
+
 		# Pitch
     m.pitch =
       m.text.createChild("text")
@@ -111,7 +111,7 @@ var HUD = {
     m.DistTo =
       m.text.createChild("text")
             .setAlignment("center-bottom")
-            .setTranslation(0,  100)
+            .setTranslation(140,200)
             .setFontSize(14,1.0);
  
     # Radar altidude
@@ -119,17 +119,6 @@ var HUD = {
       m.text.createChild("text")
             .setAlignment("right-center")
             .setTranslation(220, 70);
- 
-#    # Waterline / Pitch indicator
-#      m.root.createChild("path")
-#            .moveTo(-24, 0)
-#            .horizTo(-8)
-#            .lineTo(-4, 6)
-#            .lineTo(0, 0)
-#            .lineTo(4, 6)
-#            .lineTo(8, 0)
-#            .horizTo(24)
-#            .setStrokeLineWidth(0.9);
  
     # Horizon
     m.horizon_group = m.root.createChild("group");
@@ -140,7 +129,7 @@ var HUD = {
  
     # Horizon line
     m.horizon_group.createChild("path")
-                   .moveTo(45, 0)
+                   .moveTo(51, 0)
                    .horizTo(200)
                    .setStrokeLineWidth(1.0);
                    
@@ -160,6 +149,7 @@ var HUD = {
 		rad_alt:    "/instrumentation/radar-altimeter/radar-altitude-ft",
 		airspeed:   "su-27/instrumentation/ASI/airspeed-kmh",
 		target_spd: "/autopilot/settings/target-speed-kt",
+		target_alt: "/autopilot/settings/target-altitude-ft",
 		acc:        "/fdm/jsbsim/accelerations/udot-ft_sec2",
 		route_active 		 :	"autopilot/route-manager/active",
 		route_deflection :	"instrumentation/gps/cdi-deflection",
@@ -211,11 +201,11 @@ var HUD = {
 
   update: func()
   {
-		#if (getprop("su-27/instrumentation/HUD/mode")!="EnRoute"){me.EnRouteGroup.setVisible(0)}
     me.airspeed.setText(sprintf("%d", me.input.ias.getValue()));
     me.altitude.setText(sprintf("%2d", me.input.altitude.getValue()));
-#    me.vertical_speed.setText(sprintf("%.1f", me.input.vs.getValue() * 60.0 / 1000));
- 
+    me.APairspeed.setText(sprintf("%2d", Kts2KmH(me.input.target_spd.getValue())));
+    me.APaltitude.setText(sprintf("%2d", ft2m(me.input.target_alt.getValue())));
+
 ##    var rad_alt = me.input.rad_alt.getValue();
 ##    if( rad_alt and rad_alt < 5000 ) # Only show below 5000AGL
 ##      rad_alt = sprintf("R %4d", rad_alt);
@@ -237,23 +227,21 @@ var HUD = {
     me.h_trans.setTranslation(0, 1.8 * me.input.pitch.getValue()+100);
  
     var rot = -me.input.roll.getValue() * math.pi / 180.0;
-#    me.h_rot.setRotation(rot);
     me.pitch.setText(sprintf("%d", me.input.pitch.getValue()));
     me.pitch.setTranslation(180, 1.8 * me.input.pitch.getValue()+90);
     me.attitudeInd.setRotation(-rot);
-##    #Acceleration cue
-##    if (me.input.acc.getValue() < -1){me.accel_pointer.setTranslation(-18,0)};
-##    if (me.input.acc.getValue() > 1) {me.accel_pointer.setTranslation(18,0)};
-##    #me.accel_pointer.setTranslation(me.input.acc.getValue() ,0);
+    #Acceleration cue
+    if (me.input.acc.getValue() < -1){me.accel_pointer.setTranslation(-13,0)};
+    if (me.input.acc.getValue() > 1) {me.accel_pointer.setTranslation(13,0)};
     
     if (me.input.route_active.getValue() ==1)
 						me.NavDirector.setTranslation(me.input.route_deflection.getValue()*10,-150);
 						
-##	if (me.input.route_active.getValue() ==1)
-##		me.DistTo.setText(sprintf("%2.1f", me.input.DistanceToWP.getValue()*1.852));
+	if (me.input.route_active.getValue() ==1)
+		me.DistTo.setText(sprintf("%2.1f", me.input.DistanceToWP.getValue()*1.852));
 		
-##	if (me.input.DME_InRange.getValue() ==1 and me.input.route_active.getValue() == 0)
-##		me.DistTo.setText(sprintf("%2.1f", me.input.DME_Distance.getValue()*1.852));
+	if (me.input.DME_InRange.getValue() ==1 and me.input.route_active.getValue() == 0)
+		me.DistTo.setText(sprintf("%2.1f", me.input.DME_Distance.getValue()*1.852));
 			
 			
 		var radarON= getprop("su-27/instrumentation/N010-radar/emitting");
@@ -280,7 +268,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt1Marker.setVisible(1);
-						me.tgt1Marker.setTranslation(target1_x*20, -145+ -target1_z*15);}
+						me.tgt1Marker.setTranslation(target1_x*18, -145+ -target1_z*15);}
 		}
 #		#**************TARGET2 MARKER *********************#
 		var target2_x = getprop("instrumentation/radar2/targets/aircraft[1]/h-offset");
@@ -289,7 +277,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt2Marker.setVisible(1);
-						me.tgt2Marker.setTranslation(target2_x*15, -130+ -target2_z*15);}
+						me.tgt2Marker.setTranslation(target2_x*20, -145+ -target2_z*15);}
 		}
 #		#**************TARGET3 MARKER *********************#
 		var target3_x = getprop("instrumentation/radar2/targets/aircraft[2]/h-offset");
@@ -298,7 +286,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt3Marker.setVisible(1);
-						me.tgt3Marker.setTranslation(target3_x*15, -130+ -target3_z*15);}
+						me.tgt3Marker.setTranslation(target3_x*20, -145+ -target3_z*15);}
 		}
 #		#**************TARGET4 MARKER *********************#
 		var target4_x = getprop("instrumentation/radar2/targets/aircraft[3]/h-offset");
@@ -307,7 +295,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt4Marker.setVisible(1);
-						me.tgt4Marker.setTranslation(target4_x*15, -130+ -target4_z*15);}
+						me.tgt4Marker.setTranslation(target4_x*15, -145+ -target4_z*15);}
 		}
 #		#**************TARGET5 MARKER *********************#
 		var target5_x = getprop("instrumentation/radar2/targets/aircraft[4]/h-offset");
@@ -316,7 +304,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt5Marker.setVisible(1);
-						me.tgt5Marker.setTranslation(target5_x*15, -130+ -target5_z*15);}
+						me.tgt5Marker.setTranslation(target5_x*20, -145+ -target5_z*15);}
 		}
 #		#**************TARGET6 MARKER *********************#
 		var target6_x = getprop("instrumentation/radar2/targets/aircraft[5]/h-offset");
@@ -325,7 +313,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt6Marker.setVisible(1);
-						me.tgt6Marker.setTranslation(target6_x*15, -130+ -target6_z*15);}
+						me.tgt6Marker.setTranslation(target6_x*20, -145+ -target6_z*15);}
 		}
 #		#**************TARGET7 MARKER *********************#
 		var target7_x = getprop("instrumentation/radar2/targets/aircraft[6]/h-offset");
@@ -334,7 +322,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt7Marker.setVisible(1);
-						me.tgt7Marker.setTranslation(target7_x*15, -130+ -target7_z*15);}
+						me.tgt7Marker.setTranslation(target7_x*15, -145+ -target7_z*15);}
 		}
 #		#**************TARGET8 MARKER *********************#
 		var target8_x = getprop("instrumentation/radar2/targets/aircraft[7]/h-offset");
@@ -343,7 +331,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt8Marker.setVisible(1);
-						me.tgt8Marker.setTranslation(target8_x*15, -130+ -target8_z*15);}
+						me.tgt8Marker.setTranslation(target8_x*20, -145+ -target8_z*15);}
 		}
 #		#**************TARGET9 MARKER *********************#
 		var target9_x = getprop("instrumentation/radar2/targets/aircraft[8]/h-offset");
@@ -352,7 +340,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt9Marker.setVisible(1);
-						me.tgt9Marker.setTranslation(target9_x*15, -130+ -target9_z*15);}
+						me.tgt9Marker.setTranslation(target9_x*20, -145+ -target9_z*15);}
 		}
 #		#**************TARGET10 MARKER *********************#
 		var target10_x = getprop("instrumentation/radar2/targets/aircraft[9]/h-offset");
@@ -361,7 +349,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt10Marker.setVisible(1);
-						me.tgt10Marker.setTranslation(target10_x*15, -130+ -target10_z*15);}
+						me.tgt10Marker.setTranslation(target10_x*20, -145+ -target10_z*15);}
 		}
  
     var speed_error = 0;
