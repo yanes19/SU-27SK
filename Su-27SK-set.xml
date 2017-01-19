@@ -739,7 +739,7 @@ SU-27 simulation config.
      <file>Aircraft/SU-27SK/Nasal/eno.nas</file>
     </eno>
 -->
-		<instrumentation>
+	<instrumentation>
       <file>Aircraft/SU-27SK/Nasal/instruments.nas</file>
     </instrumentation>
     <nd>
@@ -831,8 +831,12 @@ SU-27 simulation config.
     
     
 
-		<CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
-		<CanvasHelpDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/CanvasHelpDlg.nas</file> </CanvasHelpDlg>
+	<CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
+	<CanvasHelpDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/CanvasHelpDlg.nas</file> </CanvasHelpDlg>
+	<CanvasRSBN><file>Aircraft/SU-27SK/Nasal/CanvasDlg/RSBN-Dlg.nas</file></CanvasRSBN>
+
+	<CanvasPU184><file>Aircraft/SU-27SK/Nasal/CanvasDlg/ARC-PU-184Dlg.nas</file></CanvasPU184>
+
 
   </nasal>   
 
