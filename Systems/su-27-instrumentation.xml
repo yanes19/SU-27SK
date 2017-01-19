@@ -2,9 +2,55 @@
  
 <!-- Su-27 Insrumentation helper -->
 <PropertyList>
+	<flasher-anim>0</flasher-anim>
 	<IPV-mode>NAV</IPV-mode>
 	<N010-radar><emitting type="bool">false</emitting></N010-radar>
 	<HUD>
 	<mode>EnRoute</mode>
 	</HUD>
+	<PNK-10>
+		<!-- Active PNK mode is: 0 : "PROGRAM", 1: "RSBN", 1.1: "ARC".-->
+		<active-mode type="double">1</active-mode>
+		<radial type="double">0</radial>
+		<desired-course type="double">0</desired-course>
+	</PNK-10>
+	<PU-184>
+		<!-- Pretend that NPN is PPM9 -->
+		<active-PPM type="int">1</active-PPM>
+		<PPM1>325</PPM1>
+		<PPM2>310</PPM2>
+		<PPM3>350</PPM3>
+		<PPM4>350</PPM4>
+		<PPM5>350</PPM5>
+		<PPM6>350</PPM6>
+		<PPM7>350</PPM7>
+		<PPM8>350</PPM8>
+		<NPN>385</NPN>
+		<ILS-channel>1</ILS-channel>
+	</PU-184>
+	<RSBN>
+		<!-- Pretend that RSBN AER is PPM**(Still to decide  or find alternative way !!) -->
+		<active-PPM type="int">1</active-PPM>
+		<active-AER type="int">1</active-AER>
+		<AER>116.50</AER>
+		<AER-alt>114.20</AER-alt>
+		<AER-alt2>114.20</AER-alt2>
+		<PPM1>114.2</PPM1>
+		<PPM2>114.2</PPM2>
+		<PPM3>114.2</PPM3>
+		<PPM4>114.2</PPM4>
+		<PPM5>114.2</PPM5>
+		<PPM6>114.2</PPM6>
+		<PPM7>114.2</PPM7>
+		<PPM8>114.2</PPM8>
+		<PPM9>114.2</PPM9>
+
+	</RSBN>
+	<OC-controller>
+		<!-- staus : 1- ready,3- waiting for PPM input,5- waiting for AER input,7:waiting for wp ,
+		 so we keep 0,2,4.... for future improvements-->
+		<status>1</status>
+		<active-wpt>1</active-wpt>
+	</OC-controller>
+	
 </PropertyList>
