@@ -8,42 +8,121 @@
 		<path>PU-184-Radio-Panel.ac</path>
 	</model>
 
-
-<!--
   <animation>
-	<type>rotate</type>
-	<object-name>PU-184-Radio-Panel</object-name>
-	<property>constants/one</property>
-	<factor>90</factor>
-    <center>
-      <x-m>0.0</x-m>
-      <y-m>0.0</y-m>
-      <z-m>0.0</z-m>
-    </center>
-    <axis>
-      <x>0.0</x>
-      <y>-1.0</y>
-      <z>0.0</z>
-    </axis>
-  </animation>
-  
+        <type>knob</type>
+        <object-name>knob-PPM-Select</object-name>
+	  <expression>
+		  <difference>
+		  <product>
+		  <property>su-27/instrumentation/PU-184/active-PPM</property>
+		  <value>30</value>
+		  </product>
+		  <value>30</value>
+		  </difference>
+	  </expression>
+        <center>
+            <x-m>0.02311</x-m><y-m>-0.06523</y-m><z-m>-0.00683</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>-1</z>
+        </axis>
+        <action>
+			<binding>
+			  <command>property-adjust</command>
+			  <property>su-27/instrumentation/PU-184/active-PPM</property>
+				  <factor>1</factor>
+	              <min>1</min>
+	              <max>9</max>                
+	              <wrap>false</wrap>
+			</binding>
+			<binding>
+			  <command>nasal</command>
+			  <script>instrumentation.P_184PPMs()</script>
+			</binding>
+        </action>
+    </animation>
+    
+
+    <animation>
+		<type>knob</type>
+		<object-name>Knob-volume</object-name>
+	  <property>instrumentation/adf/volume-norm</property>
+	  <factor>36</factor>
+		<center>
+			<x-m>-0.01144</x-m><y-m>-0.06966</y-m><z-m>-0.00679</z-m>
+		</center>
+		<axis>
+			<x>0</x><y>0</y><z>-1</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-adjust</command>
+			  <property>instrumentation/adf/volume-norm</property>
+				  <factor>0.1</factor>
+	              <min>0.0</min>
+	              <max>1.0</max>                
+	              <wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>   
+	
+  <animation><!--ARC bttn-->
+  <type>pick</type>
+  <object-name>button-ARC</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+			<binding>
+			 <command>property-cycle</command>
+			 <property>su-27/instrumentation/PNK-10/active-mode</property>
+			 <value>1</value>
+			 <value>1.1</value>
+			</binding>
+  </action>
+ </animation>
+
 	<animation>
-	<type>rotate</type>
-	<object-name>PU-184-Radio-Panel</object-name>
-	<property>constants/one</property>
-	<factor>30</factor>
-    <center>
-      <x-m>0.0</x-m>
-      <y-m>0.0</y-m>
-      <z-m>0.0</z-m>
-    </center>
-    <axis>
-      <x> 0.0</x>
-      <y> 1.0</y>
-      <z> 0.0</z>
-    </axis>
-  </animation>
--->
-  
-  
+	 <type>select</type> 
+	 <object-name>bttn-light-ARC.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/PNK-10/active-mode</property>
+	   <value>1.1</value>
+	   </equals>
+	 </condition>
+	</animation>
+ 
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>bttn-light-ARC.lit</object-name>
+	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/PNK-10/active-mode</property>
+	   <value>1.1</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.0</red>	
+	  <green>0.6</green>	
+	  <blue>0.0</blue>
+	 </emission>
+	</animation>
+
+
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>bttn-light-ARC</object-name>
+	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/PNK-10/active-mode</property>
+	   <value>1.1</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.2</red>	
+	  <green>0.6</green>	
+	  <blue>0.2</blue>
+	 </emission>
+	</animation>
 </PropertyList>
