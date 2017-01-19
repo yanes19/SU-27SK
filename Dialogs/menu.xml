@@ -24,6 +24,22 @@
 		</item>
 		
 		<item>
+			<label>RSBN Nav</label>
+			<binding>
+				<command>nasal</command>
+				 <script>CanvasRSBN.showRSBN_Dlg()</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>ARC Nav</label>
+			<binding>
+				<command>nasal</command>
+				 <script>CanvasPU184.showRSBN_Dlg()</script>
+			</binding>
+		</item>
+		
+		<item>
 			<label>Pylons loads</label>
 			<binding>
 				<command>nasal</command>
