@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
  
 
-
-
-
 <PropertyList>
 
   <predict-simple>
@@ -182,7 +179,7 @@
 		  <value>nav1-hold</value>
 		 </equals>
 		</condition>
-		<property>autopilot/internal/nav1-heading-error-deg</property>
+		<property>autopilot/internal/nav1-track-error-deg</property>
 	</input>
 	<output>
 		<property>/autopilot/internal/target-roll-deg</property>
@@ -229,6 +226,17 @@
    </condition>
    <value>0</value>
   </reference>
+<!--
+  <reference>
+   <condition>
+    <equals> 
+	<property>/autopilot/locks/heading</property>
+	<value>nav1-hold</value>
+	</equals>
+   </condition>
+   <value>0</value>
+  </reference>
+-->
     <output>
 	<property>/controls/flight/aileron-trim</property>
 	</output>
