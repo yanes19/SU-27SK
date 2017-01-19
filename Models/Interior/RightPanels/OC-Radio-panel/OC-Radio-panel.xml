@@ -5,6 +5,512 @@
 	
 	<name>OC-Radio-panel</name>
 	<path>OC-Radio-panel.ac</path>
+	
+    <animation>
+		<type>knob</type>
+		<object-name>knob.program.selector</object-name>
+	  <property>su-27/instrumentation/PNK-10/active-mode</property>
+	  <factor>30</factor>
+		<center>
+			<x-m>0.00786</x-m><y-m>0.05582</y-m><z-m>0.01863</z-m>
+		</center>
+		<axis>
+			<x>0</x><y>0</y><z>1</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-adjust</command>
+			  <property>su-27/instrumentation/PNK-10/active-mode</property>
+				  <factor>1</factor>
+	              <min>0</min>
+	              <max>2</max>                
+	              <wrap>false</wrap>
+			</binding>
+		</action>
+		<action>
+			<binding>
+				<condition>
+				<not-equals>
+					<property>/autopilot/locks/heading</property>
+					<value />
+				</not-equals>
+				</condition>
+	      <command>nasal</command>
+	      <script>ACS.SAU_AutoLevel();</script>
+			</binding>
+		</action>
+	</animation>	
+	
+	
+	
+	<text>
+	<name>PPM_NumText-bkg</name>
+	<type type="string">literal</type>
+	<text type="string">8</text>
+	<draw-text type="bool">true</draw-text>
+	<font>7-Segment.ttf</font>
+	<character-size type="double">0.006</character-size>
+	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
+	<alignment>center-center</alignment>
+	<offsets>
+	<heading-deg>90</heading-deg>
+	<roll-deg>0</roll-deg>
+	<pitch-deg>-7</pitch-deg>
+	<x-m>-0.02633</x-m>
+	<y-m>-0.0610</y-m>
+	<z-m>-0.0085</z-m>
+	</offsets>
+	</text>
+	
+	<text>
+	<name>PPM_NumText</name>
+	<type type="string">text-value</type>
+	<property type="string">su-27/instrumentation/RSBN/active-PPM</property>
+	<draw-text type="bool">true</draw-text>
+	<font>7-Segment.ttf</font>
+	<character-size type="double">0.006</character-size>
+	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
+	<alignment>center-center</alignment>
+	<offsets>
+	<heading-deg>90</heading-deg>
+	<roll-deg>0</roll-deg>
+	<pitch-deg>-7</pitch-deg>
+	<x-m>-0.02633</x-m>
+	<y-m>-0.0610</y-m>
+	<z-m>-0.00848</z-m>
+	</offsets>
+	</text>
+	
+	<text>
+	<name>AER_NumText</name>
+	<type type="string">text-value</type>
+	<property type="string">su-27/instrumentation/RSBN/active-AER</property>
+	<draw-text type="bool">true</draw-text>
+	<font>7-Segment.ttf</font>
+	<character-size type="double">0.006</character-size>
+	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
+	<alignment>center-center</alignment>
+	<offsets>
+	<heading-deg>90</heading-deg>
+	<roll-deg>0</roll-deg>
+	<pitch-deg>-7</pitch-deg>
+	<x-m>-0.02633</x-m>
+	<y-m>0.02453</y-m>
+	<z-m>0.00936</z-m>
+	</offsets>
+	</text>
+	
+	<text>
+	<name>AER_NumText-bkg</name>
+	<type type="string">literal</type>
+	<text type="string">8</text>
+	<draw-text type="bool">true</draw-text>
+	<font>7-Segment.ttf</font>
+	<character-size type="double">0.006</character-size>
+	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
+	<alignment>center-center</alignment>
+	<offsets>
+	<heading-deg>90</heading-deg>
+	<roll-deg>0</roll-deg>
+	<pitch-deg>-7</pitch-deg>
+	<x-m>-0.02633</x-m>
+	<y-m>0.02453</y-m>
+	<z-m>0.00933</z-m>
+	</offsets>
+	</text>
+
+	<text>
+	<name>WPT_NumText-bkg</name>
+	<type type="string">literal</type>
+	<text type="string">888</text>
+	<draw-text type="bool">true</draw-text>
+	<font>7-Segment.ttf</font>
+	<character-size type="double">0.006</character-size>
+	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
+	<alignment>center-center</alignment>
+	<offsets>
+	<heading-deg>90</heading-deg>
+	<roll-deg>0</roll-deg>
+	<pitch-deg>-7</pitch-deg>
+	<x-m>-0.02633</x-m>
+	<y-m>0.05016</y-m>
+	<z-m>0.01578</z-m>
+	</offsets>
+	</text>
+
+	<text>
+	<name>WPT_NumText</name>
+	<type type="string">text-value</type>
+	<property type="string">su-27/instrumentation/OC-controller/active-wpt</property>
+	<draw-text type="bool">true</draw-text>
+	<font>7-Segment.ttf</font>
+	<character-size type="double">0.006</character-size>
+	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
+	<alignment>center-center</alignment>
+	<offsets>
+	<heading-deg>90</heading-deg>
+	<roll-deg>0</roll-deg>
+	<pitch-deg>-7</pitch-deg>
+	<x-m>-0.02633</x-m>
+	<y-m>0.05016</y-m>
+	<z-m>0.01588</z-m>
+	</offsets>
+	</text>
+	
+	<animation>
+	<type>material</type>
+	<object-name>WPT_NumText</object-name>
+		<diffuse>
+		<red> 0.99</red>
+		<green>0.00</green>
+		<blue> 0.00</blue>
+		</diffuse>
+		<emission>
+		<red> 0.6</red>
+		<green>0.1</green>
+		<blue> 0.1</blue>
+		</emission>
+		<ambient>
+		<red>1.0</red>
+		<green>0.2</green>
+		<blue>0.0</blue>
+		</ambient>
+	</animation>
+	
+	<animation>
+	<type>material</type>
+	<object-name>AER_NumText</object-name>
+		<diffuse>
+		<red> 0.99</red>
+		<green>0.00</green>
+		<blue> 0.00</blue>
+		</diffuse>
+		<emission>
+		<red> 0.6</red>
+		<green>0.1</green>
+		<blue> 0.1</blue>
+		</emission>
+		<ambient>
+		<red>1.0</red>
+		<green>0.2</green>
+		<blue>0.0</blue>
+		</ambient>
+	</animation>
+
+	<animation>
+	<type>material</type>
+	<object-name>WPT_NumText-bkg</object-name>
+		<diffuse>
+		<red>  0.2</red>
+		<green>0.2</green>
+		<blue> 0.2</blue>
+		</diffuse>
+		<emission>
+		<red> 0.1</red>
+		<green>0.01</green>
+		<blue> 0.01</blue>
+		</emission>
+		<ambient>
+		<red>0.6</red>
+		<green>0.2</green>
+		<blue>0.2</blue>
+		</ambient>
+	</animation>
+
+	<animation>
+	<type>material</type>
+	<object-name>AER_NumText-bkg</object-name>
+		<diffuse>
+		<red>  0.2</red>
+		<green>0.2</green>
+		<blue> 0.2</blue>
+		</diffuse>
+		<emission>
+		<red> 0.1</red>
+		<green>0.01</green>
+		<blue> 0.01</blue>
+		</emission>
+		<ambient>
+		<red>0.6</red>
+		<green>0.2</green>
+		<blue>0.2</blue>
+		</ambient>
+	</animation>
+	
+	<animation>
+	<type>material</type>
+	<object-name>AER_NumText-bkg</object-name>
+		<diffuse>
+		<red>  0.2</red>
+		<green>0.2</green>
+		<blue> 0.2</blue>
+		</diffuse>
+		<emission>
+		<red> 0.1</red>
+		<green>0.01</green>
+		<blue> 0.01</blue>
+		</emission>
+		<ambient>
+		<red>0.6</red>
+		<green>0.2</green>
+		<blue>0.2</blue>
+		</ambient>
+	</animation>
+	
+	<animation>
+	<type>material</type>
+	<object-name>PPM_NumText-bkg</object-name>
+		<diffuse>
+		<red>  0.2</red>
+		<green>0.2</green>
+		<blue> 0.2</blue>
+		</diffuse>
+		<emission>
+		<red> 0.1</red>
+		<green>0.01</green>
+		<blue> 0.01</blue>
+		</emission>
+		<ambient>
+		<red>0.6</red>
+		<green>0.2</green>
+		<blue>0.2</blue>
+		</ambient>
+	</animation> 
+	
+	<animation>
+	<type>material</type>
+	<object-name>PPM_NumText</object-name>
+		<diffuse>
+		<red> 0.99</red>
+		<green>0.00</green>
+		<blue> 0.00</blue>
+		</diffuse>
+		<emission>
+		<red> 0.6</red>
+		<green>0.1</green>
+		<blue> 0.1</blue>
+		</emission>
+		<ambient>
+		<red>1.0</red>
+		<green>0.2</green>
+		<blue>0.0</blue>
+		</ambient>
+	</animation>
 
 
+	<animation>
+	 <type>select</type> 
+	 <object-name>PPM_NumText</object-name>
+	 <condition>
+		 <or>
+			<!-- The flashing animation --> 
+		 <and>
+	   <equals>
+	   <property>su-27/instrumentation/flasher-anim</property>
+	   <value>0</value>
+	   </equals>
+	   <equals>
+	   <property>su-27/instrumentation/OC-controller/status</property>
+	   <value>3</value>
+	   </equals>
+	   </and>
+	   <!-- The continuous animation -->
+	   <equals>
+	   <property>su-27/instrumentation/OC-controller/status</property>
+	   <value>1</value>
+	   </equals>
+	   </or>
+	 </condition>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>AER_NumText</object-name>
+	 <condition>
+		 <or>
+			<!-- The flashing animation --> 
+		 <and>
+	   <equals>
+	   <property>su-27/instrumentation/flasher-anim</property>
+	   <value>0</value>
+	   </equals>
+	   <equals>
+	   <property>su-27/instrumentation/OC-controller/status</property>
+	   <value>5</value>
+	   </equals>
+	   </and>
+	   <!-- The continuous animation -->
+	   <equals>
+	   <property>su-27/instrumentation/OC-controller/status</property>
+	   <value>1</value>
+	   </equals>
+	   </or>
+	 </condition>
+	</animation>
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>WPT_NumText</object-name>
+	 <condition>
+		 <or>
+			<!-- The flashing animation --> 
+		 <and>
+	   <equals>
+	   <property>su-27/instrumentation/flasher-anim</property>
+	   <value>0</value>
+	   </equals>
+	   <equals>
+	   <property>su-27/instrumentation/OC-controller/status</property>
+	   <value>7</value>
+	   </equals>
+	   </and>
+	   <!-- The continuous animation -->
+	   <equals>
+	   <property>su-27/instrumentation/OC-controller/status</property>
+	   <value>1</value>
+	   </equals>
+	   </or>
+	 </condition>
+	</animation>
+	
+ <animation><!-- +180-->
+  <type>pick</type>
+  <object-name>plus180</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.oc9btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+
+  <animation><!--PPm/1 oc bttn-->
+  <type>pick</type>
+  <object-name>OC-button-1</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.PPM1btnPress();</script>
+		</binding>
+  </action>
+ </animation> 
+ 
+  <animation><!--AER/2 oc bttn-->
+  <type>pick</type>
+  <object-name>OC-button-2</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.AER2btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+  <animation><!--RM/3 oc bttn-->
+  <type>pick</type>
+  <object-name>OC-button-3</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.RM3btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+
+ <animation><!--UD/4 oc bttn-->
+  <type>pick</type>
+  <object-name>OC-button-4</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.UD4btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+ <animation><!--UPR/5 oc bttn-->
+  <type>pick</type>
+  <object-name>OC-button-5</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.UPR5btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+ <animation><!-- oc6 bttn-->
+  <type>pick</type>
+  <object-name>OC-button-6</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.oc6btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+ <animation><!-- oc7 bttn-->
+  <type>pick</type>
+  <object-name>OC-button-7</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.oc7btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+ <animation><!-- oc8 bttn-->
+  <type>pick</type>
+  <object-name>OC-button-8</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.oc8btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
+ <animation><!-- oc9 bttn-->
+  <type>pick</type>
+  <object-name>OC-button-9</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		  <command>nasal</command>
+		  <script>instrumentation.oc9btnPress();</script>
+		</binding>
+  </action>
+ </animation>
+ 
 </PropertyList>
