@@ -1666,7 +1666,7 @@ refs 3
 9 0.055823 0.205669
 kids 0
 OBJECT poly
-name "ACS.Button.RadioNav"
+name "ACS.Button.Guide"
 data 18
 PU-189.button1.002
 loc -0.0069854 0.0142341 0.0304503
@@ -3677,7 +3677,7 @@ refs 4
 9 0.841918 0.625000
 kids 0
 OBJECT poly
-name "ACS.LED.RadioNav"
+name "ACS.LED.Guide"
 data 16
 PU-189.Lamp1.002
 loc -0.0138570 0.0145639 0.0232048
