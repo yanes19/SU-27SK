@@ -76,7 +76,9 @@
   </action>
  </animation> 
  
- <animation><!--ACS.Button.NAV1-->
+ <!--ACS.Button.NAV1-->
+<!--
+ <animation>
   <type>pick</type>
   <object-name>ACS.Button.RadioNav</object-name>
   <visible>true</visible>
@@ -89,6 +91,7 @@
 		</binding>
   </action>
  </animation> 
+-->
  
  <animation><!--ACS-FCS.switchHandle-->
   <type>pick</type>
@@ -211,6 +214,7 @@
 	 </emission>
 	</animation>
 	
+<!--
  	<animation>
 	 <type>material</type> 
 	 <object-name>ACS.LED.RadioNav</object-name>
@@ -226,6 +230,7 @@
 	  <blue>0.1</blue>
 	 </emission>
 	</animation>
+-->
 	
 	<animation>
   <type>shader</type>
