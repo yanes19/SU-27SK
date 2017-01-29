@@ -505,7 +505,7 @@ SU-27 simulation config.
 		 
 		<hydraulic include="Systems/su-27-hydraulics.xml"/>
 		<SAU include="Systems/SAU-ACS.xml"/>		
-		<FCS include="Systems/FCS.xml"/> 
+		<SDU-10-fcs include="Systems/FCS.xml"/> 
   </systems> 
 		
     <ai>
