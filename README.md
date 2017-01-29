@@ -14,8 +14,7 @@ and may be some older versions .
  * A lot of fg-Aircrafts developpers ,
  So Greetings and THANKS to all of them .
  
-	The aircraft package should not be consedered as release or even as 
-a version 0.1  :)  , this is an "EARLY DEVELOPPEMENT" version , 
+	The current aircraft package is at version 0.3 (as of late January 2017), so this is an "EARLY DEVELOPPEMENT" version , 
 just published for Fun, Tests, and may be some contributions .
 
 
@@ -49,11 +48,11 @@ AIRCRAFT HELP :
 		* "C"  		 :Open/Close canopy .
 		* "SHIFT-R":toggle the radar ON/OFF .
 		* "$" 		 :switch between NavDisplay ranges .
-		
-		
-		
-	- See the "SU-27FG.pdf" document deliverd along with this package in the "Doc"
+		** - See the "SU-27FG.pdf" document deliverd along with this package in the "Doc"
 			directory .
+		
+		
+	
 LICENSE :		
 This work has been brought to you by Yanes Bechir Yanes Tunisia 2016
 	and Yanes is the copyright holder for this work .
