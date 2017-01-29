@@ -8,6 +8,40 @@
 
  <path>UAP-7.ac</path>
 
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>G-indicator.glass</object-name>
+ </animation>
+ 
+	<model>
+		<name>shadow</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/divers/shadow2.ac</path>
+		<offsets>
+			<x-m>0.0 </x-m>
+			<y-m>-0.0002 </y-m>
+			<z-m>0.0002 </z-m>
+		</offsets>
+  </model>
+	 <animation>
+	 <object-name>shadow</object-name>
+    <type>scale</type>
+    <x-offset>0.96</x-offset>
+    <y-offset>0.96</y-offset>
+    <z-offset>0.96</z-offset>
+   </animation>
+   
+	<animation>
+	 <type>select</type> 
+	 <object-name>screw_slot_round_hq.001</object-name>
+	 <condition>
+	   <equals>
+	   <property>constants/zero</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+	</animation>
 
  <animation>
   <type>material</type>

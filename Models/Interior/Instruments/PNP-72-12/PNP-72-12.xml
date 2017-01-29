@@ -38,16 +38,49 @@
  </emission>
 </animation>
 
+<!--
+	<animation>
+	 <type>select</type> 
+	 <object-name>glass</object-name>
+	 <condition>
+	   <equals>
+	   <property>constants/zero</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+	</animation>
+-->
 <animation>
  <type>material</type>
- <object-name>screws</object-name>
- <emission>
-  <red>0.8</red>
-  <green>0.8</green>
-  <blue>0.8</blue>
- 
- </emission>
+ <object-name>glass</object-name>
+  <transparency>
+   <alpha-prop>constants/one</alpha-prop>
+   <factor>0.30</factor>
+  </transparency>
 </animation>
+
+ <animation>
+  <type>textranslate</type>
+  <object-name>glass</object-name>
+  <property>sim/current-view/pitch-offset-deg</property>
+  <factor>0.3</factor>
+  <axis>
+   <x> 0</x>
+   <y>-1</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass</object-name>
+  <object-name>PNP.BlenkerNID</object-name>
+  <object-name>PNP.BlenkerNIU</object-name>
+ </animation>
+ 
+
 
 <animation>
  <type>rotate</type>

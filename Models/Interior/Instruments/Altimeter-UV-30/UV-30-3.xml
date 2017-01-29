@@ -19,20 +19,32 @@
   <red>0.8</red>
   <green>0.5</green>
   <blue>0.5</blue>
-  
  </emission>
 </animation>
 
-<animation>
- <type>material</type>
- <object-name>screws</object-name>
- <emission>
-  <red>0.8</red>
-  <green>0.8</green>
-  <blue>0.8</blue>
-  
- </emission>
-</animation>
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass</object-name>
+ </animation>
+
+	<model>
+		<name>shadow</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/divers/shadow2.ac</path>
+		<offsets>
+			<x-m>0.0 </x-m>
+			<y-m>-0.0002 </y-m>
+			<z-m>0.0002 </z-m>
+		</offsets>
+  </model>
+	 <animation>
+	 <object-name>shadow</object-name>
+    <type>scale</type>
+    <x-offset>0.96</x-offset>
+    <y-offset>0.96</y-offset>
+    <z-offset>0.96</z-offset>
+   </animation>
 
 <animation>
  <type>rotate</type>
@@ -160,41 +172,6 @@ These Altimeter devices should be implemented later
   <y>-1</y>
   <z>0</z>
  </axis>
-</animation>
-
-<animation>
- <type>pick</type>
- <object-name>UV-30-3.cz1</object-name>
- <visible>false</visible>
- <action>
-  <button>0</button>
-  <repeatable>true</repeatable>
-  <binding>
-   <command>property-adjust</command>
-   <property>/instrumentation/altimeter/setting-inhg</property>
-   <step>-0.00984252</step>
-   <min>27.9</min>
-   <max>31.4</max>
-  </binding>
- </action>
-</animation>
-
-
-<animation>
- <type>pick</type>
- <object-name>UV-30-3.cz2</object-name>
- <visible>false</visible>
- <action>
-  <button>0</button>
-  <repeatable>true</repeatable>
-  <binding>
-   <command>property-adjust</command>
-   <property>/instrumentation/altimeter/setting-inhg</property>
-   <step>0.00984252</step>
-   <min>27.9</min>
-   <max>31.4</max>
-  </binding>
- </action>
 </animation>
 -->
 

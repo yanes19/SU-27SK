@@ -3,8 +3,14 @@
  <name>Rdr.Altimeter</name>
  <path>Rdr.Altimeter.ac</path>
  
- 
- 
+
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass.001</object-name>
+ </animation> 
+
   <animation>
   <type>material</type>
   <object-name>Rdr.Altimetr.mount.face</object-name>

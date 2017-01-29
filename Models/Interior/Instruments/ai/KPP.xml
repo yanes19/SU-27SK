@@ -32,15 +32,12 @@
  </animation>
 
  <animation>
-  <type>material</type>
-  <object-name>screws</object-name>
-  <emission>
-   <red>  0.8</red>
-   <green>0.8</green>
-   <blue> 0.8</blue>
-   <factor-prop>mig29/systems/cockpitlighting/panel-norm</factor-prop>
-  </emission>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass</object-name>
  </animation>
+
 
  <animation>
   <type>material</type>
@@ -212,6 +209,7 @@
   </axis>
  </animation>
 
+<!--
  <animation>
   <type>pick</type>
   <object-name>KPP.cz1</object-name>
@@ -225,6 +223,7 @@
    </binding>
   </action>
  </animation>
+-->
 
  <animation>
   <type>select</type>
@@ -261,6 +260,7 @@
   </condition>
  </animation>
 
+<!--
  <animation>
   <type>pick</type>
   <object-name>KPP.cz2</object-name>
@@ -293,5 +293,6 @@
    </binding>
   </action>
  </animation>
+-->
 
 </PropertyList>

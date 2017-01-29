@@ -3,10 +3,36 @@
 <PropertyList>
   <name>TurbineTempIndic</name>
 	<path>Turbine-Temp-indic-right.ac</path>
-	
+
+
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass</object-name>
+ </animation>	
+
+	<model>
+		<name>shadow</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/divers/shadow2.ac</path>
+		<offsets>
+			<x-m>0.0 </x-m>
+			<y-m>-0.0002 </y-m>
+			<z-m>-0.001 </z-m>
+		</offsets>
+  </model>
+  
+	 <animation>
+	 <object-name>shadow</object-name>
+    <type>scale</type>
+    <x-offset>0.68</x-offset>
+    <y-offset>0.68</y-offset>
+    <z-offset>0.68</z-offset>
+   </animation>
+
 	<animation>
  <type>rotate</type>
- <object-name>Turbine-Needle-right.001</object-name>
+ <object-name>Turbine-Needle-right</object-name>
  <property>engines[0]/engine[1]/egt-degf</property>
  <center>
   <x-m> 0.000</x-m>
