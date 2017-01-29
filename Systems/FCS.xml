@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
  
 <!-- Su-27 Flight Control system -->
-<!-- Located under "systems/FCS" -->
+<!-- Located under "/systems/SDU-10-fcs/" -->
 <PropertyList>
 
 	<serviceable type="bool">true</serviceable>
 	<active type="bool">true</active>
-	<elevator-domain type="double">0</elevator-domain>
 	<direct-input type="bool">false</direct-input>
+	<roll-stab type="bool">false</roll-stab>
+	<pitch-stab type="bool">false</pitch-stab>
 
 	
 </PropertyList>

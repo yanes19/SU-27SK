@@ -32,6 +32,11 @@ var fbw = {
 		me.throttleinit = 0;
 		me.targetthrottle = 0;
 		me.turnthrottlefix = 0;
+# Yanes experimental fcs test vars  :
+		me.CurAileron = 0;
+		me.CurElevator = 0;
+		me.CurRudder = 0;
+#ENDOF  Yanes experimental fcs test vars  :
 		me.targetaileron = 0;
 		me.targetelevator = 0;
 		me.targetrudder = 0;
@@ -73,37 +78,50 @@ me.disconnectannounce = 0;
 var ElevTrimFix = 0;
 var AoALimiterFix = 0;
 var GLoadLimiterFix =0;
-
 var RollTrimFix =0;
-var pitch = getprop("orientation/pitch-deg");
+
 var airspeedkt = getprop("/velocities/airspeed-kt");
-var pitchFix = airspeedkt/pitch/100;
+var Currentpitch = getprop("orientation/pitch-deg");
+var PitchCtrl = getprop("controls/flight/elevator");
 var ElevTrim = getprop("/controls/flight/elevator-trim");
 var PitchRateDeg = getprop("orientation/pitch-rate-degps");
 
-var LoadFactor = getprop("fdm/jsbsim/forces/load-factor");
+var pitchFix = airspeedkt/Currentpitch/100;
 
+var LoadFactor = getprop("fdm/jsbsim/forces/load-factor");
+var Rollctrl = getprop("controls/flight/aileron");
 var CurrentRoll = getprop("orientation/roll-deg");
 var Rollctrl = getprop("controls/flight/aileron");
+var APhdgMode = getprop("autopilot/locks/heading");
 
 #PITCH AXIS
-#Anti-stall helper 
-if((PitchRateDeg != nil)and(PitchRateDeg > 0)){
-	AoALimiterFix = PitchRateDeg /80;
-	}
-	GLoadLimiterFix = -LoadFactor/20;
-	ElevTrimFix	= GLoadLimiterFix + AoALimiterFix;
-setprop("controls/flight/elevator-trim",ElevTrimFix);
 
-#if (in_range(Rollctrl,[-0.1,0.1])and in_range(CurrentRoll,[-2,2])== 0){
+#Anti-stall helper 
+#if((PitchRateDeg != nil)and(PitchRateDeg > 0)){
+#	AoALimiterFix = PitchRateDeg /80;
+#	}
+#	GLoadLimiterFix = -LoadFactor/20;
+#	ElevTrimFix	= GLoadLimiterFix + AoALimiterFix;
+#setprop("controls/flight/elevator-trim",ElevTrimFix);
+
+if ((PitchCtrl > me.CurElevator + 0.01)or (PitchCtrl < me.CurElevator - 0.01)) {
+	setprop("systems/SDU-10-fcs/pitch-stab" , 0);
+	me.CurElevator = PitchCtrl ;
+	print("Elevator trim ");
+}	
+else{setprop("systems/SDU-10-fcs/pitch-stab" , 1);}
 
 #ROLL AXIS :
-RollTrimFix = getprop("controls/flight/aileron-trim");
-if ((Rollctrl > -0.1) and (Rollctrl < 0.1)and ((CurrentRoll > 2)or(CurrentRoll < -2))){ 
-	RollTrimFix =CurrentRoll/300;
-	setprop("controls/flight/aileron-trim",-RollTrimFix);
-	}
+
+if ((Rollctrl > me.CurAileron + 0.01)or (Rollctrl < me.CurAileron - 0.01)) {
+	setprop("systems/SDU-10-fcs/roll-stab" , 0);
+	me.CurAileron = Rollctrl ;
+	print("Aileron trim ");
+}	
+else{setprop("systems/SDU-10-fcs/roll-stab" , 1);}
+	
 }
+
 ##End of update() routine  
 },
 

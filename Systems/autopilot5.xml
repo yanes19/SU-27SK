@@ -226,17 +226,6 @@
    </condition>
    <value>0</value>
   </reference>
-<!--
-  <reference>
-   <condition>
-    <equals> 
-	<property>/autopilot/locks/heading</property>
-	<value>nav1-hold</value>
-	</equals>
-   </condition>
-   <value>0</value>
-  </reference>
--->
     <output>
 	<property>/controls/flight/aileron-trim</property>
 	</output>
@@ -539,6 +528,69 @@ EndOf testsby Yanes
       <u_max>1</u_max>  <!-- maximum output clamp -->
     </config>
   </pid-controller>
+  
+<!-- Experimental FCS tests by Yanes !!!! -->
 
+  <pid-controller>
+  <name>ROLL-STABILIZER</name>
+  <debug>false</debug>
+ <enable>
+   <condition>
+	<equals>        
+	 <property>systems/SDU-10-fcs/roll-stab</property>
+	 <value>true</value>
+	</equals>
+   </condition>
+  </enable>
+  <input>
+   <prop>/orientation/roll-deg</prop>
+  </input>
+  <reference>0</reference>
+  <output>
+   <prop>/controls/flight/aileron-trim</prop>
+  </output>
+    <config>
+      <Kp>0.0035</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
+                           <!-- unfiltered derivative error -->
+      <Ti>10</Ti>        <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>-0.05</u_min> <!-- minimum output clamp -->
+      <u_max>0.05</u_max>  <!-- maximum output clamp -->
+    </config>
+ </pid-controller>
+
+  <pid-controller>
+  <name>PITCH-STABILIZER</name>
+  <debug>false</debug>
+ <enable>
+   <condition>
+	<equals>        
+	 <property>systems/SDU-10-fcs/pitch-stab</property>
+	 <value>true</value>
+	</equals>
+   </condition>
+  </enable>
+  <input>
+   <prop>orientation/pitch-deg</prop>
+  </input>
+  <reference>0</reference>
+  <output>
+   <prop>controls/flight/elevator-trim</prop>
+  </output>
+    <config>
+      <Kp>-0.015</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
+                           <!-- unfiltered derivative error -->
+      <Ti>10</Ti>        <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>-0.5</u_min> <!-- minimum output clamp -->
+      <u_max>0.5</u_max>  <!-- maximum output clamp -->
+    </config>
+ </pid-controller>
 
 </PropertyList>
