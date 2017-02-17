@@ -2364,9 +2364,9 @@ livery_update.stop();
 
 <model>
 <name>L_burner</name>
-    <path>Aircraft/SU-27SK/Models/Effects/Afterburner/EJ200-L.xml</path>
+    <path>Aircraft/SU-27SK/Models/Effects/Afterburner/Ab-Left.xml</path>
     <offsets>
-      <x-m>19.9</x-m>
+      <x-m>19.8</x-m>
       <y-m>  -1.27 </y-m>
       <z-m> -0.25 </z-m>
      <roll-deg>    0 </roll-deg>
@@ -2383,9 +2383,9 @@ livery_update.stop();
 <!-- Reheat -->
 <model>
 <name>R_burner</name>
-    <path>Aircraft/SU-27SK/Models/Effects/Afterburner/EJ200-R.xml</path>
+    <path>Aircraft/SU-27SK/Models/Effects/Afterburner/Ab-Right.xml</path>
     <offsets>
-      <x-m> 19.9</x-m>
+      <x-m> 19.8</x-m>
       <y-m> 1.27 </y-m>
       <z-m> -0.22 </z-m>
      <roll-deg>    0 </roll-deg>
@@ -2839,6 +2839,16 @@ livery_update.stop();
   <path>Aircraft/SU-27SK/Models/Stores/DrogChute/parachute.xml</path>
   <offsets>
    <x-m> 22.0</x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+ 	<!-- Ground Power unit -->
+<model>
+  <name>Power-truck</name>
+  <path>Aircraft/SU-27SK/Models/sim-helpr-models/generic-trailer-GPU.xml</path>
+  <offsets>
+   <x-m> 0.0</x-m>
    <y-m> 0.0 </y-m>
    <z-m> 0.0 </z-m>
   </offsets>
