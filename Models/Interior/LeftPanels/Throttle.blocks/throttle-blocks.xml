@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+	
+	<name>Throttle-blocks</name>
+	<path>Throttle.blocks.ac</path>
+
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>ENG1.THRTL</object-name>
+  <property>controls/engines/engine/cutoff</property>
+  <factor>0.0160</factor>
+  <offset-m>0.0</offset-m>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>ENG2.THRTL</object-name>
+  <object-name>RUD1.wsr</object-name>
+  <property>controls/engines/engine[1]/cutoff</property>
+  <factor>0.0160</factor>
+  <offset-m>0.0</offset-m>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+  
+ <animation>
+  <type>translate</type>
+  <object-name>ENG1.THRTL</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/engines/engine/cutoff</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+  <property>controls/engines/engine/throttle</property>
+  <factor>0.1150</factor>
+  <offset-m>0.0100</offset-m>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>ENG2.THRTL</object-name>
+  <object-name>RUD1.wsr</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/engines/engine/cutoff</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>0.1150</factor>
+  <offset-m>0.0100</offset-m>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+	<animation>
+	 <type>material</type> 
+	 <object-name>Throttler.rails</object-name>
+  <specular>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+  </specular>
+  <shininess>105</shininess>
+	</animation>
+	
+	</PropertyList>
