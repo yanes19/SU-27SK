@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<model>
+	<name>Old-AB</name>
+	<path>Aircraft/SU-27SK/Models/Effects/Afterburner/EJ200-L.xml</path>
+</model>
+
+<model>
+	<name>ALS-AB</name>
+	<path>Aircraft/SU-27SK/Models/Effects/Afterburner/ALS-AB-Left.xml</path>
+</model>
+</PropertyList>

@@ -62,7 +62,7 @@ srand();
 var navSwitch = mpPath~"controls/lighting/nav-lights-switch";
 var beaconSwitch = mpPath~"controls/lighting/beacon-switch";
 var strobeSwitch = mpPath~"controls/lighting/strobe-switch";
-var landingSwitch = mpPath~"controls/lighting/landing-lights-switch";
+var landingSwitch = mpPath~"controls/lighting/landing-lights";
 var taxiSwitch = nil;
 var probeSwitch = nil;
 var whiteSwitch = nil;
