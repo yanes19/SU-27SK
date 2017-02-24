@@ -7,6 +7,7 @@
 	<N010-radar><emitting type="bool">false</emitting></N010-radar>
 	<HUD>
 	<mode>EnRoute</mode>
+	<visible>0</visible> <!-- Flag prop for hud object creation.-->
 	</HUD>
 	<PNK-10>
 		<!-- Active PNK mode is: 0 : "PROGRAM", 1: "RSBN", 1.1: "ARC".-->
@@ -44,7 +45,6 @@
 		<PPM7>114.2</PPM7>
 		<PPM8>114.2</PPM8>
 		<PPM9>114.2</PPM9>
-
 	</RSBN>
 	<OC-controller>
 		<!-- staus : 1- ready,3- waiting for PPM input,5- waiting for AER input,7:waiting for wp ,

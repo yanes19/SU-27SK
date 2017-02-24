@@ -323,7 +323,8 @@
     </thruster>
   </engine>
 
-  <engine file="GTDE-117_T">   <!--Manually added, to be checked !!-->
+<!--
+  <engine file="GTDE-117_T">   
 
     <location unit="M">
       <x>  5.0  </x>
@@ -349,6 +350,7 @@
      </orient>
     </thruster>
   </engine>
+-->
 
   <tank type="FUEL" number="0">	<!-- Tank1 fuselage afterproue -->
      <location unit="IN">
@@ -1031,7 +1033,7 @@ Need testing :experimental brake parachute
            <property>metrics/cbarw-ft</property>
            <property>aero/ci2vel</property>
            <property>aero/alphadot-rad_sec</property>
-           <value>-11</value>
+           <value>-9</value>
        </product>
     </function>
 
@@ -1069,7 +1071,7 @@ Need testing :experimental brake parachute
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>fcs/rudder-pos-rad</property>
-           <value>-0.1</value>
+           <value>-0.15</value>
        </product>
     </function>
 

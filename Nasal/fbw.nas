@@ -107,7 +107,7 @@ var APhdgMode = getprop("autopilot/locks/heading");
 if ((PitchCtrl > me.CurElevator + 0.01)or (PitchCtrl < me.CurElevator - 0.01)) {
 	setprop("systems/SDU-10-fcs/pitch-stab" , 0);
 	me.CurElevator = PitchCtrl ;
-	print("Elevator trim ");
+	#print("Elevator trim ");
 }	
 else{setprop("systems/SDU-10-fcs/pitch-stab" , 1);}
 
@@ -116,7 +116,7 @@ else{setprop("systems/SDU-10-fcs/pitch-stab" , 1);}
 if ((Rollctrl > me.CurAileron + 0.01)or (Rollctrl < me.CurAileron - 0.01)) {
 	setprop("systems/SDU-10-fcs/roll-stab" , 0);
 	me.CurAileron = Rollctrl ;
-	print("Aileron trim ");
+	#print("Aileron trim ");
 }	
 else{setprop("systems/SDU-10-fcs/roll-stab" , 1);}
 	

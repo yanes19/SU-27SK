@@ -61,7 +61,7 @@ SU-27 simulation config.
 	      <!-- Beacon on -->
 	      <int n="1" alias="/controls/lighting/beacon-switch" />
 	      <!-- Landing lights on -->
-	      <int n="2" alias="/controls/lighting/landing-lights-switch" />
+	      <int n="2" alias="/controls/lighting/landing-lights" />
 		    <!-- Taxi light on -->
 	      <int n="3" alias="/controls/lighting/taxi-light-switch" />	  
 			  <!-- Engine Status -->		  
@@ -185,14 +185,16 @@ SU-27 simulation config.
 	 
 
       <sound>
-        <!--  <path>Aircraft/SU-27SK/Sounds/Su-27-sound.xml</path>  -->
+          <!--<path>Aircraft/SU-27SK/Sounds/Su-27-sound.xml</path>-->  
         <path>Aircraft/SU-27SK/Sounds/sounds.xml</path>
       </sound>
 
       <model>
         <path>Aircraft/SU-27SK/Models/SU-27.xml</path>
-        <preload type="int">1</preload>
+<!--        <preload type="int">1</preload>
+
         <nozzle-animation type="float">1</nozzle-animation>
+-->
       </model>
 
 	  <submodels>
@@ -208,46 +210,21 @@ SU-27 simulation config.
 
 <hud>
 
-   <path n="1">Aircraft/SU-27SK/Hud/hud.xml</path>
-
-   <visibility n="1">true</visibility>
-   <palette>
-    <color n="0">
-     <alpha type="float">0.85</alpha>
-     <antialiased type="bool">true</antialiased>
-     <brightness type="float">0.85</brightness>
-     <transparent type="bool">true</transparent>
-     <red type="float">0.38</red>
-     <green type="float">1.0</green>
-     <blue type="float">0.22</blue>
-    </color>
-    <color n="1">
-     <alpha type="float">0.85</alpha>
-     <antialiased type="bool">true</antialiased>
-     <brightness type="float">0.85</brightness>
-     <transparent type="bool">true</transparent>
-     <red type="float">1.0</red>
-     <green type="float">0.2</green>
-     <blue type="float">0.0</blue>
-    </color>
-   </palette>
- 
-   <clipping>
-            <left type="double">-65</left>
-            <right type="double">70</right>
-            <top type="double">40</top>
-            <bottom type="double">-75</bottom>
-         </clipping>
-  </hud>
+</hud>
 
 
 	<systems>
 		<autopilot>
 			<path>Aircraft/SU-27SK/Systems/autopilot5.xml</path>
 		</autopilot>
+	
 		<electrical>
-	    <path>Aircraft/SU-27SK/Systems/basic-electrical.xml</path>
-    </electrical>
+			<!-- note :
+						 null electrical system path here so we can use a nasal based model defined
+						 later in the nasal section of this file.
+			-->
+			<path></path>
+		</electrical>
 
 	</systems>
 	  
@@ -732,7 +709,7 @@ SU-27 simulation config.
     <misc><file>Aircraft/SU-27SK/Nasal/Misc.nas</file></misc>
     
     <electricals>
-			<file>Aircraft/SU-27SK/Nasal/elecrical.nas</file>
+			<file>Aircraft/SU-27SK/Nasal/Electrical.nas</file>
 		</electricals>
 <!--
 		<eno>
