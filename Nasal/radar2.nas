@@ -148,7 +148,7 @@ var Radar = {
         var loop_Update = func(){
             var radarWorking = getprop("/systems/electrical/outputs/radar");
             radarWorking = (radarWorking == nil) ? 0 : radarWorking;
-            if(radarWorking > 24)
+            if(radarWorking > 21)
             {
                 me.update();
             }
@@ -815,8 +815,8 @@ var Target = {
         if (me.HOffset != nil){
         me.Hoffset.setValue(me.HOffset.getValue());
         me.Voffset.setValue(me.VOffset.getValue());
-        me.Xshift.setValue(me.XShift.getValue()*0.001623);#this should be dynamicly calculated value 
-        me.Yshift.setValue(me.YShift.getValue()*0.001623);#this should be dynamicly calculated value
+        me.Xshift.setValue(me.XShift.getValue()*0.001623);#this value should be dynamically calculated  
+        me.Yshift.setValue(me.YShift.getValue()*0.001623);#this value should be dynamically calculated 
         me.rotation.setValue(me.Rotation.getValue());
         }
     },

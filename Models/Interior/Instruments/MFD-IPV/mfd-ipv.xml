@@ -60,6 +60,16 @@
 	</condition>
 </animation>
  
+ <animation>
+<type>select</type>
+<object-name>IPV.ekran.Off</object-name>
+	<condition>
+		<less-than>
+		<property>systems/electrical/outputs/IPV-MFD</property>
+		<value>24</value>
+		</less-than>   
+	</condition>
+</animation>
  
 </PropertyList>
 

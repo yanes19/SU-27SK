@@ -8,6 +8,12 @@
  <type>material</type>
  <object-name>KI-13.face</object-name>
  <object-name>line</object-name>
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>20</value>
+		 </greater-than>
+	 </condition>
  <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
  <emission>
   <red>0.8</red>

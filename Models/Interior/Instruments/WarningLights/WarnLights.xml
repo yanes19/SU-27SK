@@ -8,10 +8,16 @@
 	 <type>material</type> 
 	 <object-name>canopy.led.lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>18</value>
+		 </greater-than>
 	  <greater-than>
-	   <property>canopy/position-norm</property>
-	   <value>0</value>
+		   <property>canopy/position-norm</property>
+		   <value>0</value>
 	   </greater-than>
+	   </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -24,10 +30,16 @@
 	 <type>select</type> 
 	 <object-name>canopy.led.lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>18</value>
+		 </greater-than>
 	  <greater-than>
-	   <property>canopy/position-norm</property>
-	   <value>0</value>
+		   <property>canopy/position-norm</property>
+		   <value>0</value>
 	   </greater-than>
+	   </and>
 	 </condition>
 	</animation>
 	
@@ -35,10 +47,16 @@
 	 <type>select</type> 
 	 <object-name>radarON.led.lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>18</value>
+		 </greater-than>
 		 <equals>
 	   <property>su-27/instrumentation/N010-radar/emitting</property>
 	   <value>1</value>
 	   </equals>
+	   </and>
 	 </condition>
 	</animation>
 	
@@ -46,10 +64,16 @@
 	 <type>material</type> 
 	 <object-name>radarON.led.lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>18</value>
+		 </greater-than>
 		 <equals>
 	   <property>su-27/instrumentation/N010-radar/emitting</property>
 	   <value>1</value>
 	   </equals>
+	   </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -63,15 +87,19 @@
 	 <object-name>parachute.lit</object-name>
 	<condition>
 		<and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>18</value>
+		 </greater-than>
 			<equals>
-				  <property>fdm/jsbsim/fcs/parachute_reef-cmd-norm</property>
-				  <value>1</value>
+			  <property>fdm/jsbsim/fcs/parachute_reef-cmd-norm</property>
+			  <value>1</value>
 			</equals>
 			<not>
-				<equals>
-				  <property>fdm/jsbsim/fcs/parachute/drop_cmd</property>
-				  <value>1</value>
-				</equals>
+			<equals>
+			  <property>fdm/jsbsim/fcs/parachute/drop_cmd</property>
+			  <value>1</value>
+			</equals>
 			</not>
 		</and>
 	</condition>
@@ -82,15 +110,19 @@
 	 <object-name>parachute.lit</object-name>
 	<condition>
 		<and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>18</value>
+		 </greater-than>
 			<equals>
-				  <property>fdm/jsbsim/fcs/parachute_reef-cmd-norm</property>
-				  <value>1</value>
+			  <property>fdm/jsbsim/fcs/parachute_reef-cmd-norm</property>
+			  <value>1</value>
 			</equals>
 			<not>
-				<equals>
-				  <property>fdm/jsbsim/fcs/parachute/drop_cmd</property>
-				  <value>1</value>
-				</equals>
+			<equals>
+			  <property>fdm/jsbsim/fcs/parachute/drop_cmd</property>
+			  <value>1</value>
+			</equals>
 			</not>
 		</and>
 	</condition>

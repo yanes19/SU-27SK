@@ -14,5 +14,9 @@ var autostart = func {
 	if (getprop("controls/lighting/beacon-switch")==1){setprop("controls/lighting/beacon-switch",0);}
 		
 	else {setprop("controls/lighting/beacon-switch",1)};
+	
+	if (getprop("/controls/lighting/landing-lights")==1){setprop("/controls/lighting/landing-lights",0);}
+		
+	else {setprop("/controls/lighting/landing-lights",1)};
 
 }

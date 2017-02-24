@@ -201,6 +201,20 @@ var HUD = {
 
   update: func()
   {
+  var HudPower = getprop("systems/electrical/outputs/ILS-31HUD") or 0;
+  var hudSwitch = getprop("controls/switches/ILS-31HUD") or 0;
+  
+ if (HudPower < 18){
+		me.root.hide();
+		me.svg.hide();
+#		print ("No hud");
+#		return;
+}
+	else{
+		me.root.show();
+		me.svg.show();
+#	print ("SEE hud");
+		}
     me.airspeed.setText(sprintf("%d", me.input.ias.getValue()));
     me.altitude.setText(sprintf("%2d", me.input.altitude.getValue()));
     me.APairspeed.setText(sprintf("%2d", Kts2KmH(me.input.target_spd.getValue())));
@@ -393,7 +407,8 @@ var HUD = {
 };
 
 
- 
+
+
  
 var init = setlistener("/sim/signals/fdm-initialized", func() {
   removelistener(init); # only call once

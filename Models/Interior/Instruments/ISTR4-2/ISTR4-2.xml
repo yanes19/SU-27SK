@@ -16,6 +16,12 @@
  <object-name>ISTR4-2.tankmarker3</object-name>
  <object-name>ISTR4-2.tankmarkerKr</object-name>
  <object-name>ISTR4-2.tankmarkerPTB</object-name>
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>20</value>
+		 </greater-than>
+	 </condition>
  <emission>
   <red>0.8</red>
   <green>0.8</green>

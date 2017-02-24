@@ -11,10 +11,16 @@
 	 <type>select</type> 
 	 <object-name>LED.AoA-G.Max.Lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 	   <greater-than>
 	   <property>orientation/alpha-deg</property>
 	   <value>25</value>
 	   </greater-than>
+	   </and>
 	 </condition>
 	</animation>
 
@@ -22,10 +28,16 @@
 	 <type>material</type> 
 	 <object-name>LED.AoA-G.Max.Lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 	   <greater-than>
 	   <property>orientation/alpha-deg</property>
-	   <value>0</value>
+	   <value>25</value>
 	   </greater-than>
+	   </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -39,12 +51,18 @@
 	 <type>select</type> 
 	 <object-name>LED.SDU.Lit</object-name>
 	 <condition>
+		 <and>
+ 		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 		 <not>
 	   <equals>
 	   <property>systems/SAU/ready</property>
 	   <value>true</value>
 	   </equals>
 		 </not>
+		 </and>
 	 </condition>
 	</animation>
 
@@ -52,12 +70,18 @@
 	 <type>material</type> 
 	 <object-name>LED.SDU.Lit</object-name>
 	 <condition>
+		 <and>
+ 		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 		 <not>
 	   <equals>
 	   <property>systems/SAU/ready</property>
 	   <value>true</value>
 	   </equals>
 		 </not>
+		 </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -71,10 +95,16 @@
 	 <type>select</type> 
 	 <object-name>LED.Fire.Lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 	   <equals>
 	   <property>sim/crashed</property>
 	   <value>true</value>
 	   </equals>
+	   </and>
 	 </condition>
 	</animation>
 
@@ -82,10 +112,16 @@
 	 <type>material</type> 
 	 <object-name>LED.Fire.Lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 	   <equals>
 	   <property>sim/crashed</property>
 	   <value>true</value>
 	   </equals>
+	   </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -99,12 +135,18 @@
 	 <type>select</type> 
 	 <object-name>LED.Hydrolics.Lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 		 <not>
 	   <equals>
 	   <property>systems/hydraulic/serviceable</property>
 	   <value>true</value>
 	   </equals>
 	   </not>
+	   </and>
 	 </condition>
 	</animation>
 
@@ -112,12 +154,18 @@
 	 <type>material</type> 
 	 <object-name>LED.Hydrolics.Lit</object-name>
 	 <condition>
+		 <and>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 		 <not>
 	   <equals>
 	   <property>systems/hydraulic/serviceable</property>
 	   <value>true</value>
 	   </equals>
 	   </not>
+	   </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -131,12 +179,18 @@
 	 <type>select</type> 
 	 <object-name>LED.SAU.Lit</object-name>
 	 <condition>
+		 <and>
+ 		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 		 <not>
 	   <equals>
 	   <property>systems/SAU/ready</property>
 	   <value>true</value>
 	   </equals>
 	   </not>
+	   </and>
 	 </condition>
 	</animation>
 
@@ -144,12 +198,18 @@
 	 <type>material</type> 
 	 <object-name>LED.SAU.Lit</object-name>
 	 <condition>
+		 <and>
+ 		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
 		 <not>
 	   <equals>
 	   <property>systems/SAU/ready</property>
 	   <value>true</value>
 	   </equals>
 	   </not>
+	   </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	

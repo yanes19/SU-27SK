@@ -3,6 +3,8 @@
 print("Loading engines module...");
 
 var StartAuto = func {
+		setprop("controls/electric/external-power",1);
+
 		var start1 = func { setprop("/controls/engines/engine/cutoff", 0) };
 		var start2 = func { setprop("/controls/engines/engine[1]/cutoff", 0) };
 		
@@ -11,6 +13,7 @@ var StartAuto = func {
 		
 		setprop ("controls/engines/engine/fuel-pump", 1);
 		setprop ("controls/engines/engine[1]/fuel-pump", 1);
+		
 		gui.popupTip("Autostarting...");
 		print("engines.autostart executed");
 		settimer(start1, 3);

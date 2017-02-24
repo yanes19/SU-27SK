@@ -8,12 +8,20 @@
 	 <type>select</type> 
 	 <object-name>A.Brake.lit_Plane.005</object-name>
 	 <condition>
+		 <and>
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>16</value>
+		 </greater-than>
+	 </condition>
 		 <not>
 	   <equals>
 	   <property>surface-positions/speedbrake-pos-norm</property>
 	   <value>0</value>
 	   </equals>
 		 </not>
+		 </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	
@@ -26,12 +34,20 @@
 	 <type>select</type> 
 	 <object-name>flaps.left.lit_Plane.009</object-name>
 	 <condition>
+		 <and>
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>17</value>
+		 </greater-than>
+	 </condition>
 		 <not>
 	   <equals>
 	   <property>surface-positions/flap-pos-norm</property>
 	   <value>0</value>
 	   </equals>
 		 </not>
+		 </and>
 	 </condition>
 	 <emission>	
 	  <red>0.5</red>	

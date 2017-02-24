@@ -302,6 +302,11 @@
 	 <type>select</type> 
 	 <object-name>PPM_NumText</object-name>
 	 <condition>
+		 <and>
+			 <greater-than>
+				 <property>systems/electrical/outputs/OC-controller</property>
+			   <value>22</value>
+			 </greater-than>
 		 <or>
 			<!-- The flashing animation --> 
 		 <and>
@@ -320,6 +325,7 @@
 	   <value>1</value>
 	   </equals>
 	   </or>
+	   </and>
 	 </condition>
 	</animation>
 	
@@ -327,6 +333,11 @@
 	 <type>select</type> 
 	 <object-name>AER_NumText</object-name>
 	 <condition>
+		 <and>
+ 			 <greater-than>
+				 <property>systems/electrical/outputs/OC-controller</property>
+			   <value>22</value>
+			 </greater-than>
 		 <or>
 			<!-- The flashing animation --> 
 		 <and>
@@ -345,6 +356,7 @@
 	   <value>1</value>
 	   </equals>
 	   </or>
+	   </and>
 	 </condition>
 	</animation>
 	
@@ -352,6 +364,11 @@
 	 <type>select</type> 
 	 <object-name>WPT_NumText</object-name>
 	 <condition>
+		 <and>
+ 			 <greater-than>
+				 <property>systems/electrical/outputs/OC-controller</property>
+			   <value>22</value>
+			 </greater-than>
 		 <or>
 			<!-- The flashing animation --> 
 		 <and>
@@ -370,6 +387,7 @@
 	   <value>1</value>
 	   </equals>
 	   </or>
+	   </and>
 	 </condition>
 	</animation>
 	

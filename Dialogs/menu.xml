@@ -3,7 +3,7 @@
 <PropertyList>
  <default>
 	<menu n="10">
-		<label>SU-27</label>
+		<label>SU-27SK</label>
 		<enabled type="bool">true</enabled>
 		<item>
 			<label>Autostart toggle</label>
@@ -17,9 +17,16 @@
 		
 		<item>
 			<label>Toggle Ground Power</label>
+		  <binding>
+		   <command>property-toggle</command>
+		   <property>controls/electric/external-power</property>
+		  </binding>
 			<binding>
 				<command>nasal</command>
-				<script>electricals.GndPowerToggle()</script>
+				<script>
+					if (electricals.EXT.getValue() == 1){gui.popupTip("Ground power ON");}
+					else {gui.popupTip("Ground power OFF");}
+					</script>
 			</binding>
 		</item>
 		

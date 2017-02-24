@@ -30,6 +30,12 @@
  <object-name>PlaneDGRM</object-name>
  <object-name>PNP.NCAngleRC</object-name>
  <object-name>PNP.AngleDerivIndex</object-name>
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>23</value>
+		 </greater-than>
+	 </condition>
  <emission>
   <red>0.8</red>
   <green>0.8</green>

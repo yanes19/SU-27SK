@@ -14,7 +14,6 @@
  
 	<animation>
 	 <type>material</type> 
-	 
 	 <object-name>target0</object-name>
 	 <object-name>target1</object-name>
 	 <object-name>target2</object-name>

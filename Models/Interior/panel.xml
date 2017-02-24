@@ -44,7 +44,20 @@
     </offsets>
 <!--Stick animations defined near the EOF-->
   </model>
-  
+
+   <model>
+   <name>Throttle-blocks</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Throttle.blocks/throttle-blocks.xml</path>
+	<offsets>
+      <x-m> 4.624 </x-m>
+      <y-m>-0.466 </y-m>
+      <z-m> 1.039 </z-m>
+      <pitch-deg>-2</pitch-deg>
+      <roll-deg>-8</roll-deg>
+      <heading-deg>-5</heading-deg>
+    </offsets>
+  </model> 
+    
   
    <model>
    <name>pedals</name>
@@ -494,7 +507,7 @@
   <model>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/radar.xml</path>
 	<offsets>
-      <x-m>4.340 </x-m>
+      <x-m>4.337 </x-m>
       <y-m>0.2480 </y-m>
       <z-m>1.170 </z-m>
 	  <pitch-deg>-5</pitch-deg>
