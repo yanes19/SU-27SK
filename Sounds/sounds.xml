@@ -105,7 +105,7 @@
 <stall>	  <!--**Rita Stall warning**-->
 		<name>stall</name>
 		<mode>once</mode>
-		<path>/Aircraft/SU-27SK/Sounds/RitaHighAoA.wav</path>
+		<path>Aircraft/SU-27SK/Sounds/RitaHighAoA.wav</path>
 		<condition>
 			<greater-than>
 		  <property>orientation/alpha-deg</property>
@@ -115,20 +115,22 @@
 						<property>/gear/gear[0]/wow</property>
 						<property>/gear/gear[1]/wow</property>
 						<property>/gear/gear[2]/wow</property>
-						<property>/surface-positions/flap-pos-norm</property>
 						<property>/gear/gear[0]/position-norm</property>
 				</not>
 		</condition>
-		<volume>
-		<factor>1.0</factor>
-		</volume>
+	 <volume>
+    <property>sim/sound/avionics/volume</property>
+    <factor>1</factor>
+		<min>0</min>
+		<max>1</max>
+   </volume>
 		<position>
-				<x>-23</x>
+				<x>6</x>
 				<y>0</y>
 				<z>1</z>
 		</position>
 		<reference-dist>1.0</reference-dist>
-		<max-dist>2.0</max-dist>
+		<max-dist>8.0</max-dist>
 	</stall>	
 	
 	
