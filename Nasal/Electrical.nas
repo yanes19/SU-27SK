@@ -196,8 +196,6 @@ init_switches = func() {
     append(servout_list,"DG");
     append(serv_list,"instrumentation/transponder/inputs/serviceable");
     append(servout_list,"transponder");
-    append(serv_list,"instrumentation/mk-viii/serviceable");
-    append(servout_list,"mk-viii");
     append(serv_list,"instrumentation/tacan/serviceable");
     append(servout_list,"tacan");
     append(serv_list,"instrumentation/turn-indicator/serviceable");
