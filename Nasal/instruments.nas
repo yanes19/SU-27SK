@@ -1,4 +1,8 @@
 
+
+var ft2m = func(x){if(x!= nil){return x * 0.3048}else {return 0}};
+
+
  var init_instrumentation = func {
   #setlistener("su-27/instrumentation/electrical/v27", Instrumentation_voltage_handler,0,0 );
   #setlistener("su-27/instrumentation/electrical/v200", Instrumentation_voltage_handler,0,0 );
@@ -63,8 +67,9 @@ var bar_altitude_ft = 0;
 var bar_altitude_m = 0;
 
  var alt_meters = func {
+ 
   var bar_altitude_ft = getprop("/instrumentation/altimeter/indicated-altitude-ft") or 0.00;
-  var bar_altitude_m = (bar_altitude_ft * 0.3048);
+  var bar_altitude_m = ft2m(bar_altitude_ft);
   setprop("su-27/instrumentation/UV-30-3/indicated-altitude-m", bar_altitude_m);
   settimer(alt_meters, 0)
 }

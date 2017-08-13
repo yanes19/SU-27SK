@@ -21,7 +21,7 @@ var SAUNavigHold = func {
 	var RoutMgrActive = getprop("autopilot/route-manager/active");
 	var PNK_Mode = getprop("su-27/instrumentation/PNK-10/active-mode");
 	if (SAU_Ready == 1 and SAU_Active == 1 and Current_BarAlt > 0)  # and SAU_serviceable == "true"
-#	   {
+	   {
 #	   if (RoutMgrActive == 1) {
 #	   setprop("autopilot/locks/heading" , "true-heading-hold");
 #	   print ("SAU:Navig mode engaged ! Route: Active");
@@ -31,14 +31,16 @@ var SAUNavigHold = func {
 #	   }
 #	   }   
 	if (RoutMgrActive == 1){
-		if(PNK_Mode == 0){setprop("autopilot/locks/heading" , "true-heading-hold");
+		if(PNK_Mode == 0){
 			setprop("autopilot/locks/heading" , "true-heading-hold");
-		print ("SAU engaged : Following PNK-10 'PROGRAM' route mode ")}
+		print ("SAU engaged : Following PNK-10 'PROGRAM' route mode ")
 		}
 		if (PNK_Mode == 1){setprop("autopilot/locks/heading" ,"nav1-hold");
 		setprop("autopilot/locks/altitude" , "altitude-hold"); 
 		print ("SAU engaged : Following PNK-10 'RSBN NAVIG' mode ")}
-		
+	}
+	}	
+	print ("end of SAUNavigHold Proc"); 
 }
 
 

@@ -12,6 +12,8 @@
 	  <filter-gain>0.1</filter-gain>
  </predict-simple>
  
+<!-- Limiters filters -->
+ 
  <filter>
   <name>Bank Angle Limiter</name>
   <type>gain</type>
@@ -41,7 +43,7 @@
   <u_min>20.0</u_min>
   <u_max>45.0</u_max>
  </filter>
-
+<!-- controls filters -->
 <filter>
   <name>Pitch Hold</name>
   <type>gain</type>
@@ -86,17 +88,17 @@
   <output>
    <property>/autopilot/internal/target-pitch-deg</property>
   </output>
-   <config>
-     <Kp>0.005</Kp>        <!-- proportional gain -0.01 -->
-    <beta>0.2</beta>       <!-- input value weighing factor -->
-    <alpha>0.00001</alpha>     <!-- low pass filter weighing factor -->
-    <gamma>0.0</gamma>     <!-- input value weighing factor for -->
+    <config>
+      <Kp>0.025</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
                            <!-- unfiltered derivative error -->
-    <Ti>10.5</Ti>          <!-- integrator time  10.0 -->
-    <Td>0.0001</Td>       <!-- derivator time -->
-    <u_min>-6.0</u_min>  <!-- minimum output clamp -->
-    <u_max>6.0</u_max>   <!-- maximum output clamp -->
-   </config>
+      <Ti>10.0</Ti>        <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>-15</u_min> <!-- minimum output clamp -->
+      <u_max>15</u_max>  <!-- maximum output clamp -->
+    </config>
   </pid-controller>
   
   <pid-controller>
@@ -131,6 +133,40 @@
     <u_max>15.0</u_max>   <!-- maximum output clamp -->
    </config>
   </pid-controller>
+  
+  <pid-controller>
+  <name>System Command: Pitch</name>
+  <debug>false</debug>
+  <enable>
+   <condition>
+    <not-equals>
+			<property>/autopilot/locks/altitude</property>
+			<value />
+		</not-equals>
+   </condition>
+  </enable>
+  <input>
+   <property>/orientation/pitch-deg</property>
+  </input>
+  <reference>
+   <property>/autopilot/internal/target-pitch-deg</property>
+  </reference>
+  <output>
+   <property>/controls/flight/elevator</property>
+  </output>
+  <config>
+   <Kp>-0.05</Kp>      
+   <beta>1.0</beta>    <!-- input value weighing factor -->
+   <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
+   <gamma>0.0</gamma>  <!-- input value weighing factor for -->
+   <Ti>10.0</Ti>       <!-- integrator time  10.0 -->
+   <Td>0.00001</Td>    <!-- derivator time -->
+   <u_min>-0.35</u_min> <!-- minimum output clamp -->
+   <u_max>0.35</u_max>
+  </config>
+ </pid-controller>
+ 
+ <!--ROLL  controls & filters -->
   
   <filter>
     <name>Target Roll Computer</name>
@@ -227,10 +263,10 @@
    <value>0</value>
   </reference>
     <output>
-	<property>/controls/flight/aileron-trim</property>
+	<property>/controls/flight/aileron</property>
 	</output>
     <config>
-      <Kp>0.0025</Kp>        <!-- proportional gain -->
+      <Kp>0.025</Kp>        <!-- proportional gain -->
       <beta>1.0</beta>     <!-- input value weighing factor -->
       <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>   <!-- input value weighing factor for -->
@@ -242,37 +278,7 @@
     </config>
   </pid-controller>
   
-  <pid-controller>
-  <name>System Command: Pitch</name>
-  <debug>false</debug>
-  <enable>
-   <condition>
-    <not-equals>
-			<property>/autopilot/locks/altitude</property>
-			<value />
-		</not-equals>
-   </condition>
-  </enable>
-  <input>
-   <property>/orientation/pitch-deg</property>
-  </input>
-  <reference>
-   <property>/autopilot/internal/target-pitch-deg</property>
-  </reference>
-  <output>
-   <property>/controls/flight/elevator</property>
-  </output>
-  <config>
-   <Kp>-0.05</Kp>      
-   <beta>1.0</beta>    <!-- input value weighing factor -->
-   <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
-   <gamma>0.0</gamma>  <!-- input value weighing factor for -->
-   <Ti>20.0</Ti>       <!-- integrator time  10.0 -->
-   <Td>0.00001</Td>    <!-- derivator time -->
-   <u_min>-0.35</u_min> <!-- minimum output clamp -->
-   <u_max>0.35</u_max>
-  </config>
- </pid-controller>
+
 <!--***********************************************
 Experimental additions by Yanes
 ***************************************************-->
@@ -528,9 +534,9 @@ EndOf testsby Yanes
       <u_max>1</u_max>  <!-- maximum output clamp -->
     </config>
   </pid-controller>
-  
-<!-- Experimental FCS tests by Yanes !!!! -->
-
+ <!-- =============================================================== -->
+ <!-- Experimental FCS tests by Yanes !!!! -->
+ <!-- =============================================================== -->
   <pid-controller>
   <name>ROLL-STABILIZER</name>
   <debug>false</debug>
@@ -581,15 +587,15 @@ EndOf testsby Yanes
    <prop>controls/flight/elevator-trim</prop>
   </output>
     <config>
-      <Kp>-0.015</Kp>        <!-- proportional gain -->
+      <Kp>-0.0015</Kp>        <!-- proportional gain -->
       <beta>1.0</beta>     <!-- input value weighing factor -->
       <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>   <!-- input value weighing factor for -->
                            <!-- unfiltered derivative error -->
       <Ti>10</Ti>        <!-- integrator time -->
       <Td>0.00001</Td>     <!-- derivator time -->
-      <u_min>-0.5</u_min> <!-- minimum output clamp -->
-      <u_max>0.5</u_max>  <!-- maximum output clamp -->
+      <u_min>-0.3</u_min> <!-- minimum output clamp -->
+      <u_max>0.3</u_max>  <!-- maximum output clamp -->
     </config>
  </pid-controller>
 

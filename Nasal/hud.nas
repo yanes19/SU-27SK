@@ -161,7 +161,7 @@ var HUD = {
 		target_0x  			 :	"/instrumentation/radar/ai/models/aircraft/radar/x-shift",
 		target_0z  			 :	"instrumentation/radar/ai/models/aircraft/radar/h-offset",
 		target_0_inrange :	"instrumentation/radar/ai/models/aircraft/radar/in-range",
-		targetvalid			 :	"ai/modcels/aircraft/valid",		# Unused for now !!
+		targetvalid			 :	"ai/models/aircraft/valid",		# Unused for now !!
     };
  
     foreach(var name; keys(m.input))
