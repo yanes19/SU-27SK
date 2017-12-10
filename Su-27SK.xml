@@ -8,7 +8,7 @@
   <author> Yanes Bechir based on Aeromatic 0.95 output </author>
   <filecreationdate>2016-08-23</filecreationdate>
   <version>$Revision: 0.03 $</version>
-  <description> Models a Su-27SK. </description>
+  <description> Models a Su-27SKM. </description>
  </fileheader>
 
 <!--
@@ -410,6 +410,7 @@
  </propulsion>
  
 <system file="fuel"/>
+<system file="SDU-10"/>
  
  <flight_control name="FCS: Su-27SK">
 	 
@@ -750,12 +751,21 @@ Need testing :experimental brake parachute
           <property>metrics/Sw-sqft</property>
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
+            
+            <tableData>
+              -0.20 -0.640
+               0.00  0.120
+               0.26  1.120
+               0.60  0.448
+            </tableData>
+<!--
             <tableData>
               -0.20 -0.640
                0.00  0.080
                0.26  1.000
                0.60  0.448
             </tableData>
+-->
           </table>
       </product>
     </function>
@@ -766,7 +776,7 @@ Need testing :experimental brake parachute
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>fcs/flap-pos-deg</property>
-           <value> 0.01167 </value>
+           <value> 0.02167 </value>
        </product>
     </function>
 
@@ -786,7 +796,7 @@ Need testing :experimental brake parachute
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>fcs/elevator-pos-rad</property>
-           <value>0.2</value>
+           <value>0.6</value>
        </product>
     </function>
 
@@ -802,7 +812,7 @@ Need testing :experimental brake parachute
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
 <!--				These are the original values from Aeromatic(sill needs a bit of adjustement)
-						<tableData>
+			<tableData>
              -1.57    1.500
              -0.26    0.031
               0.00    0.024
@@ -854,7 +864,7 @@ Need testing :experimental brake parachute
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>fcs/flap-pos-deg</property>
-           <value> 0.00250 </value>
+           <value> 0.00200 </value>
          </product>
     </function>
 
@@ -864,7 +874,7 @@ Need testing :experimental brake parachute
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>gear/gear-pos-norm</property>
-           <value>0.02</value>
+           <value>0.01</value>
          </product>
     </function>
 

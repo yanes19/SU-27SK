@@ -69,6 +69,8 @@ AER1_btn.listen("clicked", func {
         # add code here to react on click on button.
 		#print(AER1_edit.text());
 		setprop("su-27/instrumentation/RSBN/AER",AER1_edit.text());
+		navaid = findNavaidByFrequency(AER1_edit.text()/10);
+		AER1_LblSpacer.setText(navaid.name);
 		#pylons_update();
 		});
 Hbox10.addItem(AER1_Lbl);	
@@ -77,10 +79,10 @@ Hbox10.addItem(AER1_btn);
 Hbox10.addItem(AER1_LblSpacer);	
 # AER2 AREA :
 var AER2_Lbl =	canvas.gui.widgets.Label.new(root, canvas.style, {} )
-	.setText("Alternate dest. airfield (AER1):");
+	.setText("Alternate dest. airfield (AER2):");
 
 var AER2_edit =	canvas.gui.widgets.LineEdit.new(root, canvas.style, {} )
-	.setText(getprop("su-27/instrumentation/RSBN/AER"))
+	.setText(getprop("su-27/instrumentation/RSBN/AER-alt"))
 	.setFixedSize(120,25);
 	
 var AER2_LblSpacer = canvas.gui.widgets.Label.new(root, canvas.style, {} )
@@ -94,7 +96,9 @@ var AER2_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
 AER2_btn.listen("clicked", func {
         # add code here to react on click on button.
 		#print(AER2_edit.text());
-		setprop("su-27/instrumentation/RSBN/AER",AER2_edit.text());
+		setprop("su-27/instrumentation/RSBN/AER-alt",AER2_edit.text());
+		navaid = findNavaidByFrequency(AER2_edit.text()/10);
+		AER2_LblSpacer.setText(navaid.name);
 		#pylons_update();
 		});
 Hbox11.addItem(AER2_Lbl);	
@@ -103,10 +107,10 @@ Hbox11.addItem(AER2_btn);
 Hbox11.addItem(AER2_LblSpacer);	
 ##AER3 AREA :
 var AER3_Lbl =	canvas.gui.widgets.Label.new(root, canvas.style, {} )
-	.setText("Backup dest. airfield (AER1):   ");
+	.setText("Backup dest. airfield (AER3):   ");
 
 var AER3_edit =	canvas.gui.widgets.LineEdit.new(root, canvas.style, {} )
-	.setText(getprop("su-27/instrumentation/RSBN/AER"))
+	.setText(getprop("su-27/instrumentation/RSBN/AER-alt2"))
 	.setFixedSize(120,25);
 	
 var AER3_LblSpacer = canvas.gui.widgets.Label.new(root, canvas.style, {} )
@@ -120,7 +124,9 @@ var AER3_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
 AER3_btn.listen("clicked", func {
         # add code here to react on click on button.
 		#print(AER3_edit.text());
-		setprop("su-27/instrumentation/RSBN/AER",AER3_edit.text());
+		setprop("su-27/instrumentation/RSBN/AER-alt2",AER3_edit.text());
+		navaid = findNavaidByFrequency(AER3_edit.text()/10);
+		AER3_LblSpacer.setText(navaid.name);
 		#pylons_update();
 		});
 Hbox12.addItem(AER3_Lbl);	

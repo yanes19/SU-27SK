@@ -7,7 +7,7 @@ var ft2m = func(x){if(x!= nil){return x * 0.3048}else {return 0}};
   #setlistener("su-27/instrumentation/electrical/v27", Instrumentation_voltage_handler,0,0 );
   #setlistener("su-27/instrumentation/electrical/v200", Instrumentation_voltage_handler,0,0 );
 	
-	PNK_DataUpdate();
+  PNK_DataUpdate();
   air_speed2kmh();
   alt_meters();
   RV_21();
@@ -17,8 +17,11 @@ var ft2m = func(x){if(x!= nil){return x * 0.3048}else {return 0}};
   print ("SU-27 instruments module loaded !");
 }
 
+
+var activeAERfreq = 0;
 var PNK_Selectedradials = 0;
 var currentWPT = getprop("autopilot/route-manager/current-wp");
+
 var PNK_DataUpdate = func{
 	##Continuously update radials from selected navigation device :
 	var NavRAdials = getprop("instrumentation/nav/radials/reciprocal-radial-deg");
@@ -28,12 +31,19 @@ var PNK_DataUpdate = func{
 	var WpBearing = 0;
 	if (getprop(WpBearingprop)!= nil){WpBearing = getprop(WpBearingprop)} # if nil PNP12 or SDU fail light should register something !!!!!
 	var PNK_Mode = getprop("su-27/instrumentation/PNK-10/active-mode" );
-	
+	# PROGRAM Route mode .
+	if (PNK_Mode == 0){PNK_Selectedradials = WpBearing};	
+	#NAVIG (radio nav ) mode .
 	if (PNK_Mode == 1){PNK_Selectedradials = NavRAdials or 0.0};
-
-	if (PNK_Mode == 1.1){PNK_Selectedradials = NDBRadials + Hdg};
-
-	if (PNK_Mode == 0){PNK_Selectedradials = WpBearing};
+	#ARC PU-184 mode .
+	if (PNK_Mode == 1.1){PNK_Selectedradials = NDBRadials + Hdg}; 
+	#POSADKA/LAND mode should be activated from OC then set the LOC frequency in Nav1 by the selected AER button handler routine
+	if (PNK_Mode == 2){
+		getActiveAER();
+		setprop("instrumentation/nav/frequencies/selected-mhz" ,activeAERfreq);
+		#print("activeAERfreq " ~ activeAERfreq);
+		PNK_Selectedradials = NavRAdials or 0.0;
+		}; 
 
 	setprop("su-27/instrumentation/PNK-10/radial" , PNK_Selectedradials); 
 	
@@ -147,7 +157,7 @@ var P_184PPMs = func {
 	
 #}
 
-##### On-Board coputer control unit handler routines
+##### On-Board computer control unit handler routines
 var RSBN_PPMs = func {
 	var FreqToSet = "";
 	var ActiveFreq = getprop("su-27/instrumentation/RSBN/active-PPM");
@@ -223,10 +233,11 @@ var RM3btnPress = func{
 	return;	}
 	}
 var UD4btnPress = func{
-	#Waiting for PPM ,thus set PPM4 as active
+	
 	if(getprop("su-27/instrumentation/OC-controller/status") == 3){
 	setprop("su-27/instrumentation/RSBN/active-PPM",4);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;}
 	#Waiting for WPT ,thus set WPT4 (wpt3) as active
 	if(getprop("su-27/instrumentation/OC-controller/status") == 7){
@@ -240,6 +251,7 @@ var UPR5btnPress = func{
 	if(getprop("su-27/instrumentation/OC-controller/status") == 3){
 	setprop("su-27/instrumentation/RSBN/active-PPM",5);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;}
 	#Waiting for WPT ,thus set WPT5 (wpt4) as active
 	if(getprop("su-27/instrumentation/OC-controller/status") == 7){
@@ -253,11 +265,13 @@ var oc6btnPress = func{
 	if(getprop("su-27/instrumentation/OC-controller/status") == 3){
 	setprop("su-27/instrumentation/RSBN/active-PPM",6);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;}
 	#Waiting for WPT ,thus set WPT6 (wpt5) as active
 	if(getprop("su-27/instrumentation/OC-controller/status") == 7){
 	setprop("autopilot/route-manager/current-wp",5);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;	}
 	else{return}
 	}
@@ -266,6 +280,7 @@ var oc7btnPress = func{
 	if(getprop("su-27/instrumentation/OC-controller/status") == 3){
 	setprop("su-27/instrumentation/RSBN/active-PPM",7);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;}
 	#Waiting for WPT ,thus set WPT7 (wpt6) as active
 	if(getprop("su-27/instrumentation/OC-controller/status") == 7){
@@ -279,6 +294,7 @@ var oc8btnPress = func{
 	if(getprop("su-27/instrumentation/OC-controller/status") == 3){
 	setprop("su-27/instrumentation/RSBN/active-PPM",8);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;}
 	#Waiting for WPT ,thus set WPT8 (wpt7) as active
 	if(getprop("su-27/instrumentation/OC-controller/status") == 7){
@@ -292,6 +308,7 @@ var oc9btnPress = func{
 	if(getprop("su-27/instrumentation/OC-controller/status") == 3){
 	setprop("su-27/instrumentation/RSBN/active-PPM",9);
 	setprop("su-27/instrumentation/OC-controller/status",1);
+	RSBN_PPMs();
 	return;}
 	#Waiting for WPT ,thus set WPT9 (wpt8) as active
 	if(getprop("su-27/instrumentation/OC-controller/status") == 7){
@@ -300,3 +317,12 @@ var oc9btnPress = func{
 	return;	}
 	else{return}
 	}
+	
+var getActiveAER = func{
+	var activeAERNum = getprop("su-27/instrumentation/RSBN/active-AER");
+	if(activeAERNum == 1){activeAERfreq = getprop("su-27/instrumentation/RSBN/AER" )or 0.00}
+	if(activeAERNum == 2){activeAERfreq = getprop("su-27/instrumentation/RSBN/AER-alt" )or 0.00}
+	if(activeAERNum == 3){activeAERfreq = getprop("su-27/instrumentation/RSBN/AER-alt2" )or 0.00}
+
+	}
+

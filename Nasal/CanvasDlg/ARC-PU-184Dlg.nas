@@ -62,6 +62,8 @@ NPN_btn.listen("clicked", func {
         # add code here to react on click on button.
 		#print(NPN_edit.text());
 		setprop("su-27/instrumentation/PU-184/NPN",NPN_edit.text());
+		navaid = findNavaidByFrequency(NPN_edit.text()/10);
+		NPN_LblSpacer.setText(navaid.name);
 		#pylons_update();
 		});
 Hbox10.addItem(NPN_Lbl);	
@@ -87,6 +89,8 @@ PPM1_btn.listen("clicked", func {
         # add code here to react on click on button.
 		print(PPM1_edit.text());
 		setprop("su-27/instrumentation/PU-184/PPM1",PPM1_edit.text());
+		navaid = findNavaidByFrequency(PPM1_edit.text()/10);
+		PPM1_LblSpacer.setText(navaid.name);
 		});
 Hbox2.addItem(PPM1_Lbl);	
 Hbox2.addItem(PPM1_edit);
@@ -110,6 +114,8 @@ var PPM2_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
 PPM2_btn.listen("clicked", func {
         # add code here to react on click on button.
 		setprop("su-27/instrumentation/PU-184/PPM2",PPM2_edit.text());
+		navaid = findNavaidByFrequency(PPM2_edit.text()/10);
+		PPM2_LblSpacer.setText(navaid.name);
 		});
 Hbox3.addItem(PPM2_Lbl);	
 Hbox3.addItem(PPM2_edit);
@@ -133,6 +139,8 @@ var PPM3_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
 PPM3_btn.listen("clicked", func {
         # add code here to react on click on button.
 		setprop("su-27/instrumentation/PU-184/PPM3",PPM3_edit.text());
+		navaid = findNavaidByFrequency(PPM3_edit.text()/10);
+		PPM3_LblSpacer.setText(navaid.name);
 		});
 Hbox4.addItem(PPM3_Lbl);	
 Hbox4.addItem(PPM3_edit);
@@ -156,6 +164,8 @@ var PPM4_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
 PPM4_btn.listen("clicked", func {
         # add code here to react on click on button.
 		setprop("su-27/instrumentation/PU-184/PPM4",PPM4_edit.text());
+		navaid = findNavaidByFrequency(PPM4_edit.text()/10);
+		PPM4_LblSpacer.setText(navaid.name);
 		});
 Hbox5.addItem(PPM4_Lbl);	
 Hbox5.addItem(PPM4_edit);
@@ -179,6 +189,8 @@ var PPM5_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
         .setFixedSize(90, 25);
 PPM5_btn.listen("clicked", func {
 		setprop("su-27/instrumentation/PU-184/PPM5",PPM5_edit.text());
+		navaid = findNavaidByFrequency(PPM5_edit.text()/10);
+		PPM5_LblSpacer.setText(navaid.name);
 		});
 Hbox6.addItem(PPM5_Lbl);	
 Hbox6.addItem(PPM5_edit);
@@ -201,6 +213,8 @@ var PPM6_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
         .setFixedSize(90, 25);
 PPM6_btn.listen("clicked", func {
 		setprop("su-27/instrumentation/PU-184/PPM6",PPM6_edit.text());
+		navaid = findNavaidByFrequency(PPM6_edit.text()/10);
+		PPM6_LblSpacer.setText(navaid.name);
 		});
 Hbox7.addItem(PPM6_Lbl);	
 Hbox7.addItem(PPM6_edit);
@@ -223,6 +237,8 @@ var PPM7_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
         .setFixedSize(90, 25);
 PPM7_btn.listen("clicked", func {
 		setprop("su-27/instrumentation/PU-184/PPM7",PPM7_edit.text());
+		navaid = findNavaidByFrequency(PPM7_edit.text()/10);
+		PPM7_LblSpacer.setText(navaid.name);
 		});
 Hbox8.addItem(PPM7_Lbl);	
 Hbox8.addItem(PPM7_edit);
@@ -245,6 +261,8 @@ var PPM8_btn = canvas.gui.widgets.Button.new(root, canvas.style, {})
         .setFixedSize(90, 25);
 PPM8_btn.listen("clicked", func {
 		setprop("su-27/instrumentation/PU-184/PPM8",PPM8_edit.text());
+		navaid = findNavaidByFrequency(PPM8_edit.text()/10);
+		PPM8_LblSpacer.setText(navaid.name);
 		});
 Hbox9.addItem(PPM8_Lbl);	
 Hbox9.addItem(PPM8_edit);

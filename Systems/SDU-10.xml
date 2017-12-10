@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+
+
+ 
+<system name="SDU-10">
+	
+	
+	<property value="1">/su-27/SDU-10/serviceable</property>
+	<property value="1">/su-27/SDU-10/active</property>
+	<property value="1">/su-27/SDU-10/pitch-limiter-switch-active</property>
+	<property value="0.06">/su-27/SDU-10/pitch-limiter-gain</property>
+	<property value="0">/su-27/SDU-10/pitch-limiter-gain2</property>
+	
+	<property value="1">/su-27/instrumentation/ASI/airspeed-kmh</property>
+	
+	
+
+	
+	<channel name = "Pitch-limiter">
+		
+<!--
+	This switch controls the state of serviceability of the FBW system
+	 and restrinct engaging if Not ready to operate.
+	 [TODO]: this still need to check for power availability !
+--> 
+	<switch name = "FBW-Status Logical switch">
+	<default value= "1"/>
+	 <test logic="OR" value="0">
+		 /su-27/SDU-10/serviceable NE 1
+	</test>
+	<output>/su-27/SDU-10/active</output>
+	</switch>
+	
+
+	
+
+	
+	<switch name = "pitch-limiter-switch">
+	<default value= "/su-27/SDU-10/pitch-limiter-gain"/>
+	 <test logic="OR" value="0">
+		 /su-27/SDU-10/pitch-limiter-switch-active EQ 0
+		 /su-27/SDU-10/active EQ 0
+	</test>
+	<output>/controls/flight/elevator-trim</output>
+	</switch>
+
+	<pure_gain name="elevator trim-calculator">
+	<input>/orientation/alpha-deg</input>
+	<gain>0.05</gain>
+	<clipto>
+	<min>-1</min>
+	<max>1</max>
+	</clipto>
+	<output>/su-27/SDU-10/pitch-limiter-gain</output>
+	</pure_gain>
+	
+<!-- This is a test -->
+	<scheduled_gain name="/su-27/SDU-10/pitch-limiter-gain2">
+	<input>/orientation/alpha-deg</input>
+	<gain>1</gain>
+	<table>
+	<independentVar>/velocities/airspeed-kt</independentVar>
+	<tableData>
+	300		0.01
+	800		0.06
+	1200	0.09
+	</tableData>
+	</table>
+	<clipto>
+	<min>-1</min>
+	<max>1</max>
+	</clipto>
+	</scheduled_gain>
+
+
+	</channel>
+	
+	<property value="1">/su-27/SDU-10/roll-limiter-switch-active</property>
+	
+	
+	<channel name = "Roll-limiter">
+		
+	<pure_gain name="ailerons trim-calculator">
+	<input>/orientation/roll-rate-degps</input>
+	<gain>-0.006</gain>
+	<clipto>
+	<min>-1</min>
+	<max>1</max>
+	</clipto>
+	<output>/su-27/SDU-10/roll-limiter-gain</output>
+	</pure_gain>
+
+	<switch name = "roll-limiter-switch">
+	<default value= "/su-27/SDU-10/roll-limiter-gain"/>
+	 <test logic="OR" value="0">
+		 /su-27/SDU-10/roll-limiter-switch-active EQ 0
+		 /su-27/SDU-10/active EQ 0
+		 /su-27/instrumentation/ASI/airspeed-kmh LE 270
+	</test>
+	<output>/controls/flight/aileron-trim</output>
+	</switch>
+	
+	
+	</channel>
+	
+	<property value="1">/su-27/SDU-10/yaw-limiter-switch-active</property>
+	
+	<channel>
+		
+	<pure_gain name="rudder trim-calculator">
+	<input>/orientation/yaw-rate-degps</input>
+	<gain>-0.06</gain>
+	<clipto>
+	<min>-1</min>
+	<max>1</max>
+	</clipto>
+	<output>/su-27/SDU-10/yaw-limiter-gain</output>
+	</pure_gain>
+	
+	<switch name = "yaw-limiter-switch">
+	<default value= "/su-27/SDU-10/yaw-limiter-gain"/>
+	 <test logic="OR" value="0">
+		 /su-27/SDU-10/yaw-limiter-switch-active EQ 0
+		 /su-27/SDU-10/active EQ 0
+	</test>
+	<output>/controls/flight/rudder-trim</output>
+	</switch>
+	
+	</channel>
+	
+	
+
+</system>

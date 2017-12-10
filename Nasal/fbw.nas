@@ -104,23 +104,24 @@ var APhdgMode = getprop("autopilot/locks/heading");
 #	ElevTrimFix	= GLoadLimiterFix + AoALimiterFix;
 #setprop("controls/flight/elevator-trim",ElevTrimFix);
 
-if ((PitchCtrl > me.CurElevator + 0.01)or (PitchCtrl < me.CurElevator - 0.01)) {
-	setprop("systems/SDU-10-fcs/pitch-stab" , 0);
-	me.CurElevator = PitchCtrl ;
-	#print("Elevator trim ");
-}	
-else{setprop("systems/SDU-10-fcs/pitch-stab" , 1);}
+#---------> commented to test jsb pitch limiter
+##if ((PitchCtrl > me.CurElevator + 0.01)or (PitchCtrl < me.CurElevator - 0.01)) {
+##	setprop("systems/SDU-10-fcs/pitch-stab" , 0);
+##	me.CurElevator = PitchCtrl ;
+##	#print("Elevator trim ");
+##}	
+##else{setprop("systems/SDU-10-fcs/pitch-stab" , 1);}
 
 #ROLL AXIS :
 
-if ((Rollctrl > me.CurAileron + 0.01)or (Rollctrl < me.CurAileron - 0.01)) {
-	setprop("systems/SDU-10-fcs/roll-stab" , 0);
-	me.CurAileron = Rollctrl ;
-	#print("Aileron trim ");
-}	
-else{setprop("systems/SDU-10-fcs/roll-stab" , 1);}
+#if ((Rollctrl > me.CurAileron + 0.01)or (Rollctrl < me.CurAileron - 0.01)) {
+#	setprop("systems/SDU-10-fcs/roll-stab" , 0);
+#	me.CurAileron = Rollctrl ;
+#	#print("Aileron trim ");
+#}	
+#else{setprop("systems/SDU-10-fcs/roll-stab" , 1);}
 	
-}
+#}
 
 ##End of update() routine  
 },
@@ -156,6 +157,6 @@ check_if_active : func {
 
 };
 
-fbw.init();
-print("SDU-10 Fly-By-Wire system Initialized");
+#fbw.init();
+#print("SDU-10 Fly-By-Wire system Initialized");
 

@@ -2,10 +2,13 @@
 var autostart = func {
 	
 	#Engines
-	if (getprop ("engines/engine/running") == 1){engines.StopAuto();}
-	else {engines.StartAuto()};
+	if (getprop ("engines/engine/running") == 1){
+		engines.StopAuto();
+		su27.canopy.open();}
+	else {engines.StartAuto();
+	su27.canopy.close();};
 	#Canopy
-	su27.canopy.toggle();
+	
 	#Lights
 	if (getprop("controls/lighting/nav-lights-switch")==1){setprop("controls/lighting/nav-lights-switch",0);}
 		

@@ -23,7 +23,7 @@
 	###
 	# Presets 
 	
-	var acname = "SU-27"; # Script Display Name
+	var acname = "SU-27SK"; # Script Display Name
 	var main_loop_interval = 1; # Main loop update period in seconds
 	var aux_loop_interval = 60; # Auxiliary loop update period in seconds
 	
@@ -122,6 +122,14 @@
 		props.globals.getNode(rm_root~"/enabled",1).setBoolValue(real_maintenance);
 	  var myRadar = radar.Radar.new();
 		myRadar.init();
+		if  (getprop("fdm/jsbsim/gear/wow")== 0 ) {
+			if (getprop ("engines/engine/running") != 1){
+			misc.autostart();
+			setprop ("systems/SAU/active", 1);
+			ACS.SAU_AutoLevel();
+			setprop ("controls/gear/gear-down", 0);}
+		    print("	-In Air startup detected : \n 	- Autostarting engines. \n	- Engaging Autoleveller. ");
+			}
 		#eno.init();
 		auxloop.start();
 		

@@ -7,8 +7,10 @@
 	  <name>Ctrl-D</name>
 	  <desc>Toggle DirectInput Mode (FBW Disengengage)</desc>
 	  <binding>
-	   <command>property-toggle</command>
-	   <property>controls/fbw-fcs/active</property>
+	   <command>property-cycle</command>
+	   <property>su-27/SDU-10/active</property>
+	     <value type="int">0</value>
+		 <value type="int">1</value>
 	  </binding>
 	 </key>
 	
@@ -25,7 +27,7 @@
   
  <key n="43">
   <name>+</name>
-  <desc>Fire selected wcs weapon</desc>
+  <desc>Fire selected WCS weapon</desc>
   <binding>
     <command>nasal</command>
     <script>guns.fire_MG(1);</script>

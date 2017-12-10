@@ -12,6 +12,7 @@
     <min-m>0</min-m>
     <max-property>sim/rendering/static-lod/bare</max-property>
   </animation>
+  
     <animation>
         <type>select</type>
         <object-name>GPU</object-name>
@@ -24,7 +25,7 @@
                 <property>gear/gear[2]/wow</property>
             </or>
             <less-than>
-                <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
+                <property>velocities/uBody-fps</property>
                 <value>1</value>
             </less-than>
             <greater-than>

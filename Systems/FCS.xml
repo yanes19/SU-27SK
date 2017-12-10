@@ -5,7 +5,7 @@
 <PropertyList>
 
 	<serviceable type="bool">true</serviceable>
-	<active type="bool">true</active>
+	<active type="bool">false</active>
 	<direct-input type="bool">false</direct-input>
 	<roll-stab type="bool">false</roll-stab>
 	<pitch-stab type="bool">false</pitch-stab>

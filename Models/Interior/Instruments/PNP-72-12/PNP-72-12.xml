@@ -37,11 +37,10 @@
 		 </greater-than>
 	 </condition>
  <emission>
-  <red>0.8</red>
-  <green>0.8</green>
-  <blue>0.8</blue>
-  
- </emission>
+   <red>0.8</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+  </emission>
 </animation>
 
 <!--

@@ -164,6 +164,11 @@
 	 <type>material</type> 
 	 <object-name>ACS.LED.NAVIG</object-name>
 	 <condition>
+		 <or>
+	 	   <equals>
+			   <property>autopilot/locks/heading</property>
+			   <value>nav1-hold</value>
+		   </equals>
 		 <and>
 	   <equals>
 	   <property>autopilot/locks/heading</property>
@@ -174,6 +179,7 @@
 	   <value>1</value>
 	   </equals>
 	   </and>
+	   </or>
 	 </condition>
 	 <emission>	
 	  <red>0.1</red>	

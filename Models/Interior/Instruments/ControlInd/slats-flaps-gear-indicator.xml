@@ -4,6 +4,49 @@
 
   <path>flaps-slats-indicator.ac</path>
   
+  
+  	<animation>
+	 <type>material</type>
+	 <object-name>A.Brake.lit_Plane.005</object-name>
+	 <object-name>flaps.right.lit_Plane.008</object-name>
+	 <object-name>flaps.left.lit_Plane.009</object-name>
+	 <object-name>gear.1.lit_Plane.012</object-name>
+	 <object-name>gear.2.lit_Plane.006</object-name>
+	 <object-name>gear.3.lit_Plane.007</object-name>
+	 <object-name>gears.failure</object-name>
+	 <object-name>face</object-name>
+	 <object-name>spoiler.left.lit_Plane.010</object-name>
+	 <object-name>spoiler.right.lit_Plane.011</object-name>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/outputs/WarnLeds</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	  <red>0.5</red>	
+	  <green>1</green>	
+	  <blue>0.5</blue>
+	  </emission>
+	</animation>
+	
+	
+	 <animation>
+	 <type>material</type>
+	 <object-name>face</object-name>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/outputs/WarnLeds</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	  <red>0.8</red>	
+	  <green>0.8</green>	
+	  <blue>0.8</blue>
+	  </emission>
+	</animation>
+  
 	<animation>
 	 <type>select</type> 
 	 <object-name>A.Brake.lit_Plane.005</object-name>
@@ -23,11 +66,7 @@
 		 </not>
 		 </and>
 	 </condition>
-	 <emission>	
-	  <red>0.5</red>	
-	  <green>1</green>	
-	  <blue>0.5</blue>
-	 </emission>
+
 	</animation>
 	
 	<animation>

@@ -4,17 +4,25 @@
 
 	<path>fuel-indicator.ac</path>
 
-<!--
-	<animation>
-		<type>material</type>
-		<object-name>fuel-indicator</object-name>
-		<emission>
-			<red>0.8</red>
-			<green>0.8</green>
-			<blue>0.8</blue>
-		</emission>
-	</animation>
--->
+<animation>
+ <type>material</type>
+ <object-name>feeder-scale</object-name>
+ <object-name>Overall-scale</object-name>
+ <object-name>face</object-name>
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>20</value>
+		 </greater-than>
+	 </condition>
+  <emission>
+   <red>0.8</red>
+   <green>0.5</green>
+   <blue>0.5</blue>
+  </emission>
+</animation>
+
+
  <animation>
   <type>textranslate</type>
   <object-name>Overall-scale</object-name>

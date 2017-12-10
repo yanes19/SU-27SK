@@ -1,5 +1,6 @@
 #ACS SAU and AP helper functions 
 
+
 var HoldBaroAlt = func {
 	var SAU_Active = getprop("systems/SAU/active");
 	var SAU_Ready = getprop("systems/SAU/ready");
@@ -35,10 +36,11 @@ var SAUNavigHold = func {
 			setprop("autopilot/locks/heading" , "true-heading-hold");
 		print ("SAU engaged : Following PNK-10 'PROGRAM' route mode ")
 		}
+		}
 		if (PNK_Mode == 1){setprop("autopilot/locks/heading" ,"nav1-hold");
 		setprop("autopilot/locks/altitude" , "altitude-hold"); 
 		print ("SAU engaged : Following PNK-10 'RSBN NAVIG' mode ")}
-	}
+	
 	}	
 	print ("end of SAUNavigHold Proc"); 
 }
@@ -83,8 +85,9 @@ var gs_follow =func{
 var SAU_Land =func {
 	var SAU_Active = getprop("systems/SAU/active");
 	var SAU_Ready = getprop("systems/SAU/ready");
+	var PNK_Mode = getprop("su-27/instrumentation/PNK-10/active-mode" );
 	print ("SAU:LOC Mode requested ! ");
-	if (SAU_Ready == 1 and SAU_Active == 1)  # and SAU_serviceable == "true"<-- removed cause verif shloud be done on "SAU active" switching>
+	if (SAU_Ready == 1 and SAU_Active == 1 and PNK_Mode == 2)  # and SAU_serviceable == "true"<-- removed cause verif shloud be done on "SAU active" switching>
 	{
 	setprop("autopilot/locks/heading" ,"LOC");
 	setprop("autopilot/settings/target-altitude-ft",2800);

@@ -208,6 +208,11 @@ init_switches = func() {
     append(servout_list,"nav");
     append(serv_list,"instrumentation/nav[1]/serviceable");
     append(servout_list,"nav[1]");
+    append(serv_list,"instrumentation/radar/serviceable");
+    append(servout_list,"radar");
+    
+    
+    
 #    Su-27SK specific systems
     append(serv_list,"controls/switches/PNK-10");
     append(servout_list,"PNK-10");

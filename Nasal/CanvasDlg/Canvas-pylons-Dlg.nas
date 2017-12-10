@@ -18,7 +18,7 @@ var mainVBox = canvas.VBoxLayout.new();
 myCanvas.setLayout(mainVBox);
 
 var pylonsMap = canvas.gui.widgets.Label.new(root, canvas.style, {} )
-	.setImage("Aircraft/SU-27SK/Dialogs/Su-27-Pylons01.png")
+	.setImage("Aircraft/SU-27SK/Dialogs/Su-27-Pylons.png")
 	.setFixedSize(697,197); # image dimensions
 mainVBox.addItem(pylonsMap);
 

@@ -4,6 +4,25 @@
   <name>TurbineTempIndic</name>
 	<path>Turbine-Temp-indic-left.ac</path>
 	
+	
+	<animation>
+	 <type>material</type>
+	 <object-name>Turbine-Needle-right</object-name>
+	 <object-name>Turbine-Needle-right.002</object-name>
+	 <object-name>face</object-name>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/outputs/WarnLeds</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	   <red>0.8</red>
+	   <green>0.5</green>
+	   <blue>0.5</blue>
+	  </emission>
+	</animation>
+	
  <animation>
   <type>shader</type>
   <shader>chrome</shader>

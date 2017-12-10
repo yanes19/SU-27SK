@@ -20,8 +20,8 @@ SU-27 simulation config.
       <fuel-fraction>0.5</fuel-fraction>
 
       <description>Sukoi SU-27SK (JSBsim FDM)</description>
-	  
-	    <rating>
+      
+    <rating>
       <FDM type="int">     4 </FDM>
       <systems type="int"> 3 </systems>
       <cockpit type="int"> 3 </cockpit>
@@ -31,48 +31,48 @@ SU-27 simulation config.
 
     <virtual-cockpit archive="y">true</virtual-cockpit>
     
-	<gui><style><colors>
-		<splash-font>
-			<red>1.0</red>	
-			<green>1.00</green>
-			<blue>1.00</blue>								
-		</splash-font>									
-		<splash-screen>
-			<red>0.117</red>	
-			<green>0.19</green>
-			<blue>0.227</blue>
-		</splash-screen>								
-	</colors></style></gui>
-		
-	  <rendering>
-			<redout>
-				<parameters>
-					<blackout-complete-g>9.1</blackout-complete-g>
-					<blackout-onset-g>7.5</blackout-onset-g>
-				</parameters>
-			</redout>
-		</rendering>
-		
-		<multiplay>
+    <gui><style><colors>
+        <splash-font>
+            <red>1.0</red>  
+            <green>1.00</green>
+            <blue>1.00</blue>                               
+        </splash-font>                                  
+        <splash-screen>
+            <red>0.117</red>    
+            <green>0.19</green>
+            <blue>0.227</blue>
+        </splash-screen>                                
+    </colors></style></gui>
+        
+      <rendering>
+            <redout>
+                <parameters>
+                    <blackout-complete-g>9.1</blackout-complete-g>
+                    <blackout-onset-g>7.5</blackout-onset-g>
+                </parameters>
+            </redout>
+        </rendering>
+        
+        <multiplay>
       <chat_display>1</chat_display>
       <generic> 
-				<!-- Nav lights on -->
-	      <int n="0" alias="/controls/lighting/nav-lights-switch" />
-	      <!-- Beacon on -->
-	      <int n="1" alias="/controls/lighting/beacon-switch" />
-	      <!-- Landing lights on -->
-	      <int n="2" alias="/controls/lighting/landing-lights" />
-		    <!-- Taxi light on -->
-	      <int n="3" alias="/controls/lighting/taxi-light-switch" />	  
-			  <!-- Engine Status -->		  
-			  <int n="5" alias="/engines/engine[0]/state" />
-			  <int n="6" alias="/engines/engine[1]/state" />
-			  <int n="7" alias="/sim/crashed" />
-				<float n="2" alias="/surface-positions/left-flap-pos-norm"/>
-				<float n="3" alias="/surface-positions/right-flap-pos-norm"/>
-				<float n="4" alias="/sim/model/nozzle-animation"/>
-				<float n="8" alias="/engines/engine[0]/augmentation" /> <!-- afterburner/Reheat Left Engine -->
-		    <float n="9" alias="/engines/engine[1]/augmentation" /> <!-- afterburner/Reheat Right Engine -->
+                <!-- Nav lights on -->
+          <int n="0" alias="/controls/lighting/nav-lights-switch" />
+          <!-- Beacon on -->
+          <int n="1" alias="/controls/lighting/beacon-switch" />
+          <!-- Landing lights on -->
+          <int n="2" alias="/controls/lighting/landing-lights" />
+            <!-- Taxi light on -->
+          <int n="3" alias="/controls/lighting/taxi-light-switch" />      
+              <!-- Engine Status -->          
+              <int n="5" alias="/engines/engine[0]/state" />
+              <int n="6" alias="/engines/engine[1]/state" />
+              <int n="7" alias="/sim/crashed" />
+                <float n="2" alias="/surface-positions/left-flap-pos-norm"/>
+                <float n="3" alias="/surface-positions/right-flap-pos-norm"/>
+                <float n="4" alias="/sim/model/nozzle-animation"/>
+                <float n="8" alias="/engines/engine[0]/augmentation" /> <!-- afterburner/Reheat Left Engine -->
+            <float n="9" alias="/engines/engine[1]/augmentation" /> <!-- afterburner/Reheat Right Engine -->
       </generic>
     </multiplay>
 
@@ -86,34 +86,34 @@ SU-27 simulation config.
           <default-field-of-view-deg>55</default-field-of-view-deg>
         </config>
       </view>
-	  
-	  
-	   <view n="101">
-	   <name>Pilot cam</name>
+      
+      
+       <view n="101">
+       <name>Pilot cam</name>
         <internal archive="y">true</internal>
         <config>
-		 <from-model type="bool">true</from-model>
+         <from-model type="bool">true</from-model>
       <from-model-idx type="int">0</from-model-idx>
           <x-offset-m archive="y">0.00</x-offset-m>
           <y-offset-m archive="y">1.45</y-offset-m>
           <z-offset-m archive="y">4.8</z-offset-m>
           <pitch-offset-deg>0</pitch-offset-deg>
-		  <heading-offset-deg>180</heading-offset-deg>
+          <heading-offset-deg>180</heading-offset-deg>
           <default-field-of-view-deg>95</default-field-of-view-deg>
         </config>
       </view>
-	  
-	   <view n="100">
-	   <name>Over the shoulder cam</name>
+      
+       <view n="100">
+       <name>Over the shoulder cam</name>
         <internal archive="y">false</internal>
         <config>
-		 <from-model type="bool">true</from-model>
+         <from-model type="bool">true</from-model>
       <from-model-idx type="int">0</from-model-idx>
          <x-offset-m archive="y">0.5</x-offset-m>
           <y-offset-m archive="y">1.45</y-offset-m>
           <z-offset-m archive="y">5.66</z-offset-m>
           <pitch-offset-deg>0</pitch-offset-deg>
-		  <heading-offset-deg>15</heading-offset-deg>
+          <heading-offset-deg>15</heading-offset-deg>
           <default-field-of-view-deg>95</default-field-of-view-deg>
         </config>
       </view>
@@ -124,7 +124,7 @@ SU-27 simulation config.
       <view n="1">
         <config>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
 
@@ -133,7 +133,7 @@ SU-27 simulation config.
           <y-offset-m archive="y" type="double">5.4</y-offset-m>
           <z-offset-m archive="y">-19.7</z-offset-m>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
 
@@ -142,7 +142,7 @@ SU-27 simulation config.
           <y-offset-m archive="y" type="double">5.4</y-offset-m>
           <z-offset-m archive="y">-19.7</z-offset-m>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
 
@@ -151,7 +151,7 @@ SU-27 simulation config.
            <y-offset-m archive="y" type="double">5.4</y-offset-m>
           <z-offset-m archive="y">-19.7</z-offset-m>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
 
@@ -160,7 +160,7 @@ SU-27 simulation config.
            <y-offset-m archive="y" type="double">5.4</y-offset-m>
           <z-offset-m archive="y">-19.7</z-offset-m>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
 
@@ -169,20 +169,20 @@ SU-27 simulation config.
            <y-offset-m archive="y" type="double">5.4</y-offset-m>
           <z-offset-m archive="y">-19.7</z-offset-m>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
-	  
-	  <view n="7">
+      
+      <view n="7">
         <config>
            <y-offset-m archive="y" type="double">5.4</y-offset-m>
           <z-offset-m archive="y">-19.7</z-offset-m>
           <target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
-		  <pitch-offset-deg archive="y">6</pitch-offset-deg>
+          <pitch-offset-deg archive="y">6</pitch-offset-deg>
         </config>
       </view>
-	  
-	 
+      
+     
 
       <sound>
           <!--<path>Aircraft/SU-27SK/Sounds/Su-27-sound.xml</path>-->  
@@ -197,12 +197,12 @@ SU-27 simulation config.
 -->
       </model>
 
-	  <submodels>
-			<serviceable type="bool">1</serviceable>
-			<path>Aircraft/SU-27SK/Models/Stores/submodels.xml</path>
+      <submodels>
+            <serviceable type="bool">1</serviceable>
+            <path>Aircraft/SU-27SK/Models/Stores/submodels.xml</path>
     </submodels>
-	  
-	<startup>
+      
+    <startup>
    <splash-texture>Aircraft/SU-27SK/Su-27Splach-pic.png</splash-texture>
   </startup>
   
@@ -213,26 +213,26 @@ SU-27 simulation config.
 </hud>
 
 
-	<systems>
-		<autopilot>
-			<path>Aircraft/SU-27SK/Systems/autopilot5.xml</path>
-		</autopilot>
-	
-		<electrical>
-			<!-- note :
-						 null electrical system path here so we can use a nasal based model defined
-						 later in the nasal section of this file.
-			-->
-			<path></path>
-		</electrical>
+    <systems>
+        <autopilot>
+            <path>Aircraft/SU-27SK/Systems/autopilot5.xml</path>
+        </autopilot>
+    
+        <electrical>
+            <!-- note :
+                         null electrical system path here so we can use a nasal based model defined
+                         later in the nasal section of this file.
+            -->
+            <path></path>
+        </electrical>
 
-	</systems>
-	  
-	  <mp-systems>
-			<radar-enabled type="bool">true</radar-enabled>
-			<ecm-rwr-enabled type="bool">true</ecm-rwr-enabled>
-			<combat-enabled type="bool">true</combat-enabled>
-		</mp-systems>	
+    </systems>
+      
+      <mp-systems>
+            <radar-enabled type="bool">true</radar-enabled>
+            <ecm-rwr-enabled type="bool">true</ecm-rwr-enabled>
+            <combat-enabled type="bool">true</combat-enabled>
+        </mp-systems>   
 
     <chase-distance-m type="double" archive="y">-30.0</chase-distance-m>
 
@@ -272,32 +272,31 @@ SU-27 simulation config.
    <line></line>
    <line> </line>
    <line></line>
-   
    <line> </line>
    <key>
-				<name>}</name>
-				<desc>Startup/Shut down engines</desc>
-			</key>
+                <name>}</name>
+                <desc>Startup/Shut down engines</desc>
+            </key>
       </help>
-	  
-	  
-	  <menubar include="Dialogs/menu.xml"/>
+      
+      
+      <menubar include="Dialogs/menu.xml"/>
 
     <weight n="0">
       <name>pylon1</name>
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 11.55 </x-m>
-	      <y-m type="double"> 0.0 </y-m>
-	      <z-m type="double"> -0.404 </z-m>
+          <x-m type="double"> 11.55 </x-m>
+          <y-m type="double"> 0.0 </y-m>
+          <z-m type="double"> -0.404 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="1">
@@ -305,16 +304,16 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 16.00 </x-m>
-	      <y-m type="double"> 0.0 </y-m>
-	      <z-m type="double"> -0.404 </z-m>
+          <x-m type="double"> 16.00 </x-m>
+          <y-m type="double"> 0.0 </y-m>
+          <z-m type="double"> -0.404 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="2">
@@ -322,17 +321,17 @@ SU-27 simulation config.
       <tank>2</tank>
       <weight-lb type="double"> 0 </weight-lb>
       <offsets>
-	      <x-m type="double"> 14.000 </x-m>
-	      <y-m type="double"> -4.836 </y-m>
-	      <z-m type="double"> -0.24 </z-m>
+          <x-m type="double"> 14.000 </x-m>
+          <y-m type="double"> -4.836 </y-m>
+          <z-m type="double"> -0.24 </z-m>
       </offsets>
       <selected>none</selected>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="3">
@@ -340,16 +339,16 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 14.000 </x-m>
-	      <y-m type="double"> 4.836 </y-m>
-	      <z-m type="double"> -0.24 </z-m>
+          <x-m type="double"> 14.000 </x-m>
+          <y-m type="double"> 4.836 </y-m>
+          <z-m type="double"> -0.24 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="4">
@@ -357,16 +356,16 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 14.800 </x-m>
-	      <y-m type="double"> -6.490 </y-m>
-	      <z-m type="double"> -0.02 </z-m>
+          <x-m type="double"> 14.800 </x-m>
+          <y-m type="double"> -6.490 </y-m>
+          <z-m type="double"> -0.02 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="5">
@@ -374,16 +373,16 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 14.800 </x-m>
-	      <y-m type="double"> 6.490 </y-m>
-	      <z-m type="double"> -0.02 </z-m>
+          <x-m type="double"> 14.800 </x-m>
+          <y-m type="double"> 6.490 </y-m>
+          <z-m type="double"> -0.02 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="6">
@@ -391,17 +390,17 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 15.400 </x-m>
-	      <y-m type="double"> -7.570 </y-m>
-	      <z-m type="double"> 0.156  </z-m>
+          <x-m type="double"> 15.400 </x-m>
+          <y-m type="double"> -7.570 </y-m>
+          <z-m type="double"> 0.156  </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>			  <lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>             <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			  <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>             <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-73</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-73</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="7">
@@ -409,17 +408,17 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 15.400 </x-m>
-	      <y-m type="double"> 7.570  </y-m>
-	      <z-m type="double"> 0.156  </z-m>
+          <x-m type="double"> 15.400 </x-m>
+          <y-m type="double"> 7.570  </y-m>
+          <z-m type="double"> 0.156  </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-73</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-73</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="8">
@@ -427,16 +426,16 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 13.550 </x-m>
-	      <y-m type="double"> -1.235 </y-m>
-	      <z-m type="double"> -1.324 </z-m>
+          <x-m type="double"> 13.550 </x-m>
+          <y-m type="double"> -1.235 </y-m>
+          <z-m type="double"> -1.324 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
     </weight>
 
     <weight n="9">
@@ -444,16 +443,16 @@ SU-27 simulation config.
       <weight-lb type="double"> 0 </weight-lb>
       <selected>none</selected>
       <offsets>
-	      <x-m type="double"> 13.550 </x-m>
-	      <y-m type="double">  1.235 </y-m>
-	      <z-m type="double"> -1.324 </z-m>
+          <x-m type="double"> 13.550 </x-m>
+          <y-m type="double">  1.235 </y-m>
+          <z-m type="double"> -1.324 </z-m>
       </offsets>
       <opt><name>none</name>              <lbs type="double">    0.00 </lbs></opt>
-      <opt><name>R-27R</name>							<lbs type="double">  230.21 </lbs></opt>
+      <opt><name>R-27R</name>                           <lbs type="double">  230.21 </lbs></opt>
       <opt><name>R-27ER</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-27T</name>  			      <lbs type="double">  230.91 </lbs></opt>
+      <opt><name>R-27T</name>                 <lbs type="double">  230.91 </lbs></opt>
       <opt><name>R-27ET</name>            <lbs type="double">  230.00 </lbs></opt>
-      <opt><name>R-77</name>      	      <lbs type="double">  230.00 </lbs></opt>
+      <opt><name>R-77</name>              <lbs type="double">  230.00 </lbs></opt>
 
     </weight>
 
@@ -477,14 +476,14 @@ SU-27 simulation config.
  </flight-recorder>
 
     </sim>
-	
-	 <systems>
-		 
-		<hydraulic include="Systems/su-27-hydraulics.xml"/>
-		<SAU include="Systems/SAU-ACS.xml"/>		
-		<SDU-10-fcs include="Systems/FCS.xml"/> 
-  </systems> 
-		
+    
+     <systems>
+         
+        <hydraulic include="Systems/su-27-hydraulics.xml"/>
+        <SAU include="Systems/SAU-ACS.xml"/>        
+        <SDU-10-fcs include="Systems/FCS.xml"/> 
+	  </systems> 
+        
     <ai>
       <submodels>
         <trajectory-markers type="bool">0</trajectory-markers>
@@ -523,9 +522,9 @@ SU-27 simulation config.
         <throttle-norm type="float">0</throttle-norm>
         <reheat-norm type="float">0</reheat-norm>
       </engine>
-    </engines>	
+    </engines>  
 <!--
-	<environment>
+    <environment>
     <turbulence>
       <use-cloud-turbulence>true</use-cloud-turbulence>
     </turbulence>
@@ -536,15 +535,15 @@ SU-27 simulation config.
   <keyboard include="Systems/su-27-keyboard.xml"/>
   </input>
   <constants>
-		<zero type="int">0</zero>
-		<one type="int">1</one>
+        <zero type="int">0</zero>
+        <one type="int">1</one>
   </constants>
 
 
   
   <su-27>
   <instrumentation include="Systems/su-27-instrumentation.xml"/>
-  <WCS include ="Aircraft/SU-27SK/Systems/weaponCS.xml"/>
+  <WCS include ="Systems/weaponCS.xml"/>
   </su-27>
 
   <instrumentation>
@@ -598,38 +597,38 @@ SU-27 simulation config.
   </radar2>
 
    <radar-awg-9>
-	<ccm-mode-spl type="bool">false</ccm-mode-spl>
-	<ccm-mode-alt-dhf type="bool">false</ccm-mode-alt-dhf>
-	<ccm-mode-trs type="bool">false</ccm-mode-trs>
-	<display-rdr type="bool">true</display-rdr>
-	<display-ir type="bool">false</display-ir>
-	<display-iff type="bool">false</display-iff>
-	<mode type="string">PDS</mode> <!-- PDS, RWS, TWS, PDSTT, PSTT, VSL -->
-	<ant-trk-light type="bool">false</ant-trk-light>
-	<rd-rot-light type="bool">false</rd-rot-light>
-	<jat-light type="bool">false</jat-light>
-	<irot-light type="bool">false</irot-light>
-	</radar-awg-9>
-	
-<!--	
+    <ccm-mode-spl type="bool">false</ccm-mode-spl>
+    <ccm-mode-alt-dhf type="bool">false</ccm-mode-alt-dhf>
+    <ccm-mode-trs type="bool">false</ccm-mode-trs>
+    <display-rdr type="bool">true</display-rdr>
+    <display-ir type="bool">false</display-ir>
+    <display-iff type="bool">false</display-iff>
+    <mode type="string">PDS</mode> <!-- PDS, RWS, TWS, PDSTT, PSTT, VSL -->
+    <ant-trk-light type="bool">false</ant-trk-light>
+    <rd-rot-light type="bool">false</rd-rot-light>
+    <jat-light type="bool">false</jat-light>
+    <irot-light type="bool">false</irot-light>
+    </radar-awg-9>
+    
+<!--    
  <transponder>
   <standby type="bool">false</standby>
   <interrogator-standby type="bool">false</interrogator-standby>
   <modes>
    <mode-1>
     <interrogate type="bool">true</interrogate>
-	<respond type="bool">true</respond>
-	<code type="int">78</code>
+    <respond type="bool">true</respond>
+    <code type="int">78</code>
    </mode-1>
    <mode-3A>
     <interrogate type="bool">true</interrogate>
-	<respond type="bool">true</respond>
-	<code type="int">1001</code>
+    <respond type="bool">true</respond>
+    <code type="int">1001</code>
    </mode-3A>
    <mode-C>
     <interrogate type="bool">true</interrogate>
-	<respond type="bool">true</respond>
-	<pressure-altitude type="int">0</pressure-altitude>
+    <respond type="bool">true</respond>
+    <pressure-altitude type="int">0</pressure-altitude>
    </mode-C>
   </modes> 
  </transponder>
@@ -642,17 +641,17 @@ SU-27 simulation config.
     <magnetic-compass>
        <bookmark-heading-deg type="double">43.0</bookmark-heading-deg>
     </magnetic-compass>
-	<tacan>
-	 <power type="bool">1</power>
-	</tacan>
+    <tacan>
+     <power type="bool">1</power>
+    </tacan>
   <warnings>
    <warning-suppress type="bool">false</warning-suppress>
    <attention-lights type="bool">false</attention-lights>
    <signals>
     <cat-1-warning type="bool">false</cat-1-warning>
-	<cat-2-warning type="bool">false</cat-2-warning> 
-	<cat-3-warning type="bool">false</cat-3-warning> 
-	<cat-4-warning type="bool">false</cat-4-warning>   
+    <cat-2-warning type="bool">false</cat-2-warning> 
+    <cat-3-warning type="bool">false</cat-3-warning> 
+    <cat-4-warning type="bool">false</cat-4-warning>   
    </signals>
    <flags>
     <gear-limit type="bool">true</gear-limit>
@@ -663,91 +662,91 @@ SU-27 simulation config.
 <!--
   <efis>
 
-			<ecam>
-					<display-mode type="string">FUEL</display-mode>
-			</ecam>
-			<nd>
-					<display-mode type="string">VOR</display-mode>
-					<display-mode-knob type="int">2</display-mode-knob>
-					<display-range type="int">40</display-range>
-				
-			</nd>
-			<input>
-				<vor-adf-1 type="int">1</vor-adf-1>
-				<vor-adf-2 type="int">1</vor-adf-2>
-				<CSTR type="bool">1</CSTR>
-				<WPT type="bool">1</WPT>
-				<VORD type="bool">1</VORD>
-				<NDB type="bool">1</NDB>
-				<ARPT type="bool">1</ARPT>
-				<WX type="bool">1</WX>
-				<TERR type="bool">1</TERR>
-				<TRAF type="bool">1</TRAF>
-				<taxi type="bool">1</taxi>
-				
-				
-			</input>
+            <ecam>
+                    <display-mode type="string">FUEL</display-mode>
+            </ecam>
+            <nd>
+                    <display-mode type="string">VOR</display-mode>
+                    <display-mode-knob type="int">2</display-mode-knob>
+                    <display-range type="int">40</display-range>
+                
+            </nd>
+            <input>
+                <vor-adf-1 type="int">1</vor-adf-1>
+                <vor-adf-2 type="int">1</vor-adf-2>
+                <CSTR type="bool">1</CSTR>
+                <WPT type="bool">1</WPT>
+                <VORD type="bool">1</VORD>
+                <NDB type="bool">1</NDB>
+                <ARPT type="bool">1</ARPT>
+                <WX type="bool">1</WX>
+                <TERR type="bool">1</TERR>
+                <TRAF type="bool">1</TRAF>
+                <taxi type="bool">1</taxi>
+                
+                
+            </input>
 
-		
-		</efis>
+        
+        </efis>
 -->
 
 </instrumentation>
  
 
   <nasal>
-		
-		<su27>
+        
+        <su27>
      <file>Aircraft/SU-27SK/Nasal/SU-27SK.nas</file>
     </su27>
     <engines>
-		  <file>Aircraft/SU-27SK/Nasal/Engines.nas</file>
+          <file>Aircraft/SU-27SK/Nasal/Engines.nas</file>
     </engines>
-		<maintenance>
-	    <file>Aircraft/SU-27SK/Nasal/maintenance.nas</file>
+        <maintenance>
+        <file>Aircraft/SU-27SK/Nasal/maintenance.nas</file>
     </maintenance>
     <misc><file>Aircraft/SU-27SK/Nasal/Misc.nas</file></misc>
     
     <electricals>
-			<file>Aircraft/SU-27SK/Nasal/Electrical.nas</file>
-		</electricals>
+            <file>Aircraft/SU-27SK/Nasal/Electrical.nas</file>
+        </electricals>
 <!--
-		<eno>
+        <eno>
      <file>Aircraft/SU-27SK/Nasal/eno.nas</file>
     </eno>
 -->
-	<instrumentation>
+    <instrumentation>
       <file>Aircraft/SU-27SK/Nasal/instruments.nas</file>
     </instrumentation>
     <nd>
-			<file>Aircraft/SU-27SK/Models/Interior/Instruments/MFD-IPV/ND.nas</file>
+            <file>Aircraft/SU-27SK/Models/Interior/Instruments/MFD-IPV/ND.nas</file>
     </nd>
 <!--
-		<low>
+        <low>
       <file>Aircraft/SU-27SK/Nasal/low.nas</file>
     </low> 
 -->
 
 
-	<lights>
+    <lights>
       <file>Aircraft/SU-27SK/Nasal/Lights.nas</file>
     </lights>
 
 
     <livery>
-	   <file>Aircraft/SU-27SK/Nasal/liveries.nas</file>
+       <file>Aircraft/SU-27SK/Nasal/liveries.nas</file>
     </livery>
-	
-	  <ACS>
+    
+      <ACS>
      <file>Aircraft/SU-27SK/Nasal/SAU_ACS.nas</file>
     </ACS>
 
-	<canvas_HUD>
-			<file>Aircraft/SU-27SK/Nasal/hud.nas</file>
-	</canvas_HUD>
-	
+    <canvas_HUD>
+            <file>Aircraft/SU-27SK/Nasal/hud.nas</file>
+    </canvas_HUD>
+    
 <!--
-	    <rwr>
+        <rwr>
        <file>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/rwr.nas</file>
     </rwr> 
 -->
@@ -779,15 +778,8 @@ SU-27 simulation config.
 -->
 
 
-		<WCS><file>Aircraft/SU-27SK/Nasal/wcs-helper.nas</file> </WCS>
-
-		<fbw>
-			<file>Aircraft/SU-27SK/Nasal/fbw.nas</file>
-		</fbw>
-		
-		
-		
-		
+    <WCS><file>Aircraft/SU-27SK/Nasal/wcs-helper.nas</file> </WCS>
+  
     <missile>
       <file>Aircraft/SU-27SK/Nasal/weapons/missile.nas</file>
       <file>Aircraft/SU-27SK/Nasal/weapons/Loading_Missiles.nas</file>
@@ -808,11 +800,11 @@ SU-27 simulation config.
     
     
 
-	<CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
-	<CanvasHelpDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/CanvasHelpDlg.nas</file> </CanvasHelpDlg>
-	<CanvasRSBN><file>Aircraft/SU-27SK/Nasal/CanvasDlg/RSBN-Dlg.nas</file></CanvasRSBN>
+    <CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
+    <CanvasHelpDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/CanvasHelpDlg.nas</file> </CanvasHelpDlg>
+    <CanvasRSBN><file>Aircraft/SU-27SK/Nasal/CanvasDlg/RSBN-Dlg.nas</file></CanvasRSBN>
 
-	<CanvasPU184><file>Aircraft/SU-27SK/Nasal/CanvasDlg/ARC-PU-184Dlg.nas</file></CanvasPU184>
+    <CanvasPU184><file>Aircraft/SU-27SK/Nasal/CanvasDlg/ARC-PU-184Dlg.nas</file></CanvasPU184>
 
 
   </nasal>   

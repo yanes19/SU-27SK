@@ -23,7 +23,7 @@
 			  <property>su-27/instrumentation/PNK-10/active-mode</property>
 				  <factor>1</factor>
 	              <min>0</min>
-	              <max>2</max>                
+	              <max>4</max>                
 	              <wrap>false</wrap>
 			</binding>
 		</action>
