@@ -46,17 +46,6 @@
     <output>/controls/flight/elevator-trim</output>
     </switch>
 
-<!--
-    <pure_gain name="elevator trim-calculator">
-    <input>/orientation/alpha-deg</input>
-    <gain>0.06</gain>
-    <clipto>
-    <min>-1</min>
-    <max>1</max>
-    </clipto>
-    <output>/su-27/SDU-10/pitch-limiter-gain2</output>
-    </pure_gain>
--->
     
     <scheduled_gain name="/su-27/SDU-10/pitch-limiter-gain">
     <input>/orientation/alpha-deg</input>
