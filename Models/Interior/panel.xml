@@ -175,6 +175,26 @@
    </overlay>    
   </model>
   
+  <model>
+   <name>Hydro-pneu-indicator</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Hydro-PneumaticsIndicators/Hydro-pneu-indicator.xml</path>
+	<offsets>
+      <x-m>4.3146</x-m>
+      <y-m>0.056 </y-m>
+      <z-m>0.890 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>1</y-offset>
+    <z-offset>1</z-offset>
+   </animation>
+   </overlay>    
+  </model>
+  
 	<model>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/ai/KPP.xml</path>
 	<offsets>
