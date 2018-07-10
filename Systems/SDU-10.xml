@@ -86,8 +86,8 @@
     </tableData>
     </table>
     <clipto>
-    <min>-1</min>
-    <max>1</max>
+    <min>-0.35</min>
+    <max>0.35</max>
     </clipto>
     </scheduled_gain>
 
