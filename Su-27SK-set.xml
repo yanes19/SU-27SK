@@ -20,6 +20,13 @@ SU-27 simulation config.
       <fuel-fraction>0.5</fuel-fraction>
 
       <description>Sukoi SU-27SK (JSBsim FDM)</description>
+      <long-description>
+      This is a 4th generation fighter aircraft was built and planned initially to work in the Soviet Air Force as an air superiority fighter , and as a competitor for  the 4th gen US and generally the west/NATO air forces superiority fighters , especially the Variants of the F-15 Eagle .
+the SK variant of the fighter made first in the USSR and then in Russia and still in service in Russian and  many air forces in the world , NATO reporting name : Flanker B.
+This aircraft have a stunning flight capabilities in combat maneuvers or in aerobatic shows ,
+it was especially known by its amazing aerodynamics . It’s also obvious that it was an icon in the 
+USSR and Russia  aerospace industry .
+      </long-description>
       
     <rating>
       <FDM type="int">     4 </FDM>
