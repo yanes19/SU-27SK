@@ -127,7 +127,9 @@
 			misc.autostart();
 			setprop ("systems/SAU/active", 1);
 			ACS.SAU_AutoLevel();
-			setprop ("controls/gear/gear-down", 0);}
+			setprop ("controls/gear/gear-down", 0);
+			setprop ("autopilot/locks/speed", "speed-with-throttle");
+			setprop ("autopilot/settings/target-speed-kt", 350);}
 		    print("	-In Air startup detected : \n 	- Autostarting engines. \n	- Engaging Autoleveller. ");
 			}
 		#eno.init();
