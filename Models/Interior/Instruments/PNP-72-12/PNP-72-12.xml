@@ -245,7 +245,7 @@
  <type>translate</type>
  <object-name>ILS.HDG.Needle</object-name>
  <property>instrumentation/nav/heading-needle-deflection-norm</property>
- <factor>0.006</factor>
+ <factor>0.01</factor>
  <axis>
   <x>0</x>
   <y>1</y>
