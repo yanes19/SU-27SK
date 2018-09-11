@@ -83,6 +83,43 @@
   <z>0</z>
  </axis>
 </animation>
+
+    <animation>
+		<type>knob</type>
+		<object-name>UV-30-3.knob</object-name>
+	  <property>instrumentation/altimeter/setting-inhg</property>
+	  <factor>30</factor>
+		<center>
+			<x-m>0.001906</x-m><y-m>-0.033838</y-m><z-m>-0.038597</z-m>
+		</center>
+		<axis>
+			<x>1</x><y>0</y><z>0.0</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-adjust</command>
+			  <property>instrumentation/altimeter/setting-inhg</property>
+			  <factor>0.03</factor>
+<!--
+	              <min>0</min>
+	              <max>1</max>                
+-->
+	              <wrap>false</wrap>
+			</binding>
+			
+			<binding>
+			  <command>nasal</command>
+			  <script>
+				  var press_set = getprop("instrumentation/altimeter/setting-inhg");
+				gui.popupTip(sprintf("Altimeter Hg setting : %.2f",  press_set));
+			  
+			  </script>
+			</binding>
+			
+		</action>
+
+	</animation>	
+
 <!--
 These Altimeter devices should be implemented later
 -->

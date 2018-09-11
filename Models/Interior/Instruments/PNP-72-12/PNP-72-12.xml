@@ -244,13 +244,28 @@
 <animation>
  <type>translate</type>
  <object-name>ILS.HDG.Needle</object-name>
- <property>instrumentation/nav/heading-needle-deflection-norm</property>
- <factor>0.01</factor>
- <axis>
-  <x>0</x>
-  <y>1</y>
-  <z>0</z>
- </axis>
+  <condition>
+	<and>
+  <greater-than>
+   <property>instrumentation/nav/crosstrack-error-m</property>
+   <value>-2500</value>
+  </greater-than>
+
+  <less-than>
+   <property>instrumentation/nav/crosstrack-error-m</property>
+   <value>2500</value>
+  </less-than>
+  </and>
+ </condition>
+ <property>instrumentation/nav/crosstrack-error-m</property>
+	<factor>0.000006</factor>
+	<min>-0.0010</min>
+	<max> 0.0010</max>
+	<axis>
+	<x>0</x>
+	<y>1</y>
+	<z>0</z>
+	</axis>
 </animation>
 
 <animation>

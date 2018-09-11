@@ -238,7 +238,7 @@
    <name>Pylons-board</name>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/Pylons-board/Pylons-board.xml</path>
 	<offsets>
-      <x-m>4.28</x-m>
+      <x-m>4.295</x-m>
       <y-m>0.010 </y-m>
       <z-m>1.188 </z-m>
 	  <pitch-deg>-5</pitch-deg>
