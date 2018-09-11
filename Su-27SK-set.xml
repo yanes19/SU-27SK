@@ -89,8 +89,8 @@ USSR and Russia  aerospace industry .
           <x-offset-m archive="y">0.00</x-offset-m>
           <y-offset-m archive="y">1.45</y-offset-m>
           <z-offset-m archive="y">5.23</z-offset-m>
-          <pitch-offset-deg>0</pitch-offset-deg>
-          <default-field-of-view-deg>55</default-field-of-view-deg>
+          <pitch-offset-deg>-17</pitch-offset-deg>
+          <default-field-of-view-deg>84</default-field-of-view-deg>
         </config>
       </view>
       
@@ -483,12 +483,38 @@ USSR and Russia  aerospace industry .
  </flight-recorder>
 
     </sim>
-    
+
+ <!--   the logging here is meant for further FCS study and improvements   -->
+
+<!--
+     <logging>
+  <log>
+   <filename>/****/****/.fgfs/Export/fcs-pitch.csv</filename>
+   <enabled>true</enabled>
+   <interval-ms>200</interval-ms>
+   <delimiter>,</delimiter>
+   <entry>
+    <enabled>true</enabled>
+    <title>pitch</title>
+    <property>/orientation/pitch-deg</property>
+   </entry>
+   <entry>
+    <enabled>true</enabled><ref></ref>
+    <title>elevator-trim</title>
+    <property>/controls/flight/elevator-trim</property>
+   </entry>
+   <entry>
+    <enabled>true</enabled><ref></ref>
+    <title>elevator-ctrl</title>
+    <property>/controls/flight/elevator</property>
+   </entry>
+  </log>
+ </logging>
+-->
      <systems>
          
         <hydraulic include="Systems/su-27-hydraulics.xml"/>
         <SAU include="Systems/SAU-ACS.xml"/>        
-        <SDU-10-fcs include="Systems/FCS.xml"/> 
 	  </systems> 
         
     <ai>

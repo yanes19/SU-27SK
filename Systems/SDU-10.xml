@@ -6,7 +6,8 @@
     
     
     <property value="1">/su-27/SDU-10/serviceable</property>
-    <property value="1">/su-27/SDU-10/active</property>
+    <property value="1">/su-27/SDU-10/active</property>.
+    <property value="1">/su-27/SDU-10/pitch-trim-active </property>
     
     
     <property value="1">/su-27/instrumentation/ASI/airspeed-kmh</property>   
@@ -15,8 +16,13 @@
     <property value="1">/su-27/SDU-10/pitch-limiter-switch-active</property>
     <property value="0">/su-27/SDU-10/pitch-limiter-gain</property>
     
-
+    <property value="0">/su-27/SDU-10/pitch-stab-gain</property>
+	<property value="1">/su-27/SDU-10/pitch-stab-switch-active</property>
     
+	<property value="0">/su-27/SDU-10/pitch-trim-sum</property>
+
+
+   
     
 
     
@@ -34,40 +40,114 @@
     </test>
     <output>/su-27/SDU-10/active</output>
     </switch>
-    
+<!--
+    ***************************************************
+-->
 
-    <switch name = "pitch-limiter-switch">
-    <default value= "/su-27/SDU-10/pitch-limiter-gain"/>
+	<summer name="/su-27/SDU-10/pitch-trim-sum">
+		<input>/su-27/SDU-10/pitch-limiter-gain</input>
+		<input>/su-27/SDU-10/pitch-stab-gain</input>
+		<clipto>
+			<min>-1</min>
+			<max>1</max>
+		</clipto>
+	</summer>
+
+    <switch name = "pitch-trim-switch">
+    <default value= "/su-27/SDU-10/pitch-trim-sum"/>
      <test logic="OR" value="0">
-         /su-27/SDU-10/pitch-limiter-switch-active EQ 0
+         /su-27/SDU-10/pitch-trim-active EQ 0 
          /su-27/SDU-10/active EQ 0
          /su-27/instrumentation/ASI/airspeed-kmh LE 1
     </test>
     <output>/controls/flight/elevator-trim</output>
     </switch>
 
-    
-    <scheduled_gain name="/su-27/SDU-10/pitch-limiter-gain">
-    <input>/orientation/alpha-deg</input>
-    <gain>1</gain>
-    <table>
-    <independentVar>/su-27/instrumentation/ASI/airspeed-kmh</independentVar>
-    <tableData>
-    300    0.01
-    800    0.07
-    1200   0.10
-    1600   0.12
-    </tableData>
-    </table>
-    <clipto>
-    <min>-1</min>
-    <max>1</max>
-    </clipto>
+
+
+
+
+<!--***********************************************-->
+
+    <switch name = "pilot-stick-status">
+    <default value= "0"/>
+     <test logic="OR" value="0">
+         /su-27/SDU-10/pitch-trim-active EQ 0 
+         /su-27/SDU-10/active EQ 0
+         /su-27/instrumentation/ASI/airspeed-kmh LE 1
+	  	 /controls/flight/elevator GE  0.15
+		 /controls/flight/elevator LE -0.15
+    </test>
+    <output>/su-27/SDU-10/pilot-input-state</output>
+    </switch>
+
+    <scheduled_gain name="/su-27/SDU-10/pitch-limiter-gain-raw">
+	    <input>/orientation/alpha-deg</input>
+	    <gain>1</gain>
+	    <table>
+		    <independentVar>/su-27/instrumentation/ASI/airspeed-kmh</independentVar>
+		    <tableData>
+		    300    0.01
+		    800    0.07
+		    1200   0.10
+		    1600   0.12
+		    </tableData>
+	    </table>
+	    <clipto>
+		    <min>-1</min>
+		    <max>1</max>
+	    </clipto>
     </scheduled_gain>
+    
+    <switch name = "pitch-limiter-switch">
+    <default value= "/su-27/SDU-10/pitch-limiter-gain-raw"/>
+     <test logic="OR" value="0">
+         /su-27/SDU-10/pitch-limiter-switch-active EQ 0
+         /su-27/SDU-10/active EQ 0
+         /su-27/instrumentation/ASI/airspeed-kmh LE 1
+<!--
+         /controls/flight/elevator LE  0.15
+         /controls/flight/elevator GE -0.15
+-->
+
+<!--
+         /orientation/pitch-deg GE  80
+         /orientation/pitch-deg LE -80
+-->
+
+    </test>
+    <output>/su-27/SDU-10/pitch-limiter-gain</output>
+    </switch>
+
+	<pure_gain name="/su-27/SDU-10/pitch-stab-gain-raw">
+		<input>/orientation/pitch-rate-degps </input>
+		<gain>0.036</gain>
+		<clipto>
+			<min>-1</min>
+			<max>1</max>
+		</clipto>
+	</pure_gain>
+	
+    <switch name = "pitch-stab-switch">
+    <default value= "/su-27/SDU-10/pitch-stab-gain-raw"/>
+     <test logic="OR" value="0">
+		/su-27/SDU-10/pitch-stab-switch-active EQ 0
+		/su-27/SDU-10/active EQ 0
+		/su-27/instrumentation/ASI/airspeed-kmh LE 1
+		
+
+
+		/orientation/pitch-rate-degps GE  5
+		/orientation/pitch-rate-degps LE -5
+     
+    </test>
+    <output>/su-27/SDU-10/pitch-stab-gain</output>
+    </switch>
+
 
     </channel>
     
-    <property value="1">/su-27/SDU-10/roll-limiter-switch-active</property>
+    <property value="0">/su-27/SDU-10/roll-limiter-switch-active</property>
     
     
     <channel name = "Roll-limiter">
@@ -94,7 +174,7 @@
 
 <!--
 a scheduled gain that mutiply controls/aileron by 0.xx 
-so it transfer stick input * reduce-config = trim with a IAS table or alpha 
+so it transfer stick input * reduce-config = trim with a IAS table (or alpha )
 -->
 
     <switch name = "roll-limiter-switch">
@@ -112,7 +192,7 @@ so it transfer stick input * reduce-config = trim with a IAS table or alpha
     
     </channel>
     
-    <property value="1">/su-27/SDU-10/yaw-limiter-switch-active</property>
+    <property value="0">/su-27/SDU-10/yaw-limiter-switch-active</property>
     
     <channel>
         
