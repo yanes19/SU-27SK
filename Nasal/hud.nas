@@ -15,7 +15,7 @@ var HUD = {
     "name": "HUD",
     "size": [1024,1024],
     "view": [256,256],
-    "mipmapping": 1
+    "mipmapping": 0
   },
   new: func(placement)
   {
@@ -144,7 +144,7 @@ var HUD = {
 		alpha:      "/orientation/alpha-deg",
 		beta:       "/orientation/side-slip-deg",
 		ias:        "su-27/instrumentation/ASI/airspeed-kmh",
-		altitude:   "su-27/instrumentation/UV-30-3/indicated-altitude-m",
+		altitude:   "su-27/instrumentation/PNK-10/str-PNK-Altitude",	#PNK altitude
 		vs:         "/velocities/vertical-speed-fps",
 		rad_alt:    "/instrumentation/radar-altimeter/radar-altitude-ft",
 		airspeed:   "su-27/instrumentation/ASI/airspeed-kmh",
@@ -215,20 +215,15 @@ var HUD = {
 		me.svg.show();
 #	print ("SEE hud");
 		}
-    me.airspeed.setText(sprintf("%d", me.input.ias.getValue()));
-    me.altitude.setText(sprintf("%2d", me.input.altitude.getValue()));
-    me.APairspeed.setText(sprintf("%2d", Kts2KmH(me.input.target_spd.getValue())));
-    me.APaltitude.setText(sprintf("%2d", ft2m(me.input.target_alt.getValue())));
+		
+    me.airspeed.setText(sprintf("%d", me.input.ias.getValue()/10)~"0");
+    me.altitude.setText( me.input.altitude.getValue());
+    if (me.input.target_spd.getValue()!= nil){
+    me.APairspeed.setText(sprintf("%2d", Kts2KmH(me.input.target_spd.getValue())/10)~"0");}
+    if(me.input.target_alt.getValue()!= nil){
+    me.APaltitude.setText(sprintf("%2d", ft2m(me.input.target_alt.getValue())/10)~"0");}
 
-##    var rad_alt = me.input.rad_alt.getValue();
-##    if( rad_alt and rad_alt < 5000 ) # Only show below 5000AGL
-##      rad_alt = sprintf("R %4d", rad_alt);
-##    else
-##      rad_alt = nil;
-##    me.rad_alt.setText(rad_alt);
- 
-##    #me.hdg.setText(sprintf("%03d", me.input.hdg.getValue()));
-    
+
     me.HdgScale.setTranslation(0, me.input.hdg.getValue()/180);
     
     #heading tape

@@ -22,6 +22,25 @@ var activeAERfreq = 0;
 var PNK_Selectedradials = 0;
 var currentWPT = getprop("autopilot/route-manager/current-wp");
 
+var P_184PPMs = func {
+	var FreqToSet = "";
+	var ActiveFreq = getprop("su-27/instrumentation/PU-184/active-PPM");
+	if(ActiveFreq == "9"){ActiveFreq = "su-27/instrumentation/PU-184/NPN"}
+	else{ActiveFreq= "su-27/instrumentation/PU-184/PPM"~ActiveFreq}
+	#print(ActiveFreq);
+	setprop("instrumentation/adf/frequencies/selected-khz", getprop(ActiveFreq));
+	}
+	
+
+var RSBN_PPMs = func {
+	var FreqToSet = "";
+	var ActiveFreq = getprop("su-27/instrumentation/RSBN/active-PPM");
+	if(ActiveFreq == "9"){ActiveFreq = "su-27/instrumentation/RSBN/NPN"}
+	else{ActiveFreq= "su-27/instrumentation/RSBN/PPM"~ActiveFreq}
+	#print(ActiveFreq);
+	setprop("instrumentation/nav/frequencies/selected-mhz", getprop(ActiveFreq));
+	}
+
 var PNK_DataUpdate = func{
 	##Continuously update radials from selected navigation device :
 	var NavRAdials = getprop("instrumentation/nav/radials/reciprocal-radial-deg");
@@ -34,7 +53,8 @@ var PNK_DataUpdate = func{
 	# PROGRAM Route mode .
 	if (PNK_Mode == 0){PNK_Selectedradials = WpBearing};	
 	#NAVIG (radio nav ) mode .
-	if (PNK_Mode == 1){PNK_Selectedradials = NavRAdials or 0.0};
+	if (PNK_Mode == 1){PNK_Selectedradials = NavRAdials or 0.0;
+		RSBN_PPMs()};
 	#ARC PU-184 mode .
 	if (PNK_Mode == 1.1){PNK_Selectedradials = NDBRadials + Hdg}; 
 	#POSADKA/LAND mode should be activated from OC then set the LOC frequency in Nav1 by the selected AER button handler routine
@@ -54,6 +74,24 @@ var PNK_DataUpdate = func{
 	if (getprop("autopilot/route-manager/current-wp") != currentWPT){
 	setprop("instrumentation/nav/radials/selected-deg",getprop("instrumentation/gps/desired-course-deg"));
 	currentWPT = getprop("autopilot/route-manager/current-wp")}
+	
+	#set PNK-10 altitude value source 
+	var indicatedBarAltitude = getprop("su-27/instrumentation/UV-30-3/indicated-altitude-m")or 0;
+	var indicatedRadarAltitude =getprop("su-27/instrumentation/Rdr.Altimeter/altitude")or 0;
+	var PNK_Altitude = 0;
+	var str_PNK_Altitude = "";
+	
+	if (indicatedRadarAltitude < 1500)
+	{PNK_Altitude = indicatedRadarAltitude; 
+	str_PNK_Altitude = sprintf("%2d",PNK_Altitude)~"p";
+	}else{
+	 PNK_Altitude= indicatedBarAltitude;
+	 str_PNK_Altitude=sprintf("%2d", indicatedBarAltitude/10)~"0" ;
+	 }
+	setprop("su-27/instrumentation/PNK-10/str-PNK-Altitude",str_PNK_Altitude);
+	setprop("su-27/instrumentation/PNK-10/PNK-Altitude",PNK_Altitude);
+	#;
+	
 	
 	settimer(PNK_DataUpdate, 0);
 }
@@ -158,14 +196,7 @@ var P_184PPMs = func {
 #}
 
 ##### On-Board computer control unit handler routines
-var RSBN_PPMs = func {
-	var FreqToSet = "";
-	var ActiveFreq = getprop("su-27/instrumentation/RSBN/active-PPM");
-	if(ActiveFreq == "9"){ActiveFreq = "su-27/instrumentation/RSBN/NPN"}
-	else{ActiveFreq= "su-27/instrumentation/RSBN/PPM"~ActiveFreq}
-	#print(ActiveFreq);
-	setprop("instrumentation/nav/frequencies/selected-mhz", getprop(ActiveFreq));
-	}
+
 var PPM1btnPress = func{
 	#OC ready , so we put it in "wait for ppm" status .
 	if(getprop("su-27/instrumentation/OC-controller/status") == 1){
