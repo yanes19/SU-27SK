@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name type="string" n="1">In cruise :Engine running,3000 meter altitude,AP engaged</name>
+
+    <overlay>
+		<sim>
+		<presets>
+			<airspeed-kt type="double">432</airspeed-kt>
+			<altitude-ft type="double">9842</altitude-ft>
+		</presets>
+		</sim>
+		<canopy>
+			<position-norm type="double">0</position-norm>
+		</canopy>
+
+        <fdm>
+            <jsbsim>
+                <fcs>
+                    
+                </fcs>
+                <propulsion>
+                    <engine n="0">
+                        <cutoff-commanded type="bool">false</cutoff-commanded>
+                    </engine>
+                    <engine n="1">
+                        <cutoff-commanded type="bool">false</cutoff-commanded>
+                    </engine>
+                </propulsion>
+                <systems>
+                    <electrical>
+                    </electrical>
+
+                </systems>
+            </jsbsim>
+        </fdm>
+        <controls>
+            <engines>
+                <engine n="0">
+                    <starter-cmd type="bool">true</starter-cmd>
+                    <cutoff type="bool">false</cutoff>
+                    
+                </engine>
+                <engine n="1">
+                    <starter-cmd type="bool">true</starter-cmd>
+                    <cutoff type="bool">false</cutoff>
+                </engine>
+			<engine n="0">
+                <running type="bool">true</running>
+                <throttle>0.40</throttle>
+            </engine>
+			<engine n="1">
+                <running type="bool">true</running>
+                <throttle>0.40</throttle>
+            </engine>
+            </engines>
+            
+<!--
+            <electric>
+
+            </electric>.
+            
+            <fuel>
+                
+            </fuel>
+            
+-->
+			<gear>
+				<gear-down type="bool">false</gear-down>
+			</gear>  
+            
+        </controls>
+        
+        <engines>
+            <engine n="0">
+                <running type="bool">true</running>
+            </engine>
+            <engine n="1">
+                <running type="bool">true</running>
+            </engine>            
+        </engines>
+        
+
+
+   
+   <systems>
+
+	<SAU>
+		<serviceable type="bool">true</serviceable>
+		<ready type="bool">true</ready>
+		<active type="bool">true</active>
+		
+	</SAU>
+	</systems>
+	
+   <autopilot>
+	   <settings>
+		   <target-altitude-ft type="double">9842</target-altitude-ft>
+	   </settings>
+	   <locks>pitch-hold</locks>
+   </autopilot>
+                  
+<!--
+	<su-27>
+	</su-27>
+-->
+        
+        
+    </overlay>
+</PropertyList>

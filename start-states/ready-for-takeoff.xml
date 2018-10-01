@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name type="string" n="0">Engine running, ready for takeoff. Parking brakes on.</name>
+
+    <overlay>
+		<canopy>
+			<position-norm type="double">0</position-norm>
+		</canopy>
+        <fdm>
+            <jsbsim>
+                <fcs>
+                    
+                </fcs>
+                <propulsion>
+                    <engine n="0">
+                        <cutoff-commanded type="bool">false</cutoff-commanded>
+                    </engine>
+                    <engine n="1">
+                        <cutoff-commanded type="bool">false</cutoff-commanded>
+                    </engine>
+                </propulsion>
+                <systems>
+                    <electrical>
+                    </electrical>
+                </systems>
+            </jsbsim>
+        </fdm>
+        <controls>
+            <engines>
+                <engine n="0">
+                    <starter-cmd type="bool">true</starter-cmd>
+                    <cutoff type="bool">false</cutoff>
+                </engine>
+                <engine n="1">
+                    <starter-cmd type="bool">true</starter-cmd>
+                    <cutoff type="bool">false</cutoff>
+                </engine>
+			<engine n="0">
+                <running type="bool">true</running>
+            </engine>
+			<engine n="1">
+                <running type="bool">true</running>
+            </engine>
+            </engines>
+            
+            <electric>
+
+            </electric>.
+            
+            <fuel>
+                
+            </fuel>
+            
+        </controls>
+        
+        <engines>
+            <engine n="0">
+                <running type="bool">true</running>
+            </engine>
+            <engine n="1">
+                <running type="bool">true</running>
+            </engine>            
+        </engines>
+        
+        <su-27sk>
+
+        </su-27sk>
+    </overlay>
+
+</PropertyList>

@@ -481,7 +481,9 @@ USSR and Russia  aerospace industry .
   </config>
   <taille type="int">50</taille>
  </flight-recorder>
-
+ 
+	<state include="start-states/ready-for-takeoff.xml" n="0"/>
+	<state include="start-states/cruise.xml" n="1"/>
     </sim>
 
  <!--   the logging here is meant for further FCS study and improvements   -->
