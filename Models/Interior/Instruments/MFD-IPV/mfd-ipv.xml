@@ -70,6 +70,19 @@
 		</less-than>   
 	</condition>
 </animation>
+
+
+ <animation>
+<type>select</type>
+<object-name>IPV.cz5</object-name>
+<object-name>IPV.cz6</object-name>
+	<condition>
+		<less-than>
+		<property>constants/one</property>
+		<value>0</value>
+		</less-than>   
+	</condition>
+</animation>
  
 </PropertyList>
 
