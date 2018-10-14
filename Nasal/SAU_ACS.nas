@@ -31,18 +31,28 @@ var SAUNavigHold = func {
 #	   print ("SAU:Navig mode NOT engaged ! No active route !");
 #	   }
 #	   }   
-	if (RoutMgrActive == 1){
-		if(PNK_Mode == 0){
+	
+		if(PNK_Mode == 0)
+		{
+		if (RoutMgrActive == 1)
+		{
 			setprop("autopilot/locks/heading" , "true-heading-hold");
 		print ("SAU engaged : Following PNK-10 'PROGRAM' route mode ")
+		
+		}else 
+		{
+			setprop("systems/SAU/ready" , 0);
+		   print ("SAU:Navig mode NOT engaged ! No active route !");
+	    }
 		}
-		}
+	
+	
 		if (PNK_Mode == 1){setprop("autopilot/locks/heading" ,"nav1-hold");
 		setprop("autopilot/locks/altitude" , "altitude-hold"); 
 		print ("SAU engaged : Following PNK-10 'RSBN NAVIG' mode ")}
 	
 	}	
-	print ("end of SAUNavigHold Proc"); 
+	#print ("end of SAUNavigHold Proc"); 
 }
 
 
