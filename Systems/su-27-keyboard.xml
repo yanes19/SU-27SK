@@ -141,16 +141,29 @@
   </binding>
  </key>
  
+  <key n="90">
+  <name>Z</name>
+  <desc>Reset view distance</desc>
+  <repeatable type="bool">false</repeatable>
+   <binding>
+   <command>nasal</command>
+    <script>
+		setprop("sim/current-view/z-offset-m",5.23)
+	  </script>
+   </binding>
+ </key>
+ 
  <key n="122">
   <name>z</name>
   <desc>Increase view distance</desc>
-  <repeatable type="bool">true</repeatable>
+  <repeatable type="bool">false</repeatable>
    <binding>
    <command>nasal</command>
     <script>
 		setprop("sim/current-view/z-offset-m",200)
 	  </script>
   </binding>
+
  </key>
  
  <key n="357">
