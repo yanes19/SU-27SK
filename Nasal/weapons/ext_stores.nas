@@ -431,7 +431,7 @@ var AirToGround = func()
 
 var FireableAgain = func()
 {
-    for(var i = 0 ; i < 9 ; i += 1)
+    for(var i = 0 ; i < 10 ; i += 1)
     {
         # to make it fireable again
         setprop("/controls/armament/station["~ i ~"]/release", 0);
@@ -489,7 +489,7 @@ dropLoad = func(number)
             if(getprop("/controls/armament/station["~ number ~"]/release") == 0)
             {
                 m2000_load.dropMissile(number);
-                print("firing load at : "  ,number);
+                print("firing load at pylon : "  ,number);
             }
         }
     }
@@ -518,9 +518,11 @@ dropMissile = func(number)
         Current_missile.search(target);
         Current_missile.release();
         setprop("/sim/weight["~ number ~"]/weight-lb", 0);
+        setprop("fdm/jsbsim/inertia/pointmass-weight-lbs["~ number ~"]", 0);
     }
     setprop("/controls/armament/station["~ number ~"]/release", 1);
-    after_fire_next();
+    #after_fire_next();
+    SelectNextPylon();
 }
 
 var tank_submodel = func(pylone, select)
@@ -564,7 +566,7 @@ var inscreased_selected_pylon = func()
         SelectedPylon=-1;
     }
     
-    for(var i = SelectedPylon + 1 ; i < 9 ; i += 1)
+    for(var i = SelectedPylon + 1 ; i < 10 ; i += 1)
     {
         if(getprop("/sim/weight["~ i ~"]/selected"))
         {
@@ -599,7 +601,7 @@ var decreased_selected_pylon = func()
 var loadsmini = func()
 {
     var out = 0;
-    for(var i = 0 ; i < 9 ; i += 1)
+    for(var i = 0 ; i < 10 ; i += 1)
     {
         if(getprop("/sim/weight["~ i ~"]/weight-lb") > 1)
         {
@@ -618,7 +620,7 @@ var loadsmini = func()
 var loadsmaxi = func()
 {
     var out = 0;
-    for(var i = 0 ; i < 9 ; i += 1)
+    for(var i = 0 ; i < 10 ; i += 1)
     {
         if(getprop("/sim/weight["~ i ~"]/weight-lb") > 1)
         {
@@ -687,7 +689,7 @@ var after_fire_next = func()
     
     if(getprop("/sim/weight["~ SelectedPylon ~"]/weight-lb") < 1)
     {
-        for(var i = 0 ; i < 9 ; i += 1)
+        for(var i = 0 ; i < 10 ; i += 1)
         {
             if(getprop("/sim/weight["~ i ~"]/weight-lb") > 1)
             {
@@ -714,16 +716,19 @@ var SelectNextPylon = func()
 		var leftPylons = [0,2,4,6,8];
 		var RightPylons = [1,3,5,7,9];
 
-		var SelectedPylon		 = props.globals.getNode("controls/armament/missile/current-pylon", 1);
-		var Selectedweapon	 = getprop("controls/armament/selected-weapon");
+		var SelectedPylon	= props.globals.getNode("controls/armament/missile/current-pylon", 1);
+		var Selectedweapon	= getprop("controls/armament/selected-weapon");
 		
-		for(var i = 0 ; i < 9 ; i += 1)
+		for(var i = 0 ; i < 10 ; i += 1)
         {
+					print(i);
+					print("Selected at i :  " ~ getprop("sim/weight["~ i ~"]/selected"));
+					
 					if(getprop("sim/weight["~ i ~"]/selected") == Selectedweapon and getprop("controls/armament/station["~ i ~"]/release") == 0)
 					{
 							SelectedPylon.setValue(i);
 							print("Next selected = pylon",i);
-							setprop("/sim/messages/atc", "Next selected = pylon"~i);
+							setprop("/sim/messages/atc", "Next selected = pylon"~ SelectedPylon.getValue(i));
 							break;
 					}
         }

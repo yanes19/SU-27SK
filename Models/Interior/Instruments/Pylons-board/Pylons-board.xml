@@ -2,4 +2,324 @@
 
 <PropertyList>
   <path>Pylons-board.ac</path>
+<!--
+  ***** Animations for Ready state yellow leds*****
+-->
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.08</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[7]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.06</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[5]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.04</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[3]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.10</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[9]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  
+  
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.02</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>    
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.01</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.09</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[8]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.03</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  	
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.05</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[4]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>    
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-ready.07</object-name>
+	 <condition>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[6]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation>  	
+	
+<!--
+  ***** Animations for Selected weapon state greeen leds*****
+-->	
+	
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.01</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>	   
+	 </condition>
+	</animation>  	
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.02</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[1]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>	   
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.03</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[2]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.04</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[3]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[3]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.05</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[4]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[4]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>	   
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.06</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[5]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[5]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.07</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[6]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[6]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.08</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[7]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[7]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.09</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[8]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[8]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+	<animation>
+	 <type>select</type> 
+	 <object-name>Pylon-Selected.10</object-name>
+	 <condition>
+	   <equals>
+	   <property>controls/armament/selected-weapon</property>
+	   <property>sim/weight[9]/selected</property>
+	   </equals>
+		 <not>
+	   <equals>
+	   <property>fdm/jsbsim/inertia/pointmass-weight-lbs[9]</property>
+	   <value>0</value>
+	   </equals>
+		 </not>
+	 </condition>
+	</animation> 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
 </PropertyList>

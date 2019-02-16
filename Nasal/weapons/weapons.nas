@@ -32,6 +32,7 @@ fire_MG = func(b) {
             if(time - dt > 1)
             {
                 dt = time;
+                m2000_load. SelectNextPylon();## TEST
                 var pylon = getprop("/controls/armament/missile/current-pylon");
                 m2000_load.dropLoad(pylon);
                 print("Should fire Missile");
