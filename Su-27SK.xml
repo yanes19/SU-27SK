@@ -73,15 +73,7 @@
      <y>   0.00 </y>
      <z> -21.56 </z>
    </location>
-   <pointmass name="Payload">
-    <description> 17126 LBS + full (13898 LBS) fuel should bring model up to entered max weight</description>
-    <weight unit="LBS">   8563.0 </weight>
-    <location name="POINTMASS" unit="IN">
-      <x> 517.35 </x>
-      <y>   0.00 </y>
-      <z> -21.56 </z>
-    </location>
-  </pointmass> 
+******************************************************************
 
    <pointmass name="pylon0-load">
     <description> Weapon mass at pylon n:1</description>
@@ -191,6 +183,16 @@
       <z>-0.404 </z>
     </location>
   </pointmass>
+  
+   <pointmass name="Payload">
+    <description> 17126 LBS + full (13898 LBS) fuel should bring model up to entered max weight</description>
+    <weight unit="LBS">   8563.0 </weight>
+    <location name="POINTMASS" unit="IN">
+      <x> 517.35 </x>
+      <y>   0.00 </y>
+      <z> -21.56 </z>
+    </location>
+  </pointmass> 
  </mass_balance>
 
  <ground_reactions>
