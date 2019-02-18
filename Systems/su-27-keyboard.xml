@@ -33,6 +33,21 @@
     <script>guns.fire_MG(1);</script>
   </binding>
  </key>
+ 
+ <key n="45">
+  <name>-</name>
+  <desc>Cycle selected WCS weapon</desc>
+  <binding>
+ <command>property-cycle</command>
+ <property>controls/armament/selected-weapon</property>
+ <value>R-73</value>
+ <value>R-27R</value>
+ <value>R-27T</value>
+ <value>R-27ER</value>
+ <value>R-27ET</value>
+</binding>
+ </key> 
+
   
  <key n="76">
   <name>L</name>
