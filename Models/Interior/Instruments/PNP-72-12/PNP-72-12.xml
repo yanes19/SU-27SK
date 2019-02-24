@@ -335,6 +335,32 @@
  </axis>
 </animation>
 
+
+<animation>
+	<type>knob</type>
+	<object-name>PNP.knobSetPathAngle</object-name>
+  <property>instrumentation/nav/radials/selected-deg</property>
+  <factor>1.0</factor>
+	<center>
+		<x-m>0.00936</x-m><y-m>0.044</y-m><z-m>-0.0482</z-m>
+	</center>
+	<axis>
+		<x>1</x><y>0</y><z>0.0</z>
+	</axis>
+	<action>
+		<binding>
+		  <command>property-adjust</command>
+		  <property>instrumentation/nav/radials/selected-deg</property>
+		  <factor>1</factor>
+              <min>0</min>
+              <max>360</max>                
+              <wrap>true</wrap>
+		</binding>
+	</action>
+
+</animation>	
+
+
 <animation>
  <type>rotate</type>
  <object-name>PNP.knobSetPathAngle</object-name>
