@@ -147,7 +147,7 @@
 
     </channel>
     
-    <property value="0">/su-27/SDU-10/roll-limiter-switch-active</property>
+    <property value="1">/su-27/SDU-10/roll-limiter-switch-active</property>
     
     
     <channel name = "Roll-limiter">

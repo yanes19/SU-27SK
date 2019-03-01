@@ -236,7 +236,7 @@
   <debug>false</debug>
   <enable>
    <condition>
-	   <and>
+   <and>
     <not-equals>
 	<property>/autopilot/locks/heading</property>
 	<value />
@@ -245,7 +245,7 @@
 	  <property>fdm/jsbsim/gear/wow</property>
 	  <value>false</value>
 	 </equals>
-</and>
+	</and>
    </condition>
   </enable>
   <input>
@@ -358,6 +358,8 @@ Experimental additions by Yanes
     <u_max>4.0</u_max>   <!-- maximum output clamp -->
    </config>
   </pid-controller>
+  
+
     
 <!--************************
 EndOf testsby Yanes

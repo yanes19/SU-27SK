@@ -34,10 +34,10 @@
 		<!-- Pretend that RSBN AER is PPM**(Still to decide  or find alternative way !!) -->
 		<active-PPM type="int">1</active-PPM>
 		<active-AER type="int">1</active-AER>
-		<AER>116.50</AER>
+		<AER>108.50</AER>
 		<AER-alt>114.20</AER-alt>
 		<AER-alt2>114.20</AER-alt2>
-		<PPM1>114.2</PPM1>
+		<PPM1>116.5</PPM1>
 		<PPM2>114.2</PPM2>
 		<PPM3>114.2</PPM3>
 		<PPM4>114.2</PPM4>

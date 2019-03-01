@@ -233,7 +233,7 @@
  <type>translate</type>
  <object-name>GS.Needle</object-name>
  <property>instrumentation/nav/gs-needle-deflection-norm</property>
- <factor>0.006</factor>
+ <factor>0.007</factor>
  <axis>
   <x>0</x>
   <y>0</y>
@@ -258,7 +258,7 @@
   </and>
  </condition>
  <property>instrumentation/nav/crosstrack-error-m</property>
-	<factor>0.000006</factor>
+	<factor>0.000016</factor>
 	<min>-0.0010</min>
 	<max> 0.0010</max>
 	<axis>
