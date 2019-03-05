@@ -11,9 +11,9 @@
 		<path>Aircraft/SU-27SK/Sounds/su-startup.wav</path>
 		<condition>
 				<and>
-						<property>sim/current-view/internal</property>
-						<property>controls/engines/engine/starter</property>
-				</and>
+					<property>sim/current-view/internal</property>
+					<property>controls/engines/engine/starter</property>
+			</and>
 		</condition>
 		<pitch>
 			<property>engines/engine[0]/n1</property>
@@ -95,8 +95,10 @@
 				<y>0.0</y>
 				<z>0.6</z>
 		</position>
+<!--
 		<reference-dist>1.0</reference-dist>
 		<max-dist>15.0</max-dist>
+-->
 </AfterBurner>
 
 
@@ -131,7 +133,7 @@
 		</position>
 		<reference-dist>1.0</reference-dist>
 		<max-dist>8.0</max-dist>
-	</stall>	
+</stall>	
 	
 	
 	
@@ -143,10 +145,14 @@
 		<path>Aircraft/SU-27SK/Sounds/su-startup.wav</path>
 		<condition>
 				<and>
-						<not>
-						<property>sim/current-view/internal</property>
-						</not>
-						<property>controls/engines/engine/starter</property>
+					<equals>
+					<property>sim/current-view/internal</property>
+					<value>false</value>
+					</equals>
+					<equals>
+					<property>controls/engines/engine/starter</property>
+					<value>true</value>
+					</equals>
 				</and>
 		</condition>
 		<pitch>
@@ -166,8 +172,11 @@
 				<y>0.0</y>
 				<z>0.6</z>
 		</position>
+		
+<!--
 		<reference-dist>1.0</reference-dist>
 		<max-dist>15.0</max-dist>
+-->
 </engine>
 
 
@@ -198,8 +207,11 @@
 				<y>0.0</y>
 				<z>0.2</z>
 		</position>
+<!--
 		<reference-dist>1.0</reference-dist>
+	
 		<max-dist>15.0</max-dist>
+-->	
 </engine>
 
 
@@ -229,8 +241,10 @@
 				<y>0.0</y>
 				<z>0.6</z>
 		</position>
+<!--
 		<reference-dist>1.0</reference-dist>
 		<max-dist>15.0</max-dist>
+-->
 </AfterBurner>
 
 <!--ALL VIEWS SOUNDS-->
@@ -266,14 +280,16 @@
       </equals>
      </condition>
 	    <volume>
-    <property>sim/sound/avionics/volume</property>
-    <factor>1</factor>
-    <offset>0</offset>
-	<min>0</min>
-	<max>1</max>
-   </volume>
+	    <property>sim/sound/avionics/volume</property>
+	    <factor>1</factor>
+	    <offset>0</offset>
+		<min>0</min>
+		<max>1</max>
+	   </volume>
+<!--
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
+-->
     </gear>
     
 <Tyres-touchdown>
@@ -282,8 +298,10 @@
 		<condition>
 				<property>gear/gear[1]/wow</property>
 		</condition>
+<!--
 		<reference-dist>150</reference-dist>
 		<max-dist>500</max-dist>
+-->
 		<position>
 				<x>1.2</x>
 				<y>-1.0</y>
@@ -298,5 +316,27 @@
 				<factor>0.0055</factor>
 		</pitch>
 </Tyres-touchdown>
+
+<Flaps>
+     <path>Sounds/flaps.wav</path>
+     <condition>
+      <greater-than>
+       <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+       <value>0</value>
+      </greater-than>
+		<less-than>
+       <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+       <value>1</value>
+      </less-than>
+     </condition>
+	    <volume>
+	    <property>sim/sound/avionics/volume</property>
+	    <factor>0.35</factor>
+	    <offset>0</offset>
+		<min>0</min>
+		<max>1</max>
+	   </volume>
+
+</Flaps>
 </fx>
 </PropertyList>
