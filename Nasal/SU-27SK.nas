@@ -61,6 +61,8 @@
 		"sim/maintenance/airframe-seconds",
 		"sim/maintenance/engine[0]/operating-seconds",
 		"sim/maintenance/engine[1]/operating-seconds",
+		"su-27/instrumentation/RSBN/AER",	#To save lastest landing freqs For lazy people ;)
+		"instrumentation/nav/radials/selected-deg",
 	
 	];
 	aircraft.data.add(savedata);
