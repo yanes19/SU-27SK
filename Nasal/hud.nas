@@ -1,5 +1,5 @@
 #==============================================================================
-# Su-27 Head up display
+					# Su-27SK Head up display
 #==============================================================================
  
 var pow2 = func(x) { return x * x; };
@@ -50,6 +50,14 @@ var HUD = {
     m.NavDirector = m.get_element("Nav-director");
     m.Rdr_Indicator = m.get_element("Rdr-Indicator");
     m.accel_pointer = m.get_element("accel-pointer");
+    m.NavDirector= m.get_element("NavDirector");
+    m.Glidingpath = m.get_element("Glidingpath");
+    m.locIndicator = m.get_element("Localizer-sign");
+    m.GSIndicator = m.get_element("GS-sign");
+    m.modeEnRte = m.get_element("Rte-Mode-indic");
+    m.modeRtn = m.get_element("Rtn-Mode-indic");
+    m.modeLndg = m.get_element("Ldng-Mode-indic");
+    
     m.tgt1Marker = m.get_element("tgt1-marker");
     m.tgt2Marker = m.get_element("tgt2-marker");
     m.tgt3Marker = m.get_element("tgt3-marker");
@@ -111,8 +119,8 @@ var HUD = {
     m.DistTo =
       m.text.createChild("text")
             .setAlignment("center-bottom")
-            .setTranslation(140,200)
-            .setFontSize(14,1.0);
+            .setTranslation(140,180)
+            .setFontSize(12,0.80);
  
     # Radar altidude
     m.rad_alt =
@@ -148,19 +156,25 @@ var HUD = {
 		vs:         "/velocities/vertical-speed-fps",
 		rad_alt:    "/instrumentation/radar-altimeter/radar-altitude-ft",
 		airspeed:   "su-27/instrumentation/ASI/airspeed-kmh",
-		target_spd: "/autopilot/settings/target-speed-kt",
-		target_alt: "/autopilot/settings/target-altitude-ft",
+		target_spd  : "/autopilot/settings/target-speed-kt",
+		target_alt  : "/autopilot/settings/target-altitude-ft",
+		PNK_Mode	: "su-27/instrumentation/PNK-10/active-mode",
+		NavInRange  : "instrumentation/nav/in-range",
+		Is_LOC	    : "instrumentation/nav/frequencies/is-localizer-frequency",
+		NavCrossTrackErr : "instrumentation/nav/crosstrack-error-m",
+		Gs_InRange  : "instrumentation/nav/gs-in-range",
+		GS_Deflection : "instrumentation/nav/gs-needle-deflection-norm",
 		acc:        "/fdm/jsbsim/accelerations/udot-ft_sec2",
 		route_active 		 :	"autopilot/route-manager/active",
-		route_deflection :	"instrumentation/gps/cdi-deflection",
+		route_deflection	 :	"instrumentation/gps/cdi-deflection",
 		DistanceToWP 	  	 :	"autopilot/route-manager/wp/dist",
 		DME_Distance 	  	 :	"instrumentation/dme/indicated-distance-nm",
 		DME_InRange			 :	"instrumentation/dme/in-range",
-		wp_alt					 :	"instrumentation/gps/wp/wp/altitude-ft",
-		radar_on 			 	 :	"su-27/instrumentation/N010-radar/emitting",
+	wp_alt					 :	"instrumentation/gps/wp/wp/altitude-ft",
+	radar_on 			 	 :	"su-27/instrumentation/N010-radar/emitting",
 		target_0x  			 :	"/instrumentation/radar/ai/models/aircraft/radar/x-shift",
 		target_0z  			 :	"instrumentation/radar/ai/models/aircraft/radar/h-offset",
-		target_0_inrange :	"instrumentation/radar/ai/models/aircraft/radar/in-range",
+		target_0_inrange 	 :	"instrumentation/radar/ai/models/aircraft/radar/in-range",
 		targetvalid			 :	"ai/models/aircraft/valid",		# Unused for now !!
     };
  
@@ -242,16 +256,47 @@ var HUD = {
     #Acceleration cue
     if (me.input.acc.getValue() < -1){me.accel_pointer.setTranslation(-13,0)};
     if (me.input.acc.getValue() > 1) {me.accel_pointer.setTranslation(13,0)};
-    
-    if (me.input.route_active.getValue() ==1)
-						me.NavDirector.setTranslation(me.input.route_deflection.getValue()*10,-150);
-						
+##########################
+		#ROUTE MODE :#
+##########################	    
+	if (me.input.PNK_Mode.getValue() == 0)
+		{
+	    if (me.input.route_active.getValue() ==1)
+				me.NavDirector.setTranslation(me.input.route_deflection.getValue()*10,-150);
+		}			
 	if (me.input.route_active.getValue() ==1)
 		me.DistTo.setText(sprintf("%2.1f", me.input.DistanceToWP.getValue()*1.852));
 		
 	if (me.input.DME_InRange.getValue() ==1 and me.input.route_active.getValue() == 0)
 		me.DistTo.setText(sprintf("%2.1f", me.input.DME_Distance.getValue()*1.852));
+		
+	if (me.input.PNK_Mode.getValue() == 0 or me.input.PNK_Mode.getValue() == 1)
+	{ me.modeEnRte.setVisible(1);}else{me.modeEnRte.setVisible(0);}
 			
+##########################
+		#LANDING MODE :#
+##########################
+	if (me.input.PNK_Mode.getValue() == 2 and me.input.Is_LOC.getValue() == 1 and me.input.NavInRange.getValue() == 1)
+		{ 
+		me.modeLndg.setVisible(1);
+		me.NavDirector.setVisible(1);
+		me.Glidingpath.setVisible(1);
+		me.locIndicator.setVisible(1);
+		me.Glidingpath.setTranslation(me.input.NavCrossTrackErr.getValue() * 0.056, me.input.GS_Deflection.getValue() * -12.2) ;
+		me.NavDirector.setTranslation(getprop("instrumentation/nav/heading-needle-deflection")*4.4,me.input.GS_Deflection.getValue() * -3.6) ;
+		if (me.input.Gs_InRange.getValue() == 1){me.GSIndicator.setVisible(1);}else {me.GSIndicator.setVisible(0)}
+		#me.GSIndicator.setVisible(1);
+		
+		}else
+		{
+		me.locIndicator.setVisible(0);
+		me.GSIndicator.setVisible(0);
+		me.modeLndg.setVisible(0);
+		me.NavDirector.setVisible(0);
+		me.Glidingpath.setVisible(0);
+		}
+		
+		me.modeRtn.setVisible(0);	# Until implemented , this should be hidden unconditionnally	
 			
 		var radarON= getprop("su-27/instrumentation/N010-radar/emitting");
 		if (radarON == 0)
