@@ -10,6 +10,7 @@
  <animation>
   <type>translate</type>
   <object-name>ENG1.THRTL</object-name>
+  <object-name>ENG.THRTL-selector</object-name>
   <property>controls/engines/engine/cutoff</property>
   <factor>0.0160</factor>
   <offset-m>0.0</offset-m>
@@ -24,6 +25,8 @@
   <type>translate</type>
   <object-name>ENG2.THRTL</object-name>
   <object-name>RUD1.wsr</object-name>
+  <object-name>ENG2.THRTL-Bttn1</object-name>
+  <object-name>ENG2.THRTL-Bttn1.Base</object-name>
   <property>controls/engines/engine[1]/cutoff</property>
   <factor>0.0160</factor>
   <offset-m>0.0</offset-m>
@@ -37,6 +40,13 @@
  <animation>
   <type>translate</type>
   <object-name>ENG1.THRTL</object-name>
+  <object-name>ENG.THRTL-selector</object-name> 
+  <object-name>ENG1.THRTL-Bttn1</object-name>
+  <object-name>ENG1.THRTL-Bttn1.Base</object-name>
+  <object-name>ENG1.THRTL-Bttn2</object-name>
+  <object-name>ENG1.THRTL-Bttn2.Base</object-name>
+  <object-name>ENG1.THRTL-Bttn3</object-name>
+  <object-name>ENG1.THRTL-Bttn3.Base</object-name>
 	 <condition>
 	   <equals>
 	   <property>controls/engines/engine/cutoff</property>
@@ -56,6 +66,8 @@
  <animation>
   <type>translate</type>
   <object-name>ENG2.THRTL</object-name>
+  <object-name>ENG2.THRTL-Bttn1</object-name>
+  <object-name>ENG2.THRTL-Bttn1.Base</object-name>
   <object-name>RUD1.wsr</object-name>
 	 <condition>
 	   <equals>
@@ -72,6 +84,28 @@
    <z>0</z>
   </axis>
  </animation>
+ 
+ 
+    <animation>
+        <type>slider</type>
+          <object-name>Throttler.rails</object-name>
+          
+        <increase>
+            <binding>
+                <command>nasal</command>
+                <script>controls.incThrottle(0.06, 1.0);</script>
+           </binding>
+        </increase>
+        <!-- explicit decrease binding, action binding still runs too -->
+        <decrease>
+            <binding>
+				<command>nasal</command>
+                <script>controls.incThrottle(-0.06, 1.0);</script>
+            </binding>
+        </decrease>
+    </animation>
+    
+    
 
 	<animation>
 	 <type>material</type> 

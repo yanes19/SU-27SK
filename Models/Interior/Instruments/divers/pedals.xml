@@ -28,7 +28,22 @@
 		</axis>
 	</animation>
 
-
+ <animation>
+  <type>rotate</type>
+  <object-name>PedalCt</object-name>
+  <property>/controls/flight/rudder</property>
+  <factor>12.5</factor>
+  <center>
+   <x-m>-0.12906</x-m>
+   <y-m> 0.00000</y-m>
+   <z-m>-0.001877</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
 
 	<animation>
 		<type>range</type>

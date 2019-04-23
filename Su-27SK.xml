@@ -753,12 +753,13 @@ Need testing :experimental brake parachute
           <property>metrics/Sw-sqft</property>
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
-            
+            <!--Need of further testing -->
             <tableData>
-              -0.20 -0.640
-               0.00  0.120
-               0.26  1.120
-               0.60  0.448
+              -0.200 -0.640
+               0.000  0.120
+               0.087  0.460
+               0.260  1.120
+               0.600  0.448
             </tableData>
 <!--
             <tableData>

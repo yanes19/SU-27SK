@@ -505,32 +505,44 @@ USSR and Russia  aerospace industry .
  
 	<state include="start-states/ready-for-takeoff.xml" n="0"/>
 	<state include="start-states/cruise.xml" n="1"/>
+	<state include="start-states/final-Approch.xml" n="2"/>
     </sim>
 
  <!--   the logging here is meant for further FCS study and improvements   -->
 
 <!--
-     <logging>
+<logging>
   <log>
-   <filename>/****/****/.fgfs/Export/fcs-pitch.csv</filename>
+   <filename>/home/yanes/.fgfs/Export/pitch-speed-VS.csv</filename>
    <enabled>true</enabled>
-   <interval-ms>200</interval-ms>
+   <interval-ms>500</interval-ms>
    <delimiter>,</delimiter>
+   
    <entry>
     <enabled>true</enabled>
     <title>pitch</title>
     <property>/orientation/pitch-deg</property>
    </entry>
-   <entry>
-    <enabled>true</enabled><ref></ref>
-    <title>elevator-trim</title>
-    <property>/controls/flight/elevator-trim</property>
-   </entry>
+
    <entry>
     <enabled>true</enabled><ref></ref>
     <title>elevator-ctrl</title>
     <property>/controls/flight/elevator</property>
    </entry>
+   
+   <entry>
+    <enabled>true</enabled><ref></ref>
+    <title>AirSpeed</title>
+    <property>su-27/instrumentation/ASI/airspeed-kmh</property>
+   </entry>
+   
+   <entry>
+    <enabled>true</enabled><ref></ref>
+    <title>VS</title>
+    <property>velocities/vertical-speed-fps</property>
+   </entry>
+   
+
   </log>
  </logging>
 -->

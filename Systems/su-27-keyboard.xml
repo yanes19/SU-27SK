@@ -234,7 +234,7 @@
   <binding>
    <command>nasal</command>
    <script>
-		controls.incThrottle(0.2, 1.0);
+		controls.incThrottle(0.1, 1.0);
    </script>
   </binding>
   <mod-shift>

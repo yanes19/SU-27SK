@@ -58,16 +58,17 @@
             
 <!--
             <electric>
-
+				/////Lights////
             </electric>.
             
             <fuel>
-                
+                ////May be we set fuel quantity////
             </fuel>
             
 -->
 			<gear>
 				<gear-down type="bool">false</gear-down>
+				<brake-parking type="double">0</brake-parking>
 			</gear>  
             
         </controls>
