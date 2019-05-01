@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+ <default>
+	<menu n="10">
+		<label>J-11A</label>
+		<enabled type="bool">true</enabled>
+		<item>
+			<label>自动启动</label>
+			<binding>
+				<command>nasal</command>
+				<script>
+				misc.autostart();
+				</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>启用地面电源</label>
+		  <binding>
+		   <command>property-toggle</command>
+		   <property>controls/electric/external-power</property>
+		  </binding>
+			<binding>
+				<command>nasal</command>
+				<script>
+					if (electricals.EXT.getValue() == 1){gui.popupTip("Ground power ON");}
+					else {gui.popupTip("Ground power OFF");}
+					</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>RSBN 导航</label>
+			<binding>
+				<command>nasal</command>
+				 <script>CanvasRSBN.showRSBN_Dlg()</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>ARC 导航</label>
+			<binding>
+				<command>nasal</command>
+				 <script>CanvasPU184.showRSBN_Dlg()</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>选择挂载</label>
+			<binding>
+				<command>nasal</command>
+				 <script>CanvasPylonsDlg.showPylonsDlg()</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>飞机帮助</label>
+			<binding>
+				<command>nasal</command>
+				 <script>CanvasHelpDlg.showHelpDlg()</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>选择涂装</label>
+			<binding>
+				<command>nasal</command>
+				<script>aircraft.livery.dialog.toggle()</script>
+			</binding>
+		</item>
+
+	</menu>
+  </default>
+
+</PropertyList>
+

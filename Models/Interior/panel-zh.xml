@@ -1,0 +1,734 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+  <path>panel.ac</path>
+  
+  <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>100</max-m>
+    </animation>
+  
+  
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/seat2.ac</path>
+	<offsets>
+      <x-m> 5.0 </x-m>
+      <y-m>0.01 </y-m>
+      <z-m>0.6 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>pilot</name>
+    <path>Aircraft/SU-27SK/Models/Interior/pilot/pilot.xml</path>
+	<offsets>
+      <x-m> 5.0 </x-m>
+      <y-m>0.01 </y-m>
+      <z-m>0.95 </z-m>
+	  <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>Stick</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Stick/stick.xml</path>
+	<offsets>
+      <x-m> 4.5</x-m>
+      <y-m>0.01 </y-m>
+      <z-m>0.5</z-m>
+	  <pitch-deg>0</pitch-deg>
+    </offsets>
+<!--Stick animations defined near the EOF-->
+  </model>
+
+   <model>
+   <name>Throttle-blocks</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Throttle.blocks/throttle-blocks.xml</path>
+	<offsets>
+      <x-m> 4.624 </x-m>
+      <y-m>-0.466 </y-m>
+      <z-m> 1.039 </z-m>
+      <pitch-deg>-2</pitch-deg>
+      <roll-deg>-8</roll-deg>
+      <heading-deg>-5</heading-deg>
+    </offsets>
+  </model> 
+    
+  
+   <model>
+   <name>pedals</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/divers/pedals.xml</path>
+	<offsets>
+      <x-m> 4.2 </x-m>
+      <y-m>0.01 </y-m>
+      <z-m>0.5</z-m>
+	  <pitch-deg>0</pitch-deg>
+    </offsets>
+	<overlay>
+		 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>0.68</y-offset>
+    <z-offset>1</z-offset>
+   </animation>
+  </overlay>
+  </model>
+  
+  <!-- BEGIN BY YANES -->
+   <model>
+   <name>RPM-Tachometer</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/RPM-Tachometer/RPM-Tachometer-zh.xml</path>
+	<offsets>
+      <x-m> 4.2999 </x-m>
+      <y-m>0.110 </y-m>
+      <z-m>1.060 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model> 
+  
+  <model>
+   <name>WarnLights</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/WarnLights.xml</path>
+	<offsets>
+      <x-m>4.290 </x-m>
+      <y-m>0.36 </y-m>
+      <z-m>0.980 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model> 
+  
+  <model>
+   <name>Ekran</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Ekran/ekran.xml</path>
+	<offsets>
+      <x-m> 4.3001 </x-m>
+      <y-m>0.288 </y-m>
+      <z-m>1.00 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model> 
+  
+  <model>
+   <name>AfterBurnerLeds</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/AfterBurnerLeds-zh.xml</path>
+	<offsets>
+      <x-m>4.280 </x-m>
+      <y-m>0.110 </y-m>
+      <z-m>1.118 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
+   <name>Trimmers.Leds</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/Trimmers.Leds.xml</path>
+	<offsets>
+      <x-m>4.296 </x-m>
+      <y-m>0.014 </y-m>
+      <z-m>0.930 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
+   <name>TurbineTempIndic</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/TurbineTempIndicator/Turbine-Temp-indic-right.xml</path>
+	<offsets>
+      <x-m>4.303</x-m>
+      <y-m>0.148 </y-m>
+      <z-m>0.980 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.3</x-offset>
+    <y-offset>1.3</y-offset>
+    <z-offset>1.3</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+  <model>
+   <name>TurbineTempIndic</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/TurbineTempIndicator/Turbine-Temp-indic-left.xml</path>
+	<offsets>
+      <x-m>4.303</x-m>
+      <y-m>0.082 </y-m>
+      <z-m>0.980 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.3</x-offset>
+    <y-offset>1.3</y-offset>
+    <z-offset>1.3</z-offset>
+   </animation>
+   </overlay>    
+  </model>
+  
+  <model>
+   <name>Hydro-pneu-indicator</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Hydro-PneumaticsIndicators/Hydro-pneu-indicator.xml</path>
+	<offsets>
+      <x-m>4.3146</x-m>
+      <y-m>0.056 </y-m>
+      <z-m>0.890 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>1</y-offset>
+    <z-offset>1</z-offset>
+   </animation>
+   </overlay>    
+  </model>
+  
+	<model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/ai/KPP.xml</path>
+	<offsets>
+      <x-m> 4.31 </x-m>
+      <y-m>-0.08 </y-m>
+      <z-m>1.095</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>0.9</x-offset>
+    <y-offset>0.9</y-offset>
+    <z-offset>0.9</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>vert-velocity-DA-200</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/vert-velocity-DA-200/DA-200.xml</path>
+	<offsets>
+      <x-m>4.30</x-m>
+      <y-m>0.018 </y-m>
+      <z-m>1.08 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+    	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.0</x-offset>
+    <y-offset>1.0</y-offset>
+    <z-offset>1.0</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+  <model>
+   <name>Pylons-board</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Pylons-board/Pylons-board.xml</path>
+	<offsets>
+      <x-m>4.295</x-m>
+      <y-m>0.010 </y-m>
+      <z-m>1.188 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	<animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>0.9</x-offset>
+    <y-offset>0.75</y-offset>
+    <z-offset>0.9</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+  <model>
+   <name>Gears-handle</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Gears-handle/Gears-handle.xml</path>
+	<offsets>
+      <x-m> 4.325 </x-m>
+      <y-m>-0.39</y-m>
+      <z-m>0.911</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>Rdr.Altimeter</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Rdr.Altimeter/Rdr.Altimeter.xml</path>
+	<offsets>
+      <x-m>4.300 </x-m>
+      <y-m>-0.281 </y-m>
+      <z-m>1.00</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>MarkerSelector</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/MarkerSelector/MarkerSelector-zh.xml</path>
+	<offsets>
+      <x-m>4.320 </x-m>
+      <y-m>-0.20 </y-m>
+      <z-m>0.90</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+  
+  <model>
+   <name>wcs-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/WCS-panel/wcs-panel.xml</path>
+	<offsets>
+		<x-m> 4.372 </x-m>
+		<y-m>-0.392 </y-m>
+		<z-m> 0.838 </z-m>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.4</x-offset>
+    <y-offset>1.4</y-offset>
+    <z-offset>1.4</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>acs-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/ACS-Control-panel/acs-panel-zh.xml</path>
+	<offsets>
+      <x-m> 4.440 </x-m>
+      <y-m>-0.405 </y-m>
+      <z-m> 0.843</z-m>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.20</x-offset>
+    <y-offset>1.20</y-offset>
+    <z-offset>1.20</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>SDU-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/SDU-panel/SDU-panel.xml</path>
+	<offsets>
+      <x-m> 4.514 </x-m>
+      <y-m>-0.406 </y-m>
+      <z-m> 0.842 </z-m>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.2</x-offset>
+    <y-offset>1.2</y-offset>
+    <z-offset>1.1</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>AoA-pitot-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/AoA-pitot-panel/AoA-pitot-panel.xml</path>
+	<offsets>
+      <x-m>4.34468 </x-m>
+      <y-m>0.3888 </y-m>
+      <z-m>0.8503</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.32</x-offset>
+    <y-offset>1.32</y-offset>
+    <z-offset>1.32</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>TargetDistribution-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/TargetDistribution-panel/TargetDistribution-panel.xml</path>
+	<offsets>
+      <x-m>4.35152 </x-m>
+      <y-m>0.40921 </y-m>
+      <z-m>0.81798</z-m>
+
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.307</x-offset>
+    <y-offset>1.307</y-offset>
+    <z-offset>1.307</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>OC-Radio-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Radio-panel.xml</path>
+	<offsets>
+      <x-m>4.563 </x-m>
+      <y-m>0.4200 </y-m>
+      <z-m>0.823</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.486</x-offset>
+    <y-offset>1.486</y-offset>
+    <z-offset>1.486</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>PU-184-Radio-Panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/NavRadio/PU-184-Radio-Panel.xml</path>
+	<offsets>
+      <x-m>4.678 </x-m>
+      <y-m>0.414 </y-m>
+      <z-m>0.825</z-m>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.2</x-offset>
+    <y-offset>1.2</y-offset>
+    <z-offset>1.2</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+   <model>
+   <name>MarkersLeds</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/MarkersLeds.xml</path>
+	<offsets>
+      <x-m>4.295 </x-m>
+      <y-m>-0.20 </y-m>
+      <z-m>0.93</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>UpperLeds</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/UpperLeds.xml</path>
+	<offsets>
+      <x-m>4.295 </x-m>
+      <y-m>0.12 </y-m>
+      <z-m>1.20</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>EmergencyGearsHandle</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/EmergencyGearsHandle/EmergencyGearsHandle-zh.xml</path>
+	<offsets>
+      <x-m>4.31 </x-m>
+      <y-m>-0.22 </y-m>
+      <z-m>1.15</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>IPK</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/IPK/IPK.xml</path>
+	<offsets>
+      <x-m>4.31</x-m>
+      <y-m>0.013 </y-m>
+      <z-m>0.98 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+   <name>LaserRangerSwitch</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/LaserRangerSwitch/LaserRangerSwitch.xml</path>
+	<offsets>
+      <x-m>4.300</x-m>
+      <y-m>-0.376 </y-m>
+      <z-m>0.975 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+
+   <animation>
+        <type>select</type>
+        <object-name>pilot</object-name>
+		<condition>
+            <not>
+            <property>sim/current-view/internal</property>
+            </not>
+        </condition>
+    </animation>		
+    
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/MFD-IPV/mfd-ipv-zh.xml</path>
+	<offsets>
+     <x-m> 4.25 </x-m>
+      <y-m>0.25 </y-m>
+      <z-m>1.17 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.1</x-offset>
+    <y-offset>1.1</y-offset>
+    <z-offset>1.1</z-offset>
+   </animation>
+   </overlay>
+	
+  </model> 
+  
+ 
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/hud/hudzh.xml</path>
+	<offsets>
+      <x-m> 4.223 </x-m>
+      <y-m>0.01 </y-m>
+      <z-m>1.185 </z-m>
+	  <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+  
+<!--
+  testing radar
+-->
+
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/radar.xml</path>
+	<offsets>
+      <x-m>4.337 </x-m>
+      <y-m>0.2480 </y-m>
+      <z-m>1.170 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.1</x-offset>
+    <y-offset>1.1</y-offset>
+    <z-offset>1.1</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/fuel-indicator/fuel-indicator-zh.xml</path>
+	<offsets>
+      <x-m> 4.305 </x-m>
+      <y-m>0.22 </y-m>
+      <z-m>1.0 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>1</y-offset>
+    <z-offset>1.2</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+  
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/SPO-15LM/SPO-15LM.xml</path>
+	<offsets>
+      <x-m> 4.315 </x-m>
+      <y-m>0.392 </y-m>
+      <z-m>0.886 </z-m>
+	  <pitch-deg>-3.5</pitch-deg>
+    </offsets>
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>1</y-offset>
+    <z-offset>1</z-offset>
+   </animation>
+   </overlay>
+  </model>
+  
+ <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/KI-13/KI-13.xml</path>
+	<offsets>
+      <x-m> 4.28 </x-m>
+      <y-m>0.22 </y-m>
+      <z-m>1.47 </z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/PNP-72-12/PNP-72-12.xml</path>
+	<offsets>
+      <x-m> 4.3116 </x-m>
+      <y-m>-0.08 </y-m>
+      <z-m>0.96</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
+   <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Altimeter-UV-30/UV-30-3.xml</path>
+	<offsets>
+      <x-m> 4.305 </x-m>
+      <y-m>-0.198 </y-m>
+      <z-m>0.99</z-m>
+	  <pitch-deg>-4</pitch-deg>
+    </offsets>
+    <overlay>
+		<animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>0.91</x-offset>
+    <y-offset>0.91</y-offset>
+    <z-offset>0.91</z-offset>
+   </animation>
+  </overlay>
+  </model>
+  
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/ASIMach/asi.xml</path>
+	<offsets>
+        <x-m> 4.297 </x-m>
+      <y-m>-0.194 </y-m>
+      <z-m>1.082</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+    <overlay>
+	<animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>0.91</x-offset>
+    <y-offset>0.91</y-offset>
+    <z-offset>0.91</z-offset>
+   </animation>
+  </overlay>
+  </model>
+  
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/G-indicator-UAP-7/UAP-7-zh.xml</path>
+	<offsets>
+      <x-m> 4.30 </x-m>
+      <y-m>-0.281 </y-m>
+      <z-m>1.084</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+    <overlay>
+	<animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>0.91</x-offset>
+    <y-offset>0.91</y-offset>
+    <z-offset>0.91</z-offset>
+   </animation>
+  </overlay>
+  </model>
+
+   <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/ACHS-1/ACHS-1.xml</path>
+	<offsets>
+      <x-m> 4.315 </x-m>
+      <y-m>-0.270</y-m>
+      <z-m>0.91 </z-m>
+	  <pitch-deg>-4</pitch-deg>
+    </offsets>
+	<overlay>
+	<animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>0.60</y-offset>
+    <z-offset>0.60</z-offset>
+   </animation>
+  </overlay>
+  </model>
+  
+   <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/ControlInd/slats-flaps-gear-indicator.xml</path>
+	<offsets>
+      <x-m> 4.355 </x-m>
+      <y-m>-0.316</y-m>
+      <z-m>0.95 </z-m>
+	  <pitch-deg>-4</pitch-deg>
+    </offsets>
+	<overlay>
+	<animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1</x-offset>
+    <y-offset>0.60</y-offset>
+    <z-offset>0.60</z-offset>
+   </animation>
+  </overlay>
+  </model>
+  
+	<animation>
+	<type>rotate</type>
+	<object-name>Stick</object-name>
+	<property>controls/flight/elevator</property>
+	<factor>13</factor>
+  <center>
+   <x-m> 4.400</x-m>
+   <y-m> 0.00</y-m>
+   <z-m> 0.640</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+	</animation>
+	
+	<animation>
+	<type>rotate</type>
+	<object-name>Stick</object-name>
+	<property>controls/flight/aileron</property>
+	<factor>13</factor>
+  <center>
+   <x-m> 4.400</x-m>
+   <y-m> 0.000</y-m>
+   <z-m> 0.640</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+	</animation>
+
+</PropertyList>
