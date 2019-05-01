@@ -267,7 +267,7 @@
   
    <model>
    <name>Rdr.Altimeter</name>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Rdr.Altimeter/Rdr.Altimeter.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Rdr.Altimeter/Rdr.Altimeter-zh.xml</path>
 	<offsets>
       <x-m>4.300 </x-m>
       <y-m>-0.281 </y-m>
