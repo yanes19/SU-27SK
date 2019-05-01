@@ -93,7 +93,7 @@
   
   <model>
    <name>WarnLights</name>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/WarnLights.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/WarnLights-zh.xml</path>
 	<offsets>
       <x-m>4.290 </x-m>
       <y-m>0.36 </y-m>
@@ -256,7 +256,7 @@
   
   <model>
    <name>Gears-handle</name>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Gears-handle/Gears-handle.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Gears-handle/Gears-handle-zh.xml</path>
 	<offsets>
       <x-m> 4.325 </x-m>
       <y-m>-0.39</y-m>
@@ -387,7 +387,7 @@
   
    <model>
    <name>OC-Radio-panel</name>
-    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Radio-panel.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Radio-panel-zh.xml</path>
 	<offsets>
       <x-m>4.563 </x-m>
       <y-m>0.4200 </y-m>
