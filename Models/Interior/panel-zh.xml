@@ -126,7 +126,7 @@
   
   <model>
    <name>Trimmers.Leds</name>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/Trimmers.Leds.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/Trimmers.Leds-zh.xml</path>
 	<offsets>
       <x-m>4.296 </x-m>
       <y-m>0.014 </y-m>
@@ -177,7 +177,7 @@
   
   <model>
    <name>Hydro-pneu-indicator</name>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Hydro-PneumaticsIndicators/Hydro-pneu-indicator.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Hydro-PneumaticsIndicators/Hydro-pneu-indicator-zh.xml</path>
 	<offsets>
       <x-m>4.3146</x-m>
       <y-m>0.056 </y-m>
@@ -459,7 +459,7 @@
   
    <model>
    <name>IPK</name>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/IPK/IPK.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/IPK/IPK-zh.xml</path>
 	<offsets>
       <x-m>4.31</x-m>
       <y-m>0.013 </y-m>
@@ -564,7 +564,7 @@
   
   
   <model>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/SPO-15LM/SPO-15LM.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/SPO-15LM/SPO-15LM-zh.xml</path>
 	<offsets>
       <x-m> 4.315 </x-m>
       <y-m>0.392 </y-m>
@@ -593,7 +593,7 @@
   </model>
   
   <model>
-    <path>Aircraft/SU-27SK/Models/Interior/Instruments/PNP-72-12/PNP-72-12.xml</path>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/PNP-72-12/PNP-72-12-zh.xml</path>
 	<offsets>
       <x-m> 4.3116 </x-m>
       <y-m>-0.08 </y-m>
