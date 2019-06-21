@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+ <name>EmergencyGearsHandle</name>
+ <path>EmergencyGearsHandle.ac</path>
+ <animation>
+  <type>material</type> 
+  <object-name>Emergency.Gears.Handle</object-name>
+  <texture>EmergGears-zh.png</texture>
+ </animation>
+
+</PropertyList>
