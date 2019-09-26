@@ -1,4 +1,4 @@
-This is the J-11A aircrafts based on Yanes's Su-27SK, made by Sidi Liang.
+This is the J-11A aircraft based on Yanes's Su-27SK, made by Sidi Liang.
 
 Original Readme:  
 ************************************************************************
