@@ -101,6 +101,10 @@ USSR and Russia  aerospace industry .
                 <float n="4" alias="/sim/model/nozzle-animation"/>
                 <float n="8" alias="/engines/engine[0]/augmentation" /> <!-- afterburner/Reheat Left Engine -->
             <float n="9" alias="/engines/engine[1]/augmentation" /> <!-- afterburner/Reheat Right Engine -->
+           
+            <!-- Smoke on -->
+          <int n="8" alias="/su-27/WCS/pylon7/launch" />    
+          <int n="9" alias="/su-27/WCS/pylon7/launch" />    
       </generic>
     </multiplay>
 

@@ -48,7 +48,7 @@
 				<value>smoke-blue</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon7/launch</property>
+				<property>sim/multiplay/generic/int[8]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -69,7 +69,7 @@
 				<value>smoke-yellow</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon7/launch</property>
+				<property>sim/multiplay/generic/int[8]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -90,7 +90,7 @@
 				<value>smoke-red</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon7/launch</property>
+				<property>sim/multiplay/generic/int[8]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -143,7 +143,7 @@
 				<value>smoke-blue</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon8/launch</property>
+				<property>sim/multiplay/generic/int[9]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -164,7 +164,7 @@
 				<value>smoke-yellow</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon8/launch</property>
+				<property>sim/multiplay/generic/int[9]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -185,7 +185,7 @@
 				<value>smoke-red</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon8/launch</property>
+				<property>sim/multiplay/generic/int[9]</property>
 				<value>true</value>
 			</equals>
 		</and>

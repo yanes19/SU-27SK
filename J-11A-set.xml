@@ -97,6 +97,10 @@ SU-27 simulation config.
                 <float n="4" alias="/sim/model/nozzle-animation"/>
                 <float n="8" alias="/engines/engine[0]/augmentation" /> <!-- afterburner/Reheat Left Engine -->
             <float n="9" alias="/engines/engine[1]/augmentation" /> <!-- afterburner/Reheat Right Engine -->
+           
+            <!-- Smoke on -->
+          <int n="8" alias="/su-27/WCS/pylon7/launch" />    
+          <int n="9" alias="/su-27/WCS/pylon7/launch" />    
       </generic>
     </multiplay>
 
@@ -304,7 +308,7 @@ SU-27 simulation config.
       </help>
       
       
-      <menubar include="Dialogs/menuJ11A.xml"/>
+      <menubar include="Dialogs/menu.xml"/>
 
     <weight n="0">
       <name>pylon1</name>
