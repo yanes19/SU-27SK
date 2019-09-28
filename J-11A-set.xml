@@ -310,7 +310,7 @@ SU-27 simulation config.
       </help>
       
       
-      <menubar include="Dialogs/menu.xml"/>
+      <menubar include="Dialogs/J-11A_menu.xml"/>
 
     <weight n="0">
       <name>pylon1</name>
