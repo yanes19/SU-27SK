@@ -104,7 +104,9 @@ USSR and Russia  aerospace industry .
            
             <!-- Smoke on -->
           <int n="8" alias="/su-27/WCS/pylon7/launch" />    
-          <int n="9" alias="/su-27/WCS/pylon7/launch" />    
+          <int n="9" alias="/su-27/WCS/pylon8/launch" />    
+          <string n="0" alias="/sim/weight[6]/selected" />
+          <string n="1" alias="/sim/weight[7]/selected" />  
       </generic>
     </multiplay>
 

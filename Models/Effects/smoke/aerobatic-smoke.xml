@@ -39,12 +39,9 @@
 	<object-name>P7_aerobatic_smoke_blue</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[6]/selected</property>
+				<property>sim/multiplay/generic/string[0]</property>
 				<value>smoke-blue</value>
 			</equals>
 			<equals>
@@ -60,12 +57,9 @@
 	<object-name>P7_aerobatic_smoke_yellow</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[6]/selected</property>
+				<property>sim/multiplay/generic/string[0]</property>
 				<value>smoke-yellow</value>
 			</equals>
 			<equals>
@@ -81,12 +75,9 @@
 	<object-name>P7_aerobatic_smoke_red</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[6]/selected</property>
+				<property>sim/multiplay/generic/string[0]</property>
 				<value>smoke-red</value>
 			</equals>
 			<equals>
@@ -134,12 +125,9 @@
 	<object-name>P8_aerobatic_smoke_blue</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[7]/selected</property>
+				<property>sim/multiplay/generic/string[1]</property>
 				<value>smoke-blue</value>
 			</equals>
 			<equals>
@@ -155,12 +143,9 @@
 	<object-name>P8_aerobatic_smoke_yellow</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[7]/selected</property>
+				<property>sim/multiplay/generic/string[1]</property>
 				<value>smoke-yellow</value>
 			</equals>
 			<equals>
@@ -176,12 +161,9 @@
 	<object-name>P8_aerobatic_smoke_red</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[7]/selected</property>
+				<property>sim/multiplay/generic/string[1]</property>
 				<value>smoke-red</value>
 			</equals>
 			<equals>

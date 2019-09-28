@@ -422,15 +422,15 @@
 		  <condition>
 			<or>
 		  <equals>
-		    <property>sim/weight[6]/selected</property>
+		    <property>sim/multiplay/generic/string[0]</property>
 		    <value>smoke-red</value>
 		  </equals>
 		  <equals>
-		    <property>sim/weight[6]/selected</property>
+		    <property>sim/multiplay/generic/string[0]</property>
 		    <value>smoke-yellow</value>
 		  </equals>
 		  <equals>
-		    <property>sim/weight[6]/selected</property>
+		    <property>sim/multiplay/generic/string[0]</property>
 		    <value>smoke-blue</value>
 		  </equals>
 		  </or>
@@ -481,15 +481,15 @@
 		  <condition>
 			<or>
 		  <equals>
-		    <property>sim/weight[7]/selected</property>
+		    <property>sim/multiplay/generic/string[1]</property>
 		    <value>smoke-red</value>
 		  </equals>
 		  <equals>
-		    <property>sim/weight[7]/selected</property>
+		    <property>sim/multiplay/generic/string[1]</property>
 		    <value>smoke-yellow</value>
 		  </equals>
 		  <equals>
-		    <property>sim/weight[7]/selected</property>
+		    <property>sim/multiplay/generic/string[1]</property>
 		    <value>smoke-blue</value>
 		  </equals>
 		  </or>
