@@ -1,6 +1,3 @@
-This is the J-11A aircraft based on Yanes's Su-27SK, made by Sidi Liang.
-
-Original Readme:  
 ************************************************************************
 ************ SU-27SK aircraft package  for flightgear ******************
 ************************************************************************
@@ -39,6 +36,7 @@ FEATURES :
 		in a real aircraft .
 * A large range of sounds for various simulation and avionics effects, 
 		including a russian voice for cockpit warning .
+* A J-11A variant with Chinese labled cockpit by FGPRC team  .
 * Lot of other effects and avionics that I hope you'll like :)  .
 
 TODO : A lot , very lot of work , so please help .
