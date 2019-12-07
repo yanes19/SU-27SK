@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+  
+
+<model>
+    <path>hudzh.ac</path>
+	<offsets>
+      <x-m> 0 </x-m>
+      <y-m>0 </y-m>
+      <z-m>0 </z-m>
+    </offsets>
+  </model>
+  
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <!-- Replace 'HUD.l.canvas' with the object the canvas is placed on -->
+  <object-name>hudglass</object-name>
+</effect>
+
+
+<animation>
+	<type>knob</type>
+	<object-name>knob</object-name>
+  <property>su-27/instrumentation/HUD/brightness</property>
+  <factor>30</factor>
+	<center>
+		<x-m>0.199305</x-m><y-m>-0.039807</y-m><z-m>0.102748</z-m>
+	</center>
+	<axis>
+		<x>1</x><y>0</y><z>0.3</z>
+	</axis>
+	<action>
+		<binding>
+		  <command>property-adjust</command>
+		  <property>su-27/instrumentation/HUD/brightness</property>
+		  <factor>0.1</factor>
+              <min>0</min>
+              <max>1</max>                
+              <wrap>false</wrap>
+		</binding>
+	</action>
+
+</animation>	
+
+
+
+  <animation>
+  <type>material</type>
+  <object-name>hudglass</object-name>
+  <emission>
+   <red>0.9</red>
+   <green>0.9</green>
+   <blue>0.9</blue>
+   <factor-prop>su-27/instrumentation/HUD/brightness</factor-prop>
+  </emission>
+ </animation>
+  
+
+
+</PropertyList>
+

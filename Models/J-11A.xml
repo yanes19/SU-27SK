@@ -1,0 +1,2858 @@
+<?xml version="1.0"?>
+
+<!-- SU-27 model config file - VooDoo -->
+
+
+<PropertyList>
+
+  <path>Su-27.ac</path>
+<!--
+  <offsets>
+    <z-m>0.0</z-m>
+    <pitch-deg>0</pitch-deg>
+  </offsets>
+  -->
+
+  <!-- MP sound call -->
+  <sound><path>Aircraft/SU-27SK/Sounds/mp-sound.xml</path></sound>
+  
+  <nasal>
+<load>
+var livery_update = aircraft.livery_update.new("Aircraft/SU-27SK/Models/Liveries");
+
+	 <![CDATA[
+var root = cmdarg();
+var rootindex = root.getIndex();
+srand(); #set seed for random generator
+
+#flame Rembrandt light brightness alternation
+var flamePath = "/ai/models/multiplayer["~ rootindex ~"]/sim/model/V-1/";
+props.globals.initNode(flamePath ~ "flameBright", 0.0, "DOUBLE");
+var flameSeq = [0,0,0,0];
+var curSeq = 0;
+var flameBright = func {
+	flameSeq[curSeq] = 0.5 + rand()*0.5;
+	
+	setprop(flamePath ~ "flameBright", 
+		(flameSeq[0]+flameSeq[1]+flameSeq[2]+flameSeq[3]) / 4);
+	
+	if( curSeq < 3)
+		curSeq += 1;
+	else
+		curSeq = 0;
+		
+	settimer(flameBright, 0.02);
+}
+
+settimer(flameBright, 0.02);
+
+
+var mpPath = "/ai/models/multiplayer["~ rootindex ~"]/";
+
+var lightsPath = mpPath~"lightpack/"; #path to the property node, where all internal values are placed
+
+props.globals.initNode(mpPath~"sim/is-MP-Aircraft", 1, "BOOL");
+      
+srand();
+#wherever you want to add randomization of time, use something like:  + rand()*0.05-0.025 (included by default where appropriate)
+
+
+#list of switches for lights - if you don't intend to use some light, assign it nil value instead, like whateverSwitch = nil; and you don't need to care about anything else
+#IMPORTANT: don't put / on the start of the string, it's already included in the mpPath property
+var navSwitch = mpPath~"controls/lighting/nav-lights-switch";
+var beaconSwitch = mpPath~"controls/lighting/beacon-switch";
+var strobeSwitch = mpPath~"controls/lighting/strobe-switch";
+var landingSwitch = mpPath~"controls/lighting/landing-lights";
+var taxiSwitch = nil;
+var probeSwitch = nil;
+var whiteSwitch = nil;
+
+
+#I need to set listener on some MP transferred properties; this doesn't seem to work well sometimes, so I mirror them to the original location on any change
+#This also simplifies work as I can use almost the same code for MP as is the local Nasal. Furthermore, I can use meaningful property names in the model XML files instead of referencing the MP properties. 
+var mpVar = {
+	new: func(propIn, propOut) {
+		var m = { parents: [mpVar] };
+		m.propIn = propIn;
+		m.propOut = propOut;
+		if(propIn==nil) return m;
+		m.value = getprop(propIn);
+		setprop(propOut, m.value);
+		return m;
+	},
+	check: func {
+		if(me.propIn==nil) return;
+		var newValue = getprop(me.propIn);
+		if(newValue != me.value) {
+			setprop(me.propOut, newValue);
+			me.value = newValue;
+			#print("value of "~me.propOut~" changed: "~newValue);
+		}
+	},
+};
+#init any property copy object needed in this array (anything you need to transfer over MP, but you are using the original paths in your xmls)
+#also used for properties you are using a listener on, or properties which you maybe want to manipulate during the <unload> 
+#if you're just using the pack, change the values according to the MP bindings in the -set.xml file
+#you don't need to delete the entries if the path is nil - it gets skipped automatically and the MP path is just ignored
+var mirrorValues = [
+	mpVar.new(mpPath~"sim/multiplay/generic/int[7]", mpPath~"sim/crashed"),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[0]", navSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[1]", beaconSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[1]", strobeSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[2]", landingSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[3]", taxiSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[3]", probeSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[0]", whiteSwitch),
+];
+#loop at the default MP transfer frequency (10Hz)
+var mirrorTimer = maketimer(0.1, func {
+	foreach(var mir; mirrorValues) {
+		mir.check();
+	}
+});
+mirrorTimer.start();
+
+
+
+#### NAV LIGHTS ####
+
+#class for a periodic fade in/out animation - for flashing, use rather standard aircraft.light.new(), as in Beacon and Strobe section
+var lightCycle = {
+	#constructor
+	new: func(propSwitch, propOut) {
+		m = { parents: [lightCycle] };
+		props.globals.initNode(propOut, 0, "DOUBLE");
+		props.globals.initNode(propSwitch, 1, "BOOL");
+		m.fadeIn = 0.4 + rand()*0.05-0.025; #fade in time
+		m.fadeOut = 0.4 + rand()*0.05-0.025; #fade out time
+		m.stayOn = 1.5 + rand()*0.05-0.025; #stable on period
+		m.stayOff = 1 + rand()*0.05-0.025; #stable off period
+		m.turnOff = 0.12; #fade out time when turned off
+		m.phase = 0; #phase to be run on next timer call: 0 -> fade in, 1 -> stay on, 2 -> fade out, 3 -> stay off
+		m.cycleTimer = maketimer(0.1, func {
+			if(getprop(propSwitch)) {
+				if(m.phase == 0) {
+					interpolate(propOut, 1, m.fadeIn);
+					m.phase = 1;
+					m.cycleTimer.restart(m.fadeIn);
+				}
+				else if(m.phase == 1){
+					m.phase = 2;
+					m.cycleTimer.restart(m.stayOn);
+				}
+				else if(m.phase == 2){
+					interpolate(propOut, 0, m.fadeOut);
+					m.phase = 3;
+					m.cycleTimer.restart(m.fadeOut);
+				}
+				else if(m.phase == 3){
+					m.phase = 0;
+					m.cycleTimer.restart(m.stayOff);
+				}
+			}
+			else {
+				interpolate(propOut, 0, m.turnOff); #kills any currently ongoing interpolation
+				m.phase = 0;
+			}
+		});
+		m.cycleTimer.singleShot = 1;
+		if(propSwitch==nil) {
+			m.listen = nil;
+			return m;
+		}
+		m.listen = setlistener(propSwitch, func{m.cycleTimer.restart(0);}); #handle switch changes
+		m.cycleTimer.restart(0); #start the looping
+		return m;
+	},
+	#destructor
+	del: func {
+		if(me.listen!=nil) removelistener(me.listen);
+		me.cycleTimer.stop();
+	},
+};
+
+#By default, the switch property is initialized to 1 (only if no value is already assigned). Don't change the class implementation! To override this, set the property manually. You don't need to care if any other code already does it for you. 
+navLights = lightCycle.new(navSwitch, lightsPath~"nav-lights-intensity");
+
+### Uncomment and tune those to customize times ###
+#navLights.fadeIn = 0.0; #fade in time 
+#navLights.fadeOut = 0.0; #fade out time
+#navLights.stayOn = 100; #stable on period
+#navLights.stayOff = 0.0; #stable off period
+#navLights.turnOff = 0.12; #fade out time when turned off
+
+ setlistener(navSwitch, func{navS=getprop(navSwitch);if(navS){setprop(lightsPath~"nav-lights-intensity", 1)}else{setprop(lightsPath~"nav-lights-intensity", 0)}});setprop(lightsPath~"nav-lights-intensity", 1);
+
+
+
+### BEACON ###
+var beacon = nil;
+if(beaconSwitch!=nil) {
+	props.globals.initNode(beaconSwitch, 1, "BOOL");
+	beacon = aircraft.light.new(lightsPath~"beacon-state", 
+		[0.0, 1.0 + rand()*0.05-0.025], beaconSwitch);
+}
+	
+	
+### STROBE ###
+var strobe = nil;
+if(strobeSwitch!=nil) {
+	props.globals.initNode(strobeSwitch, 1, "BOOL");
+	strobe = aircraft.light.new(lightsPath~"strobe-state", 
+		[0.0, 0.87 + rand()*0.05-0.025], strobeSwitch);
+}
+
+
+### LIGHT FADING ###
+
+#class for controlling fade in/out behavior - propIn is a control property (handled as a boolean) and propOut is interpolated
+#all light brightness animations in xmls depend on propOut (Rembrandt brightness, material emission, flares transparency, ...)
+var lightFadeInOut = {
+	#constructor
+	new: func(propSwitch, propOut) {
+		m = { parents: [lightFadeInOut] };
+		m.fadeIn = 0.3; #some sane defaults
+		m.fadeOut = 0.4;
+		if(propSwitch==nil) {
+			m.listen = nil;
+			return m;
+		}
+		props.globals.initNode(propSwitch, 1, "BOOL");
+		m.isOn = getprop(propSwitch);
+		props.globals.initNode(propOut, m.isOn, "DOUBLE");
+		m.listen = setlistener(propSwitch, 
+			func {
+				if(m.isOn and !getprop(propSwitch)) {
+					interpolate(propOut, 0, m.fadeOut);
+					m.isOn = 0;
+				}
+				if(!m.isOn and getprop(propSwitch)) {
+					interpolate(propOut, 1, m.fadeIn);
+					m.isOn = 1;
+				}
+			}
+		);
+		return m;
+	},
+	#destructor
+	del: func {
+		if(me.listen!=nil) removelistener(me.listen);
+	},
+};
+
+fadeLanding = lightFadeInOut.new(landingSwitch, lightsPath~"landing-lights-intensity");
+fadeTaxi = lightFadeInOut.new(taxiSwitch, lightsPath~"taxi-light-intensity");
+fadeProbe = lightFadeInOut.new(probeSwitch, lightsPath~"probe-light-intensity");
+fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
+#manipulate times if defaults don't fit your needs:
+#fadeLanding.fadeIn = 0.5;
+#fadeLanding.fadeOut = 0.8;
+
+
+### the rest of your model load embedded Nasal code ###
+
+    ]]>
+      
+</load>
+<unload>
+ stopFire();
+      disintegrated = 0;
+      removelistener(listenCrash);
+      
+      #prevent multiple timers and listeners from running and fighting on next connect
+      #cleanly destroy MP property mirroring
+      mirrorTimer.stop();
+      mirrorTimer = nil;
+      mirrorValues = nil;
+      
+      #cleanly destroy nav lights
+      if(navSwitch!=nil) setprop(navSwitch, 0);
+      navLights.del();
+      if(navSwitch!=nil) navLights.cycleTimer = nil;
+      navLights = nil;
+      
+      #cleanly destroy beacon
+      if(beaconSwitch!=nil) setprop(beaconSwitch, 0);
+      beacon.del();
+      beacon = nil;
+      
+      #cleanly destroy strobe
+      if(strobeSwitch!=nil) setprop(strobeSwitch, 0);
+      strobe.del();
+      strobe = nil;
+      
+      #cleanly destroy light fade in/out animation objects
+      fadeLanding.del();
+      fadeTaxi.del();
+      fadeProbe.del();
+      fadeWhite.del();
+      
+      ### the rest of your model unload embedded Nasal code ###
+livery_update.stop();
+</unload>
+</nasal>
+	
+	 <animation>
+    <type>material</type>
+    <object-name>HULL_Hull_Upper.001</object-name>
+    
+    <object-name>Canopy</object-name>
+    <object-name>HULL_Speedbrake_Outer</object-name>
+    <object-name>WNG_Left_Flaperon</object-name>
+    <object-name>WNG_Right_Flaperon</object-name>
+    <object-name>ELV_Elevon_Left</object-name>
+    <object-name>HULL_Hull_Upper</object-name>
+    <object-name>TF_Left_Rudder</object-name>
+    <object-name>TF_Right_Rudder</object-name>
+    <object-name>ELV_Elevon_Right</object-name>
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>Liveries/SU-27-top.rgb</texture>
+
+  </animation>
+  
+  <!-- rembrandt auto switching for glass -->
+  <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <condition>
+      <greater-than>
+        <property>sim/multiplay/generic/float[6]</property>
+        <value>9</value>
+      </greater-than>
+	   <property>/sim/rendering/rembrandt/enabled</property>
+    </condition>
+
+  <object-name>GLS_Canopy_Rear</object-name>
+  <object-name>GLS_Canopy_Front</object-name>
+  <object-name>canopy.glass</object-name>
+  <object-name>FlashRouge</object-name>
+  <object-name>hudglass</object-name>
+  <object-name>flash</object-name>
+  
+</effect>
+
+<!-- Turns off non rembrant lighting and effects -->
+<animation>
+        <type>select</type>
+        
+	<object-name>sonicboom</object-name>
+		<condition>
+            <not>
+            <property>/sim/rendering/rembrandt/enabled</property>
+            </not>
+        </condition>
+    </animation>	
+
+
+  
+  <!-- Solid Surfaces for Rembrandt rendering -->
+   <animation>
+    
+ <object-name>HULL_Hull_Upper.001</object-name>
+    <object-name>GLS_Canopy_Rear.001</object-name>
+    <object-name>Canopy</object-name>
+    <object-name>HULL_Speedbrake_Outer</object-name>
+    <object-name>WNG_Left_Flaperon</object-name>
+    <object-name>WNG_Right_Flaperon</object-name>
+    <object-name>ELV_Elevon_Left</object-name>
+    <object-name>HULL_Hull_Upper</object-name>
+    <object-name>TF_Left_Rudder</object-name>
+    <object-name>TF_Right_Rudder</object-name>
+    <object-name>ELV_Elevon_Right</object-name>
+		
+    </animation>	
+
+  <!-- panel -->
+  
+	<model>
+		<path>Aircraft/SU-27SK/Models/Interior/panel-zh.xml</path>
+			<offsets>
+				<x-m>0.3</x-m>
+					<y-m>-0.01</y-m>
+				<z-m>0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	
+	
+  <!-- Externals objects  -->
+  <model>
+    <path>Aircraft/SU-27SK/Models/Stores/Missiles/Weapons-load.xml</path>
+  </model>
+
+<!-- ** Control Surfaces ** -->
+<!-- Rudders -->
+<!-- Left -->
+  <animation>
+	<type>rotate</type>
+	<object-name>TF_Left_Rudder</object-name>
+	<property>surface-positions/rudder-pos-norm</property>
+	<factor>-25</factor>
+	<axis>
+		<x1-m>17.300</x1-m> <x2-m>17.900</x2-m>
+		<y1-m>-2.040</y1-m> <y2-m>-2.040</y2-m>
+		<z1-m>0.672</z1-m> <z2-m>2.700</z2-m>
+	</axis>
+  </animation>
+
+<!-- Right -->
+  <animation>
+	<type>rotate</type>
+	<object-name>TF_Right_Rudder</object-name>
+	<property>surface-positions/rudder-pos-norm</property>
+	<factor>-25</factor>
+	<axis>
+		<x1-m>17.300</x1-m> <x2-m>17.900</x2-m>
+		<y1-m>2.040</y1-m> <y2-m>2.040</y2-m>
+		<z1-m>0.672</z1-m> <z2-m>2.700</z2-m>
+	</axis>
+  </animation>
+
+<!-- Elevons -->
+<!-- Left -->
+  <animation>
+	<type>rotate</type>
+	<object-name>ELV_Elevon_Left</object-name>
+	<property>surface-positions/left-aileron-pos-norm</property>
+	<factor>25</factor>
+    <center>
+      <x-m>17.56</x-m>
+      <y-m>-2.0</y-m>
+      <z-m>-0.165</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+	<animation><!-- ** animation for the same obj with eleator factor ** -->
+	<type>rotate</type>
+	<object-name>ELV_Elevon_Left</object-name>
+	<property>surface-positions/elevator-pos-norm</property>
+	<factor>25</factor>
+    <center>
+      <x-m>17.56</x-m>
+      <y-m>-2.0</y-m>
+      <z-m>-0.165</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Right -->
+  <animation>
+	<type>rotate</type>
+	<object-name>ELV_Elevon_Right</object-name>
+	<property>surface-positions/right-aileron-pos-norm</property>
+	<factor>-25</factor>
+    <center>
+      <x-m>17.56</x-m>
+      <y-m>2.0</y-m>
+      <z-m>-0.165</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  
+	<animation>
+	<type>rotate</type>
+	<object-name>ELV_Elevon_Right</object-name>
+	<property>surface-positions/elevator-pos-norm</property>
+	<factor>25</factor>
+    <center>
+      <x-m>17.56</x-m>
+      <y-m>2.0</y-m>
+      <z-m>-0.165</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Flaperons  as Flaps-->
+<!-- Left -->
+  <animation>
+	<type>rotate</type>
+	<object-name>WNG_Left_Flaperon</object-name>
+	<property>surface-positions/flap-pos-norm</property>
+	<factor>-30</factor>
+	<axis>
+		<x1-m>14.385</x1-m> <x2-m>15.700</x2-m>
+		<y1-m>-2.15</y1-m> <y2-m>-5.250</y2-m>
+		<z1-m>0.2</z1-m> <z2-m>0.2</z2-m>
+	</axis>
+  </animation>
+
+<!-- Right -->
+  <animation>
+	<type>rotate</type>
+	<object-name>WNG_Right_Flaperon</object-name>
+	<property>surface-positions/flap-pos-norm</property>
+	<factor>30</factor>
+	<axis>
+		<x1-m>14.385</x1-m> <x2-m>15.700</x2-m>
+		<y1-m>2.15</y1-m> <y2-m>5.250</y2-m>
+		<z1-m>0.2</z1-m> <z2-m>0.2</z2-m>
+	</axis>
+  </animation>
+
+<!-- Flaperons  as Ailerons-->
+
+<!-- Left -->
+  <animation>
+	<type>rotate</type>
+	<object-name>WNG_Left_Flaperon</object-name>
+	<property>surface-positions/left-aileron-pos-norm</property>
+	<factor>-30</factor>
+	<axis>
+		<x1-m>14.385</x1-m> <x2-m>15.700</x2-m>
+		<y1-m>-2.15</y1-m> <y2-m>-5.250</y2-m>
+		<z1-m>0.2</z1-m> <z2-m>0.2</z2-m>
+	</axis>
+  </animation>
+
+<!-- Right -->
+  <animation>
+	<type>rotate</type>
+	<object-name>WNG_Right_Flaperon</object-name>
+	<property>surface-positions/right-aileron-pos-norm</property>
+	<factor>-30</factor>
+	<axis>
+		<x1-m>14.385</x1-m> <x2-m>15.700</x2-m>
+		<y1-m>2.15</y1-m> <y2-m>5.250</y2-m>
+		<z1-m>0.2</z1-m> <z2-m>0.2</z2-m>
+	</axis>
+  </animation>
+
+
+<!-- Extend Spoiler Panel -->
+  
+  <animation>
+	<type>rotate</type>
+	<object-name>HULL_Speedbrake_Outer</object-name>
+	<property>surface-positions/speedbrake-pos-norm</property>
+	<factor>-45</factor>
+    <center>
+      <x-m>8.95</x-m>
+      <y-m>0.0</y-m>
+      <z-m>1.176</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Rotate Strut Arm -->
+<!--
+  <animation>
+	<type>rotate</type>
+	<object-name>HULL_Speedbrake_Arm_Outer</object-name>
+	<object-name>HULL_Speedbrake_Arm_Inner</object-name>
+	<property>surface-positions/speedbrake-pos-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.3333</ind>
+        <dep>10.4</dep>
+      </entry>
+      <entry>
+        <ind>0.6666</ind>
+        <dep>18.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>22.7</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>11.900</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.707</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+-->
+
+<!-- Extend Inner Arm -->
+<!--
+  <animation>
+    <type>translate</type>
+	<object-name>HULL_Speedbrake_Arm_Inner</object-name>
+    <property>surface-positions/speedbrake-pos-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.3333</ind>
+        <dep>-0.10</dep>
+      </entry>
+      <entry>
+        <ind>0.6666</ind>
+        <dep>-0.3</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-0.55</dep>
+      </entry>
+    </interpolation>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>-0.157</z>
+    </axis>
+  </animation>
+-->
+
+<!-- U/C -->
+<!-- Nose -->
+<!-- De-select non-visibile parts when retracted -->
+  <animation>
+    <type>select</type>
+    <object-name>HULL_Nose_WWell</object-name>
+	<object-name>HULL_Nose_Door_Front_Int</object-name>
+	<object-name>HULL_Nose_Door_Rear_Int</object-name>
+    <object-name>UC_Nose_Upper_Strut</object-name>
+    <object-name>UC_Nose_Lower_Strut</object-name>
+	<object-name>UC_Nose_LLights</object-name>
+	<object-name>UC_Nose_Upright_Brace</object-name>
+    <object-name>UC_Nose_WGuard</object-name>
+    <object-name>UC_Nose_Tyres</object-name>
+    <object-name>UC_Nose_Hubs</object-name>
+    <object-name>UC_Nose_BSArm</object-name>
+    <object-name>UC_Nose_Rear_Post</object-name>
+    <condition>
+      <greater-than>
+        <property>gear/gear[0]/position-norm</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+<!-- Upper Strut group -->
+<!-- Steering -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Upper_Strut</object-name>
+	<object-name>UC_Nose_LLights</object-name>
+	<object-name>UC_Nose_Upright_Brace</object-name>
+	<property>surface-positions/left-rudder-pos-norm</property>
+	<factor>-53</factor>
+	<axis>
+		<x1-m>7.624</x1-m> <x2-m>7.472</x2-m>
+		<y1-m>0.0</y1-m> <y2-m>0.0</y2-m>
+		<z1-m>-0.074</z1-m> <z2-m>-1.582</z2-m>
+	</axis>
+  </animation>
+
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Upper_Strut</object-name>
+	<object-name>UC_Nose_LLights</object-name>
+	<object-name>UC_Nose_Upright_Brace</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.66</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.15</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Rear Post -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Rear_Post</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.66</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.15</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Rear_Post</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-54.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-54.0</dep>
+      </entry>
+      <entry>
+        <ind>0.64</ind>
+        <dep>-44.0</dep>
+      </entry>
+      <entry>
+        <ind>0.92</ind>
+        <dep>-14.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.71</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.79</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Lower Strut -->
+<!-- Steering -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Lower_Strut</object-name>
+	<property>surface-positions/left-rudder-pos-norm</property>
+	<factor>-53</factor>
+	<axis>
+		<x1-m>7.624</x1-m> <x2-m>7.472</x2-m>
+		<y1-m>0.0</y1-m> <y2-m>0.0</y2-m>
+		<z1-m>-0.074</z1-m> <z2-m>-1.582</z2-m>
+	</axis>
+  </animation>
+
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Lower_Strut</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.66</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.15</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>translate</type>
+	<object-name>UC_Nose_Lower_Strut</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+	<factor>0.14</factor>
+    <axis>
+      <x>0.1007</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+<!-- Tyres, Hubs & Swing-arm -->
+<!-- Steering -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Tyres</object-name>
+	<object-name>UC_Nose_Hubs</object-name>
+	<object-name>UC_Nose_BSArm</object-name>
+	<property>surface-positions/left-rudder-pos-norm</property>
+	<factor>-53</factor>
+	<axis>
+		<x1-m>7.624</x1-m> <x2-m>7.472</x2-m>
+		<y1-m>0.0</y1-m> <y2-m>0.0</y2-m>
+		<z1-m>-0.074</z1-m> <z2-m>-1.582</z2-m>
+	</axis>
+  </animation>
+
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Tyres</object-name>
+	<object-name>UC_Nose_Hubs</object-name>
+	<object-name>UC_Nose_BSArm</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.66</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.15</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_Tyres</object-name>
+	<object-name>UC_Nose_Hubs</object-name>
+	<object-name>UC_Nose_BSArm</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.3333</ind>
+        <dep>-26</dep>
+      </entry>
+      <entry>
+        <ind>0.6666</ind>
+        <dep>-42</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-56</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.31</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-1.47</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Wheel Guard -->
+<!-- Steering -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_WGuard</object-name>
+	<property>surface-positions/left-rudder-pos-norm</property>
+	<factor>-53</factor>
+	<axis>
+		<x1-m>7.624</x1-m> <x2-m>7.472</x2-m>
+		<y1-m>0.0</y1-m> <y2-m>0.0</y2-m>
+		<z1-m>-0.074</z1-m> <z2-m>-1.582</z2-m>
+	</axis>
+  </animation>
+
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_WGuard</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>95.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>7.66</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.15</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_WGuard</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+	<factor>-60</factor>
+    <center>
+      <x-m>7.31</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-1.47</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Counter-rotate -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Nose_WGuard</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+	<factor>60</factor>
+    <center>
+      <x-m>7.57</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-1.97</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Doors -->
+<!-- Front Door -->
+
+<!--
+  <animation>
+	<type>rotate</type>
+	<object-name>HULL_Nose_Door_Front_Ext</object-name>
+	<object-name>HULL_Nose_Door_Front_Int</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>95</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>95</dep>
+      </entry>
+    </interpolation>
+	<axis>
+		<x1-m>5.35</x1-m> <x2-m>7.77</x2-m>
+		<y1-m>0.25</y1-m> <y2-m>0.25</y2-m>
+		<z1-m>-0.10</z1-m> <z2-m>-0.02</z2-m>
+	</axis>
+  </animation>
+-->
+
+<!-- Rear NoseDoor -->
+
+  <animation>
+	<type>rotate</type>
+	<object-name>HULL_Nose_Door_Rear_Ext</object-name>
+	<object-name>HULL_Nose_Door_Rear_Int</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-60</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-81</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>-0.3</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+
+<!-- Left Main -->
+<!-- De-select non-visibile parts when retracted -->
+  <animation>
+    <type>select</type>
+    <object-name>HULL_LM_WWell</object-name>
+	<object-name>HULL_LMR_Door_Int</object-name>
+	<object-name>HULL_LMF_Door_Int</object-name>
+    <object-name>UC_Main_Left_Upper_St</object-name>
+    <object-name>UC_Main_Left_Tyre</object-name>
+	<object-name>UC_Main_Left_Hub</object-name>
+	<object-name>UC_Main_Left_Upper_DA</object-name>
+	<object-name>UC_Main_Left_Lower_DA</object-name>
+    <condition>
+      <greater-than>
+        <property>gear/gear[1]/position-norm</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+<!-- Upper Strut -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_St</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_St</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>3.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>3.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_St</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Hub (Lower Strut) -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Hub</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Hub</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>3.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>3.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Hub</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>translate</type>
+	<object-name>UC_Main_Left_Hub</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+	<factor>0.8</factor>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+<!-- Tyre -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Tyre</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Tyre</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>3.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>3.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Tyre</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>translate</type>
+	<object-name>UC_Main_Left_Tyre</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+	<factor>0.8</factor>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+<!-- Upper Damper Arm -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_DA</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_DA</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_DA</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Upper_DA</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>13.47</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-1.07</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Lower Damper Arm -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Lower_DA</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Lower_DA</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Lower_DA</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Lower_DA</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>13.47</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-1.07</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Left_Lower_DA</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <factor>110</factor>
+    <center>
+      <x-m>13.58</x-m>
+      <y-m>-1.63</y-m>
+      <z-m>-1.37</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Doors -->
+<!-- Front -->
+
+<!--
+  <animation>
+	<type>rotate</type>
+	<object-name>HULL_LMF_Door_Ext</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-110.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-110.0</dep>
+      </entry>
+    </interpolation>
+	<axis>
+		<x1-m>11.20</x1-m> <x2-m>11.91</x2-m>
+		<y1-m>-1.97</y1-m> <y2-m>-1.94</y2-m>
+		<z1-m>0.13</z1-m> <z2-m>0.12</z2-m>
+	</axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>HULL_LMF_Door_Int</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-110.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-110.0</dep>
+      </entry>
+    </interpolation>
+	<axis>
+		<x1-m>11.20</x1-m> <x2-m>11.91</x2-m>
+		<y1-m>-1.97</y1-m> <y2-m>-1.94</y2-m>
+		<z1-m>0.13</z1-m> <z2-m>0.12</z2-m>
+	</axis>
+  </animation>
+-->
+
+<!-- Rear -->
+
+
+  <animation>
+	<type>rotate</type>
+	<object-name>Gear-Door-LeftRear</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-45.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-80.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>0.8</x-m>
+      <y-m>-2.0</y-m>
+      <z-m>0.18</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+  <animation>
+	<type>rotate</type>
+	<object-name>Gear-Door-RightRear</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-45.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-80.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>-0.3</x-m>
+      <y-m>2.0</y-m>
+      <z-m>0.18</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+
+<!-- Right Main -->
+<!-- De-select non-visibile parts when retracted -->
+  <animation>
+    <type>select</type>
+    <object-name>HULL_RM_WWell</object-name>
+	<object-name>HULL_RMR_Door_Int</object-name>
+	<object-name>HULL_RMF_Door_Int</object-name>
+    <object-name>UC_Main_Right_Upper_S</object-name>
+    <object-name>UC_Main_Right_Tyre</object-name>
+	<object-name>UC_Main_Right_Hub</object-name>
+	<object-name>UC_Main_Right_Upper_D</object-name>
+	<object-name>UC_Main_Right_Lower_D</object-name>
+    <condition>
+      <greater-than>
+        <property>gear/gear[2]/position-norm</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+<!-- Upper Strut -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_S</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_S</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-3.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-3.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_S</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Hub (Lower Strut) -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Hub</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Hub</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-3.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-3.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Hub</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>translate</type>
+	<object-name>UC_Main_Right_Hub</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+	<factor>0.8</factor>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+
+<!-- Tyre -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Tyre</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Tyre</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-3.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-3.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Tyre</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>translate</type>
+	<object-name>UC_Main_Right_Tyre</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+	<factor>0.8</factor>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+<!-- Upper Damper Arm -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_D</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_D</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_D</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Upper_D</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>13.47</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-1.07</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- Lower Damper Arm -->
+<!-- Extend/Retract -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Lower_D</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>92.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Lower_D</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>4.5</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Lower_D</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>-90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>13.37</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-0.06</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+
+<!-- Compression -->
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Lower_D</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>13.47</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-1.07</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+	<type>rotate</type>
+	<object-name>UC_Main_Right_Lower_D</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <factor>110</factor>
+    <center>
+      <x-m>13.58</x-m>
+      <y-m>1.63</y-m>
+      <z-m>-1.37</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+ <!-- Nozzles -->
+  
+  <model>
+   <path>Aircraft/SU-27SK/Models/Effects/nozzles/Nozzles.xml</path>
+   <offsets>
+     <x-m>5.38</x-m>
+     <y-m>-0.32</y-m>
+     <z-m>-0.02</z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+ 
+ <model>
+   <path>Aircraft/SU-27SK/Models/Effects/nozzles/Nozzles.xml</path>
+   <offsets>
+     <x-m>5.38</x-m>
+     <y-m>2.22</y-m>
+     <z-m>-0.02</z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>    
+
+
+<!-- Reheat -->
+
+<model>
+<name>L_burner</name>
+    <path>Aircraft/SU-27SK/Models/Effects/Afterburner/Ab-Left.xml</path>
+    <offsets>
+      <x-m>19.8</x-m>
+      <y-m>  -1.27 </y-m>
+      <z-m> -0.25 </z-m>
+     <roll-deg>    0 </roll-deg>
+      <pitch-deg>0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>L_burner</object-name>
+  </animation>
+
+<!-- Reheat -->
+<model>
+<name>R_burner</name>
+    <path>Aircraft/SU-27SK/Models/Effects/Afterburner/Ab-Right.xml</path>
+    <offsets>
+      <x-m> 19.8</x-m>
+      <y-m> 1.27 </y-m>
+      <z-m> -0.22 </z-m>
+     <roll-deg>    0 </roll-deg>
+      <pitch-deg>0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>R_burner</object-name>
+  </animation>
+
+  <!-- lights -->
+  
+  
+   <model>
+	<path>Aircraft/SU-27SK/Models/Lights/LightPack.xml</path>
+	<offsets>
+		<x-m>0</x-m>
+		<y-m>0</y-m>
+		<z-m>0</z-m>
+		<pitch-deg>0</pitch-deg>
+		<heading-deg>0</heading-deg>    
+	</offsets>
+	</model>
+  
+  <!--
+  
+   <model>
+<path>Aircraft/SU-27SK/Models/Lights/LandingLight.xml</path>
+
+
+<offsets>
+      <x-m>7.65</x-m>
+      <y-m>0.15</y-m>
+      <z-m>-0.48</z-m>
+      <pitch-deg>-6.25</pitch-deg>
+      <heading-deg>-10</heading-deg>    
+</offsets>
+</model>
+
+<model>
+<path>Aircraft/SU-27SK/Models/Lights/LandingLight.xml</path>
+
+
+<offsets>
+      <x-m>7.65</x-m>
+      <y-m>-0.15</y-m>
+      <z-m>-0.48</z-m>
+      <pitch-deg>-6.25</pitch-deg>
+      <heading-deg>10</heading-deg>    
+</offsets>
+</model>
+
+
+  
+
+
+
+ <model>
+    <path>Aircraft/SU-27SK/Models/Lights/RedLight.xml</path>
+    <offsets>
+      <x-m> 16.12 </x-m>
+      <y-m> -7.5</y-m>
+      <z-m> 0.32</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/SU-27SK/Models/Lights/GreenLight.xml</path>
+    <offsets>
+      <x-m>16.12</x-m>
+      <y-m> 7.9</y-m>
+      <z-m> 0.32 </z-m>
+    </offsets>
+  </model>
+  
+  
+   <model>
+  <path>Aircraft/SU-27SK/Models/Lights/beacon.xml</path>
+   <offsets>
+     <x-m> 16.12 </x-m>
+      <y-m> -7.5</y-m>
+      <z-m> 0.32</z-m>
+   </offsets>
+ </model>
+ 
+ -->
+ 
+ <!-- Low level wash -->
+
+ <model>
+	 <name>aircraft_wash_l</name>
+	 <path>Aircraft/SU-27SK/Models/Effects/wash/aircraft_wash.xml</path>
+	 <condition>
+		 <equals>
+			 <property>controls/state/low_level</property>
+			 <value>1</value>
+		 </equals>
+	 </condition>
+	 <offsets>
+		 <x-m>25.000</x-m>
+		 <y-m>4.50</y-m>
+		 <z-m>0.0</z-m>
+		 <pitch-deg>0</pitch-deg>
+	 </offsets>
+ </model>
+
+<model>
+	 <name>aircraft_wash_r</name>
+	 <path>Aircraft/SU-27SK/Models/Effects/wash/aircraft_wash.xml</path>
+	 <condition>
+		 <equals>
+			 <property>controls/state/low_level</property>
+			 <value>1</value>
+		 </equals>
+	 </condition>
+	 <offsets>
+		 <x-m>25.000</x-m>
+		 <y-m>-4.50</y-m>
+		 <z-m>0.0</z-m>
+		 <pitch-deg>0</pitch-deg>
+	 </offsets>
+ </model>
+  
+  <animation>
+	 <type>translate</type>
+	 <object-name>aircraft_wash_l</object-name>
+	 <object-name>aircraft_wash_r</object-name>
+	 <property>position/altitude-agl-ft</property>
+	 <condition>
+		 <equals>
+			 <property>controls/state/low_level</property>
+			 <value>1</value>
+		 </equals>
+	 </condition>
+	 <interpolation>
+		 <entry>
+			 <ind>0.0</ind>
+			 <dep>0.0</dep>
+		 </entry>
+		 <entry>
+			 <ind>300.0</ind>
+			 <dep>-90</dep>
+		 </entry>
+	 </interpolation>
+	 
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>1.0</z>
+	 </axis>
+	 
+ </animation>
+  
+  
+   <model>
+   <name>sonicboom</name>
+		<path>Aircraft/SU-27SK/Models/Effects/boom/fx.xml</path>
+		<offsets>
+			<x-m>14</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model> 
+	
+	<model>
+		<path>Aircraft/SU-27SK/Models/Effects/Vapour/Vapour.xml</path>
+		<offsets>
+			<x-m>9.5</x-m>
+			<y-m>-1.5</y-m>
+			<z-m>0.9</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>-25</heading-deg>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>Aircraft/SU-27SK/Models/Effects/Vapour/Vapour.xml</path>
+		<offsets>
+			<x-m>9.5</x-m>
+			<y-m>1.5</y-m>
+			<z-m>0.9</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>25</heading-deg>
+		</offsets>
+	</model>
+ 
+ <model>
+		<path>Aircraft/SU-27SK/Models/Effects/Vapour/Vapour2.xml</path>
+		<offsets>
+			<x-m>13</x-m>
+			<y-m>-4</y-m>
+			<z-m>0.9</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>45</heading-deg>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>Aircraft/SU-27SK/Models/Effects/Vapour/Vapour2.xml</path>
+		<offsets>
+			<x-m>13</x-m>
+			<y-m>4</y-m>
+			<z-m>0.9</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>-45</heading-deg>
+		</offsets>
+	</model>
+	
+<!-- smoke n trails -->
+
+<!-- Gauche -->
+  <model>
+    <path>Aircraft/SU-27SK/Models/Effects/smoke/smokeL.xml</path>
+    <offsets>
+      <x-m>  22</x-m>
+      <y-m>  -1.2</y-m>
+      <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <!-- Droite -->
+  <model>
+    <path>Aircraft/SU-27SK/Models/Effects/smoke/smokeR.xml</path>
+    <offsets>
+     <x-m>  22</x-m>
+      <y-m>  1.2</y-m>
+      <z-m> 0</z-m>
+    </offsets>
+  </model>
+  
+  <!-- Contrail-left -->
+  <model>
+    <path>Aircraft/SU-27SK/Models/Effects/trail/trailL.xml</path>
+    <offsets>
+     <x-m>  22</x-m>
+      <y-m>  -1.2</y-m>
+      <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <!-- Contrail-right -->
+  <model>
+    <path>Aircraft/SU-27SK/Models/Effects/trail/trailR.xml</path>
+    <offsets>
+      <x-m>  22</x-m>
+      <y-m>  1.2</y-m>
+      <z-m> 0</z-m>
+    </offsets>
+  </model>
+  
+  
+   <model>
+  <path>Aircraft/SU-27SK/Models/Effects/tiptrail/tiptrail.xml</path>
+   <offsets>
+     <x-m>  14.6 </x-m>
+      <y-m> -7.5 </y-m>
+      <z-m> 0.2 </z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/SU-27SK/Models/Effects/tiptrail/tiptrail.xml</path>
+   <offsets>
+     <x-m>  14.6 </x-m>
+      <y-m> 7.5 </y-m>
+      <z-m> 0.2 </z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+
+<model>
+  <path>Aircraft/SU-27SK/Models/Effects/tiptrail/tiptrail.xml</path>
+   <offsets>
+     <x-m> 18.4</x-m>
+      <y-m> -2.25 </y-m>
+      <z-m> 3.7 </z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/SU-27SK/Models/Effects/tiptrail/tiptrail.xml</path>
+   <offsets>
+     <x-m>  18.4 </x-m>
+      <y-m> 2.25 </y-m>
+      <z-m> 3.7 </z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+  
+  <!-- fuel hose animation -->
+ 
+<!--
+ <animation>
+    <type>rotate</type>
+    <object-name>HULL_Refuelling_Probe_Fairing</object-name>
+    
+          <property>sim/model/FuelHose-positions/FuelHose/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 40 </dep></entry>
+    </interpolation>
+  <center>
+			<x-m>-4.87733</x-m>
+			<y-m>-0.632229</y-m>
+			<z-m>-0.675719</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0.116921</y>
+			<z>0.129442</z>
+		</axis>
+  </animation>
+-->
+  
+<!--
+  <animation>
+    <type>rotate</type>
+      <object-name>HULL_Refuelling_Probe</object-name>
+       <property>sim/model/FuelHose-positions/FuelHose/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 35 </dep></entry>
+    </interpolation>
+  <center>
+			<x-m>-4.87733</x-m>
+			<y-m>-0.632229</y-m>
+			<z-m>-0.675719</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0.116921</y>
+			<z>0.129442</z>
+		</axis>
+  </animation>
+-->
+  
+ <!--
+  
+  <animation>
+    <type>translate</type>
+      <object-name>FuelHose1</object-name>
+    <property>sim/model/FuelHose-positions/FuelHose/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> -0.25 </dep></entry>
+    </interpolation>
+   <offset-m>0.430444</offset-m>
+		<axis>
+			<x>0.427797</x>
+			<y>-0.016672</y>
+			<z>0.044651</z>
+		</axis>
+  </animation>
+  
+  -->
+  
+  <!-- canopy animation -->
+ 
+ <animation>
+    <type>rotate</type>
+    	<object-name>GLS_Canopy_Rear</object-name>
+			<object-name>GLS_Canopy_Rear.001</object-name>
+			<object-name>canopy.glass</object-name>
+	  <property>canopy/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 45 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>6.7</x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  1.5</z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+   <!-- Impact explosion -->
+  <!--><model>
+  <path>Aircraft/SU-27SK/Models/Effects/Explosion/Explode.xml</path>
+  <condition>
+    <property>sim/multiplay/generic/int[1]</property>
+  </condition>
+  <offsets>
+    <x-m>12</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+    <heading-deg>0</heading-deg>
+    </offsets>
+  </model><-->
+  
+  <!-- Impact fire -->
+  <model>
+  <path>Aircraft/SU-27SK/Models/Effects/Explosion/ImpactFire.xml</path>
+  <condition>
+    <equals>
+      <property>sim/multiplay/generic/int[7]</property>
+      <value>1</value>
+    </equals>
+  </condition>
+  <offsets>
+    <x-m>12</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+    <heading-deg>0</heading-deg>
+    </offsets>
+  </model>
+  
+  <!-- Impact fire smoke -->
+  <model>
+  <path>Aircraft/SU-27SK/Models/Effects/Explosion/ImpactFireSmoke.xml</path>
+  <condition>
+    <equals>
+      <property>sim/multiplay/generic/int[7]</property>
+      <value>1</value>
+    </equals>
+  </condition>
+  <offsets>
+    <x-m>12</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+    <heading-deg>0</heading-deg>
+    </offsets>
+  </model>
+	<!-- Aerobatic smoke -->
+<model>
+  <name>aerobatic_smoke</name>
+  <path>Aircraft/SU-27SK/Models/Effects/smoke/aerobatic-smoke.xml</path>
+  <offsets>
+   <x-m> 0.0</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </offsets>
+ </model>
+ 	<!-- Drug chute -->
+<model>
+  <name>parachute</name>
+  <path>Aircraft/SU-27SK/Models/Stores/DrogChute/parachute.xml</path>
+  <offsets>
+   <x-m> 22.0</x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+ 	<!-- Ground Power unit -->
+<model>
+  <name>Power-truck</name>
+  <path>Aircraft/SU-27SK/Models/sim-helpr-models/generic-trailer-GPU.xml</path>
+  <offsets>
+   <x-m> 0.0</x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </offsets>
+ </model>
+
+
+</PropertyList>
