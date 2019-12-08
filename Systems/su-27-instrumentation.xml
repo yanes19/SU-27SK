@@ -17,7 +17,7 @@
 		<desired-course type="double">0</desired-course>
 	</PNK-10>
 	<PU-184>
-		<!-- Pretend that NPN is PPM9 -->
+		<!-- Pretend that NPN is PPM9 -->	
 		<active-PPM type="int">1</active-PPM>
 		<PPM1>325</PPM1>
 		<PPM2>310</PPM2>
@@ -53,5 +53,9 @@
 		<status>1</status>
 		<active-wpt>1</active-wpt>
 	</OC-controller>
+	<Engines-start-panel>
+		<Start-cover-pos type="int">0</Start-cover-pos>
+		<Switch-restrict-pos type="int">0</Switch-restrict-pos>
+	</Engines-start-panel>
 	
 </PropertyList>
