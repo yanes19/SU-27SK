@@ -2,9 +2,10 @@
 ************ SU-27SK aircraft package  for flightgear ******************
 ************************************************************************
 
-	This is an implentation for the SUKHOI's  SU-27 4th generation fighter
-aircraft , made under linux and FGFS 3.4 , but it should support v3.2 
-and may be some older versions .
+	This is an implentation for the SUKHOI's  SU-27 4th generation fighter 
+    aircraft , made under linux and FGFS 3.4 , but it should support v3.2 
+    and may be some older versions .
+
 
  This work uses a lot of models and scripts  and other works made by 
  * the FGUK-team for their SU-27 prototype ,
@@ -15,7 +16,8 @@ and may be some older versions .
  So Greetings and THANKS to all of them .
  
 	The current aircraft package is at version 0.3 (as of late January 2017), so this is an "EARLY DEVELOPPEMENT" version , 
-just published for Fun, Tests, and may be some contributions .
+    just published for Fun, Tests, and may be some contributions .
+
 
 
 FEATURES : 
@@ -64,5 +66,5 @@ PLEASE remember : THERE ARE MILLIONS OF CHILDS UNDER WAR IN GAZA ,
 														MILLIONS OF HUNGRY CHILDS IN SYRIA ,
 														
 	May be one day we all together can stop wars in the world , 
-	and send all war machines including aircrafts to meusems .
+	and send all war machines including aircrafts to museums .
 		
