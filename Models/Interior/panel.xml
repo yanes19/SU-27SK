@@ -15,7 +15,7 @@
   <model>
     <path>Aircraft/SU-27SK/Models/Interior/seat2.ac</path>
 	<offsets>
-      <x-m> 5.0 </x-m>
+      <x-m> 5.12</x-m>
       <y-m>0.01 </y-m>
       <z-m>0.6 </z-m>
 	  <pitch-deg>-5</pitch-deg>
@@ -43,6 +43,17 @@
 	  <pitch-deg>0</pitch-deg>
     </offsets>
 <!--Stick animations defined near the EOF-->
+  </model>
+
+   <model>
+   <name>Power-switches-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Power-Switches-panel/Power-switches-panel.xml</path>
+	<offsets>
+      <x-m>4.325 </x-m>
+      <y-m>0.512 </y-m>
+      <z-m>0.866 </z-m>
+	  <roll-deg>30</roll-deg>
+    </offsets>
   </model>
 
    <model>
@@ -78,8 +89,7 @@
    </animation>
   </overlay>
   </model>
-  
-  <!-- BEGIN BY YANES -->
+ 
    <model>
    <name>RPM-Tachometer</name>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/RPM-Tachometer/RPM-Tachometer.xml</path>
@@ -264,6 +274,16 @@
 	  <pitch-deg>-5</pitch-deg>
     </offsets>
   </model>
+
+  <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Slats-indicator/Slats-indicator.xml</path>
+	<offsets>
+      <x-m> 4.310 </x-m>
+      <y-m>-0.33</y-m>
+      <z-m>0.990</z-m>
+	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
   
    <model>
    <name>Rdr.Altimeter</name>
@@ -343,6 +363,67 @@
     <z-offset>1.1</z-offset>
    </animation>
    </overlay>
+  </model>
+  
+  
+   <model>
+   <name>AC-Limiters-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/AC-Limiters-panel/AC-Limiters-panel.xml</path>
+	<offsets>
+      <x-m> 4.478 </x-m>
+      <y-m>-0.410</y-m>
+      <z-m> 0.703 </z-m>
+    </offsets>
+
+<!--
+	<overlay>
+  <animation>
+  <type>rotate</type>
+	<value>100</value>
+  <center>
+   <x-m>0.000494</x-m>
+   <y-m>0.014681</y-m>
+   <z-m>0.317119</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y> 0</y>
+   <z> 0</z>
+  </axis>
+ </animation>
+   </overlay>
+-->
+
+  </model>
+  
+   <model>
+   <name>Engines-start-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Engines-Start-panel/Engines-start-panel.xml</path>
+	<offsets>
+      <x-m> 4.716 </x-m>
+      <y-m>-0.410</y-m>
+      <z-m> 0.843 </z-m>
+    </offsets>
+
+<!--
+	<overlay>
+  <animation>
+  <type>rotate</type>
+	<value>100</value>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x> 1</x>
+   <y> 0</y>
+   <z> 1</z>
+  </axis>
+ </animation>
+   </overlay>
+-->
+
   </model>
   
    <model>
@@ -454,6 +535,17 @@
       <y-m>-0.22 </y-m>
       <z-m>1.15</z-m>
 	  <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/Emergency-brake/emergency-brake.xml</path>
+	<offsets>
+      <x-m>4.50 </x-m>
+      <y-m>-0.275 </y-m>
+      <z-m>0.83</z-m>
+	  <pitch-deg>12</pitch-deg>
+	  <roll-deg>5</roll-deg>
     </offsets>
   </model>
   

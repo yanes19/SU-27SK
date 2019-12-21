@@ -365,6 +365,7 @@ livery_update.stop();
   <!-- panel -->
   
 	<model>
+		<name>panel</name>
 		<path>Aircraft/SU-27SK/Models/Interior/panel.xml</path>
 			<offsets>
 				<x-m>0.3</x-m>
@@ -373,7 +374,22 @@ livery_update.stop();
 			<pitch-deg>0</pitch-deg>
 		</offsets>
 	</model>
-	
+					  <!-- TO BE REMOVED !!!! FOR DESIGNING PURPOSE ONLY  -->
+<!--
+  <animation>
+  <type>pick</type>
+  <object-name>panel</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/Engines-start-panel</property>
+		</binding>
+  </action>
+ </animation> 	
+-->
 	
   <!-- Externals objects  -->
   <model>
