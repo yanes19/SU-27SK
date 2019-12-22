@@ -39,16 +39,13 @@
 	<object-name>P7_aerobatic_smoke_blue</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[6]/selected</property>
+				<property>sim/multiplay/generic/string[0]</property>
 				<value>smoke-blue</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon7/launch</property>
+				<property>sim/multiplay/generic/int[8]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -60,16 +57,13 @@
 	<object-name>P7_aerobatic_smoke_yellow</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[6]/selected</property>
+				<property>sim/multiplay/generic/string[0]</property>
 				<value>smoke-yellow</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon7/launch</property>
+				<property>sim/multiplay/generic/int[8]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -81,16 +75,13 @@
 	<object-name>P7_aerobatic_smoke_red</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[6]/selected</property>
+				<property>sim/multiplay/generic/string[0]</property>
 				<value>smoke-red</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon7/launch</property>
+				<property>sim/multiplay/generic/int[8]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -134,16 +125,13 @@
 	<object-name>P8_aerobatic_smoke_blue</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[7]/selected</property>
+				<property>sim/multiplay/generic/string[1]</property>
 				<value>smoke-blue</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon8/launch</property>
+				<property>sim/multiplay/generic/int[9]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -155,16 +143,13 @@
 	<object-name>P8_aerobatic_smoke_yellow</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[7]/selected</property>
+				<property>sim/multiplay/generic/string[1]</property>
 				<value>smoke-yellow</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon8/launch</property>
+				<property>sim/multiplay/generic/int[9]</property>
 				<value>true</value>
 			</equals>
 		</and>
@@ -176,16 +161,13 @@
 	<object-name>P8_aerobatic_smoke_red</object-name>
 	<condition>
 		<and>
+			
 			<equals>
-				<property>sim/multiplay/generic/int[0]</property>
-				<value>3</value>
-			</equals>
-			<equals>
-				<property>sim/weight[7]/selected</property>
+				<property>sim/multiplay/generic/string[1]</property>
 				<value>smoke-red</value>
 			</equals>
 			<equals>
-				<property>su-27/WCS/pylon8/launch</property>
+				<property>sim/multiplay/generic/int[9]</property>
 				<value>true</value>
 			</equals>
 		</and>
