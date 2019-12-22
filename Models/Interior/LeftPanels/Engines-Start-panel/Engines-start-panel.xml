@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+	
+	<name>Engines-start-panel</name>
+	<path>Engines-start-panel.ac</path>
+
+
+  <animation>
+  <type>pick</type>
+  <object-name>Firing-Covers</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/Engines-start-panel/Start-cover-pos</property>
+		</binding>
+  </action>
+ </animation> 
+
+  <animation>
+	<type>rotate</type>
+	<object-name>Firing-Covers</object-name>
+	<property>su-27/instrumentation/Engines-start-panel/Start-cover-pos</property>
+	<factor>90</factor>
+	  <center>
+	   <x-m>-0.0368</x-m>
+	   <y-m>-0.0207</y-m>
+	   <z-m>0.01661</z-m>
+	  </center>	   
+	  <axis>
+		   <x> 0</x>       
+		   <y> 1</y>
+		   <z>-0.35</z>  
+	  </axis>
+  </animation>
+
+
+
+  <animation>
+  <type>pick</type>
+  <object-name>Switch.REstrict</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/Engines-start-panel/Switch-restrict-pos</property>
+		</binding>
+  </action>
+ </animation> 
+
+
+  <animation>
+	<type>rotate</type>
+	<object-name>Switch.REstrict</object-name>
+	<property>su-27/instrumentation/Engines-start-panel/Switch-restrict-pos</property>
+	<factor>90</factor>
+	  <center>
+	   <x-m>0.033688</x-m>
+	   <y-m>0.05989</y-m>
+	   <z-m>-0.011796</z-m>
+	  </center>	   
+	  <axis>
+		   <x> 1</x>       
+		   <y>-0.0</y>
+		   <z>-0.0</z>  
+	  </axis>
+
+  </animation>
+<!--
+-->
+
+
+</PropertyList>
