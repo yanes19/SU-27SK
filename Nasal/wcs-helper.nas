@@ -1,6 +1,8 @@
+setprop("su-27/WCS/pylon7/launch", 0);
+setprop("su-27/WCS/pylon8/launch", 0);
 var smoke_launcher = func {
-	var pylon8ld ="sim/weight[7]/selected";
-	var pylon7ld ="sim/weight[6]/selected";
+	var pylon8ld ="sim/multiplay/generic/string[1]";
+	var pylon7ld ="sim/multiplay/generic/string[0]";
 	var pylon8Launch  = "su-27/WCS/pylon8/launch";
 	var pylon7Launch  = "su-27/WCS/pylon7/launch";
 	setprop("sim/multiplay/generic/int[0]" ,1);

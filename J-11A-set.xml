@@ -97,6 +97,12 @@ SU-27 simulation config.
                 <float n="4" alias="/sim/model/nozzle-animation"/>
                 <float n="8" alias="/engines/engine[0]/augmentation" /> <!-- afterburner/Reheat Left Engine -->
             <float n="9" alias="/engines/engine[1]/augmentation" /> <!-- afterburner/Reheat Right Engine -->
+           
+            <!-- Smoke on -->
+          <int n="8" alias="/su-27/WCS/pylon7/launch" />    
+          <int n="9" alias="/su-27/WCS/pylon8/launch" /> 
+          <string n="0" alias="/sim/weight[6]/selected" />
+          <string n="1" alias="/sim/weight[7]/selected" />    
       </generic>
     </multiplay>
 
@@ -304,7 +310,7 @@ SU-27 simulation config.
       </help>
       
       
-      <menubar include="Dialogs/menuJ11A.xml"/>
+      <menubar include="Dialogs/J-11A_menu.xml"/>
 
     <weight n="0">
       <name>pylon1</name>
@@ -760,13 +766,13 @@ SU-27 simulation config.
 
   <nasal>
         
-        <su27>
-     <file>Aircraft/SU-27SK/Nasal/SU-27SK.nas</file>
+    <su27>
+        <file>Aircraft/SU-27SK/Nasal/SU-27SK.nas</file>
     </su27>
     <engines>
-          <file>Aircraft/SU-27SK/Nasal/Engines.nas</file>
+        <file>Aircraft/SU-27SK/Nasal/Engines.nas</file>
     </engines>
-        <maintenance>
+    <maintenance>
         <file>Aircraft/SU-27SK/Nasal/maintenance.nas</file>
     </maintenance>
     <misc><file>Aircraft/SU-27SK/Nasal/Misc.nas</file></misc>
@@ -774,24 +780,14 @@ SU-27 simulation config.
     <electricals>
             <file>Aircraft/SU-27SK/Nasal/Electrical.nas</file>
         </electricals>
-<!--
-        <eno>
-     <file>Aircraft/SU-27SK/Nasal/eno.nas</file>
-    </eno>
--->
+
     <instrumentation>
       <file>Aircraft/SU-27SK/Nasal/instruments.nas</file>
     </instrumentation>
     <nd>
             <file>Aircraft/SU-27SK/Models/Interior/Instruments/MFD-IPV/ND.nas</file>
     </nd>
-<!--
-        <low>
-      <file>Aircraft/SU-27SK/Nasal/low.nas</file>
-    </low> 
--->
-
-
+    
     <lights>
       <file>Aircraft/SU-27SK/Nasal/Lights.nas</file>
     </lights>
@@ -807,7 +803,20 @@ SU-27 simulation config.
 
     <canvas_HUD>
             <file>Aircraft/SU-27SK/Nasal/hud.nas</file>
-    </canvas_HUD>
+    </canvas_HUD>    
+    
+<!--
+        <low>
+      <file>Aircraft/SU-27SK/Nasal/low.nas</file>
+    </low> 
+-->
+
+<!--
+        <eno>
+     <file>Aircraft/SU-27SK/Nasal/eno.nas</file>
+    </eno>
+-->
+
     
 <!--
         <rwr>
@@ -869,9 +878,10 @@ SU-27 simulation config.
     <CanvasRSBN><file>Aircraft/SU-27SK/Nasal/CanvasDlg/RSBN-Dlg.nas</file></CanvasRSBN>
 
     <CanvasPU184><file>Aircraft/SU-27SK/Nasal/CanvasDlg/ARC-PU-184Dlg.nas</file></CanvasPU184>
+	<!--ExperimentalCanvas Digits-->
+	<OC-Canvasdigits><file>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Canvasdigits.nas</file></OC-Canvasdigits>
 
-
-  </nasal>   
+  </nasal>  
 
   </PropertyList>
 
