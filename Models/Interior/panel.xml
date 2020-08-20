@@ -55,6 +55,17 @@
 	  <roll-deg>30</roll-deg>
     </offsets>
   </model>
+  
+   <model>
+   <name>Flares-chaffs-IFF-cp</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Flares-Chaff-IFF-panel/Flares-chaffs-IFF-cp.xml</path>
+	<offsets>
+      <x-m>4.686 </x-m>
+      <y-m>0.562 </y-m>
+      <z-m>0.910 </z-m>
+	  <roll-deg>31</roll-deg>
+    </offsets>
+  </model>
 
    <model>
    <name>Throttle-blocks</name>
