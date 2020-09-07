@@ -516,6 +516,28 @@
    </overlay>
   </model>
   
+    <model>
+   <name>Electricity-SDU-power-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Electricity-SDU-power-panel/Electricity-SDU-power-panel.xml</path>
+	<offsets>
+      <x-m>4.920 </x-m>
+      <y-m>0.583 </y-m>
+      <z-m>0.910 </z-m>
+	  <roll-deg>36</roll-deg>
+    </offsets>
+
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>0.3</x-offset>
+    <y-offset>0.3</y-offset>
+    <z-offset>0.3</z-offset>
+   </animation>
+   </overlay>
+
+  </model>
+  
    <model>
    <name>MarkersLeds</name>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/WarningLights/MarkersLeds.xml</path>

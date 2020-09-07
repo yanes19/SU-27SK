@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+	
+	<model>	
+		<name>Electricity-SDU-power-panel</name>
+		<path>Electricity-SDU-power-panel.ac</path>
+	</model>
+	
+	<animation>
+	 <type>material</type>
+	 <object-name>VDC-Gauge.Face</object-name>
+	 <object-name>VDC-gauge.needle</object-name>
+	 <object-name>VAC-gauge.needle</object-name>
+	 <object-name>VAC-Gauge.Face</object-name>
+	 
+	 <condition>
+		 <greater-than>
+			 <property>systems/electrical/outputs/WarnLeds</property>
+		   <value>20</value>
+		 </greater-than>
+	 </condition>
+ <emission>
+  <red>0.8</red>
+  <green>0.5</green>
+  <blue>0.5</blue>
+ </emission>
+</animation>
+	
+	<animation>
+	 <type>rotate</type>
+	 <object-name>VDC-gauge.needle</object-name>
+	 <property>systems/electrical/volts</property>
+	 <interpolation>
+		  
+		  <entry><ind>00</ind><dep> 0</dep></entry>
+		  <entry><ind>15</ind><dep>120</dep></entry> 
+		  <entry><ind>24</ind><dep>190</dep></entry>
+		  <entry><ind>28</ind><dep>226</dep></entry>
+
+	 </interpolation>
+	   <center>
+	   <x-m>-0.257517</x-m>
+	   <y-m> 0.047697</y-m>
+	   <z-m> 0.035858</z-m>
+	  </center>
+	 <axis>
+		  <x>0</x>
+		  <y>0</y>
+		  <z>-1</z>
+	 </axis>
+	</animation>
+	
+	
+	<animation>
+	 <type>rotate</type>
+	 <object-name>VAC-gauge.needle</object-name>
+	 <property>systems/electrical/sources/GP-21-Alternators/GP-21Right-AC-Voltage</property>
+	 <interpolation>
+		  
+		  <entry><ind>00</ind><dep> 0</dep></entry>
+		  <entry><ind>30</ind><dep>15</dep></entry> 
+		  <entry><ind>60</ind><dep>22</dep></entry>
+		  <entry><ind>90</ind><dep>60</dep></entry>
+		  <entry><ind>120</ind><dep>190</dep></entry>
+
+	 </interpolation>
+	   <center>
+	   <x-m>-0.14588</x-m>
+	   <y-m> 0.05314</y-m>
+	   <z-m> 0.03241</z-m>
+	  </center>
+	 <axis>
+		  <x>0</x>
+		  <y>0</y>
+		  <z>-1</z>
+	 </axis>
+	</animation>	
+	
+	
+	
+	
+</PropertyList>
