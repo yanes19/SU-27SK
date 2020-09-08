@@ -35,7 +35,6 @@ USSR and Russia  aerospace industry .
       <model type="int">   4</model>
     </rating>
 
-
     <virtual-cockpit archive="y">true</virtual-cockpit>
     
     <gui><style><colors>
@@ -254,8 +253,7 @@ USSR and Russia  aerospace industry .
     
         <electrical>
             <!-- note :
-                         null electrical system path here so we can use a nasal based model defined
-                         later in the nasal section of this file.
+			This has been set to a JSB system file ,no need to mention here !
             -->
             <path></path>
         </electrical>
@@ -781,9 +779,11 @@ USSR and Russia  aerospace industry .
     </maintenance>
     <misc><file>Aircraft/SU-27SK/Nasal/Misc.nas</file></misc>
     
+<!-- ***This has been cancelled in favor of a jsb system file, staged for removal !!**
     <electricals>
             <file>Aircraft/SU-27SK/Nasal/Electrical.nas</file>
         </electricals>
+-->
 
     <instrumentation>
       <file>Aircraft/SU-27SK/Nasal/instruments.nas</file>
@@ -878,11 +878,13 @@ USSR and Russia  aerospace industry .
     
 
     <CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
+    
     <CanvasHelpDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/CanvasHelpDlg.nas</file> </CanvasHelpDlg>
+    
     <CanvasRSBN><file>Aircraft/SU-27SK/Nasal/CanvasDlg/RSBN-Dlg.nas</file></CanvasRSBN>
 
     <CanvasPU184><file>Aircraft/SU-27SK/Nasal/CanvasDlg/ARC-PU-184Dlg.nas</file></CanvasPU184>
-	<!--ExperimentalCanvas Digits-->
+
 	<OC-Canvasdigits><file>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Canvasdigits.nas</file></OC-Canvasdigits>
 
   </nasal>   

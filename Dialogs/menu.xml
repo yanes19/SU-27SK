@@ -24,7 +24,7 @@
 			<binding>
 				<command>nasal</command>
 				<script>
-					if (electricals.EXT.getValue() == 1){gui.popupTip("Ground power ON");}
+					if (getprop("controls/electric/external-power") == 1){gui.popupTip("Ground power ON");}
 					else {gui.popupTip("Ground power OFF");}
 					</script>
 			</binding>
