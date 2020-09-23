@@ -42,6 +42,9 @@ var RSBN_PPMs = func {
 	}
 
 var PNK_DataUpdate = func{
+	PNK_ready= getprop("su-27/instrumentation/PNK-10/ready");
+	PNK_active= getprop("su-27/instrumentation/PNK-10/active");
+	if (PNK_ready == 1 and PNK_active  == 1){
 	##Continuously update radials from selected navigation device :
 	var NavRAdials = getprop("instrumentation/nav/radials/reciprocal-radial-deg");
 	var NDBRadials = getprop("instrumentation/adf/indicated-bearing-deg")or 0.00;
@@ -91,7 +94,7 @@ var PNK_DataUpdate = func{
 	setprop("su-27/instrumentation/PNK-10/str-PNK-Altitude",str_PNK_Altitude);
 	setprop("su-27/instrumentation/PNK-10/PNK-Altitude",PNK_Altitude);
 	#;
-	
+	}
 	
 	settimer(PNK_DataUpdate, 0);
 }

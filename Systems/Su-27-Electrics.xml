@@ -516,6 +516,13 @@ OLD DEPRECATED SYSTEM
 			<test logic="AND" value="/systems/electrical/VDC-bus[1]">
 				/systems/electrical/VDC-bus[1] GT 20
 			</test>
+			<output>/systems/electrical/outputs/nav</output>
+			<output>/systems/electrical/outputs/adf</output>
+			<output>/systems/electrical/outputs/dme</output>
+			<output>/systems/electrical/outputs/mk-viii</output>
+			
+			<output>/systems/electrical/outputs/PNK-10</output>	
+			
 		</switch>	
 		
 		

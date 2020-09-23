@@ -11,6 +11,8 @@
 	<brightness>0.7</brightness>
 	</HUD>
 	<PNK-10>
+		<active type="bool">true</active>
+		<ready type="bool">true</ready>
 		<!-- Active PNK mode is: 0 : "PROGRAM", 1: "RSBN", 1.1: "ARC".-->
 		<active-mode type="double">1</active-mode>
 		<radial type="double">0</radial>
