@@ -6,5 +6,214 @@
 	<name>PNK-panel</name>
 	<path>PNK-panel.ac</path>
 
+  <animation><!--Power switch COVER-->
+  <type>pick</type>
+  <object-name>PNK-power-cover</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/PNK-10/PNK-Power-Switch-Pos</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--Power switch COVER rotation-->
+	<type>rotate</type>
+	<object-name>PNK-power-cover</object-name>
+	<property>su-27/instrumentation/PNK-10/PNK-Power-Switch-Pos</property>
+	<factor>90</factor>
+	  <center>
+	   <x-m>-0.03719</x-m>
+	   <y-m> 0.08143</y-m>
+	   <z-m> 0.00419</z-m>
+	  </center>	   
+	  <axis>
+		   <x> 1</x>       
+		   <y> -176</y>
+		   <z>-0.00</z>  
+	  </axis>
+  </animation>
+
+  <animation>	<!--Power switch lever-->
+  <type>pick</type>
+  <object-name>lever-PNK-power-off</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/PNK-10/ready</property>
+		</binding>
+		 <binding>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/PNK-10/active</property>
+			 <value>0</value>
+			 <property>systems/electrical/VDC-bus[1]</property>
+		</binding>
+  </action>
+  </animation> 
+  
+  <animation>	<!--Power switch lever rotation-->
+	<type>rotate</type>
+	<object-name>lever-PNK-power-off</object-name>
+	<property>su-27/instrumentation/PNK-10/ready</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>-0.027731</x-m>
+	   <y-m> 0.0792</y-m>
+	   <z-m>-0.001704</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--PNK on/off button pick-->
+  <type>pick</type>
+  <object-name>PNK-On-Bttn</object-name>
+  	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/PNK-10/ready</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/PNK-10/active</property>
+		</binding>
+  </action>
+  </animation> 
+  
+ 	<animation>	<!--PNK on/off button LAMP-->
+	 <type>material</type> 
+	 <object-name>Bttn-Lamp</object-name>
+	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/PNK-10/active</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+	
+ 	<animation>	<!--PNK on/off button LAMP-->
+	 <type>material</type> 
+	 <object-name>btton.Light</object-name>
+	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/PNK-10/active</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+	 <emission>	
+	  <red>0.1</red>	
+	  <green>1</green>	
+	  <blue>0.1</blue>
+	 </emission>
+	</animation>
+
+  <animation>	<!--PNK Man-Auto switch pick-->
+  <type>pick</type>
+  <object-name>lever-Guidance-Auto-Man</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/PNK-10/guidance-mode</property>
+		 <value type="int">0</value>
+		 <value type="int">1</value>
+		</binding>
+  </action>
+  </animation> 
+  
+  
+  <animation>	<!--PNK Man-Auto switch rotation-->
+	<type>rotate</type>
+	<object-name>lever-Guidance-Auto-Man</object-name>
+	<property>su-27/instrumentation/PNK-10/guidance-mode</property>
+	<factor>-90</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m> 0.02358</x-m>
+	   <y-m> 0.05086</y-m>
+	   <z-m>-0.00169</z-m>
+	  </center>	   
+	  <axis>
+		   <x>1</x>       
+		   <y>0</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+	<animation>
+		<type>knob</type>
+		<object-name>Knob-SPD.mach</object-name>
+	    <property>su-27/instrumentation/PNK-10/manual-speed</property>
+	    <factor>-65</factor>
+	  <offset-deg>100</offset-deg>
+		<center>
+			<x-m>0.023606</x-m><y-m>0.020525</y-m><z-m>0.003027</z-m>
+		</center>
+		<axis>
+			<x>0</x><y>0</y><z>1</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-cycle</command>
+			  <property>su-27/instrumentation/PNK-10/manual-speed</property>
+				  <factor>10</factor>
+				   <wrap>0</wrap>
+				<value type="double">0.9</value>
+				<value type="double">1.3</value>
+				<value type="double">1.8</value>
+				<value type="double">2.16</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>knob</type>
+		<object-name>Knob-ALT.km</object-name>
+	    <property>su-27/instrumentation/PNK-10/manual-alt</property>
+	    <factor>-06</factor>
+	  <offset-deg>68</offset-deg>
+		<center>
+			<x-m>0.023606</x-m><y-m>0.08047</y-m><z-m>0.003027</z-m>
+		</center>
+		<axis>
+			<x>0</x><y>0</y><z>1</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-cycle</command>
+			  <property>su-27/instrumentation/PNK-10/manual-alt</property>
+				  <factor>1</factor>
+				   <wrap>0</wrap>
+				<value type="double">4</value>
+				<value type="double">7</value>
+				<value type="double">11</value>
+				<value type="double">14</value>
+				<value type="double">17</value>
+			</binding>
+		</action>
+	</animation>
+
 
 </PropertyList>

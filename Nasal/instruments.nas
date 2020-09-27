@@ -1,6 +1,7 @@
 
 
 var ft2m = func(x){if(x!= nil){return x * 0.3048}else {return 0}};
+var mach2kt = func(x){if(x!= nil){return x * 661.47}else {return 0}};
 
 
  var init_instrumentation = func {
@@ -21,6 +22,9 @@ var ft2m = func(x){if(x!= nil){return x * 0.3048}else {return 0}};
 var activeAERfreq = 0;
 var PNK_Selectedradials = 0;
 var currentWPT = getprop("autopilot/route-manager/current-wp");
+var	PNK_ready= getprop("su-27/instrumentation/PNK-10/ready");
+var	PNK_active= getprop("su-27/instrumentation/PNK-10/active");
+
 
 var P_184PPMs = func {
 	var FreqToSet = "";
@@ -42,8 +46,7 @@ var RSBN_PPMs = func {
 	}
 
 var PNK_DataUpdate = func{
-	PNK_ready= getprop("su-27/instrumentation/PNK-10/ready");
-	PNK_active= getprop("su-27/instrumentation/PNK-10/active");
+
 	if (PNK_ready == 1 and PNK_active  == 1){
 	##Continuously update radials from selected navigation device :
 	var NavRAdials = getprop("instrumentation/nav/radials/reciprocal-radial-deg");
@@ -65,14 +68,13 @@ var PNK_DataUpdate = func{
 		getActiveAER();
 		setprop("instrumentation/nav/frequencies/selected-mhz" ,activeAERfreq);
 		#print("activeAERfreq " ~ activeAERfreq);
-		PNK_Selectedradials = NavRAdials or 0.0;
-		}; 
-
+		PNK_Selectedradials = NavRAdials or 0.0;}
 	setprop("su-27/instrumentation/PNK-10/radial" , PNK_Selectedradials); 
 	
 	## Read and provide WPT Num. for OnBoard Computer unit .
 	var OC_ControllerWpt = getprop("autopilot/route-manager/current-wp") + 1 ;
 	setprop("su-27/instrumentation/OC-controller/active-wpt",OC_ControllerWpt);
+	
 	# if Current wpt changed , update the desired course :
 	if (getprop("autopilot/route-manager/current-wp") != currentWPT){
 	setprop("instrumentation/nav/radials/selected-deg",getprop("instrumentation/gps/desired-course-deg"));
@@ -93,7 +95,15 @@ var PNK_DataUpdate = func{
 	 }
 	setprop("su-27/instrumentation/PNK-10/str-PNK-Altitude",str_PNK_Altitude);
 	setprop("su-27/instrumentation/PNK-10/PNK-Altitude",PNK_Altitude);
-	#;
+	#update the PNK speed setting if any changes occured;
+#	if (getprop("autopilot/locks/speed")=="speed-with-throttle"){
+#		if (getprop("su-27/instrumentation/PNK-10/guidance-mode")== 1){
+#		setprop("autopilot/settings/target-speed-kt" , ACS.getPNKspeed());}}
+#	#update the PNK altitude setting if any changes occured;
+#	if (getprop("autopilot/locks/altitude")=="altitude-hold" and getprop("su-27/instrumentation/PNK-10/guidance-mode") == 1) {
+#		if (getprop("su-27/instrumentation/PNK-10/guidance-mode")== 0){
+#		setprop("/autopilot/settings/target-altitude-ft" , ACS.getPNKaltitude());}}
+	
 	}
 	
 	settimer(PNK_DataUpdate, 0);

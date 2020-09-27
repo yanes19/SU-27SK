@@ -1,6 +1,23 @@
 #ACS SAU and AP helper functions 
 
 
+########################################
+#To do :
+#the PNK altitude and speed are set by the
+# pilot in HOLD and similar methods implement and replace the fixed values below !!!
+#########################################
+var getPNKspeed= func(){
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 0){return 285}  #return 0.8 mach ==> Here the pilot should decide 
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 1){
+	return getprop("su-27/instrumentation/PNK-10/manual-speed")*661.47} else {return 0} 
+	}
+	
+var getPNKaltitude = func(){
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 0){return 3200}  #TO REPLACE, the pilot should decide 
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 1){
+	return getprop("su-27/instrumentation/PNK-10/manual-alt")*1000* 3.048} else {return 0} 
+}
+	
 var HoldBaroAlt = func {
 	var SAU_Active = getprop("systems/SAU/active");
 	var SAU_Ready = getprop("systems/SAU/ready");
@@ -16,13 +33,18 @@ var HoldBaroAlt = func {
 
 var SAUNavigHold = func {
 	var SAU_Active = getprop("systems/SAU/active");
-	var SAU_Ready = getprop("systems/SAU/ready");
-	var SAU_serviceable = getprop("systems/SAU/serviceable");
+	var PNK10_Active = getprop("su-27/instrumentation/PNK-10/active");
+#	if (getprop("su-27/instrumentation/PNK-10/active")==1{
+#	var SAU_serviceable = getprop("systems/SAU/serviceable");
 	var Current_BarAlt = getprop("position/altitude-ft");
+
+	if (PNK10_Active == 1 and SAU_Active == 1 and Current_BarAlt > 200)  # for test !! , min altitude for AP between 200 & 300 meters !!
+	   {
+	   
 	var RoutMgrActive = getprop("autopilot/route-manager/active");
 	var PNK_Mode = getprop("su-27/instrumentation/PNK-10/active-mode");
-	if (SAU_Ready == 1 and SAU_Active == 1 and Current_BarAlt > 0)  # and SAU_serviceable == "true"
-	   {
+	var PNK_Speed = getprop("su-27/instrumentation/PNK-10/active-mode");
+	
 #	   if (RoutMgrActive == 1) {
 #	   setprop("autopilot/locks/heading" , "true-heading-hold");
 #	   print ("SAU:Navig mode engaged ! Route: Active");
@@ -37,6 +59,10 @@ var SAUNavigHold = func {
 		if (RoutMgrActive == 1)
 		{
 			setprop("autopilot/locks/heading" , "true-heading-hold");
+#			setprop("autopilot/locks/speed" , "speed-with-throttle");
+#			setprop("autopilot/locks/altitude" , "altitude-hold"); 
+#			print ("target speed : " ~ getPNKspeed());
+#			setprop("autopilot/settings/target-speed-kt" , getPNKspeed());
 		print ("SAU engaged : Following PNK-10 'PROGRAM' route mode ")
 		
 		}else 
@@ -50,11 +76,14 @@ var SAUNavigHold = func {
 		if (PNK_Mode == 1){setprop("autopilot/locks/heading" ,"nav1-hold");
 			HoldBaroAlt();
 			setprop("autopilot/locks/altitude" , "altitude-hold"); 
-			print ("SAU engaged : Following PNK-10 'RSBN NAVIG' mode ")
+			print ("SAU engaged : Following PNK-10 'RSBN NAVIG' mode ");
 		}
 	
 	}	
-	#print ("end of SAUNavigHold Proc"); 
+
+#	}else{
+#	gui.popupTip("Autostarting...");
+#	return;}
 }
 
 

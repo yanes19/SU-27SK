@@ -13,10 +13,18 @@
 	<PNK-10>
 		<active type="bool">true</active>
 		<ready type="bool">true</ready>
+		
 		<!-- Active PNK mode is: 0 : "PROGRAM", 1: "RSBN", 1.1: "ARC".-->
 		<active-mode type="double">1</active-mode>
 		<radial type="double">0</radial>
 		<desired-course type="double">0</desired-course>
+		<PNK-Power-Switch-Pos type="int">0</PNK-Power-Switch-Pos>
+		<guidance-mode type="int">3</guidance-mode>		<!-- PNK guidance auto/manual: 0 for AUTO, 1 for MANUAL,3 for pilot assist -->
+<!--
+		<in-use>0</in-use>
+-->
+		<manual-speed>0.9</manual-speed>
+		<manual-alt>4</manual-alt>
 	</PNK-10>
 	<PU-184>
 		<!-- Pretend that NPN is PPM9 -->	
