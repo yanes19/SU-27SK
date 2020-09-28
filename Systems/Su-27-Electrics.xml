@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+
+<system name="Su-27-jsb-Electricals">
+.
+<!--
+Su-27-jsb-Electricals
+
+	https://refdb.ru/look/2978876-p14.html
+	https://www.wikiwand.com/ru/%D0%A1%D1%83-27
+-->
+
+<!--
+		TODO :
+		* Make the test values of switches reads from their respectives source props 
+				so we keep the noise and smooth curves of power changes .
+				
+		* think seriously about merging some channels as long as the system accuracy 
+				and realism is not affected.
+				
+		* Normalize names from (ex: "GP-21-left-serviceable" or "GP-21-1-serviceable" to 
+				"GP-21[0]-serviceable"
+-->
+
+  <property value="1">/controls/electric/engine[0]/GP-21Left</property>
+  <property value="1">/systems/electrical/GP-21-Alternators/GP-21-left-serviceable</property>
+  <property value="1">/controls/electric/engine[1]/GP-21Right</property>
+  <property value="1">/systems/electrical/GP-21-Alternators/GP-21-right-serviceable</property>
+
+
+    <channel execrate="4" name="AC-Sources">
+		
+<!--
+A GP-21-Alternator provides AC electrical power mono 115/200v OR TRI phased 400v 
+	with a capacity of 30 KVA each .
+	There is a count of 2 GP-21 On-bord of a su-27 ,one attached to each engine .
+-->		
+		
+		
+        <switch name="/systems/electrical/sources/GP-21-Alternators/GP-21Left-feeding">
+            <description>
+                      Left GP-21 200-115 VAC ready and currently feeding power consumers
+            </description>
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /controls/electric/engine[0]/GP-21Left == 1
+                /systems/electrical/GP-21-Alternators/GP-21-left-serviceable == 1
+                /engines/engine[0]/n1 GE 20											<!-- GUESS/ESTIMATION -->
+            </test>
+        </switch>	
+        
+		<scheduled_gain name="/systems/electrical/sources/GP-21-Alternators/GP-21Left-AC-Voltage">
+			<input>/systems/electrical/sources/GP-21-Alternators/GP-21Left-feeding</input>
+			<gain>1</gain>
+			<table>
+			<independentVar>/engines/engine[0]/n1</independentVar>
+			<tableData>
+			10	0
+			20	20
+			25	50
+			26	80
+			28	100
+			30	115
+			60	115
+			</tableData>
+			</table>
+		</scheduled_gain>	
+	
+	
+        <switch name="/systems/electrical/sources/GP-21-Alternators/GP-21Right-feeding">
+            <description>
+                      Right GP-21 200-115 VAC ready and currently feeding power consumers
+            </description>
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /controls/electric/engine[1]/GP-21Right == 1
+                /systems/electrical/GP-21-Alternators/GP-21-right-serviceable == 1    
+                /engines/engine[1]/n1 GE 20											<!-- GUESS/ESTIMATION -->
+            </test>
+        </switch>	
+	
+		<scheduled_gain name="/systems/electrical/sources/GP-21-Alternators/GP-21Right-AC-Voltage">
+			<input>/systems/electrical/sources/GP-21-Alternators/GP-21Right-feeding</input>
+			<gain>1</gain>
+			<table>
+			<independentVar>/engines/engine[1]/n1</independentVar>
+			<tableData>
+			10	0
+			20	20
+			25	50
+			26	80
+			28	100
+			30	115
+			60	115
+			</tableData>
+			</table>
+		</scheduled_gain>	
+
+<!--
+Ground / Airfield provided Electical power , via a 115v AC .
+-->		
+
+
+        <switch name="/systems/electrical/sources/external-power-volts">
+            <description>
+                      Airfield/ external power port of 200-115 VAC is
+                      ready and currently feeding power consumers
+            </description>
+            <default value="0"/>
+            <test logic="AND" value="115">
+                /controls/electric/external-power == 1  
+
+            </test>
+        </switch>		
+	</channel>
+	
+	
+
+    <channel execrate="4" name="AC-main-contactorBoxes">
+<!--
+	there are 2 main energy input contactors mixing and controlling
+	Ac 200/115v three inputs (2 GP-21 AC generators + ground power)
+	(Коробка контакторов  - переменного тока)
+-->
+		<!-- Left Contactor box -->
+		<switch name="/systems/electrical/Main-Left-Contactor-box-volts">
+			<description>
+					  Left Contactor box takes 115/200v AC input 
+					  from either left GP-21 Alternator or from 
+					  external/Ground power
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="115">
+				/controls/electric/external-power == 1   
+				/systems/electrical/sources/GP-21-Alternators/GP-21Left-AC-Voltage GE 112
+			</test>
+		</switch>	
+		<!-- Right Contactor box -->
+		<switch name="/systems/electrical/Main-Right-Contactor-box-volts">
+			<description>
+					  Right Contactor box takes 115/200v AC input 
+					  from either right GP-21 Alternator or from 
+					  external/Ground power.
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="115">
+				/controls/electric/external-power == 1   
+				/systems/electrical/sources/GP-21-Alternators/GP-21Right-AC-Voltage GE 112
+			</test>
+		</switch>
+	</channel>
+	
+    <channel execrate="4" name="AC-main-Distibution-Boxes">
+<!--
+	there are 2 "RU" AC power providers , these provide energy to the 
+	AC/DC converters and powering directly the other AC consumers 
+	when no external power and engines off,they recieves 115 AC 
+					  from PTC-800 invertors
+-->
+		<!-- Left AC distribution  box RU N1-->
+		<switch name="/systems/electrical/Left-Distrib-box-volts">
+			<description>
+					  Left AC provider box/Bus flows 115/200v AC 
+					  to AC voltage consumers and 115-VAC/27VDC converters 
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="115">
+				/systems/electrical/Main-Left-Contactor-box-volts GE 112
+				/systems/electrical/PTC-800-volts[0] GE 112
+			</test>
+		</switch>	
+		<!-- Right AC distribution  box RU N2-->
+		<switch name="/systems/electrical/Right-Distrib-box-volts">
+			<description>
+					  Right AC provider box/Bus flows 115/200v AC 
+					  to AC voltage consumers and 115-VAC/27VDC converters 
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="115">
+				/systems/electrical/Main-Right-Contactor-box-volts GE 112
+				/systems/electrical/PTC-800-volts[1] GE 112
+			</test>
+		</switch>		
+		
+	</channel>
+	
+    <channel execrate="4" name="AC/DC-VU-6B-Converters">
+		
+<!--
+		  these are the 115 VAC to 27 VDC converters .
+		  there are 3 units on board of a su-27 ,providing DC power 
+		  to the the 27 VDC buses
+-->
+		
+				<!-- RU-6B Converter N°1  -->
+		<switch name="/systems/electrical/VU6b-converter-1-volts">
+			<description>
+					115  AC/27DC VU-6B-Converter n1
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="27">
+				/systems/electrical/Left-Distrib-box-volts GE 112
+			</test>
+		</switch>	
+		
+			<!-- RU-6B Converter N°2  mainly powerd from right channel
+						(From AC distrib. box N2-->
+		<switch name="/systems/electrical/VU6b-converter-2-volts">
+			<description>
+					115  AC/27DC VU-6B-Converter n2
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="27">
+				/systems/electrical/Right-Distrib-box-volts GE 112
+			</test>
+		</switch>	
+		
+				<!-- RU-6B Converter N°3 powerd from right channel
+					(From AC distrib. box N2-->
+		<switch name="/systems/electrical/VU6b-converter-3-volts">
+			<description>
+					115  AC/27DC VU-6B-Converter n3
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="27">
+				/systems/electrical/Right-Distrib-box-volts GE 112
+			</test>
+		</switch>
+		
+				<!--Left  CH-R-U 27VDC power bus 1-->
+		<switch name="/systems/electrical/CH-RU-Bus-volts[0]">
+			<description>
+					CH-R-U 27VDC power bus n1
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/VU6b-converter-1-volts">
+				/systems/electrical/VU6b-converter-1-volts GE 18
+			</test>
+		</switch>
+		
+						<!--Right  CH-R-U 27VDC power bus 2-->
+		<switch name="/systems/electrical/CH-RU-Bus-volts[1]">
+			<description>
+					CH-R-U 27VDC power bus n1
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/VU6b-converter-1-volts">
+				/systems/electrical/VU6b-converter-2-volts GE 18
+			</test>
+		</switch>
+		
+	</channel>
+	
+	<property value="1">/controls/electric/Battery-breakers[0]</property>
+	<property value="1">/controls/electric/Battery-breakers[1]</property>
+	<property value="1">/controls/electric/PTC-800-inverter-on[0]</property>
+	<property value="1">/controls/electric/PTC-800-inverter-on[1]</property>
+	<property value="1">/systems/electrical/sources/Battery-serviceable[0]</property>
+	<property value="1">/systems/electrical/sources/Battery-serviceable[1]</property>
+	
+    <channel execrate="4" name="Battries-fuses-protectors">	
+<!--
+			This channel holds mainly the Batteries and their power protection 
+			breakers and fuses (магистраль ных защи)
+			The Su-27 have two units of nickel-cadmium batteries 20NKBN-25 
+-->			
+
+					<!--Left Battery Line power protector BOX n1-->
+<!--**************THIS WILL ACT LIKE THE MAIN SWITCH FOR Batt[0]***********-->
+		<switch name="/systems/electrical/Battery-breakers-volts[0]">
+			<description>
+					Battery Line power Breaker/protector box n1
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/CH-RU-Bus-volts[0]">
+				/systems/electrical/CH-RU-Bus-volts[0]  GT 24 
+			</test>
+			
+			<test logic="AND" value="/systems/electrical/Battery-Volts[0]">
+				/controls/electric/Battery-breakers[0] GT 0
+				/systems/electrical/Battery-Volts[0] GT 0
+			</test>
+
+		</switch>
+		
+		
+		
+<!--Left Battery  Voltage switch. detailed loads and voltage variation should be added -->
+		<switch name="/systems/electrical/Battery-Volts[0]">
+			<description>
+					Battery n1 Voltage defined here 
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="24">
+				/systems/electrical/sources/Battery-serviceable[0] GT 0
+			</test>
+		</switch>
+		
+		
+					<!--Right Battery Line power protector BOX n2-->
+<!--**************THIS WILL ACT LIKE THE MAIN SWITCH FOR Batt[1]***********-->
+		<switch name="/systems/electrical/Battery-breakers-volts[1]">
+			<description>
+					Battery Line power Breaker/protector box n2
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/CH-RU-Bus-volts[1]">
+				/systems/electrical/CH-RU-Bus-volts[1]  GT 24 
+			</test>
+			
+			<test logic="AND" value="/systems/electrical/Battery-Volts[1]">
+				/controls/electric/Battery-breakers[1] GT 0
+				/systems/electrical/Battery-Volts[1] GT 0
+			</test>
+
+		</switch>
+		
+		
+<!--Right Battery  Voltage switch. detailed loads and voltage variation should be added -->
+		<switch name="/systems/electrical/Battery-Volts[1]">
+			<description>
+					Battery n2 Voltage defined here 
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="24">
+				/systems/electrical/sources/Battery-serviceable[1] GT 0
+			</test>
+		</switch>	
+		
+<!--On the batts buses there are two PTC-800 inverter units that 
+	produces 115 AC from Batteries 24DC to keep 115 ac 
+	current consumers to be fed when engines off and no 
+						external power -->		
+						
+		<switch name="/systems/electrical/PTC-800-volts[0]">
+			<description>
+					Left PTC-800 inverter unit N1
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="115">
+				/controls/electric/Battery-breakers[0] GT 0
+				/controls/electric/PTC-800-inverter-on[0] GT 0
+			</test>
+		</switch>		
+		
+		<switch name="/systems/electrical/PTC-800-volts[1]">
+			<description>
+					Right PTC-800 inverter unit N2
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="115">
+				/controls/electric/Battery-breakers[1] GT 0
+				/controls/electric/PTC-800-inverter-on[1] GT 0
+			</test>
+		</switch>		
+		
+<!--
+		****Begin main/Emergency buses defs***
+		
+	there are 6 main power lines/buses for DC feeds
+	
+	1* Main Power devices BUS1 & BUS2: Starters, Hydraulic, pneumatics .....
+		==>Bus1 : powered mainly via RU-6 N°1 & battery N°1,
+		==>Bus2 : Powered via RU-6 N°2 & RU-6 N°3  & battery N°2
+	2* Radios avionics and ganeral electronic devices ...
+		==>Bus1 : powered mainly via RU-6 N°1 & battery N°1,
+		==>Bus2 : Powered via RU-6 N°2 & RU-6 N°3  & battery N°2
+	3* Special systems : Weaoponry systems and some "special devices"..
+		==>Bus1 : powered mainly via RU-6 N°1 & battery N°1,
+		==>Bus2 : Powered via RU-6 N°2 & RU-6 N°3  & battery N°2.
+	======> Any of these 2 Lines/Main buses can feed the other line in case it's
+				main VDC power source is down .
+-->
+		
+				<!--Left line of buses -->
+		<switch name="/systems/electrical/VDC-bus[0]">
+			<description>
+					Main Power devices BUS1 
+					Starters, Hydraulic, pneumatics .....
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[0]">
+				/controls/electric/Battery-breakers[0] GT 0
+				/systems/electrical/Battery-breakers-volts[0]  GT 22
+			</test>
+			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[1]">
+				/controls/electric/Battery-breakers[0] LE 1
+				/systems/electrical/Battery-breakers-volts[0]  LE 2
+			</test>
+		</switch>		
+		
+		<switch name="/systems/electrical/VDC-bus[1]">
+			<description>
+					Main Power devices BUS2 
+					Radios, Avionics and various Electronics.
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[0]">
+				/controls/electric/Battery-breakers[0] GT 0
+				/systems/electrical/Battery-breakers-volts[0]  GT 22
+			</test>
+
+			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[1]">
+				/controls/electric/Battery-breakers[0] LE 1
+				/systems/electrical/Battery-breakers-volts[0]  LE 2
+			</test>
+
+		</switch>		
+		
+		<switch name="/systems/electrical/VDC-bus[2]">
+			<description>
+					Main Power devices BUS3 
+					Weaoponry systems and some "special devices"..
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[0]">
+				/controls/electric/Battery-breakers[0] GT 0
+				/systems/electrical/Battery-breakers-volts[0]  GT 22
+			</test>
+			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[1]">
+				/controls/electric/Battery-breakers[0] LE 1
+				/systems/electrical/Battery-breakers-volts[0]  LE 2
+			</test>
+		</switch>		
+		
+				<!--Right line of buses -->
+		<switch name="/systems/electrical/VDC-bus[3]">
+			<description>
+					Main Power devices BUS4 (right line) 
+					Starters, Hydraulic, pneumatics .....
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[1]">
+				/controls/electric/Battery-breakers[1] GT 0
+				/systems/electrical/Battery-breakers-volts[1]  GT 22
+			</test>
+			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[0]">
+				/controls/electric/Battery-breakers[1] LE 1
+				/systems/electrical/Battery-breakers-volts[1]  LE 2
+			</test>
+		</switch>			
+		
+		<switch name="/systems/electrical/VDC-bus[4]">
+			<description>
+					Main Power devices BUS 5 
+					Radios, Avionics and various Electronics.
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[1]">
+				/controls/electric/Battery-breakers[1] GT 0
+				/systems/electrical/Battery-breakers-volts[1]  GT 22
+			</test>
+			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[0]">
+				/controls/electric/Battery-breakers[1] LE 1
+				/systems/electrical/Battery-breakers-volts[1]  LE 2
+			</test>
+		</switch>	
+		
+		<switch name="/systems/electrical/VDC-bus[5]">
+			<description>
+					Main Power devices BUS 6
+					Weaoponry systems and some "special devices"..
+			</description>
+			<default value="0"/>
+			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[1]">
+				/controls/electric/Battery-breakers[1] GT 0
+				/systems/electrical/Battery-breakers-volts[1]  GT 22
+			</test>
+			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[0]">
+				/controls/electric/Battery-breakers[1] LE 1
+				/systems/electrical/Battery-breakers-volts[1]  LE 2
+			</test>
+		</switch>	
+
+
+<!--
+************************************************************************
+THESE ARE TO BE REMOVED AS SOON AS I FINISH UPDATING COCKPITT INSTRUMENTS 
+POWER SOURCES & PROPERTIES , THEY ARE HERE TO KEEP COMPATIBITLIY WITH THE
+OLD DEPRECATED SYSTEM 
+************************************************************************
+-->
+
+
+		
+		
+		
+		<switch name="/systems/electrical/outputs/WarnLeds">
+			<description>
+					legacy -- temporary fix to instruments light 
+					until fixed one by one :)
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/VDC-bus[1]">
+				/systems/electrical/VDC-bus[1] GT 20
+			</test>
+		</switch>		
+		
+		
+		<switch name="/systems/electrical/outputs/IPV-MFD">
+			<description>
+					legacy -- temporary fix to  MFD
+					until fixed one by one :)
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/VDC-bus[1]">
+				/systems/electrical/VDC-bus[1] GT 20
+			</test>
+		</switch>		
+		
+		<switch name="/systems/electrical/outputs/ILS-31HUD">
+			<description>
+					legacy -- temporary fix to HUD 
+					until fixed one by one :)
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/VDC-bus[1]">
+				/systems/electrical/VDC-bus[1] GT 20
+			</test>
+			<output>/systems/electrical/outputs/nav</output>
+			<output>/systems/electrical/outputs/adf</output>
+			<output>/systems/electrical/outputs/dme</output>
+			<output>/systems/electrical/outputs/mk-viii</output>
+			
+			<output>/systems/electrical/outputs/PNK-10</output>	
+			
+		</switch>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	</channel>
+	
+
+</system>

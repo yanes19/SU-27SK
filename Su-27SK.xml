@@ -413,6 +413,7 @@
  
 <system file="fuel"/>
 <system file="SDU-10"/>
+<system file="Su-27-Electrics"/>
  
  <flight_control name="FCS: Su-27SK">
 	 
