@@ -6,5 +6,569 @@
 	<name>Engines-Power-CP</name>
 	<path>Engines-Power-CP.ac</path>
 
+  <animation>	<!--External Power switch lever-->
+  <type>pick</type>
+  <object-name>Ground-power-Lever</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/external-power</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--External Power switch lever rotation-->
+	<type>rotate</type>
+	<object-name>Ground-power-Lever</object-name>
+	<property>controls/electric/external-power</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>-0.037277</x-m>
+	   <y-m> 0.084487</y-m>
+	   <z-m> 0.000 m</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+
+
+  <animation>	<!--Battery.0 switch lever-->
+  <type>pick</type>
+  <object-name>Batt-left-Lever</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/Battery-breakers</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--Battery.0 switch lever rotation-->
+	<type>rotate</type>
+	<object-name>Batt-left-Lever</object-name>
+	<property>controls/electric/Battery-breakers</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>-0.037277</x-m>
+	   <y-m> 0.084487</y-m>
+	   <z-m> 0.000 m</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+
+  <animation>	<!--Battery.1 switch lever-->
+  <type>pick</type>
+  <object-name>Batt-right-Lever</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/Battery-breakers[1]</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--Battery.1 switch lever rotation-->
+	<type>rotate</type>
+	<object-name>Batt-right-Lever</object-name>
+	<property>controls/electric/Battery-breakers[1]</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>-0.037277</x-m>
+	   <y-m> 0.084487</y-m>
+	   <z-m> 0.000 m</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--PTS-800 Inverter.0 switch lever-->
+  <type>pick</type>
+  <object-name>PTS-inverter-Left</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/PTC-800-inverter-on</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--PTS-800 Inverter.0 switch lever rotation-->
+	<type>rotate</type>
+	<object-name>PTS-inverter-Left</object-name>
+	<property>controls/electric/PTC-800-inverter-on</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>0.003433</x-m>
+	   <y-m>0.055886</y-m>
+	   <z-m> 0.00030</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--PTS-800 Inverter.1 switch lever-->
+  <type>pick</type>
+  <object-name>PTS-inverter-Right</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/PTC-800-inverter-on[1]</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--PTS-800 Inverter.1 switch lever rotation-->
+	<type>rotate</type>
+	<object-name>PTS-inverter-Right</object-name>
+	<property>controls/electric/PTC-800-inverter-on[1]</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>0.003433</x-m>
+	   <y-m>0.055886</y-m>
+	   <z-m> 0.00030</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+
+  <animation>	<!--GP-21 Alternator.0 switch lever-->
+  <type>pick</type>
+  <object-name>AC-Generator-Left</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/engine/GP-21Left</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--GP-21 Alternator.0 switch lever rotation-->
+	<type>rotate</type>
+	<object-name>AC-Generator-Left</object-name>
+	<property>controls/electric/engine/GP-21Left</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>0.049153</x-m>
+	   <y-m>0.05526</y-m>
+	   <z-m> 0.00030</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--GP-21 Alternator.1 switch lever-->
+  <type>pick</type>
+  <object-name>AC-Generator-Right</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/engine[1]/GP-21Right</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--GP-21 Alternator.1 switch lever rotation-->
+	<type>rotate</type>
+	<object-name>AC-Generator-Right</object-name>
+	<property>controls/electric/engine[1]/GP-21Right</property>
+	<factor>-60</factor>
+	<offset-deg>30</offset-deg>
+	  <center>
+	   <x-m>0.049153</x-m>
+	   <y-m>0.05526</y-m>
+	   <z-m> 0.00030</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--GP-21 EmergencyOFF.0 switch COVER-->
+  <type>pick</type>
+  <object-name>EmergencyGenOFF.Left-Cover</object-name>
+  	 <condition>
+	   <equals>
+	   <property>controls/electric/engine/GP-21Left-EMerg-off</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+<property>su-27/instrumentation/Energy-Engines-panel/Emergency-alternator-0-off-COVER</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--GP-21 EmergencyOFF.0 switch COVER rotation-->
+	<type>rotate</type>
+	<object-name>EmergencyGenOFF.Left-Cover</object-name>
+  	 <condition><!--This condition of switch COVER rotationGP-21 EmergencyOFF.0 should be replaced with 
+		 a switch condition in the jsb electrical system, thus cancelled here 
+		 This shoud be done for both coovers-->
+	   <equals>
+	   <property>controls/electric/engine[0]/GP-21Left</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+<property>su-27/instrumentation/Energy-Engines-panel/Emergency-alternator-0-off-COVER</property>
+	<factor>-75</factor>
+	  <center>
+	   <x-m>0.022863</x-m>
+	   <y-m>0.003511</y-m>
+	   <z-m>0.000685</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--GP-21 EmergencyOFF.1 switch COVER-->
+  <type>pick</type>
+  <object-name>EmergencyGenOFF.Right-Cover</object-name>
+  	 <condition>
+	   <equals>
+	   <property>controls/electric/engine[1]/GP-21Right-EMerg-off</property>
+	   <value>0</value>
+	   </equals>
+	 </condition>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+<property>su-27/instrumentation/Energy-Engines-panel/Emergency-alternator-1-off-COVER</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--GP-21 EmergencyOFF.1 switch COVER rotation-->
+	<type>rotate</type>
+	<object-name>EmergencyGenOFF.Right-Cover</object-name>
+
+<property>su-27/instrumentation/Energy-Engines-panel/Emergency-alternator-1-off-COVER</property>
+	<factor>-75</factor>
+	  <center>
+	   <x-m>0.022863</x-m>
+	   <y-m>0.003511</y-m>
+	   <z-m>0.000685</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--GP-21 Alternator.0 EmergencyOFF switch lever-->
+  <type>pick</type>
+  <object-name>EmergencyGenOFF.Left</object-name>
+  	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/Energy-Engines-panel/Emergency-alternator-0-off-COVER</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/engine/GP-21Left-EMerg-off</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--GP-21 Alternator.0 EmergencyOFF switch lever rotation-->
+	<type>rotate</type>
+	<object-name>EmergencyGenOFF.Left</object-name>
+	<property>controls/electric/engine/GP-21Left-EMerg-off</property>
+	<factor>-30</factor>
+	  <center>
+	   <x-m>0.036277</x-m>
+	   <y-m>0.003805</y-m>
+	   <z-m>0.000300</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+   <animation>	<!--GP-21 Alternator.1 EmergencyOFF switch lever-->
+  <type>pick</type>
+  <object-name>EmergencyGenOFF.Right</object-name>
+  	 <condition>
+	   <equals>
+	   <property>su-27/instrumentation/Energy-Engines-panel/Emergency-alternator-1-off-COVER</property>
+	   <value>1</value>
+	   </equals>
+	 </condition>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>controls/electric/engine[1]/GP-21Right-EMerg-off</property>
+		</binding>
+  </action>
+  </animation> 
+
+  <animation>	<!--GP-21 Alternator.1 EmergencyOFF switch lever rotation-->
+	<type>rotate</type>
+	<object-name>EmergencyGenOFF.Right</object-name>
+	<property>controls/electric/engine[1]/GP-21Right-EMerg-off</property>
+	<factor>-30</factor>
+	  <center>
+	   <x-m>0.036277</x-m>
+	   <y-m>0.003805</y-m>
+	   <z-m>0.000300</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--Crank-start-APU Switch lever N°0/Left-->
+  <type>pick</type>
+  <object-name>start-stop-Switch-Left</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/Energy-Engines-panel/Crank-Start-APU-Left-pos</property>
+			<value>1</value>
+			<value>0</value>
+			<value>-1</value>
+			<wrap>1</wrap>
+		</binding>
+  </action>
+  </animation>   
+  
+  <animation>	<!--Crank-start-APU Switch lever N°0/Left ROTATION -->
+	<type>rotate</type>
+	<object-name>start-stop-Switch-Left</object-name>
+	<property>su-27/instrumentation/Energy-Engines-panel/Crank-Start-APU-Left-pos</property>
+
+	<factor>-60</factor>
+	  <center>
+	   <x-m> 0.004502</x-m>
+	   <y-m>-0.089783</y-m>
+	   <z-m>-0.001478</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--Crank-start-APU Switch lever N°1/Right-->
+  <type>pick</type>
+  <object-name>start-stop-Switch-Right</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/Energy-Engines-panel/Crank-Start-APU-Right-pos</property>
+			<value>1</value>
+			<value>0</value>
+			<value>-1</value>
+			<wrap>1</wrap>
+		</binding>
+  </action>
+  </animation>   
+  
+  <animation>	<!--Crank-start-APU Switch lever N°1/Right ROTATION -->
+	<type>rotate</type>
+	<object-name>start-stop-Switch-Right</object-name>
+	<property>su-27/instrumentation/Energy-Engines-panel/Crank-Start-APU-Right-pos</property>
+
+	<factor>-60</factor>
+	  <center>
+	   <x-m> 0.004502</x-m>
+	   <y-m>-0.089783</y-m>
+	   <z-m>-0.001478</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>	<!--Crank-start-APU Buttn N°1/Left-->
+  <type>pick</type>
+  <object-name>StartEngine.Left-btn</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>nasal</command>
+			<script>engines.startEngine1_Button();</script>
+		</binding>
+
+  </action>
+  </animation> 
+
+  <animation>	<!--Crank-start-APU Buttn N°2/Left-->
+  <type>pick</type>
+  <object-name>StartEngine.Right-btn</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>nasal</command>
+			<script>engines.startEngine2_Button();</script>
+		</binding>
+
+  </action>
+  </animation> 
+  
+  <animation>	<!--STOP-Engines/APU Buttn N°1/Left-->
+  <type>pick</type>
+  <object-name>StopEngine.Left-btn</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>nasal</command>
+			<script>
+			setprop("controls/engines/engine/cutoff", 1);
+			
+			setprop ("controls/engines/engine/fuel-pump", 0);	
+			setprop ("controls/engines/engine/starter", 0);
+			</script>
+		</binding>
+
+  </action>
+  </animation> 
+  
+  <animation>	<!--STOP-Engines/APU Buttn N°2/Right-->
+  <type>pick</type>
+  <object-name>StopEngine.Right-btn</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>nasal</command>
+			<script>
+			setprop("controls/engines/engine[1]/cutoff", 1);
+			
+			setprop ("controls/engines/engine[1]/fuel-pump", 0);	
+			setprop ("controls/engines/engine[1]/starter", 0);
+			</script>
+		</binding>
+
+  </action>
+  </animation> 
+  
+  <animation>	<!--De-Icing Switch lever -->
+  <type>pick</type>
+  <object-name>Anti-Icing-Switch</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/Energy-Engines-panel/Anti-ice-switch-pos</property>
+			<value>1</value>
+			<value>0</value>
+			<value>-1</value>
+			<wrap>1</wrap>
+		</binding>
+		
+		<binding>
+		 <command>nasal</command>
+		<script>misc.operateAntiIce();</script>
+		</binding>
+  </action>
+  </animation>   
+  
+  <animation>	<!--De-Icing Switch lever  ROTATION -->
+	<type>rotate</type>
+	<object-name>Anti-Icing-Switch</object-name>
+	<property>su-27/instrumentation/Energy-Engines-panel/Anti-ice-switch-pos</property>
+
+	<factor>-60</factor>
+	  <center>
+	   <x-m>-0.019473</x-m>
+	   <y-m>-0.030947</y-m>
+	   <z-m>-0.001478</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
 
 </PropertyList>

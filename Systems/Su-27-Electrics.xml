@@ -21,7 +21,10 @@ Su-27-jsb-Electricals
 				"GP-21[0]-serviceable"
 -->
 
+
   <property value="1">/controls/electric/engine[0]/GP-21Left</property>
+  <property value="0">/controls/electric/engine[0]/GP-21Left-EMerg-off</property>
+  <property value="0">/controls/electric/engine[1]/GP-21Right-EMerg-off</property>
   <property value="1">/systems/electrical/GP-21-Alternators/GP-21-left-serviceable</property>
   <property value="1">/controls/electric/engine[1]/GP-21Right</property>
   <property value="1">/systems/electrical/GP-21-Alternators/GP-21-right-serviceable</property>
@@ -42,6 +45,7 @@ A GP-21-Alternator provides AC electrical power mono 115/200v OR TRI phased 400v
             </description>
             <default value="0"/>
             <test logic="AND" value="1">
+				/controls/electric/engine[0]/GP-21Left-EMerg-off == 0
                 /controls/electric/engine[0]/GP-21Left == 1
                 /systems/electrical/GP-21-Alternators/GP-21-left-serviceable == 1
                 /engines/engine[0]/n1 GE 20											<!-- GUESS/ESTIMATION -->
@@ -72,6 +76,7 @@ A GP-21-Alternator provides AC electrical power mono 115/200v OR TRI phased 400v
             </description>
             <default value="0"/>
             <test logic="AND" value="1">
+				/controls/electric/engine[1]/GP-21Right-EMerg-off == 0
                 /controls/electric/engine[1]/GP-21Right == 1
                 /systems/electrical/GP-21-Alternators/GP-21-right-serviceable == 1    
                 /engines/engine[1]/n1 GE 20											<!-- GUESS/ESTIMATION -->
@@ -356,7 +361,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 <!--
 		****Begin main/Emergency buses defs***
 		
-	there are 6 main power lines/buses for DC feeds
+	there are 6 main power lines/buses for DC feeds into 3 main channels
 	
 	1* Main Power devices BUS1 & BUS2: Starters, Hydraulic, pneumatics .....
 		==>Bus1 : powered mainly via RU-6 N°1 & battery N°1,
@@ -520,7 +525,7 @@ OLD DEPRECATED SYSTEM
 			<output>/systems/electrical/outputs/adf</output>
 			<output>/systems/electrical/outputs/dme</output>
 			<output>/systems/electrical/outputs/mk-viii</output>
-			
+			<output>/systems/electrical/outputs/radar</output>	
 			<output>/systems/electrical/outputs/PNK-10</output>	
 			
 		</switch>	

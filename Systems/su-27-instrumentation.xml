@@ -63,9 +63,18 @@
 		<status>1</status>
 		<active-wpt>1</active-wpt>
 	</OC-controller>
+	
 	<Engines-start-panel>
 		<Start-cover-pos type="int">0</Start-cover-pos>
 		<Switch-restrict-pos type="int">0</Switch-restrict-pos>
 	</Engines-start-panel>
+	
+	<Energy-Engines-panel>
+	<Crank-Start-APU-Left-pos type="int">0</Crank-Start-APU-Left-pos>    <!-- 0= StartEngines pos; 1= Crank Engine; -1= Crank GTD  -->
+	<Crank-Start-APU-Right-pos type="int">0</Crank-Start-APU-Right-pos>
+	<Emergency-alternator-0-off-COVER type="int">0</Emergency-alternator-0-off-COVER>
+	<Emergency-alternator-1-off-COVER type="int">0</Emergency-alternator-1-off-COVER>
+	<Anti-ice-switch-pos type="int">0</Anti-ice-switch-pos>
+	</Energy-Engines-panel>
 	
 </PropertyList>
