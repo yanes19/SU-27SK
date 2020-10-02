@@ -435,6 +435,32 @@
    </overlay>
 -->
 
+
+
+  </model>
+  
+   <model>
+   <name>VHF-UHF-Radios-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/VHF-UHF-Radios/VHF-UHF-panel.xml</path>
+	<offsets>
+      <x-m> 4.825 </x-m>
+      <y-m>-0.3916</y-m>
+      <z-m> 0.841 </z-m>
+	<roll-deg>-18.6</roll-deg>      
+    </offsets>
+
+  </model>
+  
+   <model>
+   <name>Comms-G6-16-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Comms-G6-16/Comms-G6-16-panel.xml</path>
+	<offsets>
+      <x-m> 4.936</x-m>
+      <y-m>-0.406</y-m>
+      <z-m> 0.850 </z-m>
+	<roll-deg>-18.6</roll-deg>      
+    </offsets>
+
   </model>
   
    <model>
