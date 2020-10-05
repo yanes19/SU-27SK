@@ -460,7 +460,39 @@
       <z-m> 0.850 </z-m>
 	<roll-deg>-18.6</roll-deg>      
     </offsets>
-
+    </model> 
+    
+   <model>
+   <name>Radar-N001-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/N001-Radar-panel/Radar-N001-panel.xml</path>
+	<offsets>
+      <x-m> 5.018</x-m>
+      <y-m>-0.392</y-m>
+      <z-m> 0.849 </z-m>
+	<roll-deg>-18.6</roll-deg>      
+    </offsets>
+  </model>
+  
+   <model>
+   <name>Left-Power-switches-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Left-Power-switches-panel/Left-Power-switches-panel.xml</path>
+	<offsets>
+      <x-m> 5.056</x-m>
+      <y-m>-0.385</y-m>
+      <z-m> 0.843 </z-m>
+	<roll-deg>-18.6</roll-deg>      
+    </offsets>
+  </model>
+  
+   <model>
+   <name>fuel-ctrl-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Fuel-Control-_panel/fuel-ctrl-panel.xml</path>
+	<offsets>
+      <x-m> 5.126</x-m>
+      <y-m>-0.3866</y-m>
+      <z-m> 0.843 </z-m>
+	<roll-deg>-18.6</roll-deg>      
+    </offsets>
   </model>
   
    <model>
