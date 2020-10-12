@@ -498,6 +498,7 @@ OLD DEPRECATED SYSTEM
 			<test logic="AND" value="/systems/electrical/VDC-bus[1]">
 				/systems/electrical/VDC-bus[1] GT 20
 			</test>
+			
 		</switch>		
 		
 		

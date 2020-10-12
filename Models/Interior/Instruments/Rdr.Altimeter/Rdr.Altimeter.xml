@@ -15,17 +15,18 @@
   <type>material</type>
   <object-name>Rdr.Altimetr.mount.face</object-name>
   <object-name>rdr.altimtr.needle</object-name>
-	 <condition>
-		 <greater-than>
-			 <property>systems/electrical/outputs/WarnLeds</property>
-		   <value>21</value>
-		 </greater-than>
-	 </condition>
-  <emission>
-   <red>0.8</red>
-   <green>0.5</green>
-   <blue>0.5</blue>
-  </emission>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/VDC-bus[1]</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	    <factor-prop>controls/lighting/instruments-norm</factor-prop>
+	    <red>1.00</red>
+	    <green>1.00</green>
+	    <blue>0.78</blue>
+	  </emission>
  </animation>
  
  <animation>

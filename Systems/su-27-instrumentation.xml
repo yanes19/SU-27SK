@@ -39,6 +39,7 @@
 		<PPM8>350</PPM8>
 		<NPN>385</NPN>
 		<ILS-channel>1</ILS-channel>
+		<KOM-ANT>0</KOM-ANT>
 	</PU-184>
 	<RSBN>
 		<!-- Pretend that RSBN AER is PPM**(Still to decide  or find alternative way !!) -->

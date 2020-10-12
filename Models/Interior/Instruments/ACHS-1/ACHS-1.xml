@@ -24,14 +24,14 @@
    <object-name>CH_NInfHours</object-name>
 	 <condition>
 		 <greater-than>
-			 <property>systems/electrical/outputs/WarnLeds</property>
+			 <property>systems/electrical/VDC-bus[1]</property>
 		   <value>20</value>
 		 </greater-than>
 	 </condition>
   <emission>
-   <red>0.8</red>
-   <green>0.5</green>
-   <blue>0.5</blue>
+   <red>instrumentation/illumination/settings/instruments-green</red>
+   <green><property>instrumentation/illumination/settings/instruments-green</property></green>
+   <blue><property>instrumentation/illumination/settings/instruments-blue</property></blue>
   </emission>
   </animation>
 
