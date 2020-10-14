@@ -443,8 +443,8 @@
    <name>VHF-UHF-Radios-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/VHF-UHF-Radios/VHF-UHF-panel.xml</path>
 	<offsets>
-      <x-m> 4.825 </x-m>
-      <y-m>-0.3916</y-m>
+      <x-m> 4.8328</x-m>
+      <y-m>-0.3903</y-m>
       <z-m> 0.841 </z-m>
 	<roll-deg>-18.6</roll-deg>      
     </offsets>
@@ -559,10 +559,12 @@
    <name>PU-184-Radio-Panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/NavRadio/PU-184-Radio-Panel.xml</path>
 	<offsets>
-      <x-m>4.678 </x-m>
-      <y-m>0.414 </y-m>
-      <z-m>0.825</z-m>
+      <x-m>4.6780 </x-m>
+      <y-m>0.4220 </y-m>
+      <z-m>0.830</z-m>
+      <roll-deg>16</roll-deg>
     </offsets>
+<!--
 	<overlay>
 	 <animation n="100">
     <type>scale</type>
@@ -572,6 +574,7 @@
     <z-offset>1.2</z-offset>
    </animation>
    </overlay>
+-->
   </model>
   
  <model>
