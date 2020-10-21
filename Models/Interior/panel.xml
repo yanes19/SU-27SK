@@ -519,11 +519,12 @@
    <name>TargetDistribution-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/TargetDistribution-panel/TargetDistribution-panel.xml</path>
 	<offsets>
-      <x-m>4.35152 </x-m>
-      <y-m>0.40921 </y-m>
-      <z-m>0.81798</z-m>
-
+      <x-m>4.43000 </x-m>
+      <y-m>0.40300 </y-m>
+      <z-m>0.8300</z-m>
+	  <roll-deg>16</roll-deg>
     </offsets>
+<!--
 	<overlay>
 	 <animation n="100">
     <type>scale</type>
@@ -533,17 +534,19 @@
     <z-offset>1.307</z-offset>
    </animation>
    </overlay>
+-->
   </model>
   
    <model>
    <name>OC-Radio-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Radio-panel.xml</path>
 	<offsets>
-      <x-m>4.563 </x-m>
-      <y-m>0.4200 </y-m>
-      <z-m>0.823</z-m>
-	  <pitch-deg>-5</pitch-deg>
+      <x-m>4.573 </x-m>
+      <y-m>0.4350 </y-m>
+      <z-m>0.835</z-m>
+	  <roll-deg>16</roll-deg>
     </offsets>
+<!--
 	<overlay>
 	 <animation n="100">
     <type>scale</type>
@@ -553,6 +556,7 @@
     <z-offset>1.486</z-offset>
    </animation>
    </overlay>
+-->
   </model>
   
    <model>

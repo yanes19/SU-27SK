@@ -9,10 +9,10 @@
     <animation>
 		<type>knob</type>
 		<object-name>knob.program.selector</object-name>
-	  <property>su-27/instrumentation/PNK-10/active-mode</property>
-	  <factor>30</factor>
+	    <property>su-27/instrumentation/PNK-10/active-mode</property>
+	    <factor>30</factor>
 		<center>
-			<x-m>0.00786</x-m><y-m>0.05582</y-m><z-m>0.01863</z-m>
+			<x-m>-0.004407</x-m><y-m>0.066191</y-m><z-m>0.007268</z-m>
 		</center>
 		<axis>
 			<x>0</x><y>0</y><z>1</z>
