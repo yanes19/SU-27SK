@@ -65,10 +65,10 @@
 		<active-wpt>1</active-wpt>
 	</OC-controller>
 	
-	<Engines-start-panel>
+	<Engines-Fire-emergency-panel>
 		<Start-cover-pos type="int">0</Start-cover-pos>
 		<Switch-restrict-pos type="int">0</Switch-restrict-pos>
-	</Engines-start-panel>
+	</Engines-Fire-emergency-panel>
 	
 	<Energy-Engines-panel>
 	<Crank-Start-APU-Left-pos type="int">0</Crank-Start-APU-Left-pos>    <!-- 0= StartEngines pos; 1= Crank Engine; -1= Crank GTD  -->

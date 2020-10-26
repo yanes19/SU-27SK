@@ -408,35 +408,26 @@
   </model>
   
    <model>
-   <name>Engines-start-panel</name>
-    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Engines-Start-panel/Engines-start-panel.xml</path>
+   <name>Engines-Fire-emergency-panel</name>
+    <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/Engines-Fire-emergency-panel/Engines-Fire-emergency-panel.xml</path>
 	<offsets>
-      <x-m> 4.716 </x-m>
-      <y-m>-0.410</y-m>
-      <z-m> 0.843 </z-m>
+      <x-m> 4.732 </x-m>
+      <y-m>-0.408</y-m>
+      <z-m> 0.850 </z-m>
+      <roll-deg>-18.6</roll-deg> 
     </offsets>
 
 <!--
 	<overlay>
-  <animation>
-  <type>rotate</type>
-	<value>100</value>
-  <center>
-   <x-m>0.0</x-m>
-   <y-m>0.0</y-m>
-   <z-m>0.0</z-m>
-  </center>
-  <axis>
-   <x> 1</x>
-   <y> 0</y>
-   <z> 1</z>
-  </axis>
- </animation>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.05</x-offset>
+    <y-offset>1.05</y-offset>
+    <z-offset>1.05</z-offset>
+   </animation>
    </overlay>
 -->
-
-
-
   </model>
   
    <model>
