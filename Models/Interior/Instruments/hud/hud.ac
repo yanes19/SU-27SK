@@ -1,7 +1,7 @@
 AC3Db
 MATERIAL "Material.001" rgb 1.000 1.000 1.000  amb 0.800 0.800 0.800  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 0 trans 0.000
 MATERIAL "Material.HUD.Base" rgb 1.000 1.000 1.000  amb 0.800 0.800 0.800  emis 0.000 0.000 0.000  spec 0.640 0.640 0.640  shi 64 trans 0.000
-MATERIAL "HudGlass" rgb 1.000 1.000 1.000  amb 0.800 0.800 0.800  emis 0.500 0.500 0.500  spec 0.146 0.146 0.146  shi 64 trans 0.000
+MATERIAL "HudGlass" rgb 0.500 0.500 0.500  amb 0.500 0.500 0.500  emis 0.500 0.500 0.500  spec 0.146 0.146 0.146  shi 64 trans 0.000
 OBJECT world
 name "Blender_exporter_v3.3__hud.ac"
 kids 11
