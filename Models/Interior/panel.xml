@@ -45,6 +45,18 @@
 <!--Stick animations defined near the EOF-->
   </model>
 
+ <model>
+   <name>Cockpit-body-transverseR</name>
+    <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Interior-transverse-rails/Cockpit-body-transverseR.xml</path>
+	<offsets>
+      <x-m>4.685 </x-m>
+      <y-m>0.587</y-m>
+      <z-m>0.899 </z-m>
+	  <roll-deg>30.5</roll-deg>
+    </offsets>
+    
+  </model>
+  
    <model>
    <name>Power-switches-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Power-Switches-panel/Power-switches-panel.xml</path>
@@ -52,7 +64,7 @@
       <x-m>4.325 </x-m>
       <y-m>0.512 </y-m>
       <z-m>0.866 </z-m>
-	  <roll-deg>30</roll-deg>
+	  <roll-deg>30.5</roll-deg>
     </offsets>
   </model>
   
@@ -60,11 +72,28 @@
    <name>Flares-chaffs-IFF-cp</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Flares-Chaff-IFF-panel/Flares-chaffs-IFF-cp.xml</path>
 	<offsets>
+      <x-m>4.726 </x-m>
+      <y-m>0.570 </y-m>
+      <z-m>0.916 </z-m>
+	  <roll-deg>30.5</roll-deg>
+    </offsets>
+<!--
+	<offsets>
       <x-m>4.686 </x-m>
       <y-m>0.562 </y-m>
       <z-m>0.910 </z-m>
 	  <roll-deg>31</roll-deg>
     </offsets>
+-->
+	<overlay>
+	 <animation n="100">
+    <type>scale</type>
+    <property>constants/zero</property>
+    <x-offset>1.35</x-offset>
+    <y-offset>1.19</y-offset>
+    <z-offset>1.3</z-offset>
+   </animation>
+   </overlay>
   </model>
 
    <model>
@@ -361,10 +390,12 @@
    <name>SDU-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/SDU-panel/SDU-panel.xml</path>
 	<offsets>
-      <x-m> 4.514 </x-m>
+      <x-m> 4.559 </x-m>
       <y-m>-0.406 </y-m>
-      <z-m> 0.842 </z-m>
+      <z-m> 0.848 </z-m>
+       <roll-deg>-18.6</roll-deg> 
     </offsets>
+<!--
 	<overlay>
 	 <animation n="100">
     <type>scale</type>
@@ -374,6 +405,7 @@
     <z-offset>1.1</z-offset>
    </animation>
    </overlay>
+-->
   </model>
   
   
@@ -490,11 +522,12 @@
    <name>AoA-pitot-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/AoA-pitot-panel/AoA-pitot-panel.xml</path>
 	<offsets>
-      <x-m>4.34468 </x-m>
-      <y-m>0.3888 </y-m>
-      <z-m>0.8503</z-m>
-	  <pitch-deg>-5</pitch-deg>
+      <x-m>4.36468 </x-m>
+      <y-m>0.4301 </y-m>
+      <z-m>0.8330</z-m>
+	  <roll-deg>16</roll-deg>
     </offsets>
+<!--
 	<overlay>
 	 <animation n="100">
     <type>scale</type>
@@ -504,16 +537,17 @@
     <z-offset>1.32</z-offset>
    </animation>
    </overlay>
+-->
   </model>
   
    <model>
    <name>TargetDistribution-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/TargetDistribution-panel/TargetDistribution-panel.xml</path>
 	<offsets>
-      <x-m>4.43000 </x-m>
-      <y-m>0.40300 </y-m>
-      <z-m>0.8286</z-m>
-	  <roll-deg>16</roll-deg>
+      <x-m>4.46400 </x-m>
+      <y-m>0.40419 </y-m>
+      <z-m>0.8216</z-m>
+	  <roll-deg>16.2</roll-deg>
     </offsets>
 <!--
 	<overlay>
@@ -532,10 +566,10 @@
    <name>OC-Radio-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Radio-panel.xml</path>
 	<offsets>
-      <x-m>4.573 </x-m>
+      <x-m>4.6074 </x-m>
       <y-m>0.4350 </y-m>
-      <z-m>0.835</z-m>
-	  <roll-deg>16</roll-deg>
+      <z-m>0.834</z-m>
+	  <roll-deg>16.2</roll-deg>
     </offsets>
 <!--
 	<overlay>
@@ -554,7 +588,7 @@
    <name>PU-184-Radio-Panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/NavRadio/PU-184-Radio-Panel.xml</path>
 	<offsets>
-      <x-m>4.6780 </x-m>
+      <x-m>4.7120 </x-m>
       <y-m>0.4220 </y-m>
       <z-m>0.830</z-m>
       <roll-deg>16</roll-deg>
@@ -576,10 +610,10 @@
    <name>PNK-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/PNK-panel/PNK-panel.xml</path>
 	<offsets>
-      <x-m>4.768 </x-m>
-      <y-m>0.416 </y-m>
-      <z-m>0.832</z-m>
-      <roll-deg>16</roll-deg>
+      <x-m>4.7964 </x-m>
+      <y-m>0.4182 </y-m>
+      <z-m>0.828</z-m>
+      <roll-deg>16.1</roll-deg>
 
     </offsets>
   </model>
@@ -588,10 +622,10 @@
    <name>rwr-jammer-CP</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Jammer-rwr-panel/rwr-jammer-CP.xml</path>
 	<offsets>
-      <x-m>4.825 </x-m>
-      <y-m>0.429 </y-m>
-      <z-m>0.832</z-m>
-      <roll-deg>16</roll-deg>
+      <x-m>4.8534 </x-m>
+      <y-m>0.4298</y-m>
+      <z-m>0.8317</z-m>
+      <roll-deg>16.1</roll-deg>
 
     </offsets>
   </model>
@@ -600,8 +634,8 @@
    <name>Lighting-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Lighting-panel/Lighting-panel.xml</path>
 	<offsets>
-      <x-m>4.950 </x-m>
-      <y-m>0.418 </y-m>
+      <x-m>4.9778</x-m>
+      <y-m>0.4173</y-m>
       <z-m>0.829</z-m>
       <roll-deg>16.3</roll-deg>
 
@@ -612,7 +646,7 @@
    <name>Engines-power-CP</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Engines-Start-power-sources/Engines-power-CP.xml</path>
 	<offsets>
-      <x-m>5.100 </x-m>
+      <x-m>5.1265 </x-m>
       <y-m>0.425 </y-m>
       <z-m>0.832</z-m>
       <roll-deg>16.3</roll-deg>
@@ -624,19 +658,27 @@
    <name>Electricity-SDU-power-panel</name>
     <path>Aircraft/SU-27SK/Models/Interior/RightPanels/Electricity-SDU-power-panel/Electricity-SDU-power-panel.xml</path>
 	<offsets>
+      <x-m>5.049</x-m>
+      <y-m>0.603 </y-m>
+      <z-m>0.905 </z-m>
+	  <roll-deg>36</roll-deg>
+    </offsets>
+<!--
+	<offsets>
       <x-m>4.920 </x-m>
       <y-m>0.583 </y-m>
       <z-m>0.910 </z-m>
 	  <roll-deg>36</roll-deg>
     </offsets>
+-->
 
 	<overlay>
 	 <animation n="100">
     <type>scale</type>
     <property>constants/zero</property>
-    <x-offset>0.3</x-offset>
-    <y-offset>0.3</y-offset>
-    <z-offset>0.3</z-offset>
+    <x-offset>0.355</x-offset>
+    <y-offset>0.352</y-offset>
+    <z-offset>0.355</z-offset>
    </animation>
    </overlay>
 
@@ -814,8 +856,8 @@
  <model>
     <path>Aircraft/SU-27SK/Models/Interior/Instruments/KI-13/KI-13.xml</path>
 	<offsets>
-      <x-m> 4.28 </x-m>
-      <y-m>0.22 </y-m>
+      <x-m> 4.30 </x-m>
+      <y-m>0.28 </y-m>
       <z-m>1.47 </z-m>
 	  <pitch-deg>-5</pitch-deg>
     </offsets>

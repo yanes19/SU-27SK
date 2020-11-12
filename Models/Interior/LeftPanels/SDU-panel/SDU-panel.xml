@@ -4,7 +4,100 @@
 <PropertyList>
 	
 	<name>SDU-panel</name>
-	<path>SDU-panel.ac</path>
+	<path>SDU-10-panel.ac</path>
 
+
+  <animation>
+  <type>pick</type>  <!--SDU off cover :PICK-->
+  <object-name>SDU.off.switch.cover</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/SDU-panel/SDU-off-switch-cover-pos</property>
+		</binding>
+  </action>
+ </animation> 
+
+  <animation>
+	<type>rotate</type>     <!--SDU off cover :ROTATE-->
+	<object-name>SDU.off.switch.cover</object-name>
+	<property>su-27/instrumentation/SDU-panel/SDU-off-switch-cover-pos</property>
+	<factor>-90</factor>
+	  <center>
+	   <x-m>-0.009664</x-m>
+	   <y-m>-0.067069</y-m>
+	   <z-m> 0.002165</z-m>
+	  </center>	   
+	  <axis>
+		   <x> 0</x>       
+		   <y> 1</y>
+		   <z> 0</z>  
+	  </axis>
+  </animation>
+
+  <animation>
+  <type>pick</type>  <!--SDU Fail-off cover :PICK-->
+  <object-name>SDU.fail-off-cover</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/instrumentation/SDU-panel/SDU-fail-off-cover</property>
+		</binding>
+  </action>
+ </animation> 
+
+  <animation>
+	<type>rotate</type>     <!--SDU Fail-off cover :ROTATE-->
+	<object-name>SDU.fail-off-cover</object-name>
+	<property>su-27/instrumentation/SDU-panel/SDU-fail-off-cover</property>
+	<factor>-90</factor>
+	  <center>
+	   <x-m>-0.009664</x-m>
+	   <y-m>-0.036048</y-m>
+	   <z-m> 0.002165</z-m>
+	  </center>	   
+	  <axis>
+		   <x> 0</x>       
+		   <y> 1</y>
+		   <z> 0</z>  
+	  </axis>
+  </animation>
+  
+  <animation>
+  <type>pick</type>  <!--SDU off- switch :PICK-->
+  <object-name>SDU.off.switch</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-toggle</command>
+		 <property>su-27/SDU-10/active</property>
+		</binding>
+  </action>
+ </animation> 
+
+  <animation>
+	<type>rotate</type>     <!--SDU off- switch  :ROTATE-->
+	<object-name>SDU.off.switch</object-name>
+	<property>su-27/SDU-10/active</property>
+	<factor>-45</factor>
+	  <center>
+	   <x-m> 0.008602</x-m>
+	   <y-m>-0.066945</y-m>
+	   <z-m>-0.002997</z-m>
+	  </center>	   
+	  <axis>
+		   <x> 0</x>       
+		   <y> 1</y>
+		   <z> 0</z>  
+	  </axis>
+  </animation>
 
 </PropertyList>
