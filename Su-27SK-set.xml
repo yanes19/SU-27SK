@@ -6,7 +6,7 @@ SU-27 simulation config.
 <<<<<<< HEAD
 2006-06-04 Lee Elliott edited by Yanes
 =======
-2006-06-04 Lee Elliott , Yanes Bechir April 2016.
+2006-06-04 Lee Elliott , Yanes Bechir April 2016-2020.
 >>>>>>> 7a1440f1161bb0918492d1db15f4cf6e1375e5ef
 ************************************************************************
 -->
@@ -113,7 +113,7 @@ USSR and Russia  aerospace industry .
         <internal archive="y">true</internal>
         <config>
           <x-offset-m archive="y">0.00</x-offset-m>
-          <y-offset-m archive="y">1.45</y-offset-m>
+          <y-offset-m archive="y">1.42</y-offset-m>
           <z-offset-m archive="y">5.23</z-offset-m>
           <pitch-offset-deg>-17</pitch-offset-deg>
           <default-field-of-view-deg>84</default-field-of-view-deg>
