@@ -78,4 +78,10 @@
 	<Anti-ice-switch-pos type="int">0</Anti-ice-switch-pos>
 	</Energy-Engines-panel>
 	
+	<SDU-panel>
+	<SDU-off-switch-cover-pos type="int">0</SDU-off-switch-cover-pos>
+	<SDU-fail-off-cover type="int">0</SDU-fail-off-cover>
+	
+	</SDU-panel>
+	
 </PropertyList>

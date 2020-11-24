@@ -369,8 +369,8 @@ livery_update.stop();
 		<path>Aircraft/SU-27SK/Models/Interior/panel.xml</path>
 			<offsets>
 				<x-m>0.3</x-m>
-					<y-m>-0.01</y-m>
-				<z-m>0</z-m>
+				<y-m>-0.01</y-m>
+				<z-m>-0.03</z-m>
 			<pitch-deg>0</pitch-deg>
 		</offsets>
 	</model>
