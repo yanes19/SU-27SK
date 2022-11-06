@@ -48,17 +48,18 @@
   <object-name>G-indic-Gload-needle</object-name>
   <object-name>G-indic-aoa-needle</object-name>
   <object-name>G-indicator.face</object-name>
-	 <condition>
-		 <greater-than>
-			 <property>systems/electrical/outputs/WarnLeds</property>
-		   <value>18</value>
-		 </greater-than>
-	 </condition>
-  <emission>
-   <red>0.8</red>
-   <green>0.5</green>
-   <blue>0.5</blue>
-  </emission>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/VDC-bus[1]</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	    <factor-prop>controls/lighting/instruments-norm</factor-prop>
+	    <red>1.00</red>
+	    <green>1.00</green>
+	    <blue>0.78</blue>
+	  </emission>
  </animation>
 
 

@@ -6,8 +6,9 @@ var autostart = func {
 		engines.StopAuto();
 		su27.canopy.open();}
 	else {engines.StartAuto();
-	su27.canopy.close();};
 	#Canopy
+	su27.canopy.close();};
+	
 	
 	#Lights
 	if (getprop("controls/lighting/nav-lights-switch")==1){setprop("controls/lighting/nav-lights-switch",0);}
@@ -22,4 +23,19 @@ var autostart = func {
 		
 	else {setprop("/controls/lighting/landing-lights",1)};
 
+}
+
+var operateAntiIce = func{
+	if (getprop("su-27/instrumentation/Energy-Engines-panel/Anti-ice-switch-pos")== -1){
+	setprop("controls/anti-ice/wing-heat",1);
+	setprop("controls/anti-ice/pitot-heat",1);
+	setprop("controls/anti-ice/engine/inlet-heat",1);
+	setprop("controls/anti-ice/engine[1]/inlet-heat",1);
+	}else{
+	setprop("controls/anti-ice/wing-heat",0);
+	setprop("controls/anti-ice/pitot-heat",0);
+	setprop("controls/anti-ice/engine/inlet-heat",0);
+	setprop("controls/anti-ice/engine[1]/inlet-heat",0);
+	
+	}
 }

@@ -2,7 +2,7 @@ AC3Db
 MATERIAL "Plastic.white" rgb 0.115 0.115 0.115  amb 0.800 0.800 0.800  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
 MATERIAL "Chrome.mat.001" rgb 0.050 0.050 0.050  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.916 0.916 0.916  shi 128 trans 0.042
 MATERIAL "Plastic-Black" rgb 1.000 1.000 1.000  amb 0.800 0.800 0.800  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
-MATERIAL "panel.mat" rgb 0.900 0.900 1.000  amb 0.800 0.800 1.000  emis 0.000 0.000 0.000  spec 0.200 0.200 0.200  shi 64 trans 0.000
+MATERIAL "panel.mat" rgb 0.600 0.600 1.000  amb 0.600 0.600 1.000  emis 0.000 0.000 0.000  spec 0.200 0.200 0.200  shi 64 trans 0.000
 MATERIAL "Plastic.Red" rgb 0.8500 0.000 0.000  amb 0.100 0.100 0.100  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
 MATERIAL "Black-mat" rgb 0.029 0.029 0.029  amb 0.100 0.100 0.100  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000
 MATERIAL "knobs" rgb 1.000 1.000 1.000  amb 0.800 0.800 0.800  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 64 trans 0.000

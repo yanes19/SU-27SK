@@ -8,25 +8,20 @@
 		<path>PU-184-Radio-Panel.ac</path>
 	</model>
 
-  <animation>
-        <type>knob</type>
-        <object-name>knob-PPM-Select</object-name>
-	  <expression>
-		  <difference>
-		  <product>
-		  <property>su-27/instrumentation/PU-184/active-PPM</property>
-		  <value>30</value>
-		  </product>
-		  <value>30</value>
-		  </difference>
-	  </expression>
-        <center>
-            <x-m>0.02311</x-m><y-m>-0.06523</y-m><z-m>-0.00683</z-m>
-        </center>
-        <axis>
-            <x>0</x><y>0</y><z>-1</z>
-        </axis>
-        <action>
+
+	<animation>
+		<type>knob</type>
+		<object-name>knob-PPM-Select</object-name>
+	  <property>su-27/instrumentation/PU-184/active-PPM</property>
+	  <factor>-30</factor>
+	  <offset-deg>150</offset-deg>
+		<center>
+			<x-m>0.023965</x-m><y-m>-0.07488</y-m><z-m>0.002265</z-m>
+		</center>
+		<axis>
+			<x>0</x><y>0</y><z>1</z>
+		</axis>
+		<action>
 			<binding>
 			  <command>property-adjust</command>
 			  <property>su-27/instrumentation/PU-184/active-PPM</property>
@@ -35,21 +30,25 @@
 	              <max>9</max>                
 	              <wrap>false</wrap>
 			</binding>
+	
 			<binding>
 			  <command>nasal</command>
 			  <script>instrumentation.P_184PPMs()</script>
 			</binding>
-        </action>
-    </animation>
-    
+		</action>
+	
+	</animation>	
+
+
+
 
     <animation>
 		<type>knob</type>
 		<object-name>Knob-volume</object-name>
 	  <property>instrumentation/adf/volume-norm</property>
-	  <factor>36</factor>
+	  <factor>60</factor>
 		<center>
-			<x-m>-0.01144</x-m><y-m>-0.06966</y-m><z-m>-0.00679</z-m>
+			<x-m>-0.011921</x-m><y-m>-0.081734</y-m><z-m>0.010477</z-m>
 		</center>
 		<axis>
 			<x>0</x><y>0</y><z>-1</z>
@@ -64,38 +63,71 @@
 	              <wrap>false</wrap>
 			</binding>
 		</action>
-	</animation>   
-	
+	</animation>  
+
+
   <animation><!--ARC bttn-->
   <type>pick</type>
   <object-name>button-ARC</object-name>
+			<condition>
+			<not-equals>
+				<property>instrumentation/adf/operable</property>
+				<value>0</value>
+			</not-equals>
+			</condition>
   <visible>true</visible>
    <action>
     <button>0</button>
     <repeatable>false</repeatable>
-			<binding>
-			 <command>property-cycle</command>
-			 <property>su-27/instrumentation/PNK-10/active-mode</property>
-			 <value>1</value>
-			 <value>1.1</value>
-			</binding>
+		<binding>.
+			<condition>
+			<not-equals>
+				<property>instrumentation/adf/power-btn</property>
+				<value>0</value>
+			</not-equals>
+			</condition>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/PNK-10/active-mode</property>
+		 <value>1</value>
+		 <value>1.1</value>
+		</binding>
+
+		<binding>
+		 <command>nasal</command>
+		 <script>
+		 instrumentation.P_184COM_ANT();
+		 </script>
+		</binding>
   </action>
  </animation>
 
-	<animation>
-	 <type>select</type> 
-	 <object-name>bttn-light-ARC.lit</object-name>
+
+ 	<animation>
+	 <type>material</type> 
+	 <object-name>Bttn-Lamp.ARC</object-name>
 	 <condition>
 	   <equals>
 	   <property>su-27/instrumentation/PNK-10/active-mode</property>
 	   <value>1.1</value>
 	   </equals>
 	 </condition>
+	<condition>
+	<not-equals>
+		<property>instrumentation/adf/power-btn</property>
+		<value>0</value>
+	</not-equals>
+	</condition>
+	 <emission>	
+	  <red>0.3</red>	
+	  <green>0.8</green>	
+	  <blue>0.3</blue>
+	 </emission>
 	</animation>
- 
+
+
  	<animation>
 	 <type>material</type> 
-	 <object-name>bttn-light-ARC.lit</object-name>
+	 <object-name>btton.Light.ARC</object-name>
 	 <condition>
 	   <equals>
 	   <property>su-27/instrumentation/PNK-10/active-mode</property>
@@ -103,26 +135,61 @@
 	   </equals>
 	 </condition>
 	 <emission>	
-	  <red>0.0</red>	
-	  <green>0.6</green>	
-	  <blue>0.0</blue>
+	  <red>0.1</red>	
+	  <green>0.2</green>	
+	  <blue>0.1</blue>
 	 </emission>
 	</animation>
 
 
- 	<animation>
-	 <type>material</type> 
-	 <object-name>bttn-light-ARC</object-name>
-	 <condition>
-	   <equals>
-	   <property>su-27/instrumentation/PNK-10/active-mode</property>
-	   <value>1.1</value>
-	   </equals>
-	 </condition>
-	 <emission>	
-	  <red>0.2</red>	
-	  <green>0.6</green>	
-	  <blue>0.2</blue>
-	 </emission>
-	</animation>
+  <animation>	<!--KOM-ANT switch pick-->
+  <type>pick</type>
+  <object-name>lever-COM-ANT</object-name>
+  <visible>true</visible>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+		<binding>
+		 <command>property-cycle</command>
+		 <property>su-27/instrumentation/PU-184/KOM-ANT</property><!--KOM=0,ANT=1 -->
+		 <value type="int">1</value>
+		 <value type="int">0</value>
+		 
+		</binding>
+		
+		<binding>
+		 <command>nasal</command>
+		 <script>
+		 instrumentation.P_184COM_ANT();
+		 </script>
+		</binding>
+		
+  </action>
+  </animation> 
+
+  <animation>	<!--KOM-ANT switch rotation-->
+	<type>rotate</type>
+	<object-name>lever-COM-ANT</object-name>
+	<property>su-27/instrumentation/PU-184/KOM-ANT</property>
+	<factor>90</factor>
+	<offset-deg>-40</offset-deg>
+	  <center>
+	   <x-m>-0.012464</x-m>
+	   <y-m>-0.044309 </y-m>
+	   <z-m> 0.000153</z-m>
+	  </center>	   
+	  <axis>
+		   <x>0</x>       
+		   <y>1</y>
+		   <z>0</z>  
+	  </axis>
+  </animation>
+
+
+
+
+
+
+
+
 </PropertyList>

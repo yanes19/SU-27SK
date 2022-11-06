@@ -35,3 +35,61 @@ var autostart = func {
 			
 
 }
+
+
+
+
+var startEngine1_Button = func {
+# TO DO : The fuel pumps and cutoffs are put here !
+#they should be moved to their respective contorl areas as their switches 
+#get modeled and installed in the cockpit.
+# TO DO -2-:move the throttle to startup position in order to start
+var VDCBus1volts = getprop("systems/electrical/VDC-bus");
+var VDCBus4volts = getprop("systems/electrical/VDC-bus[4]");
+var startSwitch_1_Pos = getprop("su-27/instrumentation/Energy-Engines-panel/Crank-Start-APU-Left-pos");
+if (VDCBus1volts>23 or VDCBus4volts> 23){	
+	if (startSwitch_1_Pos == 0){
+	var cutoffFalse = func { setprop("/controls/engines/engine[0]/cutoff", 0) };	
+	setprop("controls/engines/engine[0]/cutoff", 1);
+	setprop ("controls/engines/engine[0]/fuel-pump", 1);	
+	setprop ("controls/engines/engine[0]/starter", 1);
+	settimer(cutoffFalse, 3);
+	}
+	if (startSwitch_1_Pos == 1){
+	setprop("controls/engines/engine[0]/cutoff", 1);
+	setprop ("controls/engines/engine[0]/starter", 1);
+	}
+	if (startSwitch_1_Pos == -1){
+	setprop("controls/engines/engine[0]/cutoff", 1);
+	setprop ("controls/engines/engine[0]/starter", 1);
+	}
+	}
+}
+
+
+var startEngine2_Button = func {
+# TO DO : The fuel pumps and cutoffs are put here !
+#they should be moved to their respective contorl areas as their switches 
+#get modeled and installed in the cockpit.
+# TO DO -2-:move the throttle to startup position in order to start
+var VDCBus1volts = getprop("systems/electrical/VDC-bus");
+var VDCBus4volts = getprop("systems/electrical/VDC-bus[4]");
+var startSwitch_2_Pos = getprop("su-27/instrumentation/Energy-Engines-panel/Crank-Start-APU-Right-pos");
+if (VDCBus1volts>23 or VDCBus4volts> 23){	
+	if (startSwitch_2_Pos == 0){
+	var cutoffFalse = func { setprop("/controls/engines/engine[1]/cutoff", 0) };	
+	setprop("controls/engines/engine[1]/cutoff", 1);
+	setprop ("controls/engines/engine[1]/fuel-pump", 1);	
+	setprop ("controls/engines/engine[1]/starter", 1);
+	settimer(cutoffFalse, 3);
+	}
+	if (startSwitch_2_Pos == 1){
+	setprop("controls/engines/engine[1]/cutoff", 1);
+	setprop ("controls/engines/engine[1]/starter", 1);
+	}
+	if (startSwitch_2_Pos == -1){
+	setprop("controls/engines/engine[1]/cutoff", 1);
+	setprop ("controls/engines/engine[1]/starter", 1);
+	}
+	}
+}

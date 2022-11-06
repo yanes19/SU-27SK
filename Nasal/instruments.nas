@@ -34,7 +34,15 @@ var P_184PPMs = func {
 	#print(ActiveFreq);
 	setprop("instrumentation/adf/frequencies/selected-khz", getprop(ActiveFreq));
 	}
-	
+var P_184COM_ANT = func {
+	if (getprop("su-27/instrumentation/PU-184/KOM-ANT") ==1){
+		if(getprop("systems/electrical/outputs/adf") > 22 and
+			getprop("instrumentation/adf/serviceable")!= 0 and
+			getprop("su-27/instrumentation/PNK-10/active-mode") == 1.1 or 0){
+			setprop("instrumentation/adf/ident-audible",1)}
+	}else{
+			setprop("instrumentation/adf/ident-audible",0)}
+}
 
 var RSBN_PPMs = func {
 	var FreqToSet = "";

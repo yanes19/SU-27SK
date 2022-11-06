@@ -6,7 +6,7 @@ SU-27 simulation config.
 <<<<<<< HEAD
 2006-06-04 Lee Elliott edited by Yanes
 =======
-2006-06-04 Lee Elliott , Yanes Bechir April 2016.
+2006-06-04 Lee Elliott , Yanes Bechir April 2016-2020.
 >>>>>>> 7a1440f1161bb0918492d1db15f4cf6e1375e5ef
 ************************************************************************
 -->
@@ -113,7 +113,7 @@ USSR and Russia  aerospace industry .
         <internal archive="y">true</internal>
         <config>
           <x-offset-m archive="y">0.00</x-offset-m>
-          <y-offset-m archive="y">1.45</y-offset-m>
+          <y-offset-m archive="y">1.42</y-offset-m>
           <z-offset-m archive="y">5.23</z-offset-m>
           <pitch-offset-deg>-17</pitch-offset-deg>
           <default-field-of-view-deg>84</default-field-of-view-deg>
@@ -551,7 +551,6 @@ USSR and Russia  aerospace industry .
  </logging>
 -->
      <systems>
-         
         <hydraulic include="Systems/su-27-hydraulics.xml"/>
         <SAU include="Systems/SAU-ACS.xml"/>        
 	  </systems> 
@@ -562,13 +561,9 @@ USSR and Russia  aerospace industry .
       </submodels>
     </ai>
 
-
-<fdm><jsbsim><fcs><elevator-fbw-output>0</elevator-fbw-output></fcs></jsbsim></fdm>
-
-
 <!-- Start with the Parking Brake on -->
     <controls include ="Systems/controls.xml">
-      <engines>
+    <engines>
         <engine n="0">
           <throttle type="double">0</throttle>
           <reheat type="double">0</reheat>
@@ -577,10 +572,11 @@ USSR and Russia  aerospace industry .
           <throttle type="double">0</throttle>
           <reheat type="double">0</reheat>
         </engine>
-      </engines>
-      <gear>
-        <brake-parking type="double">1.0</brake-parking>
-      </gear>
+	</engines>
+	    <gear>
+			<brake-parking type="double">1.0</brake-parking>
+	    </gear>
+
     </controls>
 <!-- Engine indexes & FOD Screen pos -->
     <engines>
@@ -595,14 +591,7 @@ USSR and Russia  aerospace industry .
         <reheat-norm type="float">0</reheat-norm>
       </engine>
     </engines>  
-<!--
-    <environment>
-    <turbulence>
-      <use-cloud-turbulence>true</use-cloud-turbulence>
-    </turbulence>
-  </environment>
--->
-  
+
   <input>
   <keyboard include="Systems/su-27-keyboard.xml"/>
   </input>
@@ -611,8 +600,6 @@ USSR and Russia  aerospace industry .
         <one type="int">1</one>
   </constants>
 
-
-  
   <su-27>
   <instrumentation include="Systems/su-27-instrumentation.xml"/>
   <WCS include ="Systems/weaponCS.xml"/>
@@ -621,14 +608,14 @@ USSR and Russia  aerospace industry .
   <instrumentation>
   <illumination>
    <settings>
-    <lcd-brightness-offset type="double">0.25</lcd-brightness-offset>
-    <led-brightness-offset type="double">0.25</led-brightness-offset>
+	<instruments-red type="double">0.20</instruments-red>
+	<instruments-green type="double">0.20</instruments-green>
+	<instruments-blue type="double">0.15</instruments-blue>
    </settings>
    <lcd-brightness type="double">0.75</lcd-brightness>
    <led-brightness type="double">0.75</led-brightness>
-   <master-brightness type="double">0.74</master-brightness>
+   <instruments-brightness type="double">0.74</instruments-brightness>
   </illumination>
-  
   
   <rwr>
  <display-lighting-intens type="double">0.4</display-lighting-intens>
@@ -874,8 +861,6 @@ USSR and Russia  aerospace industry .
     <m2000_controls>
       <file>Aircraft/SU-27SK/Nasal/weapons/controls.nas</file>
     </m2000_controls>
-    
-    
 
     <CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
     

@@ -15,12 +15,18 @@
  <object-name>UV-30-3.PD1</object-name>
  <object-name>UV-30-3.PD2</object-name>
  <object-name>face</object-name>
- <emission>
-  <red>0.8</red>
-  <green>0.8</green>
-  <blue>0.8</blue>
-  
- </emission>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/VDC-bus[1]</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	    <factor-prop>controls/lighting/instruments-norm</factor-prop>
+	    <red>1.00</red>
+	    <green>1.00</green>
+	    <blue>0.78</blue>
+	  </emission>
 </animation>
 
 <animation>

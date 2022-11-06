@@ -7,4 +7,33 @@
 	<path>Lighting-panel.ac</path>
 
 
+
+
+    <animation>
+		<type>knob</type>
+		<object-name>Panel-instruments-brightnss</object-name>
+	  <property>controls/lighting/instruments-norm</property>
+	  <factor>90</factor>
+		<center>
+			<x-m>0.029257</x-m><y-m>0.064909</y-m><z-m>0.015146</z-m>
+		</center>
+		<axis>
+			<x>0</x><y>0</y><z>-1</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-adjust</command>
+			  <property>controls/lighting/instruments-norm</property>
+				  <factor>0.1</factor>
+	              <min>0.0</min>
+	              <max>1.0</max>                
+	              <wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>	
+
+
+
+
+
 </PropertyList>
