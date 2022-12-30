@@ -356,9 +356,10 @@
         <name>SDU-panel</name>
         <path>Aircraft/SU-27SK/Models/Interior/LeftPanels/SDU-panel/SDU-panel.xml</path>
         <offsets>
-            <x-m> 4.514 </x-m>
+            <x-m> 4.559 </x-m>
             <y-m>-0.406 </y-m>
-            <z-m> 0.842 </z-m>
+            <z-m> 0.848 </z-m>
+            <roll-deg>-18.6</roll-deg> 
         </offsets>
         <!--
     	<overlay>
