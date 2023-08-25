@@ -8,10 +8,11 @@ print("LOADING weapons.nas .");
 var dt = 0;
 var isFiring = 0;
 var splashdt = 0;
-var MPMessaging = props.globals.getNode("/controls/armament/mp-messaging", 1);
+var MPMessaging = props.globals.getNode("/payload/armament/msg", 1);
 
 fire_MG = func(b) {
     var time = getprop("/sim/time/elapsed-sec");
+    if(getprop("/sim/failure-manager/systems/wcs/failure-level"))return;
     
     # Here is the gun things : the firing should last 0,5 sec or 1 sec, and in
     # the future should be selectionable
@@ -95,18 +96,36 @@ var Impact = func() {
         }
     }
     var time = getprop("/sim/time/elapsed-sec");
-    if(splashOn != "Nothing" and (time - splashdt) > 1)
+    if(splashOn != "Nothing")
     {
-        var phrase = "Gun Splash On :" ~ splashOn~". "~ numberOfSplash ~" hits";
-        if(MPMessaging.getValue() == 1)
-        {
-            setprop("/sim/multiplay/chat", phrase);
+        if(time - splashdt < 0.1){
+            settimer(Impact,0.1);
+            return;
         }
-        else
-        {
+        #var phrase = "GSh-30 hit: " ~ splashOn~". "~ numberOfSplash ~" hits";
+        #if(MPMessaging.getValue() == 1)
+        #{
+        #    setprop("/sim/multiplay/chat", phrase);
+        #}
+        #else
+        #{
+        #    setprop("/sim/messages/atc", phrase);
+        #}
+        #splashdt = time;
+        var phrase = "GSh-30" ~ " hit: " ~ splashOn ~ ": " ~ numberOfSplash ~ " hits";
+        if (getprop("/payload/armament/msg")) {
+            #armament.defeatSpamFilter(phrase);
+            var msg = notifications.ArmamentNotification.new("mhit", 4, -1*(damage.shells["GSh-30"][0]+1));
+                    msg.RelativeAltitude = 0;
+                    msg.Bearing = 0;
+                    msg.Distance = numberOfSplash;
+                    msg.RemoteCallsign = splashOn;
+            notifications.hitBridgedTransmitter.NotifyAll(msg);
+            damage.damageLog.push("You hit "~splashOn~" with "~"GSh-30"~", "~numberOfSplash~" times.");
+        } else {
             setprop("/sim/messages/atc", phrase);
         }
-        splashdt = time;
+        splashdt=time;
     }
 }
 
@@ -173,3 +192,10 @@ var findmultiplayer = func(targetCoord) {
     #print("Splash on : Callsign:"~SelectedMP);
     return SelectedMP;
 }
+setlistener("ai/models/model-impact",Impact,0,0);
+
+var stickreporter = func(){
+    if(getprop("/controls/armament/stick-selector") == 1)screen.log.write("Selected GSh-30 Cannon.",1,0.4,0.4);
+    else{screen.log.write("Selected missiles.",1,0.4,0.4);}
+}
+setlistener("/controls/armament/stick-selector",stickreporter);

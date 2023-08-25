@@ -17,6 +17,10 @@
 		<property>sim/rendering/shaders/skydome</property>
 		<value>1</value>
 		</equals>
+    <equals>
+    <property>/engines/engine/running</property>
+    <value>1</value>
+    </equals>
 		</and>
    </condition>
  </animation>

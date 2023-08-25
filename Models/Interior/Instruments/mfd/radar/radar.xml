@@ -172,7 +172,7 @@
 	 <condition>   
 		<and>
 			<equals>
-				<property>instrumentation/radar2/targets/aircraft/display</property>
+				<property>instrumentation/radar2/targets/multiplayer/display</property>
 				<value>1</value>
 			</equals>
 			<equals>
@@ -190,7 +190,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target0</object-name>
-	 <property>instrumentation/radar2/targets/aircraft/y-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer/y-shift</property>
 <!--
 	 <factor>0.001888</factor>
 -->
@@ -203,7 +203,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target0</object-name>
-	 <property>instrumentation/radar2/targets/aircraft/x-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer/x-shift</property>
 <!--
 		<factor>0.001888</factor>
 -->
@@ -216,7 +216,7 @@
  <animation>
 	 <type>rotate</type>
 	 <object-name>target0</object-name>
-	 <property>instrumentation/radar2/targets/aircraft/rotation</property>
+	 <property>instrumentation/radar2/targets/multiplayer/rotation</property>
 	 <axis>
 		 <x>-1</x>
 		 <y>0</y>
@@ -235,7 +235,7 @@
 	 <condition>   
 		 <and>
 			 <equals>
-				 <property>instrumentation/radar2/targets/aircraft[1]/display</property>
+				 <property>instrumentation/radar2/targets/multiplayer[1]/display</property>
 				 <value>1</value>
 			 </equals>
 			 <equals>
@@ -253,7 +253,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target1</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[1]/y-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[1]/y-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>0</y>
@@ -263,7 +263,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target1</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[1]/x-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[1]/x-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>1</y>
@@ -273,7 +273,7 @@
  <animation>
 	 <type>rotate</type>
 	 <object-name>target1</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[1]/rotation</property>
+	 <property>instrumentation/radar2/targets/multiplayer[1]/rotation</property>
 	 <axis>
 		 <x>-1</x>
 		 <y>0</y>

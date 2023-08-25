@@ -96,7 +96,29 @@
   </submodel>
 -->
   
-  
+  <submodel>
+   <name>gun-bullet</name>
+   <model>Aircraft/SU-27SK/Models/Submodels/GSh-301/tracer.xml</model>
+   <trigger>controls/armament/Gun_trigger</trigger>
+   <speed>2952</speed>
+   <repeat>true</repeat>
+   <delay>0.04</delay>
+   <count>150</count>
+   <x-offset>-13.78 </x-offset>
+   <y-offset>-2.044 </y-offset>
+   <z-offset> 0.0164</z-offset>
+   <pitch-offset>0</pitch-offset>
+   <life>10.0</life>
+   <wind>false</wind>
+   <weight>0.86</weight>
+   <cd>0.2</cd>
+   <eda>0.00760855993</eda>
+   <collision>true</collision>
+   <collision-report>sim/ai/aircraft/collision/bullet</collision-report>
+   <impact>true</impact>
+   <impact-reports>ai/models/model-impact</impact-reports>
+   <submodel-path>Aircraft/SU-27SK/Models/Submodels/GSh-301/bullet-submodel.xml</submodel-path>
+  </submodel>
  
 
 </PropertyList>

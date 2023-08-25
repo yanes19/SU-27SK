@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>tracer.ac</path>
+
+ <animation>
+  <type>dist-scale</type>
+  <name>tracer</name>
+  <object-name>GSh-301.tracer</object-name>
+  <interpolation>
+   <entry><ind>   0</ind><dep> 0.2</dep></entry>
+   <entry><ind> 400</ind><dep>10.0</dep></entry>
+   <entry><ind>1200</ind><dep> 0.0</dep></entry>
+  </interpolation>
+ </animation>
+
+</PropertyList>

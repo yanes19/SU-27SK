@@ -8,7 +8,7 @@
 	  <desc>Toggle DirectInput Mode (FBW Disengengage)</desc>
 	  <binding>
 	   <command>property-cycle</command>
-	   <property>su-27/SDU-10/active</property>
+	   <property>su-27/SDU-10/serviceable</property>
 	     <value type="int">0</value>
 		 <value type="int">1</value>
 	  </binding>
@@ -25,8 +25,8 @@
     </mod-ctrl>
   </key>
   
- <key n="43">
-  <name>+</name>
+ <key n="101">
+  <name>e</name>
   <desc>Fire selected WCS weapon</desc>
   <binding>
     <command>nasal</command>
@@ -34,8 +34,8 @@
   </binding>
  </key>
  
- <key n="45">
-  <name>-</name>
+ <key n="109">
+  <name>m</name>
   <desc>Cycle selected WCS weapon</desc>
   <binding>
  <command>property-cycle</command>
@@ -46,7 +46,48 @@
  <value>R-27ER</value>
  <value>R-27ET</value>
 </binding>
+  <binding><command>nasal</command><script>screen.log.write("Selected " ~ getprop("controls/armament/selected-weapon"),0.5,0.5,1);</script></binding>
  </key> 
+
+ <key n="113">
+  <name>q</name>
+  <desc>Release Flares</desc>
+  <binding>
+ <command>nasal</command>
+ <script>damage.flare_released();</script>
+</binding>
+ </key> 
+ <key n="114">
+  <name>r</name>
+  <desc>Switch Radar Range</desc>
+  <binding>
+ <command>nasal</command>
+ <script>radar.switch_distance();screen.log.write("Radar Range: " ~ su27.myRadar.rangeTab[radar.rangeIndex] ~ "nm.",1,1,0);</script>
+</binding>
+ </key> 
+ 
+ <key n="119">
+  <name>w</name>
+  <desc>Cycle Gun/Missile</desc>
+  <binding>
+ <command>property-cycle</command>
+ <property>controls/armament/stick-selector</property>
+ <value>1</value>
+ <value>2</value>
+</binding>
+ </key> 
+
+ <key n="121">
+  <name>y</name>
+  <desc>select target</desc>
+  <binding>
+ <command>nasal</command>
+ <script>radar.next_Target_Index();</script>
+</binding>
+ </key> 
+
+
+
 
   
  <key n="76">

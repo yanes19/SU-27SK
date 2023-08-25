@@ -9,7 +9,7 @@ var AcModel        = props.globals.getNode("sim/model/su-27SK", 1);
 var OurHdg         = props.globals.getNode("orientation/heading-deg");
 var OurRoll        = props.globals.getNode("orientation/roll-deg");
 var OurPitch       = props.globals.getNode("orientation/pitch-deg");
-var MPMessaging    = props.globals.getNode("/controls/armament/mp-messaging", 1);
+var MPMessaging    = props.globals.getNode("/payload/armament/msg", 1);
 MPMessaging.setBoolValue(0);
 
 var g_fps        = 9.80665 * M2FT;
@@ -165,7 +165,7 @@ var MISSILE = {
             var phrase = me.NameOfMissile ~ " Report : Missed";
             if(MPMessaging.getValue() == 1)
             {
-                setprop("/sim/multiplay/chat", phrase);
+                damage.damageLog.push(phrase);
             }
             else
             {
@@ -333,7 +333,7 @@ var MISSILE = {
         print(phrase);
         if(MPMessaging.getValue() == 1)
         {
-            setprop("/sim/multiplay/chat", phrase);
+            damage.damageLog.push(phrase);
         }
         else
         {
@@ -896,10 +896,25 @@ var MISSILE = {
                     var wh_mass = me.weight_whead_lbs / slugs_to_lbs;
                     print("FOX2: me.direct_dist_m = ", me.direct_dist_m, " time ", getprop("sim/time/elapsed-sec"));
                     impact_report(me.t_coord, wh_mass, "missile"); # pos, alt, mass_slug, (speed_mps)
+                    
+                    
                     var phrase = me.Tgt.get_Callsign() ~ " has been hit by " ~ me.NameOfMissile ~ ". Distance of impact " ~ sprintf( "%01.0f", me.direct_dist_m) ~ " meters";
-                    if(MPMessaging.getValue()  == 1)
+                    
+                    if(getprop("/payload/armament/msg"))
                     {
-                        setprop("/sim/multiplay/chat", phrase);
+                        #setprop("/sim/multiplay/chat", phrase);
+                        var typeID = 0;
+                        if(me.NameOfMissile == "R-27R"){me.NameOfMissile="R-27R1";typeID = 96;}
+                        if(me.NameOfMissile == "R-27T"){me.NameOfMissile="R-27T1";typeID = 97;}
+                        if(me.NameOfMissile == "R-73"){me.NameOfMissile="R-73E";typeID=103;}
+                        var msg = notifications.ArmamentNotification.new("mhit", 4, typeID);
+                        msg.RelativeAltitude = 0;
+                        msg.Bearing = me.coord.course_to(geo.aircraft_position());
+                        msg.Distance = me.direct_dist_m;
+                        msg.RemoteCallsign = me.Tgt.get_Callsign();
+                        notifications.hitBridgedTransmitter.NotifyAll(msg);
+                        damage.damageLog.push(sprintf("You hit "~me.Tgt.get_Callsign()~" with "~me.NameOfMissile~" at %.1f meters", me.direct_dist_m));
+                    
                     }
                     else
                     {

@@ -18,10 +18,20 @@
 	    <type>select</type>
 		  <condition>
 				<and>
+        <or>
 		   <equals>
 		    <property>sim/weight/selected</property>
 		    <value>R-27R</value>
 		   </equals>
+       <equals>
+		    <property>sim/weight/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
 				<not>
 		    <property>controls/armament/station[0]/release</property>
 				</not>
@@ -71,10 +81,20 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[1]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
+       <equals>
+		    <property>sim/weight[1]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[1]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
 				<not>
 		    <property>controls/armament/station[1]/release</property>
 				</not>
@@ -126,13 +146,23 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[2]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
-		   <not>
-		   <property>controls/armament/station[2]/release</property>
-		   </not>
+       <equals>
+		    <property>sim/weight[2]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[2]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
+				<not>
+		    <property>controls/armament/station[2]/release</property>
+				</not>
 		   </and>
 		  </condition>
    </animation>
@@ -180,10 +210,20 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[3]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
+       <equals>
+		    <property>sim/weight[3]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[3]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
 				<not>
 		    <property>controls/armament/station[3]/release</property>
 				</not>
@@ -235,10 +275,20 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[4]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
+       <equals>
+		    <property>sim/weight[4]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[4]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
 				<not>
 		    <property>controls/armament/station[4]/release</property>
 				</not>
@@ -315,10 +365,20 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[5]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
+       <equals>
+		    <property>sim/weight[5]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[5]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
 				<not>
 		    <property>controls/armament/station[5]/release</property>
 				</not>
@@ -513,10 +573,20 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[8]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
+       <equals>
+		    <property>sim/weight[8]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[8]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
 				<not>
 		    <property>controls/armament/station[8]/release</property>
 				</not>
@@ -568,11 +638,21 @@
 	    <type>select</type>
 		  <condition>
 			<and>
+        <or>
 		   <equals>
 		    <property>sim/weight[9]/selected</property>
 		    <value>R-27R</value>
 		   </equals>
-				<not> 
+       <equals>
+		    <property>sim/weight[9]/selected</property>
+		    <value>R-27T</value>
+		   </equals>
+       <equals>
+		    <property>sim/weight[9]/selected</property>
+		    <value>R-27ET</value>
+		   </equals>
+       </or>
+				<not>
 		    <property>controls/armament/station[9]/release</property>
 				</not>
 		   </and>

@@ -1,0 +1,97 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "Material" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 1 1 1 spec 1 1 1 shi 64 trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "GSh-301.tracer"
+loc 0 0 -0
+data 14
+GSh-301.tracer
+crease 179.000000
+numvert 9
+-25 0.04 -0
+-25 -0 -0.04
+-25 -0.028284 0.028284
+-25 0.028284 0.028284
+-25 -0 0.04
+-25 -0.04 -0
+-25 -0.028284 -0.028285
+-25 0.028284 -0.028285
+0 0 -0
+numsurf 12
+SURF 0x20
+mat 1
+refs 3
+6 0 0
+7 0 0
+1 0 0
+SURF 0x20
+mat 1
+refs 4
+0 0 0
+7 0 0
+6 0 0
+5 0 0
+SURF 0x20
+mat 1
+refs 4
+5 0 0
+2 0 0
+3 0 0
+0 0 0
+SURF 0x20
+mat 1
+refs 3
+3 0 0
+2 0 0
+4 0 0
+SURF 0x20
+mat 1
+refs 3
+7 0 0
+0 0 0
+8 0 0
+SURF 0x20
+mat 1
+refs 3
+7 0 0
+8 0 0
+1 0 0
+SURF 0x20
+mat 1
+refs 3
+8 0 0
+6 0 0
+1 0 0
+SURF 0x20
+mat 1
+refs 3
+6 0 0
+8 0 0
+5 0 0
+SURF 0x20
+mat 1
+refs 3
+8 0 0
+2 0 0
+5 0 0
+SURF 0x20
+mat 1
+refs 3
+2 0 0
+8 0 0
+4 0 0
+SURF 0x20
+mat 1
+refs 3
+8 0 0
+3 0 0
+4 0 0
+SURF 0x20
+mat 1
+refs 3
+0 0 0
+3 0 0
+8 0 0
+kids 0

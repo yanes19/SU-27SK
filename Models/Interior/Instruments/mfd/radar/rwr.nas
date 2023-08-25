@@ -42,6 +42,7 @@ init = func() {
 # Main loop ###############
 var rwr_loop = func() {
 	ecm_on = EcmOn.getBoolValue();
+	#screen.log.write("rwr-loop");
 	if ( ecm_on) {
 		our_alt = OurAlt.getValue();
 		tgts_list = [];
@@ -52,12 +53,13 @@ var rwr_loop = func() {
 				continue;
 			}
 			var HaveRadarNode = c.getNode("radar");
-			if (type == "multiplayer" or type == "tanker" and HaveRadarNode != nil) {
+			if (type == "multiplayer" or type == "tanker" and HaveRadarNode != nil or type == "Mig-28") {
 				var u = Threat.new(c);
 				u_ecm_signal      = 0;
 				u_ecm_signal_norm = 0;
 				u_radar_standby   = 0;
 				u_ecm_type_num    = 0;
+				#screen.log.write("found threat.");
 				if ( u.Range != nil) {
 					# Test if target has a radar. Compute if we are illuminated. This propery used by ECM
 					# over MP, should be standardized, like "ai/models/multiplayer[0]/radar/radar-standby".
@@ -66,10 +68,21 @@ var rwr_loop = func() {
 					var horizon = u.get_horizon( our_alt );
 					var u_rng = u.get_range();
 					var u_carrier = u.check_carrier_type();
+					var threatdeg = -9999.9;
+					if(u_maxrange == 0){
+						u_maxrange = 100;
+					}
 					if ( u.get_rdr_standby() == 0 and u_maxrange > 0  and u_rng < horizon ) {
 						# Test if we are in its radar field (hard coded 74°) or if we have a MPcarrier.
 						# Compute the signal strength.
 						var our_deviation_deg = deviation_normdeg(u.get_heading(), u.get_reciprocal_bearing());
+						threatdeg = u.get_reciprocal_bearing() - OurHdg.getValue() - 180;
+						if(threatdeg<0){
+							threatdeg += 360;
+						}
+						if(threatdeg<0){
+							threatdeg += 360;
+						}
 						if ( our_deviation_deg < 0 ) { our_deviation_deg *= -1 }
 						if ( our_deviation_deg < 37 or u_carrier == 1 ) {
 							u_ecm_signal = (((-our_deviation_deg/20)+2.5)*(!u_carrier )) + (-u_rng/20) + 2.6 + (u_carrier*1.8);
@@ -92,13 +105,19 @@ var rwr_loop = func() {
 					u.EcmSignal.setValue(u_ecm_signal);
 					u.EcmSignalNorm.setIntValue(u_ecm_signal_norm);
 					u.EcmTypeNum.setIntValue(u_ecm_type_num);
+					if(u_ecm_signal > 0){
+						setprop("/mig29/instrumentation/SPO-15LM/azimut_M-norm",threatdeg);
+						#setprop("/mig29/instrumentation/SPO-15LM/azimut_M-norm",threatdeg);
+					}
+					#screen.log.write("done.");
 				}
 			}
 		}
 
 		# Summarize ECM alerts.
-		if ( ecm_alert1 == 0 and ecm_alert1_last == 0 ) { EcmAlert1.setBoolValue(0) }
-		if ( ecm_alert2 == 0 and ecm_alert1_last == 0 ) { EcmAlert2.setBoolValue(0) }
+		if ( ecm_alert1 == 0 and ecm_alert1_last == 0 ) { EcmAlert1.setBoolValue(0);}
+		if ( ecm_alert2 == 0 and ecm_alert1_last == 0 ) { EcmAlert2.setBoolValue(0); }
+		#if(u_ecm_signal == 0){setprop("/mig29/instrumentation/SPO-15LM/azimut_M-norm",-9999}
 		ecm_alert1_last = ecm_alert1; # And avoid alert blinking at each loop.
 		ecm_alert2_last = ecm_alert2;
 		ecm_alert1 = 0;

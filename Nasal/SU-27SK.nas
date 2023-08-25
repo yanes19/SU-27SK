@@ -26,6 +26,7 @@
 	var acname = "SU-27SK"; # Script Display Name
 	var main_loop_interval = 1; # Main loop update period in seconds
 	var aux_loop_interval = 60; # Auxiliary loop update period in seconds
+	var myRadar = nil;
 	
 	################################
 	## Objects	
@@ -122,8 +123,13 @@
 		
 		props.globals.getNode(diff_root~"/difficult-mode",1).setBoolValue(difficulty);
 		props.globals.getNode(rm_root~"/enabled",1).setBoolValue(real_maintenance);
-	  var myRadar = radar.Radar.new();
+	    myRadar = radar.Radar.new();
 		myRadar.init();
+		crash.repairMe();
+		var fire_fc = compat_failure_modes.set_unserviceable("damage/fire");# will make smoke trail when damaged
+		FailureMgr.add_failure_mode("damage/fire", "Fire", fire_fc);
+		var wcs_fc = compat_failure_modes.set_unserviceable("systems/wcs");# will make smoke trail when damaged
+		FailureMgr.add_failure_mode("systems/wcs", "WCS", wcs_fc);
 		if  (getprop("fdm/jsbsim/gear/wow")== 0 ) {
 			if (getprop ("engines/engine/running") != 1){
 			misc.autostart();
@@ -177,3 +183,5 @@
 	setlistener("sim/signals/fdm-initialized", func {
 	     settimer( init, 2);
 	    });
+
+	setlistener("sim/crashed",func{if(getprop("sim/crashed")){setprop("sim/explode","true");settimer(func{setprop("sim/explode","false");},2)}});

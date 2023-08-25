@@ -724,7 +724,7 @@ var SelectNextPylon = func()
 					print(i);
 					print("Selected at i :  " ~ getprop("sim/weight["~ i ~"]/selected"));
 					
-					if(getprop("sim/weight["~ i ~"]/selected") == Selectedweapon and getprop("controls/armament/station["~ i ~"]/release") == 0)
+					if(getprop("/sim/weight["~ i ~"]/selected") == Selectedweapon and getprop("/controls/armament/station["~ i ~"]/release") == 0)
 					{
 							SelectedPylon.setValue(i);
 							print("Next selected = pylon",i);

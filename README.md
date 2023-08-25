@@ -11,11 +11,12 @@
  * the FGUK-team for their SU-27 prototype ,
  * MIG-29 developers, 
  * The F-15 developers,(their svg hud was a huge help ),
+ * The F-16 developers,
  * The Mirage2000-5 developper ,
  * A lot of fg-Aircrafts developpers ,
  So Greetings and THANKS to all of them .
  
-	The current aircraft package is at version 0.3 (as of late January 2017), so this is an "EARLY DEVELOPPEMENT" version , 
+	The current aircraft package is at version 0.4 , so this is an "EARLY DEVELOPPEMENT" version , 
     just published for Fun, Tests, and may be some contributions .
 
 
@@ -38,6 +39,7 @@ FEATURES :
 		in a real aircraft .
 * A large range of sounds for various simulation and avionics effects, 
 		including a russian voice for cockpit warning .
+* Weapon Systems(GSh-30 gun and missiles including 4 types of R-27 variants and R-73) and Emesary damage system .
 * A J-11A variant with Chinese labled cockpit by FGPRC team  .
 * Lot of other effects and avionics that I hope you'll like :)  .
 

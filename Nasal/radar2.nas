@@ -124,6 +124,7 @@ var Radar = {
         # option
         m.showAI =1;
         # return our new object
+        #screen.log.write("Radar created.");
         return m;
     },
 
@@ -146,11 +147,15 @@ var Radar = {
         me.maj_sweep();
         
         var loop_Update = func(){
-            var radarWorking = getprop("/systems/electrical/outputs/radar");
+            var radarWorking = #getprop("/systems/electrical/outputs/radar");
+            27;
             radarWorking = (radarWorking == nil) ? 0 : radarWorking;
             if(radarWorking > 21)
             {
+                #screen.log.write("loop");
                 me.update();
+            }else{
+                #screen.log.write("radar isn't running!");
             }
             me.janitor();
             settimer(loop_Update, UPDATE_PERIOD);
@@ -162,6 +167,7 @@ var Radar = {
             settimer(loop_Sweep, 0);
         };
         settimer(loop_Sweep, 0);
+        #screen.log.write("radar inited.");
         #settimer(loop, 0);
     },
 
@@ -171,6 +177,7 @@ var Radar = {
     update: func(){
         me.MyCoord = geo.aircraft_position();
         
+        #screen.log.write("updating");
         var raw_list = Mp.getChildren();
         foreach(var c ; raw_list)
         {
@@ -191,10 +198,12 @@ var Radar = {
                 or (type == "aircraft" and me.showAI == 1)
                 or type == "carrier"
                 or type == "ship"
-                or (type == "missile" and HaveRadarNode != nil))
+                or (type == "missile" and HaveRadarNode != nil)
+                or type == "Mig-28")
             {
                 # creation of the tempo object Target
                 var u = Target.new(c);
+                #screen.log.write("New target detected.",255,255,0);
                 
                 #print("Testing "~ u.get_Callsign()~"Type: " ~ type);
                 
@@ -207,6 +216,7 @@ var Radar = {
                 # then a function just check it all
                 if(me.get_check(u))
                 {
+                    #screen.log.write("checked!");
                     var HaveRadarNode = c.getNode("radar");
                     u.create_tree(me.MyCoord);
                     u.set_all(me.MyCoord);
@@ -642,6 +652,7 @@ var Radar = {
                 }
             }
         }
+        #screen.log.write("janitor(); done.");
     },
 
     displayTarget: func(){
@@ -708,6 +719,7 @@ var Target = {
         obj.index           = c.getIndex();
         obj.string          = "ai/models/" ~ obj.type ~ "[" ~ obj.index ~ "]";
         obj.shortstring     = obj.type ~ "[" ~ obj.index ~ "]";
+        #obj.shortstring     = "aircraft" ~ "[" ~ obj.num ~ "]";
         
         obj.InstrString     = "instrumentation/radar2/targets";
         obj.InstrTgts       = props.globals.getNode(obj.InstrString, 1);
@@ -808,7 +820,7 @@ var Target = {
 
     set_all: func(myAircraftCoord){
 				var rangeFactorFix =0;
-        me.RdrProp.getNode("in-range").setValue("true");
+        me.RdrProp.getNode("in-range",1).setValue("true");
         me.MyCallsign.setValue(me.get_Callsign());
         me.BHeading.setValue(me.Heading.getValue());
         me.BBearing.setValue(me.get_bearing_from_Coord(myAircraftCoord));
@@ -831,7 +843,7 @@ var Target = {
         # The property is initialised when the target is in range of "instrumentation/radar/range"
         # But nothing is done when "It's no more in range"
         # So this is a little hack for HUD.
-        me.RdrProp.getNode("in-range").setValue("false");
+        me.RdrProp.getNode("in-range",1).setValue("false");
         
         var Tempo_TgtsFiles = me.InstrTgts.getNode(me.shortstring, 1);
         var Property_list   = Tempo_TgtsFiles.getChildren();
@@ -1248,6 +1260,7 @@ next_Target_Index = func(){
     {
         Target_Index = 0;
     }
+    if(GetTarget()!=nil)screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
 }
 
 previous_Target_Index = func(){
@@ -1281,3 +1294,4 @@ var switch_distance = func(){
     RangeSelected.setValue(rangeTab[rangeIndex]);
     setprop("instrumentation/radar/range", rangeTab[rangeIndex]);
 }
+

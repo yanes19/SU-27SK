@@ -6,12 +6,20 @@ SU-27 simulation config.
 <<<<<<< HEAD
 2006-06-04 Lee Elliott edited by Yanes
 =======
-2006-06-04 Lee Elliott , Yanes Bechir April 2016-2020.
+2006-06-04 Lee Elliott , Yanes Bechir April 2016.
 >>>>>>> 7a1440f1161bb0918492d1db15f4cf6e1375e5ef
 ************************************************************************
 -->
 
   <PropertyList>
+
+  <damage>
+    <sounds>
+      <crack-on type="bool">false</crack-on>
+      <creaking-on type="bool">false</creaking-on>
+      <explode-on type="bool">false</explode-on>
+    </sounds>
+  </damage>
     <sim>
       <flight-model>jsb</flight-model>
       <status>Beta</status>
@@ -36,6 +44,8 @@ USSR and Russia  aerospace industry .
     </rating>
 
     <virtual-cockpit archive="y">true</virtual-cockpit>
+
+    <explode type="bool">false</explode>
     
     <gui><style><colors>
         <splash-font>
@@ -90,7 +100,11 @@ USSR and Russia  aerospace industry .
           <!-- Landing lights on -->
           <int n="2" alias="/controls/lighting/landing-lights" />
             <!-- Taxi light on -->
-          <int n="3" alias="/controls/lighting/taxi-light-switch" />      
+          <int n="3" alias="/controls/lighting/taxi-light-switch" />  
+
+          <bool n="100" alias="/sim/failure-manager/damage/fire/failure-level"/>
+          <bool n="101" alias="/sim/explode"/>
+
               <!-- Engine Status -->          
               <int n="5" alias="/engines/engine[0]/state" />
               <int n="6" alias="/engines/engine[1]/state" />
@@ -109,6 +123,9 @@ USSR and Russia  aerospace industry .
       </generic>
     </multiplay>
 
+
+    
+
       <view n="0">
         <internal archive="y">true</internal>
         <config>
@@ -117,6 +134,19 @@ USSR and Russia  aerospace industry .
           <z-offset-m archive="y">5.23</z-offset-m>
           <pitch-offset-deg>-17</pitch-offset-deg>
           <default-field-of-view-deg>84</default-field-of-view-deg>
+          <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">180</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">25</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">180</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">25</x-offset-threshold-deg>
+                    </right>
+                </limits>
         </config>
       </view>
       
@@ -309,6 +339,141 @@ USSR and Russia  aerospace industry .
                 <name>}</name>
                 <desc>Startup/Shut down engines</desc>
             </key>
+            <key n="4">
+	  <name>Ctrl-D</name>
+	  <desc>Toggle DirectInput Mode (FBW Disengengage)</desc>
+	  <binding>
+	   <command>property-cycle</command>
+	   <property>su-27/SDU-10/serviceable</property>
+	     <value type="int">0</value>
+		 <value type="int">1</value>
+	  </binding>
+	 </key>
+	
+	<key n="32">
+	  <name>Ctrl-Space</name>
+	  <desc>Engage AP auto-leveller</desc>
+	  <mod-ctrl>
+    <binding>
+      <command>nasal</command>
+      <script>ACS.SAU_AutoLevel();</script>
+    </binding>
+    </mod-ctrl>
+  </key>
+  
+ <key n="101">
+  <name>e</name>
+  <desc>Fire selected WCS weapon</desc>
+  <binding>
+    <command>nasal</command>
+    <script>guns.fire_MG(1);</script>
+  </binding>
+ </key>
+ 
+ <key>
+  <name>m</name>
+  <desc>Cycle selected WCS weapon</desc>
+  
+ </key> 
+
+ <key>
+  <name>q</name>
+  <desc>Release Flares</desc>
+  
+ </key> 
+ <key>
+  <name>r</name>
+  <desc>Switch Radar Range</desc>
+ </key> 
+ 
+ <key>
+  <name>w</name>
+  <desc>Cycle Gun/Missile</desc>
+ </key> 
+
+ <key>
+  <name>y</name>
+  <desc>Radar: select target</desc>
+  
+ </key> 
+
+
+
+
+  
+ <key>
+  <name>L</name>
+  <desc>Toggle Nav lights</desc>
+ </key>
+ 
+	<key>
+	  <name>P</name>
+	  <desc>Parachute release</desc>
+  </key>
+
+   <key>
+    <name>c</name>
+    <desc>Canopy open/close</desc>
+  </key>
+  
+  
+	<key>
+	<name>l</name>
+	 <desc>Toggle flashing beacons lights</desc>
+	</key>
+	
+<!--
+	<key n="70">
+     <name>F</name>
+    <desc>FuelHose</desc>
+    <binding>
+      <command>nasal</command>
+   <script>SU-27.FuelHose.toggle();</script>
+    </binding>
+  </key> 
+-->
+	<key>
+	  <name>U</name>
+	  <desc>Toggle smoke</desc>
+  </key>
+  
+  <key>
+     <name>}</name>
+     <desc>Engine Autostart</desc>
+  </key>
+  
+  <key>
+  <name>$</name>
+  <desc>Cycle Mfd(IPK) ranges</desc>
+ </key>
+ 
+ <key>
+  <name>R</name>
+  <desc>Toggle Radar On/Off</desc>
+ </key>
+ 
+  <key>
+  <name>Z</name>
+  <desc>Reset view distance</desc>
+  <repeatable type="bool">false</repeatable>
+   
+ </key>
+ 
+ <key>
+  <name>z</name>
+  <desc>Increase view distance</desc>
+
+ </key>
+ 
+ 
+ <key> 
+  <name>J</name>
+  <desc>Jettison Drag Parachute</desc>
+ </key>
+ <key> 
+  <name>j</name>
+  <desc>Deploy Drag Parachute</desc>
+ </key>
       </help>
       
       
@@ -511,6 +676,20 @@ USSR and Russia  aerospace industry .
 	<state include="start-states/cruise.xml" n="1"/>
 	<state include="start-states/final-Approch.xml" n="2"/>
     </sim>
+    <payload>
+      <armament>
+        <enable-craters type="bool">true</enable-craters>
+	      <MLW-bearing type="double">0</MLW-bearing>
+	      <MLW-count type="int">0</MLW-count>
+	      <MLW-launcher type="string"></MLW-launcher>
+	      <MAW-bearing type="double">0</MAW-bearing>
+	      <MAW-active type="bool">false</MAW-active>
+	      <spike type="bool">false</spike>
+        <models type="string">Aircraft/SU-27SK/Models/OPRF/</models>
+        <msg type="bool">false</msg>
+        <spectator type="bool">false</spectator>
+      </armament>
+    </payload>
 
  <!--   the logging here is meant for further FCS study and improvements   -->
 
@@ -551,6 +730,7 @@ USSR and Russia  aerospace industry .
  </logging>
 -->
      <systems>
+         
         <hydraulic include="Systems/su-27-hydraulics.xml"/>
         <SAU include="Systems/SAU-ACS.xml"/>        
 	  </systems> 
@@ -561,9 +741,13 @@ USSR and Russia  aerospace industry .
       </submodels>
     </ai>
 
+
+<fdm><jsbsim><fcs><elevator-fbw-output>0</elevator-fbw-output></fcs></jsbsim></fdm>
+
+
 <!-- Start with the Parking Brake on -->
     <controls include ="Systems/controls.xml">
-    <engines>
+      <engines>
         <engine n="0">
           <throttle type="double">0</throttle>
           <reheat type="double">0</reheat>
@@ -572,11 +756,10 @@ USSR and Russia  aerospace industry .
           <throttle type="double">0</throttle>
           <reheat type="double">0</reheat>
         </engine>
-	</engines>
-	    <gear>
-			<brake-parking type="double">1.0</brake-parking>
-	    </gear>
-
+      </engines>
+      <gear>
+        <brake-parking type="double">1.0</brake-parking>
+      </gear>
     </controls>
 <!-- Engine indexes & FOD Screen pos -->
     <engines>
@@ -591,7 +774,14 @@ USSR and Russia  aerospace industry .
         <reheat-norm type="float">0</reheat-norm>
       </engine>
     </engines>  
-
+<!--
+    <environment>
+    <turbulence>
+      <use-cloud-turbulence>true</use-cloud-turbulence>
+    </turbulence>
+  </environment>
+-->
+  
   <input>
   <keyboard include="Systems/su-27-keyboard.xml"/>
   </input>
@@ -600,6 +790,8 @@ USSR and Russia  aerospace industry .
         <one type="int">1</one>
   </constants>
 
+
+  
   <su-27>
   <instrumentation include="Systems/su-27-instrumentation.xml"/>
   <WCS include ="Systems/weaponCS.xml"/>
@@ -608,7 +800,7 @@ USSR and Russia  aerospace industry .
   <instrumentation>
   <illumination>
    <settings>
-	<instruments-red type="double">0.20</instruments-red>
+    <instruments-red type="double">0.20</instruments-red>
 	<instruments-green type="double">0.20</instruments-green>
 	<instruments-blue type="double">0.15</instruments-blue>
    </settings>
@@ -616,6 +808,7 @@ USSR and Russia  aerospace industry .
    <led-brightness type="double">0.75</led-brightness>
    <instruments-brightness type="double">0.74</instruments-brightness>
   </illumination>
+  
   
   <rwr>
  <display-lighting-intens type="double">0.4</display-lighting-intens>
@@ -653,6 +846,67 @@ USSR and Russia  aerospace industry .
    <radius-ppi-display-m type="double">0.0846</radius-ppi-display-m>
    <hud-eye-dist-m type="double">0.6705</hud-eye-dist-m>
    <hud-radius-m type="double">0.071</hud-radius-m>
+   <hud>
+    <target type="bool">1</target>
+   </hud>
+   <targets>
+    <aircraft n="0">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="1">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="2">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="3">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="4">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="5">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="6">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+    <aircraft n="7">
+      <display type="bool">1</display>
+      <x-shift type="double"/>
+      <y-shift type="double"/>
+      <rotation type="double"/>
+      <closure-last-time type="double"/>
+    </aircraft>
+   </targets>
   </radar2>
 
    <radar-awg-9>
@@ -750,11 +1004,39 @@ USSR and Russia  aerospace industry .
         </efis>
 -->
 
+    <ecm>
+      <on-off type="bool">true</on-off>
+      <alert-type1 type="bool"/>
+      <alert-type2 type="bool"/>
+    </ecm>
+
 </instrumentation>
  
 
+    <mig29>
+        <systems>
+            <SPO-15LM>
+                <bright type="double">1.0</bright>
+            </SPO-15LM>
+        </systems>
+        <instrumentation>
+            <SPO-15LM>
+                <azimut_M-norm type="double">-9999</azimut_M-norm>
+                <azimut_S-norm type="double">-9999</azimut_S-norm>
+                <serviceable type="bool">true</serviceable>
+                <losig type="bool" alias="/payload/armament/spike"/>
+            </SPO-15LM>
+        </instrumentation>
+    </mig29>
+
   <nasal>
-        
+        <notifications>
+            <file>Aircraft/SU-27SK/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/SU-27SK/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <vector>
+            <file>Aircraft/SU-27SK/Nasal/vector.nas</file>
+        </vector>
     <su27>
         <file>Aircraft/SU-27SK/Nasal/SU-27SK.nas</file>
     </su27>
@@ -809,11 +1091,11 @@ USSR and Russia  aerospace industry .
 -->
 
     
-<!--
+
         <rwr>
        <file>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/rwr.nas</file>
     </rwr> 
--->
+
 
 
 <!--***************************************************-->
@@ -826,11 +1108,11 @@ USSR and Russia  aerospace industry .
     
     
    
-<!--     
+
     <radardist>
       <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
     </radardist>
-
+<!--
     <hud>
       <file>Aircraft/Mirage-2000/Nasal/MiscRwr.nas</file>
     </hud>
@@ -861,6 +1143,11 @@ USSR and Russia  aerospace industry .
     <m2000_controls>
       <file>Aircraft/SU-27SK/Nasal/weapons/controls.nas</file>
     </m2000_controls>
+    <crash><file>Aircraft/SU-27SK/Nasal/crash-and-stress.nas</file></crash>
+    <damage><file>Aircraft/SU-27SK/Nasal/damage.nas</file></damage>
+    
+    
+    <mig28><file>Aircraft/SU-27SK/Nasal/mig28.nas</file></mig28>
 
     <CanvasPylonsDlg><file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file> </CanvasPylonsDlg>
     

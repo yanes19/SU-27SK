@@ -186,7 +186,7 @@
   
    <pointmass name="Payload">
     <description> 17126 LBS + full (13898 LBS) fuel should bring model up to entered max weight</description>
-    <weight unit="LBS">   8563.0 </weight>
+    <weight unit="LBS">   0 </weight>
     <location name="POINTMASS" unit="IN">
       <x> 517.35 </x>
       <y>   0.00 </y>
@@ -267,6 +267,55 @@
     <dynamic_friction> 1.00 </dynamic_friction>
     <spring_coeff unit="LBS/FT">      67142.25 </spring_coeff>
     <damping_coeff unit="LBS/FT/SEC"> 67142.25 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="BODY-LEFT">
+    <location unit="IN">
+     <x> 0 </x>
+     <y> -24.12 </y>
+     <z> -21.56 </z>
+    </location>
+            <static_friction>1.2</static_friction>
+            <dynamic_friction>1.212</dynamic_friction>
+            <rolling_friction>1.413</rolling_friction>
+            <spring_coeff unit="LBS/FT">25200</spring_coeff>
+            <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
+  </contact>
+  <contact type="STRUCTURE" name="BODY-RIGHT">
+    <location unit="IN">
+     <x> 0 </x>
+     <y> 24.12 </y>
+     <z> -21.56 </z>
+    </location>
+    <static_friction>1.2</static_friction>
+    <dynamic_friction>1.212</dynamic_friction>
+    <rolling_friction>1.413</rolling_friction>
+    <spring_coeff unit="LBS/FT">25200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
+  </contact>
+  <contact type="STRUCTURE" name="BODY-NOSE">
+    <location unit="IN">
+     <x> 112.09 </x>
+     <y> 0 </y>
+     <z> -21.56 </z>
+    </location>
+    <static_friction>1.2</static_friction>
+    <dynamic_friction>1.212</dynamic_friction>
+    <rolling_friction>1.413</rolling_friction>
+    <spring_coeff unit="LBS/FT">25200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
+  </contact>
+    <contact type="STRUCTURE" name="BODY-REAR">
+    <location unit="IN">
+     <x> 802.25 </x>
+     <y> 0 </y>
+     <z> -21.56 </z>
+    </location>
+    <static_friction>1.2</static_friction>
+    <dynamic_friction>1.212</dynamic_friction>
+    <rolling_friction>1.413</rolling_friction>
+    <spring_coeff unit="LBS/FT">25200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
   </contact>
 
  </ground_reactions>
@@ -362,6 +411,7 @@
      </location>
      <capacity unit="LBS"> 7010.70 </capacity>
      <contents unit="LBS"> 3505.35 </contents>
+     <priority>2</priority>
 
   </tank>
 
@@ -373,6 +423,7 @@
      </location>
      <capacity unit="LBS"> 9171.23 </capacity>
      <contents unit="LBS"> 4585.61 </contents>
+     <priority>1</priority>
 
   </tank>
 
@@ -384,6 +435,7 @@
      </location>
      <capacity unit="LBS"> 1168.45 </capacity>
      <contents unit="LBS"> 584.22 </contents>
+     <priority>3</priority>
      
   </tank>
   
@@ -395,6 +447,7 @@
      </location>
      <capacity unit="LBS"> 1168.45 </capacity>
      <contents unit="LBS"> 584.22 </contents>
+     <priority>3</priority>
 
   </tank>
   
@@ -406,6 +459,7 @@
      </location>
      <capacity unit="LBS"> 2204.62 </capacity>
      <contents unit="LBS"> 1102.31 </contents>
+     <priority>4</priority>
 
   </tank>
 
@@ -747,11 +801,8 @@ Need testing :experimental brake parachute
 
   <axis name="LIFT">
 
-    <function name="aero/force/Lift_alpha">
-      <description>Lift due to alpha</description>
-      <product>
-          <property>aero/qbar-psf</property>
-          <property>metrics/Sw-sqft</property>
+    
+    <function name="aero/calpha">
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
             <!--Need of further testing -->
@@ -760,6 +811,8 @@ Need testing :experimental brake parachute
                0.000  0.120
                0.087  0.460
                0.260  1.120
+               0.419  1.968
+               0.500  1.700
                0.600  0.448
             </tableData>
 <!--
@@ -771,6 +824,22 @@ Need testing :experimental brake parachute
             </tableData>
 -->
           </table>
+    </function>
+    
+    <function name="aero/force/Lift_alpha">
+      <description>Lift due to alpha</description>
+      <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <property>aero/calpha</property>
+<!--
+            <tableData>
+              -0.20 -0.640
+               0.00  0.080
+               0.26  1.000
+               0.60  0.448
+            </tableData>
+-->
       </product>
     </function>
 
@@ -829,7 +898,9 @@ Need testing :experimental brake parachute
              -0.26    0.016
               0.00    0.0067
               0.26    0.012
+              0.42    0.30
               1.57    0.640
+
             </tableData>
           </table>
        </product>
