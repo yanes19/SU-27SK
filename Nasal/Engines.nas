@@ -93,3 +93,14 @@ if (VDCBus1volts>23 or VDCBus4volts> 23){
 	}
 	}
 }
+
+var fuelpumpcheck = func{
+	if(getprop ("engines/engine/running")){
+		setprop("controls/engines/engine/fuel-pump", 1);
+	}
+	if(getprop ("engines/engine[1]/running")){
+		setprop("controls/engines/engine[1]/fuel-pump", 1);
+	}
+}
+
+settimer(fuelpumpcheck,3);
