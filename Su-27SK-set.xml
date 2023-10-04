@@ -102,8 +102,8 @@ USSR and Russia  aerospace industry .
             <!-- Taxi light on -->
           <int n="3" alias="/controls/lighting/taxi-light-switch" />  
 
-          <bool n="100" alias="/sim/failure-manager/damage/fire/failure-level"/>
-          <bool n="101" alias="/sim/explode"/>
+          <bool n="0" alias="/sim/failure-manager/damage/fire/failure-level"/>
+          <bool n="1" alias="/sim/explode"/>
 
               <!-- Engine Status -->          
               <int n="5" alias="/engines/engine[0]/state" />
@@ -1162,4 +1162,3 @@ USSR and Russia  aerospace industry .
   </nasal>   
 
   </PropertyList>
-

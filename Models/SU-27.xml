@@ -255,7 +255,7 @@ fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
       
 </load>
 <unload>
- stopFire();
+ #stopFire();
       disintegrated = 0;
       removelistener(listenCrash);
       
@@ -2811,7 +2811,7 @@ livery_update.stop();
   <path>Aircraft/SU-27SK/Models/Effects/DamageSmoke/explosion.xml</path>
   <condition>
     <equals>
-      <property>sim/multiplay/generic/bool[101]</property>
+      <property>sim/multiplay/generic/bool[1]</property>
       <value>1</value>
     </equals>
   </condition>

@@ -383,11 +383,11 @@ var DamageRecipient =
                     #
                     var callsign = getprop("sim/multiplay/callsign");
                     callsign = size(callsign) < 8 ? callsign : left(callsign,7);
-                    screen.log.write(callsign);
-                    screen.log.write(notification.RemoteCallsign);
+                    #screen.log.write(callsign);
+                    #screen.log.write(notification.RemoteCallsign);
                     if (notification.RemoteCallsign == callsign and getprop("payload/armament/msg") == 1) {
                         #damage enabled and were getting hit
-                        screen.log.write("cannon hit");
+                        #screen.log.write("cannon hit");
                         if (m28_auto) mig28.engagedBy(notification.Callsign);
                         if (notification.SecondaryKind < 0 and hitable_by_cannon) {
                             # cannon hit

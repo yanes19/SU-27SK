@@ -11,7 +11,7 @@
 
    <condition>
       <equals>
-         <property>sim/multiplay/generic/bool[101]</property><!-- damage/sounds/explode-on -->
+         <property>sim/multiplay/generic/bool[1]</property><!-- damage/sounds/explode-on -->
          <value>1</value>
       </equals>
    </condition>
@@ -100,7 +100,7 @@
 
    <condition>
       <equals>
-         <property>sim/multiplay/generic/bool[101]</property><!-- damage/sounds/explode-on -->
+         <property>sim/multiplay/generic/bool[1]</property><!-- damage/sounds/explode-on -->
          <value>1</value>
       </equals>
    </condition>
