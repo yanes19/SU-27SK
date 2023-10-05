@@ -36,6 +36,7 @@ SU-27 simulation config.
             <model type="int">   4</model>
         </rating>
         <virtual-cockpit archive="y">true</virtual-cockpit>
+        <explode type="bool">false</explode>
         <gui>
             <style>
                 <colors>
@@ -117,6 +118,19 @@ SU-27 simulation config.
                 <z-offset-m archive="y">5.23</z-offset-m>
                 <pitch-offset-deg>-17</pitch-offset-deg>
                 <default-field-of-view-deg>84</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">180</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">25</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">180</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">25</x-offset-threshold-deg>
+                    </right>
+                </limits>
             </config>
         </view>
         <view n="101">
@@ -281,6 +295,141 @@ SU-27 simulation config.
                 <name>}</name>
                 <desc>Startup/Shut down engines</desc>
             </key>
+            <key n="4">
+	  <name>Ctrl-D</name>
+	  <desc>Toggle DirectInput Mode (FBW Disengengage)</desc>
+	  <binding>
+	   <command>property-cycle</command>
+	   <property>su-27/SDU-10/serviceable</property>
+	     <value type="int">0</value>
+		 <value type="int">1</value>
+	  </binding>
+	 </key>
+	
+	<key n="32">
+	  <name>Ctrl-Space</name>
+	  <desc>Engage AP auto-leveller</desc>
+	  <mod-ctrl>
+    <binding>
+      <command>nasal</command>
+      <script>ACS.SAU_AutoLevel();</script>
+    </binding>
+    </mod-ctrl>
+  </key>
+  
+ <key n="101">
+  <name>e</name>
+  <desc>Fire selected WCS weapon</desc>
+  <binding>
+    <command>nasal</command>
+    <script>guns.fire_MG(1);</script>
+  </binding>
+ </key>
+ 
+ <key>
+  <name>m</name>
+  <desc>Cycle selected WCS weapon</desc>
+  
+ </key> 
+
+ <key>
+  <name>q</name>
+  <desc>Release Flares</desc>
+  
+ </key> 
+ <key>
+  <name>r</name>
+  <desc>Switch Radar Range</desc>
+ </key> 
+ 
+ <key>
+  <name>w</name>
+  <desc>Cycle Gun/Missile</desc>
+ </key> 
+
+ <key>
+  <name>y</name>
+  <desc>Radar: select target</desc>
+  
+ </key> 
+
+
+
+
+  
+ <key>
+  <name>L</name>
+  <desc>Toggle Nav lights</desc>
+ </key>
+ 
+	<key>
+	  <name>P</name>
+	  <desc>Parachute release</desc>
+  </key>
+
+   <key>
+    <name>c</name>
+    <desc>Canopy open/close</desc>
+  </key>
+  
+  
+	<key>
+	<name>l</name>
+	 <desc>Toggle flashing beacons lights</desc>
+	</key>
+	
+<!--
+	<key n="70">
+     <name>F</name>
+    <desc>FuelHose</desc>
+    <binding>
+      <command>nasal</command>
+   <script>SU-27.FuelHose.toggle();</script>
+    </binding>
+  </key> 
+-->
+	<key>
+	  <name>U</name>
+	  <desc>Toggle smoke</desc>
+  </key>
+  
+  <key>
+     <name>}</name>
+     <desc>Engine Autostart</desc>
+  </key>
+  
+  <key>
+  <name>$</name>
+  <desc>Cycle Mfd(IPK) ranges</desc>
+ </key>
+ 
+ <key>
+  <name>R</name>
+  <desc>Toggle Radar On/Off</desc>
+ </key>
+ 
+  <key>
+  <name>Z</name>
+  <desc>Reset view distance</desc>
+  <repeatable type="bool">false</repeatable>
+   
+ </key>
+ 
+ <key>
+  <name>z</name>
+  <desc>Increase view distance</desc>
+
+ </key>
+ 
+ 
+ <key> 
+  <name>J</name>
+  <desc>Jettison Drag Parachute</desc>
+ </key>
+ <key> 
+  <name>j</name>
+  <desc>Deploy Drag Parachute</desc>
+ </key>
         </help>
         <menubar include="Dialogs/J-11A_menu.xml"></menubar>
         <weight n="0">
@@ -975,6 +1124,16 @@ SU-27 simulation config.
         <m2000_controls>
             <file>Aircraft/SU-27SK/Nasal/weapons/controls.nas</file>
         </m2000_controls>
+        <crash>
+            <file>Aircraft/SU-27SK/Nasal/crash-and-stress.nas</file>
+        </crash>
+        <damage>
+            <file>Aircraft/SU-27SK/Nasal/damage.nas</file>
+        </damage>
+        <mig28>
+            <file>Aircraft/SU-27SK/Nasal/mig28.nas</file>
+        </mig28>
+
         <CanvasPylonsDlg>
             <file>Aircraft/SU-27SK/Nasal/CanvasDlg/Canvas-pylons-Dlg.nas</file>
         </CanvasPylonsDlg>
