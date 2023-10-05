@@ -11,6 +11,14 @@ SU-27 simulation config.
 ************************************************************************
 -->
 <PropertyList>
+
+    <damage>
+        <sounds>
+          <crack-on type="bool">false</crack-on>
+          <creaking-on type="bool">false</creaking-on>
+          <explode-on type="bool">false</explode-on>
+        </sounds>
+    </damage>
     <sim>
         <flight-model>jsb</flight-model>
         <status>Beta</status>
@@ -73,6 +81,8 @@ SU-27 simulation config.
         <multiplay>
             <chat_display>1</chat_display>
             <generic>
+                <bool n="0" alias="/sim/failure-manager/damage/fire/failure-level"/>
+                <bool n="1" alias="/sim/explode"/>
                 <!-- Nav lights on -->
                 <int n="0" alias="/controls/lighting/nav-lights-switch"></int>
                 <!-- Beacon on -->
@@ -877,8 +887,35 @@ SU-27 simulation config.
         
         </efis>
 -->
+        <ecm>
+            <on-off type="bool">true</on-off>
+            <alert-type1 type="bool"/>
+            <alert-type2 type="bool"/>
+        </ecm>
     </instrumentation>
+    <mig29>
+        <systems>
+            <SPO-15LM>
+                <bright type="double">1.0</bright>
+            </SPO-15LM>
+        </systems>
+        <instrumentation>
+            <SPO-15LM>
+                <azimut_M-norm type="double">-9999</azimut_M-norm>
+                <azimut_S-norm type="double">-9999</azimut_S-norm>
+                <serviceable type="bool">true</serviceable>
+                <losig type="bool" alias="/payload/armament/spike"/>
+            </SPO-15LM>
+        </instrumentation>
+    </mig29>
     <nasal>
+        <notifications>
+            <file>Aircraft/SU-27SK/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/SU-27SK/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <vector>
+            <file>Aircraft/SU-27SK/Nasal/vector.nas</file>
+        </vector>
         <su27>
             <file>Aircraft/SU-27SK/Nasal/SU-27SK.nas</file>
         </su27>
@@ -915,6 +952,9 @@ SU-27 simulation config.
         <!--***************************************************-->
         <!--***************RADAR MODULES***********************-->
         <!--***************************************************-->
+        <radardist>
+            <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
+        </radardist>
         <radar>
             <file>Aircraft/SU-27SK/Nasal/radar2.nas</file>
         </radar>
