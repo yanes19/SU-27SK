@@ -39,6 +39,20 @@ init = func() {
 	settimer(rwr_loop, 0.5);
 }
 
+var type_C = 1;
+var type_F = 2;
+var type_H = 3;
+var type_X = 4;
+var type_3 = 5;
+var type_fighter = 6;
+
+var rwr_data={
+	"f15c":           type_fighter,
+	"f16":            type_fighter,
+	"f-14b":          type_fighter,
+	"m2000-5":        type_fighter,
+	"SU-27SK":        type_fighter,
+};
 # Main loop ###############
 var rwr_loop = func() {
 	ecm_on = EcmOn.getBoolValue();
@@ -64,14 +78,21 @@ var rwr_loop = func() {
 					# Test if target has a radar. Compute if we are illuminated. This propery used by ECM
 					# over MP, should be standardized, like "ai/models/multiplayer[0]/radar/radar-standby".
 					var u_name = radardist.get_aircraft_name(u.string);
+					#the u_name is "something.xml", we should remove the ".xml"
+					var split_name = nil;
+					if(u_name != 0){ #get_aircraft_name() returns zero if sim/model/path is nil
+						split_name = split(".", u_name);
+						u_name=split_name[0];
+					}
 					var u_maxrange = radardist.my_maxrange(u_name); # in kilometer, 0 is unknown or no radar.
+					if(type=="Mig-28"){u_maxrange=100;}#for training scenario
 					var horizon = u.get_horizon( our_alt );
 					var u_rng = u.get_range();
 					var u_carrier = u.check_carrier_type();
 					var threatdeg = -9999.9;
-					if(u_maxrange == 0){
-						u_maxrange = 100;
-					}
+					#if(u_maxrange == 0){
+					#	u_maxrange = 100;
+					#}
 					if ( u.get_rdr_standby() == 0 and u_maxrange > 0  and u_rng < horizon ) {
 						# Test if we are in its radar field (hard coded 74°) or if we have a MPcarrier.
 						# Compute the signal strength.
@@ -117,7 +138,7 @@ var rwr_loop = func() {
 		# Summarize ECM alerts.
 		if ( ecm_alert1 == 0 and ecm_alert1_last == 0 ) { EcmAlert1.setBoolValue(0);}
 		if ( ecm_alert2 == 0 and ecm_alert1_last == 0 ) { EcmAlert2.setBoolValue(0); }
-		#if(u_ecm_signal == 0){setprop("/mig29/instrumentation/SPO-15LM/azimut_M-norm",-9999}
+		if(u_ecm_signal == 0){setprop("/mig29/instrumentation/SPO-15LM/azimut_M-norm",-9999);}
 		ecm_alert1_last = ecm_alert1; # And avoid alert blinking at each loop.
 		ecm_alert2_last = ecm_alert2;
 		ecm_alert1 = 0;
