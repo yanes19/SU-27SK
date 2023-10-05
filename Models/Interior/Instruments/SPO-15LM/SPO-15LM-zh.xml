@@ -81,7 +81,8 @@
  <type>select</type>
  <object-name>SPO-15LM.ThreatML1</object-name>
  <condition>
-  <and>
+ <and>
+  <or>
    <greater-than>
     <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
     <value>340</value>
@@ -90,8 +91,18 @@
     <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
     <value>5</value>
    </less-than>
-  </and>
+  </or>
+  <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>0</value>
+   </greater-than>
+   </and>
  </condition>
+ <emission>
+   <red>0.8</red>
+   <green>0.8</green>
+   <blue>0.8</blue>
+  </emission>
 </animation>
 
 <animation>
@@ -167,6 +178,7 @@
  <object-name>SPO-15LM.ThreatMR1</object-name>
  <condition>
   <and>
+  <or>
    <greater-than>
     <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
     <value>355</value>
@@ -175,6 +187,11 @@
     <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
     <value>20</value>
    </less-than>
+   </or>
+   <greater-than>
+    <property>mig29/instrumentation/SPO-15LM/azimut_M-norm</property>
+    <value>0</value>
+   </greater-than>
   </and>
  </condition>
 </animation>

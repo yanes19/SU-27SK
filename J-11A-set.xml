@@ -1101,6 +1101,9 @@ SU-27 simulation config.
         <!--***************************************************-->
         <!--***************RADAR MODULES***********************-->
         <!--***************************************************-->
+        <rwr>
+            <file>Aircraft/SU-27SK/Models/Interior/Instruments/mfd/radar/rwr.nas</file>
+        </rwr> 
         <radardist>
             <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
         </radardist>
