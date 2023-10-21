@@ -254,10 +254,10 @@ var Radar = {
 
                     var x_dt = (vtgt_x * M2NM * 0.07) / (RangeSelected.getValue());
                     var y_dt = (vtgt_x * M2NM * 0.07) / (RangeSelected.getValue());
-                    var rtcenter_x = x_dt + 0.07 * math.sin(u.Heading.getValue() - me.OurHdg.getValue());
-                    var rtcenter_y = y_dt + 0.07 * math.cos(u.Heading.getValue() - me.OurHdg.getValue());
+                    var rtcenter_x = x_dt + 0.07 * math.sin((u.Heading.getValue() - me.OurHdg.getValue())*D2R);
+                    var rtcenter_y = y_dt + 0.07 * math.cos((u.Heading.getValue() - me.OurHdg.getValue())*D2R);
                     var brx = rtcenter_x;
-                    var bry = rtcenter_y - 0.7;
+                    var bry = rtcenter_y - 0.07;
                     u.XShift = brx;
                     u.YShift = bry;
                     u.Rotation = u.Heading.getValue() - me.OurHdg.getValue();
