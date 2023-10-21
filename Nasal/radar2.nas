@@ -251,6 +251,18 @@ var Radar = {
                     
                     u.HOffset = h_dt;
                     u.VOffset = v_dt;
+
+                    var x_dt = (vtgt_x * M2NM * 0.07) / (RangeSelected.getValue());
+                    var y_dt = (vtgt_x * M2NM * 0.07) / (RangeSelected.getValue());
+                    var rtcenter_x = x_dt + 0.07 * math.sin(u.Heading.getValue() - me.OurHdg.getValue());
+                    var rtcenter_y = y_dt + 0.07 * math.cos(u.Heading.getValue() - me.OurHdg.getValue());
+                    var brx = rtcenter_x;
+                    var bry = rtcenter_y - 0.7;
+                    u.XShift = brx;
+                    u.YShift = bry;
+                    u.Rotation = u.Heading.getValue() - me.OurHdg.getValue();
+                    
+
                     
                     u.create_tree(me.MyCoord);
                     u.set_all(me.MyCoord);
@@ -766,9 +778,9 @@ var Target = {
         obj.Elevation       = obj.RdrProp.getNode("elevation-deg");
         obj.HOffset					= -9999.0;
         obj.VOffset					= -9999.0;
-				obj.XShift					= obj.RdrProp.getNode("x-shift");
-				obj.YShift					= obj.RdrProp.getNode("y-shift");
-				obj.Rotation				= obj.RdrProp.getNode("rotation");
+				obj.XShift					= -9999.0;
+				obj.YShift					= -9999.0;
+				obj.Rotation				= -9999.0;
         
         obj.MyCallsign      = 0;
         obj.BBearing        = 0; #obj.TgtsFiles.getNode("bearing-deg", 1);
@@ -862,9 +874,9 @@ var Target = {
         if (me.HOffset != nil){
         me.Hoffset.setValue(me.HOffset);
         me.Voffset.setValue(me.VOffset);
-        if(me.XShift!=nil)me.Xshift.setValue(me.XShift.getValue()*0.001623);#this value should be dynamically calculated  
-        if(me.YShift!=nil)me.Yshift.setValue(me.YShift.getValue()*0.001623);#this value should be dynamically calculated 
-        if(me.Rotation!=nil)me.rotation.setValue(me.Rotation.getValue());
+        if(me.XShift!=nil)me.Xshift.setValue(me.XShift);#this value should be dynamically calculated  
+        if(me.YShift!=nil)me.Yshift.setValue(me.YShift);#this value should be dynamically calculated 
+        if(me.Rotation!=nil)me.rotation.setValue(me.Rotation);
         }
     },
 

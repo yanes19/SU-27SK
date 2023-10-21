@@ -224,8 +224,10 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <!--<y-m>0.0050</y-m>
+		 <z-m>-0.0340</z-m>-->
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target1 air to air ++++++++++-->
@@ -281,8 +283,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target2 air to air ++++++++++-->
@@ -338,8 +340,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target3 air to air ++++++++++-->
@@ -395,8 +397,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target4 air to air ++++++++++-->
@@ -452,8 +454,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.00</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target5 air to air ++++++++++-->
@@ -631,5 +633,3 @@
 
  
 </PropertyList>
-
-
