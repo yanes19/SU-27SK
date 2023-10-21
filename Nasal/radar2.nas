@@ -218,6 +218,40 @@ var Radar = {
                 {
                     #screen.log.write("checked!");
                     var HaveRadarNode = c.getNode("radar");
+                    var u_rng = me.targetRange(u);
+                    
+
+        
+                    var beardeg = me.targetBearing(u) - me.OurHdg.getValue();
+                    #screen.log.write(beardeg);
+                    if(beardeg < -180)beardeg = beardeg + 180;
+                    if(beardeg > 180)beardeg = beardeg - 180;
+                    #screen.log.write(sprintf("%.2f  %.2f",beardeg,me.targetBearing(u)));
+                    var altdist = (u.get_altitude() - me.our_alt.getValue()) * 0.3048;
+                    var hdist = math.sqrt((u_rng * u_rng * NM2M * NM2M) - (altdist * altdist));
+                    var vtgt_x = math.sin(beardeg*D2R) * hdist;
+                    var vtgt_y = math.cos(beardeg*D2R) * hdist;
+                    var vtgt_z = altdist;
+                    #screen.log.write(sprintf("%.2f, %.2f, %.2f",altdist,hdist,beardeg));
+                    var ourd_x = 0;
+                    var ourd_y = math.cos(me.OurPitch.getValue()*D2R);
+                    var ourd_z = math.sin(me.OurPitch.getValue()*D2R);
+                    var ourd_l = ourd_y * vtgt_y + ourd_z * vtgt_z;
+                    ourd_y = ourd_y * ourd_l;
+                    ourd_z = ourd_z * ourd_l;
+                    var o_x = vtgt_x - ourd_x;
+                    var o_y = vtgt_y - ourd_y;
+                    var o_z = vtgt_z - ourd_z;
+                    var h_dt = o_x;
+                    var v_dt = math.sqrt(o_y * o_y + o_z * o_z);
+                    if(o_z < 0)v_dt = -1 * v_dt;
+                    h_dt = h_dt * (HudEyeDist.getValue() / ourd_l) * 52;
+                    v_dt = v_dt * (HudEyeDist.getValue() / ourd_l) * 52;
+                    #v_ang = math.arccos();
+                    
+                    u.HOffset = h_dt;
+                    u.VOffset = v_dt;
+                    
                     u.create_tree(me.MyCoord);
                     u.set_all(me.MyCoord);
                     me.calculateScreen(u);
@@ -253,10 +287,11 @@ var Radar = {
         # swp_diplay_width = Global
         # az_fld = Global
         # ppi_diplay_radius = Global
+        var u_rng=me.targetRange(SelectedObject);
         
         SelectedObject.check_carrier_type();
         mydeviation = SelectedObject.get_deviation(me.OurHdg.getValue(), me.MyCoord);
-        var u_rng = me.targetRange(SelectedObject);
+        
         
         # compute mp position in our B-scan like display. (Bearing/horizontal + Range/Vertical).
         SelectedObject.set_relative_bearing(swp_diplay_width / az_fld * mydeviation);
@@ -517,7 +552,7 @@ var Radar = {
         # This is a way to shortcurt the issue that some of node have : in-range =0
         # So by giving the second fucntion our coord, we just have to calculate it
         var myRange = 0;
-        myRange = SelectedObject.get_range();
+        #myRange = SelectedObject.get_range();
         if(myRange == 0)
         {
             myRange = SelectedObject.get_range_from_Coord(me.MyCoord);
@@ -729,8 +764,8 @@ var Target = {
         obj.Range           = obj.RdrProp.getNode("range-nm");
         obj.Bearing         = obj.RdrProp.getNode("bearing-deg");
         obj.Elevation       = obj.RdrProp.getNode("elevation-deg");
-        obj.HOffset					= obj.RdrProp.getNode("h-offset");
-        obj.VOffset					= obj.RdrProp.getNode("v-offset");
+        obj.HOffset					= -9999.0;
+        obj.VOffset					= -9999.0;
 				obj.XShift					= obj.RdrProp.getNode("x-shift");
 				obj.YShift					= obj.RdrProp.getNode("y-shift");
 				obj.Rotation				= obj.RdrProp.getNode("rotation");
@@ -825,11 +860,11 @@ var Target = {
         me.BHeading.setValue(me.Heading.getValue());
         me.BBearing.setValue(me.get_bearing_from_Coord(myAircraftCoord));
         if (me.HOffset != nil){
-        me.Hoffset.setValue(me.HOffset.getValue());
-        me.Voffset.setValue(me.VOffset.getValue());
-        me.Xshift.setValue(me.XShift.getValue()*0.001623);#this value should be dynamically calculated  
-        me.Yshift.setValue(me.YShift.getValue()*0.001623);#this value should be dynamically calculated 
-        me.rotation.setValue(me.Rotation.getValue());
+        me.Hoffset.setValue(me.HOffset);
+        me.Voffset.setValue(me.VOffset);
+        if(me.XShift!=nil)me.Xshift.setValue(me.XShift.getValue()*0.001623);#this value should be dynamically calculated  
+        if(me.YShift!=nil)me.Yshift.setValue(me.YShift.getValue()*0.001623);#this value should be dynamically calculated 
+        if(me.Rotation!=nil)me.rotation.setValue(me.Rotation.getValue());
         }
     },
 
