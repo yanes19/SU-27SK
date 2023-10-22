@@ -252,12 +252,13 @@ var Radar = {
                     u.HOffset = h_dt;
                     u.VOffset = v_dt;
 
-                    var x_dt = (vtgt_x * M2NM * 0.07) / (RangeSelected.getValue());
-                    var y_dt = (vtgt_x * M2NM * 0.07) / (RangeSelected.getValue());
-                    var rtcenter_x = x_dt + 0.07 * math.sin((u.Heading.getValue() - me.OurHdg.getValue())*D2R);
-                    var rtcenter_y = y_dt + 0.07 * math.cos((u.Heading.getValue() - me.OurHdg.getValue())*D2R);
+                    var x_dt = (vtgt_x * M2NM * 0.068) / (me.RangeSelected.getValue());
+                    var y_dt = (vtgt_y * M2NM * 0.068) / (me.RangeSelected.getValue());
+                    screen.log.write(sprintf("%.5f  %.5f  %.2f  %.2f",x_dt,y_dt,vtgt_x,vtgt_y));
+                    var rtcenter_x = x_dt + 0.068 * math.sin((u.Heading.getValue() - me.OurHdg.getValue())*D2R);
+                    var rtcenter_y = y_dt + 0.068 * math.cos((u.Heading.getValue() - me.OurHdg.getValue())*D2R);
                     var brx = rtcenter_x;
-                    var bry = rtcenter_y - 0.07;
+                    var bry = rtcenter_y - 0.068;
                     u.XShift = brx;
                     u.YShift = bry;
                     u.Rotation = u.Heading.getValue() - me.OurHdg.getValue();

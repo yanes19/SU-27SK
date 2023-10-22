@@ -153,7 +153,7 @@ var Nb_Impact = func() {
 # We mesure the minimum distance to all contact. This allow us to deduce who is the MP
 var findmultiplayer = func(targetCoord) {
     var raw_list = Mp.getChildren();
-    var dist  = 1000;
+    var dist  = 80;
     var SelectedMP = "Nothing";
     foreach(var c ; raw_list)
     {
