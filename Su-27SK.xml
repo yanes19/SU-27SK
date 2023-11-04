@@ -895,10 +895,10 @@ Need testing :experimental brake parachute
 -->
             <tableData>
              -1.57    0.840
-             -0.26    0.022
-              0.00    0.013
-              0.26    0.016
-              0.42    0.30
+             -0.26    0.027
+              0.00    0.020
+              0.26    0.030
+              0.42    0.500
               1.57    0.640
 
             </tableData>
@@ -925,11 +925,12 @@ Need testing :experimental brake parachute
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
               0.00      0.000
-              0.81      0.000
+              0.81      0.004
               0.95      0.015
-              1.20      0.025
+              1.20      0.022
               1.80      0.018
-              2.00      0.017
+              2.00      0.015
+              2.35      0.010
             </tableData>
           </table>
         </product>
