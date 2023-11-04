@@ -20,7 +20,7 @@
     <yaw-offset>150.0</yaw-offset>
 	<pitch-offset>-70</pitch-offset> 
     <life>5</life>
-    <buoyancy>35</buoyancy>
+    <buoyancy>8</buoyancy>
     <eda>1.0</eda>
   </submodel>
   
@@ -102,11 +102,11 @@
    <trigger>controls/armament/Gun_trigger</trigger>
    <speed>2952</speed>
    <repeat>true</repeat>
-   <delay>0.04</delay>
+   <delay>0.035</delay>
    <count>150</count>
    <x-offset>-13.78 </x-offset>
-   <y-offset>-2.044 </y-offset>
-   <z-offset> 0.0164</z-offset>
+   <y-offset> 2.044 </y-offset>
+   <z-offset> 0.020</z-offset>
    <pitch-offset>0</pitch-offset>
    <life>10.0</life>
    <wind>false</wind>

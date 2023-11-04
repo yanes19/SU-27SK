@@ -22,7 +22,7 @@ fire_MG = func(b) {
     {
         isFiring = 1;
         setprop("/controls/armament/Gun_trigger", 1);
-        settimer(stopFiring, 0.1);
+        #settimer(stopFiring, 0.1);
     }
     if(getprop("/controls/armament/stick-selector") == 2)
     {

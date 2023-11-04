@@ -32,6 +32,12 @@
     <command>nasal</command>
     <script>guns.fire_MG(1);</script>
   </binding>
+  <mod-up>
+    <binding>
+      <command>nasal</command>
+      <script>guns.stopFiring();</script>
+    </binding>
+  </mod-up>
  </key>
  
  <key n="109">
@@ -54,7 +60,7 @@
   <desc>Release Flares</desc>
   <binding>
  <command>nasal</command>
- <script>damage.flare_released();</script>
+ <script>setprop("/ai/submodels/submodel/flare-release",1);damage.flare_released();settimer(func{setprop("/ai/submodels/submodel/flare-release",0);},0.1)</script>
 </binding>
  </key> 
  <key n="114">
