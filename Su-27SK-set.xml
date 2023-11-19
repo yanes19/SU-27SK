@@ -1021,7 +1021,19 @@ USSR and Russia  aerospace industry .
         </systems>
         <instrumentation>
             <SPO-15LM>
+              <!--
                 <azimut_M-norm type="double">-9999</azimut_M-norm>
+                -->
+                <M10L type="bool">false</M10L>
+                <M30L type="bool">false</M30L>
+                <M60L type="bool">false</M60L>
+                <M90L type="bool">false</M90L>
+                <M6L type="bool">false</M6L>
+                <M10R type="bool">false</M10R>
+                <M30R type="bool">false</M30R>
+                <M60R type="bool">false</M60R>
+                <M90R type="bool">false</M90R>
+                <M6R type="bool">false</M6R>
                 <azimut_S-norm type="double">-9999</azimut_S-norm>
                 <serviceable type="bool">true</serviceable>
                 <losig type="bool" alias="/payload/armament/spike"/>
