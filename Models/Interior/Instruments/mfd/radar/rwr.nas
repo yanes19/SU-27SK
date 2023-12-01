@@ -70,24 +70,25 @@ var rwr_loop = func() {
 		our_alt = OurAlt.getValue();
 		tgts_list = [];
 		var raw_list = Mp.getChildren();
+		var L10 = 0;
+		var L30 = 0;
+		var L60 = 0;
+		var L90 = 0;
+		var L6  = 0;
+		var R10 = 0;
+		var R30 = 0;
+		var R60 = 0;
+		var R90 = 0;
+		var R6  = 0;
+		var T_C = 0;
+		var T_F = 0;
+		var T_H = 0;
+		var T_X = 0;
+		var T_3 = 0;
+		var T_N = 0;
+		var ecm_signal_max = 0;
 		foreach( var c; raw_list ) {
-			var L10 = 0;
-			var L30 = 0;
-			var L60 = 0;
-			var L90 = 0;
-			var L6  = 0;
-			var R10 = 0;
-			var R30 = 0;
-			var R60 = 0;
-			var R90 = 0;
-			var R6  = 0;
-			var T_C = 0;
-			var T_F = 0;
-			var T_H = 0;
-			var T_X = 0;
-			var T_3 = 0;
-			var T_N = 0;
-			var ecm_signal_max = 0;
+			
 			var type = c.getName();
 			if (!c.getNode("valid", 1).getValue()) {
 				continue;
