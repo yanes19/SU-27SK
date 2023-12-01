@@ -198,6 +198,17 @@ var rwr_loop = func() {
 			else setprop("/mig29/instrumentation/SPO-15LM/M90R",0);
 			if(R6)setprop("/mig29/instrumentation/SPO-15LM/M6R",1);
 			else setprop("/mig29/instrumentation/SPO-15LM/M6R",0);
+		}else{
+			
+			setprop("/mig29/instrumentation/SPO-15LM/M10L",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M30L",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M60L",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M90L",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M6L",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M30R",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M60R",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M90R",0);
+			setprop("/mig29/instrumentation/SPO-15LM/M6R",0);
 		}
 		ecm_alert1_last = ecm_alert1; # And avoid alert blinking at each loop.
 		ecm_alert2_last = ecm_alert2;
