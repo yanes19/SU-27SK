@@ -1034,8 +1034,16 @@ USSR and Russia  aerospace industry .
                 <M60R type="bool">false</M60R>
                 <M90R type="bool">false</M90R>
                 <M6R type="bool">false</M6R>
+
+                <TpX type="bool">false</TpX>
+                <TpC type="bool">false</TpC>
+                <Tp3 type="bool">false</Tp3>
+                <TpH type="bool">false</TpH>
+                <TpN type="bool">false</TpN>
+                <TpF type="bool">false</TpF>
+
                 <azimut_S-norm type="double">-9999</azimut_S-norm>
-                <serviceable type="bool">true</serviceable>
+                <serviceable type="bool" alias="/systems/electrical/outputs/SPO-15LM"/>
                 <losig type="bool" alias="/payload/armament/spike"/>
             </SPO-15LM>
         </instrumentation>

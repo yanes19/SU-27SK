@@ -551,6 +551,17 @@ OLD DEPRECATED SYSTEM
 			<output>/systems/electrical/outputs/PNK-10</output>	
 			
 		</switch>	
+
+		<switch name="/systems/electrical/outputs/SPO-15LM">
+			<description>
+					power for SPO-15LM
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/VDC-bus[1] GT 20
+			</test>
+			
+		</switch>	
 		
 		
 		

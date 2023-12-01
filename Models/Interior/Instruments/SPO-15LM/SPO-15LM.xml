@@ -366,7 +366,7 @@
  <object-name>SPO-15LM.IzlTypeX</object-name>
  <condition>
   <equals>
-   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <property>mig29/instrumentation/SPO-15LM/TpX</property>
    <value>1</value>
   </equals>
  </condition>
@@ -377,7 +377,7 @@
  <object-name>SPO-15LM.IzlTypeC</object-name>
  <condition>
   <equals>
-   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <property>mig29/instrumentation/SPO-15LM/TpC</property>
    <value>1</value>
   </equals>
  </condition>
@@ -388,7 +388,7 @@
  <object-name>SPO-15LM.IzlTypeF</object-name>
  <condition>
   <equals>
-   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <property>mig29/instrumentation/SPO-15LM/TpF</property>
    <value>1</value>
   </equals>
  </condition>
@@ -399,7 +399,7 @@
  <object-name>SPO-15LM.IzlTypeH</object-name>
  <condition>
   <equals>
-   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <property>mig29/instrumentation/SPO-15LM/TpH</property>
    <value>1</value>
   </equals>
  </condition>
@@ -410,7 +410,7 @@
  <object-name>SPO-15LM.IzlTypeZ</object-name>
  <condition>
   <equals>
-   <property>mig29/instrumentation/SPO-15LM/izlM</property>
+   <property>mig29/instrumentation/SPO-15LM/Tp3</property>
    <value>1</value>
   </equals>
  </condition>

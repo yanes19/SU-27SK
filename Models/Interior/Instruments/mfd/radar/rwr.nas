@@ -21,6 +21,7 @@ var OurHdg            = props.globals.getNode("orientation/heading-deg");
 var EcmOn             = props.globals.getNode("instrumentation/ecm/on-off", 1);
 var EcmAlert1         = props.globals.getNode("instrumentation/ecm/alert-type1", 1);
 var EcmAlert2         = props.globals.getNode("instrumentation/ecm/alert-type2", 1);
+var power             = props.globals.getNode("/systems/electrical/outputs/SPO-15LM");
 
 var our_alt           = 0;
 var Mp = props.globals.getNode("ai/models");
@@ -66,7 +67,7 @@ var rwr_data={
 var rwr_loop = func() {
 	ecm_on = EcmOn.getBoolValue();
 	#screen.log.write("rwr-loop");
-	if ( ecm_on) {
+	if ( ecm_on and power.getBoolValue()) {
 		our_alt = OurAlt.getValue();
 		tgts_list = [];
 		var raw_list = Mp.getChildren();
@@ -167,6 +168,12 @@ var rwr_loop = func() {
 						if(threatdeg>=75 and threatdeg <= 105)R90 = 1;
 						if(threatdeg<190 and threatdeg>105)R6=1;
 						if(u_ecm_signal>ecm_signal_max)ecm_signal_max = u_ecm_signal;
+						if(rwr_data[u_name] == type_X) T_X = 1;
+						if(rwr_data[u_name] == type_C) T_C = 1;
+						if(rwr_data[u_name] == type_3) T_3 = 1;
+						if(rwr_data[u_name] == type_H) T_H = 1;
+						if(rwr_data[u_name] == type_F) T_F = 1;
+						if(rwr_data[u_name] == type_N) T_N = 1;
 					}
 					#screen.log.write("done.");
 				}
@@ -198,6 +205,18 @@ var rwr_loop = func() {
 			else setprop("/mig29/instrumentation/SPO-15LM/M90R",0);
 			if(R6)setprop("/mig29/instrumentation/SPO-15LM/M6R",1);
 			else setprop("/mig29/instrumentation/SPO-15LM/M6R",0);
+			if(T_3)setprop("/mig29/instrumentation/SPO-15LM/Tp3",1);
+			else setprop("/mig29/instrumentation/SPO-15LM/Tp3",0);
+			if(T_C)setprop("/mig29/instrumentation/SPO-15LM/TpC",1);
+			else setprop("/mig29/instrumentation/SPO-15LM/TpC",0);
+			if(T_F)setprop("/mig29/instrumentation/SPO-15LM/TpF",1);
+			else setprop("/mig29/instrumentation/SPO-15LM/TpF",0);
+			if(T_H)setprop("/mig29/instrumentation/SPO-15LM/TpH",1);
+			else setprop("/mig29/instrumentation/SPO-15LM/TpH",0);
+			if(T_N)setprop("/mig29/instrumentation/SPO-15LM/TpN",1);
+			else setprop("/mig29/instrumentation/SPO-15LM/TpN",0);
+			if(T_X)setprop("/mig29/instrumentation/SPO-15LM/TpX",1);
+			else setprop("/mig29/instrumentation/SPO-15LM/TpX",0);
 		}else{
 			
 			setprop("/mig29/instrumentation/SPO-15LM/M10L",0);
@@ -209,17 +228,40 @@ var rwr_loop = func() {
 			setprop("/mig29/instrumentation/SPO-15LM/M60R",0);
 			setprop("/mig29/instrumentation/SPO-15LM/M90R",0);
 			setprop("/mig29/instrumentation/SPO-15LM/M6R",0);
+			setprop("/mig29/instrumentation/SPO-15LM/TpC",0);
+			setprop("/mig29/instrumentation/SPO-15LM/TpX",0);
+			setprop("/mig29/instrumentation/SPO-15LM/Tp3",0);
+			setprop("/mig29/instrumentation/SPO-15LM/TpF",0);
+			setprop("/mig29/instrumentation/SPO-15LM/TpN",0);
+			setprop("/mig29/instrumentation/SPO-15LM/TpH",0);
 		}
 		ecm_alert1_last = ecm_alert1; # And avoid alert blinking at each loop.
 		ecm_alert2_last = ecm_alert2;
 		ecm_alert1 = 0;
 		ecm_alert2 = 0;
-	} elsif ( size(tgts_list) > 0 ) {
-		foreach( u; tgts_list ) {
-			u.EcmSignal.setValue(0);
-			u.EcmSignalNorm.setIntValue(0);
-			u.EcmTypeNum.setIntValue(0);
-		}
+	} else{
+			if ( size(tgts_list) > 0 ) {
+				foreach( u; tgts_list ) {
+					u.EcmSignal.setValue(0);
+					u.EcmSignalNorm.setIntValue(0);
+					u.EcmTypeNum.setIntValue(0);
+				}
+			}
+		setprop("/mig29/instrumentation/SPO-15LM/M10L",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M30L",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M60L",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M90L",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M6L",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M30R",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M60R",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M90R",0);
+		setprop("/mig29/instrumentation/SPO-15LM/M6R",0);
+		setprop("/mig29/instrumentation/SPO-15LM/TpC",0);
+		setprop("/mig29/instrumentation/SPO-15LM/TpX",0);
+		setprop("/mig29/instrumentation/SPO-15LM/Tp3",0);
+		setprop("/mig29/instrumentation/SPO-15LM/TpF",0);
+		setprop("/mig29/instrumentation/SPO-15LM/TpN",0);
+		setprop("/mig29/instrumentation/SPO-15LM/TpH",0);
 	}
 	settimer(rwr_loop, 0.05);
 }
