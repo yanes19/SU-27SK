@@ -20,6 +20,9 @@ SU-27 simulation config.
       <explode-on type="bool">false</explode-on>
     </sounds>
   </damage>
+  <output>
+
+  </output>
     <sim>
       <flight-model>jsb</flight-model>
       <status>Beta</status>
@@ -760,6 +763,11 @@ USSR and Russia  aerospace industry .
       <gear>
         <brake-parking type="double">1.0</brake-parking>
       </gear>
+      <ctrl><!-- for new hydraulic system-->
+        <gear-down type="bool">1</gear-down>
+        <flaps type="bool">0</flaps>
+        <airbrk type="bool">0</airbrk>
+      </ctrl>
     </controls>
 <!-- Engine indexes & FOD Screen pos -->
     <engines>
@@ -1063,6 +1071,9 @@ USSR and Russia  aerospace industry .
     <engines>
         <file>Aircraft/SU-27SK/Nasal/Engines.nas</file>
     </engines>
+    <hydraulic>
+      <file>Aircraft/SU-27SK/Nasal/hydraulic.nas</file>
+    </hydraulic>
     <maintenance>
         <file>Aircraft/SU-27SK/Nasal/maintenance.nas</file>
     </maintenance>

@@ -11,6 +11,9 @@
   <description> Models a Su-27SKM. </description>
  </fileheader>
 
+<property>/controls/ctrl/output/elevator</property>
+<property>/controls/ctrl/output/l-aileron</property>
+<property>/controls/ctrl/output/r-aileron</property>
 <!--
   File:     Su-27SK.xml
   Inputs:
@@ -598,7 +601,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="left aileron normalization">
-      <input>fcs/left-aileron-pos-rad</input>
+      <input>/controls/ctrl/output/l-aileron</input>
       <domain>
         <min> -0.35 </min>
         <max>  0.35 </max>
@@ -611,7 +614,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="right aileron normalization">
-      <input>fcs/right-aileron-pos-rad</input>
+      <input>/controls/ctrl/output/r-aileron</input>
       <domain>
         <min> -0.35 </min>
         <max>  0.35 </max>
@@ -1053,7 +1056,7 @@ Need testing :experimental brake parachute
           <property>aero/qbar-psf</property>
           <property>metrics/Sw-sqft</property>
           <property>metrics/bw-ft</property>
-          <property>fcs/left-aileron-pos-rad</property>
+          <property>/controls/ctrl/output/l-aileron</property>
           <value>0.12</value>
        </product>
     </function>
@@ -1169,7 +1172,7 @@ Need testing :experimental brake parachute
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
-           <property>fcs/left-aileron-pos-rad</property>
+           <property>/controls/ctrl/output/l-aileron</property>
            <value>0</value>
        </product>
     </function>

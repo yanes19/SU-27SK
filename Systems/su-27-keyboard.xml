@@ -3,7 +3,49 @@
 <!-- su-27 Keyboard controls -->
 <PropertyList>
 	
-	 <key n="4">
+	<key n="71">
+    <name>G</name>
+    <desc>Gears</desc>
+    <binding>
+      <command>nasal</command>
+      <script>setprop("/controls/ctrl/gear-down",1);</script>
+    </binding>
+  </key>
+  <key n="103">
+    <name>g</name>
+    <desc>Gears</desc>
+    <binding>
+      <command>nasal</command>
+      <script>setprop("/controls/ctrl/gear-down",0);</script>
+    </binding>
+  </key>
+  <key n="93">
+    <name>]</name>
+    <desc>Flaps</desc>
+    <binding>
+      <command>nasal</command>
+      <script>setprop("/controls/ctrl/flaps",1);</script>
+    </binding>
+  </key>
+  <key n="91">
+    <name>[</name>
+    <desc>Flaps</desc>
+    <binding>
+      <command>nasal</command>
+      <script>setprop("/controls/ctrl/flaps",0);</script>
+    </binding>
+  </key>
+  <key n="2">
+    <name>Ctrl-B</name>
+    <desc>SpeedBrake</desc>
+    <binding>
+      <command>property-cycle</command>
+      <property>/controls/ctrl/airbrk</property>
+      <value type="bool">1</value>
+      <value type="bool">0</value>
+    </binding>
+  </key>
+  <key n="4">
 	  <name>Ctrl-D</name>
 	  <desc>Toggle DirectInput Mode (FBW Disengengage)</desc>
 	  <binding>

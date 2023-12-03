@@ -14,7 +14,7 @@
    <animation>
   <type>rotate</type>
   <object-name>ld-gear-handle</object-name>
-  <property>controls/gear/gear-down</property>
+  <property>controls/ctrl/gear-down</property>
    <interpolation>
     <entry><ind>0</ind><dep>-30</dep></entry>
     <entry><ind>1</ind><dep> 20</dep></entry>
@@ -40,7 +40,7 @@
     <repeatable>false</repeatable>
     <binding>
     <command>property-toggle</command>
-    <property>controls/gear/gear-down</property>
+    <property>controls/ctrl/gear-down</property>
     </binding>
   </action>
  </animation>

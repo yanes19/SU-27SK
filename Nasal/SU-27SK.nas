@@ -126,6 +126,8 @@
 	    myRadar = radar.Radar.new();
 		myRadar.init();
 		crash.repairMe();
+		var hyd_fc = compat_failure_modes.set_unserviceable("systems/hydraulic");
+		FailureMgr.add_failure_mode("systems/hydraulic", "Hydraulic", hyd_fc);
 		var fire_fc = compat_failure_modes.set_unserviceable("damage/fire");# will make smoke trail when damaged
 		FailureMgr.add_failure_mode("damage/fire", "Fire", fire_fc);
 		var wcs_fc = compat_failure_modes.set_unserviceable("systems/wcs");# will make smoke trail when damaged
@@ -139,9 +141,13 @@
 			setprop ("autopilot/locks/speed", "speed-with-throttle");
 			setprop ("autopilot/settings/target-speed-kt", 350);}
 		    print("	-In Air startup detected : \n 	- Autostarting engines. \n	- Engaging Autoleveller. ");
-			}
+		}else{
+			setprop ("controls/gear/gear-down", 1);
+			setprop("controls/ctrl/gear-down",1);
+		}
 		#eno.init();
 		auxloop.start();
+		hydraulic_loop();
 		
 	}
 	
@@ -155,6 +161,28 @@
 	###
 	# Maintenance
     
+	###
+	# Hydraulic
+	# TODO: Enhance this!
+	var hydraulic_loop=func{
+		if(getprop("/sim/failure-manager/systems/hydraulic/failure-level"))setprop("/systems/hydraulic/pump/serviceable",0);
+		else setprop("/systems/hydraulic/pump/serviceable",1);
+		if(getprop("/systems/hydraulic/pump/switch") and (getprop("/systems/electrical/VDC-bus[0]")>20) and getprop("/systems/hydraulic/pump/serviceable")){
+			setprop("/systems/hydraulic/pump/run",1);
+		}else{
+			setprop("/systems/hydraulic/pump/run",1);
+		}
+		if(getprop("/systems/hydraulic/pump/run")){
+			if(getprop("/engines/engine[0]/n2")>18 or getprop("/engines/engine[1]/n2")>18){
+				setprop("/systems/hydraulic/pump/pressure",100);
+			}
+			else{
+				setprop("/systems/hydraulic/pump/pressure",0);
+			}
+		}
+		settimer(hydraulic_loop,0.5);
+	};
+
 	
 	###
 	# Loops
@@ -177,6 +205,7 @@
 	
 	var auxloop = maketimer(aux_loop_interval,loops.aux);
 	
+	
 	###
 	# Go!
 	
@@ -185,3 +214,5 @@
 	    });
 
 	setlistener("sim/crashed",func{if(getprop("sim/crashed")){setprop("sim/explode","true");settimer(func{setprop("sim/explode","false");},2)}});
+	
+	#settimer(hydraulic_loop,2);
