@@ -557,7 +557,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="elevator normalization">
-      <input>fcs/elevator-pos-rad</input>
+      <input>/controls/ctrl/output/elevator</input>
       <domain>
         <min> -0.50 </min>
         <max>  0.50 </max>
@@ -871,7 +871,7 @@ Need testing :experimental brake parachute
        <product>
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
-           <property>fcs/elevator-pos-rad</property>
+           <property>/controls/ctrl/output/elevator</property>
            <value>0.6</value>
        </product>
     </function>
@@ -1093,7 +1093,7 @@ Need testing :experimental brake parachute
           <property>aero/qbar-psf</property>
           <property>metrics/Sw-sqft</property>
           <property>metrics/cbarw-ft</property>
-          <property>fcs/elevator-pos-rad</property>
+          <property>/controls/ctrl/output/elevator</property>
           <table>
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
