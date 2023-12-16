@@ -170,16 +170,12 @@
 		if(getprop("/systems/hydraulic/pump/switch") and (getprop("/systems/electrical/VDC-bus[0]")>20) and getprop("/systems/hydraulic/pump/serviceable")){
 			setprop("/systems/hydraulic/pump/run",1);
 		}else{
-			setprop("/systems/hydraulic/pump/run",1);
+			setprop("/systems/hydraulic/pump/run",0);
 		}
 		if(getprop("/systems/hydraulic/pump/run")){
-			if(getprop("/engines/engine[0]/n2")>18 or getprop("/engines/engine[1]/n2")>18){
-				setprop("/systems/hydraulic/pump/pressure",100);
-			}
-			else{
-				setprop("/systems/hydraulic/pump/pressure",0);
-			}
-		}
+			var n2sum = getprop("/engines/engine[0]/n2") + getprop("/engines/engine[1]/n2");
+			setprop("/systems/hydraulic/pump/pressure",math.min(100, n2sum * 5.0));
+		}else setprop("/systems/hydraulic/pump/pressure",0);
 		settimer(hydraulic_loop,0.5);
 	};
 

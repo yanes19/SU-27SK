@@ -675,7 +675,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="rudder normalization">
-      <input>fcs/rudder-pos-rad</input>
+      <input>/controls/ctrl/output/rudder-pos-rad</input>
       <domain>
         <min> -0.35 </min>
         <max>  0.35 </max>
