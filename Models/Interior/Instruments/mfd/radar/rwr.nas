@@ -46,7 +46,8 @@ var type_F = 2;
 var type_H = 3;
 var type_X = 4;
 var type_3 = 5;
-var type_fighter = 6;
+var type_N = 6;
+var type_fighter = 7;
 
 var rwr_data={
 	"F-15C":          type_X,
