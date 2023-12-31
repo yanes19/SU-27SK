@@ -163,7 +163,7 @@ var findmultiplayer = func(targetCoord) {
         {
             continue;
         }
-        var HavePosition = c.getNode("position", 1);
+        var HavePosition = c.getNode("impact", 1);
         var name = c.getNode("callsign", 1);
         
         if(type == "multiplayer" and HavePosition != nil and targetCoord != nil and name != nil)
