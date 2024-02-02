@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<PropertyList>
- <name>EmergencyGearsHandle</name>
- <path>EmergencyGearsHandle.ac</path>
+<PropertyList include="EmergencyGearsHandle.xml">
  <animation>
   <type>material</type> 
   <object-name>Emergency.Gears.Handle</object-name>
