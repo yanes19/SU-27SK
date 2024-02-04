@@ -117,7 +117,7 @@ var rwr_loop = func() {
 					if(type=="Mig-28"){u_maxrange=100;}#for training scenario
 					var horizon = u.get_horizon( our_alt );
 					var u_rng = u.get_range();
-					if(u_rng == 0 and rwr_data[u_name] != type_unknow)u_rng=200;
+					if(u_maxrange == 0 and rwr_data[u_name] != type_unknow)u_maxrange=200;
 					var u_carrier = u.check_carrier_type();
 					var threatdeg = -9999.9;
 					#if(u_maxrange == 0){

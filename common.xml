@@ -1269,6 +1269,9 @@
         <OC-Canvasdigits>
             <file>Aircraft/SU-27SK/Models/Interior/RightPanels/OC-Radio-panel/OC-Canvasdigits.nas</file>
         </OC-Canvasdigits>
+        <tacview>
+            <file>Aircraft/SU-27SK/Nasal/tacview.nas</file>
+        </tacview>
 
     </nasal>
 </PropertyList>
