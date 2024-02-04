@@ -181,6 +181,7 @@ var Reporter=func{
     }
     if(getlock()){
         hits[front].report();
+        front = front + 1;
         settimer(unlock,0.1);
         if(rear-front>0)settimer(Reporter,0.1);
     }else{
