@@ -122,7 +122,7 @@ var Impact = func() {
         #{
         #    continue;
         #}
-        var HaveImpactNode = c.getNode("impact", 1);
+        var HaveImpactNode = c.getNode("impact");
         #if(HaveImpactNode == nil)HaveImpactNode = c.getNode("position",1);
         if(type == "ballistic" and HaveImpactNode != nil)
         {
@@ -133,18 +133,20 @@ var Impact = func() {
                 var elev = HaveImpactNode.getNode("elevation-m", 1).getValue();
                 var lat = HaveImpactNode.getNode("latitude-deg", 1).getValue();
                 var lon = HaveImpactNode.getNode("longitude-deg", 1).getValue();
+                printf("%.2f %.2f %.2f", elev, lat, lon);
                 if(lat != nil and lon != nil and elev != nil)
                 {
                     #print("lat"~ lat~" lon:"~ lon~ "elev:"~ elev);
                     ballCoord = geo.Coord.new();
                     ballCoord.set_latlon(lat, lon, elev);
                     var tempo = findmultiplayer(ballCoord);
+                    print(tempo);
                     if(tempo != "Nothing")
                     {
                         var cur = Hit.new(tempo,1,"GSh-30",-1*(damage.shells["GSh-30"][0]+1));
                         append(hits,cur);
                         rear=rear+1;
-                        Reporter();
+                        #Reporter();
                     }
                 }
             }
@@ -152,13 +154,13 @@ var Impact = func() {
             print("weapons.nas line 116: nil impact Node!");
         }
     
-    var time = getprop("/sim/time/elapsed-sec");
-    if(splashOn != "Nothing")
-    {
-        if(time - splashdt < 0.1){
-            settimer(Impact,0.1);
-            return;
-        }
+    #var time = getprop("/sim/time/elapsed-sec");
+    #if(splashOn != "Nothing")
+    #{
+    #    if(time - splashdt < 0.1){
+    #        settimer(Impact,0.1);
+    #        return;
+    #    }
         #var phrase = "GSh-30 hit: " ~ splashOn~". "~ numberOfSplash ~" hits";
         #if(MPMessaging.getValue() == 1)
         #{
@@ -170,8 +172,8 @@ var Impact = func() {
         #}
         #splashdt = time;
         
-        splashdt=time;
-    }
+    #    splashdt=time;
+    #}
 }
 
 var Reporter=func{
@@ -179,14 +181,14 @@ var Reporter=func{
         hits[front+1].Number=hits[front+1].Number;
         front=front+1;
     }
-    if(getlock()){
-        hits[front].report();
-        front = front + 1;
-        settimer(unlock,0.1);
-        if(rear-front>0)settimer(Reporter,0.1);
-    }else{
-        settimer(Reporter,0.1);
+    if(front < rear){
+        if(getlock()){
+            hits[front].report();
+            front = front + 1;
+            settimer(unlock,0.1);
+        }
     }
+    settimer(Reporter,0.1);
 }
 
 # Nb of impacts
@@ -259,3 +261,5 @@ var stickreporter = func(){
     else{screen.log.write("Selected missiles.",1,0.4,0.4);}
 }
 setlistener("/controls/armament/stick-selector",stickreporter);
+
+Reporter();

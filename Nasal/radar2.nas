@@ -2,7 +2,7 @@
 ################################################################################
 #
 #           Customized version of radar2 for the F-22
-#  Thx to Ghost :D
+# 
 ################################################################################
 
 # Radar
@@ -86,6 +86,9 @@ var u_ecm_type_num    = 0;
 # global Range
 var rangeTab = [];
 var rangeIndex = 0;
+
+var flareProp = "rotors/main/blade[3]/flap-deg";
+var chaffProp = "rotors/main/blade[3]/position-deg";
 
 # radar class
 var Radar = {
@@ -186,10 +189,10 @@ var Radar = {
             # existing as a displayable target in the radar targets nodes.
             # FIXED, with janitor. 5H1N0B1
             var type = c.getName();
-            if(! c.getNode("valid", 1).getValue())
-            {
-                continue;
-            }
+            #if(! c.getNode("valid", 1).getValue())
+            #{
+            #    continue;
+            #}
             
             # the 2 following line are needed : If not, it would detects our own missiles...
             # this will come soon
@@ -204,6 +207,16 @@ var Radar = {
             {
                 # creation of the tempo object Target
                 var u = Target.new(c);
+                if(u == nil)continue;
+                if(!u.valid.getValue())
+                {
+                        
+                    # call Janitor
+                    u.set_nill();
+                    me.TargetList_RemovingTarget(u);
+                    continue;
+                    #screen.log.write("janitor();");
+                }
                 #screen.log.write("New target detected.",255,255,0);
                 
                 #print("Testing "~ u.get_Callsign()~"Type: " ~ type);
@@ -216,12 +229,13 @@ var Radar = {
                 
                 # then a function just check it all
                 if(me.get_check(u))
+                #if(1)
                 {
                     #screen.log.write("checked!");
                     var HaveRadarNode = c.getNode("radar");
                     var u_rng = me.targetRange(u);
                     
-
+                    var u_display = 0;
         
                     var beardeg = me.targetBearing(u) - me.OurHdg.getValue();
                     #screen.log.write(beardeg);
@@ -233,11 +247,20 @@ var Radar = {
                     var vtgt_x = math.sin(beardeg*D2R) * hdist;
                     var vtgt_y = math.cos(beardeg*D2R) * hdist;
                     var vtgt_z = altdist;
+                    var vtgt_l = math.sqrt(vtgt_x * vtgt_x + vtgt_y * vtgt_y + vtgt_z * vtgt_z);
                     #screen.log.write(sprintf("%.2f, %.2f, %.2f",altdist,hdist,beardeg));
                     var ourd_x = 0;
                     var ourd_y = math.cos(me.OurPitch.getValue()*D2R);
                     var ourd_z = math.sin(me.OurPitch.getValue()*D2R);
                     var ourd_l = ourd_y * vtgt_y + ourd_z * vtgt_z;
+                    #printf("cos theta: %.2f",ourd_l/vtgt_l);
+                    if(ourd_l / vtgt_l >= 0.50)# cos 60deg
+                    {
+                        u_display = 1;
+                    }else{
+                        u_display = 0;
+                    }
+                    
                     ourd_y = ourd_y * ourd_l;
                     ourd_z = ourd_z * ourd_l;
                     var o_x = vtgt_x - ourd_x;
@@ -246,8 +269,8 @@ var Radar = {
                     var h_dt = o_x;
                     var v_dt = math.sqrt(o_y * o_y + o_z * o_z);
                     if(o_z < 0)v_dt = -1 * v_dt;
-                    h_dt = h_dt * (HudEyeDist.getValue() / ourd_l) * 52;
-                    v_dt = v_dt * (HudEyeDist.getValue() / ourd_l) * 52;
+                    h_dt = h_dt * (HudEyeDist.getValue() / ourd_l) * 80;
+                    v_dt = v_dt * (HudEyeDist.getValue() / ourd_l) * 80;
                     #v_ang = math.arccos();
                     
                     u.HOffset = h_dt;
@@ -266,20 +289,27 @@ var Radar = {
                     
 
                     
-                    u.create_tree(me.MyCoord);
-                    u.set_all(me.MyCoord);
-                    me.calculateScreen(u);
+                    if(u_display){
+                        u.create_tree(me.MyCoord);
+                        u.set_all(me.MyCoord);
+                        me.calculateScreen(u);
+                        u.set_display(u_display);
+                        if(type != "missile")
+                        {
+                            me.TargetList_AddingTarget(u);
+                        }
+                        if(me.az_fld.getValue() == 60)
+                        {
+                            # change to Make it more dynamic
+                            me.displayTarget();
+                        }
+                    }
+                    
+                    
+                    
                     # for Target Selection
                     # here we disable the capacity of targeting a missile. But 's possible.
-                    if(type != "missile")
-                    {
-                        me.TargetList_AddingTarget(u);
-                    }
-                    if(me.az_fld.getValue() == 60)
-                    {
-                        # change to Make it more dynamic
-                        me.displayTarget();
-                    }
+                    
                 }
                 else
                 {
@@ -290,6 +320,7 @@ var Radar = {
                             # call Janitor
                             u.set_nill();
                             me.TargetList_RemovingTarget(u);
+                            #screen.log.write("janitor();");
                         }
                     }
                 }
@@ -297,9 +328,21 @@ var Radar = {
         }
         #check lock
         if(lock){
-            if(!tgts_list[Target_Index].Display){
+            if(Target_Index == -1){
+                lock = 0;
+                return;
+            }
+            if(size(tgts_list)-1 < Target_Index){
                 lock=0;
-                Target_Index=0;
+                Target_Index=-1;
+                return;
+            }elsif(tgts_list[Target_Index] == nil){
+                lock=0;
+                Target_Index=-1;
+                return;
+            }elsif(!(tgts_list[Target_Index].Display != nil) or !tgts_list[Target_Index].Display.getValue()){
+                lock=0;
+                Target_Index=-1;
             }
         }
     },
@@ -319,7 +362,7 @@ var Radar = {
         var factor_range_radar = rng_diplay_width / me.RangeSelected.getValue(); # length of the distance range on the B-scan screen.
         SelectedObject.set_ddd_draw_range_nm(factor_range_radar * u_rng);
         u_fading = 1;
-        u_display = 1;
+        #u_display = 1;
         
         # Compute mp position in our PPI like display.
         factor_range_radar = ppi_diplay_radius / me.RangeSelected.getValue(); # Length of the radius range on the PPI like screen.
@@ -338,7 +381,7 @@ var Radar = {
             tmp_nearest_u = SelectedObject;
             tmp_nearest_rng = u_rng;
         }
-        SelectedObject.set_display(u_display);
+        #SelectedObject.set_display(u_display);
         SelectedObject.set_fading(u_fading);
     },
 
@@ -658,12 +701,14 @@ var Radar = {
         {
             return;
         }
-        append(me.Check_List, me.inAzimuth(SelectedObject));
+        #append(me.Check_List, me.inAzimuth(SelectedObject));
+        append(me.Check_List, 1);
         if(me.Check_List[1] == 0)
         {
             return;
         }
-        append(me.Check_List, me.inElevation(SelectedObject));
+        #append(me.Check_List, me.inElevation(SelectedObject));
+        append(me.Check_List, 1);
         if(me.Check_List[2] == 0)
         {
             return;
@@ -720,7 +765,7 @@ var Radar = {
             }
             if(Target_Index > size(tgts_list) - 1)
             {
-                Target_Index = 0;
+                Target_Index = -1;
             }
             var MyTarget = tgts_list[Target_Index];
             closeRange   = me.targetRange(MyTarget);
@@ -755,20 +800,33 @@ var Radar = {
 
 var Target = {
     new: func(c){
+        
         var obj             = { parents : [Target]};
+        if(c == nil){
+            obj.valid           = c.getNode("valid",1);
+            return obj;
+        }
+        obj.vel             = c.getNode("velocities",1);
         obj.RdrProp         = c.getNode("radar");
         obj.Heading         = c.getNode("orientation/true-heading-deg");
         obj.Alt             = c.getNode("position/altitude-ft");
         obj.lat             = c.getNode("position/latitude-deg");
         obj.lon             = c.getNode("position/longitude-deg");
         obj.pitch           = c.getNode("orientation/pitch-deg");
+        obj.roll            = c.getNode("orientation/roll-deg");
         obj.Speed           = c.getNode("velocities/true-airspeed-kt");
         obj.VSpeed          = c.getNode("velocities/vertical-speed-fps");
+        obj.uBody           = obj.vel.getNode("uBody-fps");
+    	obj.vBody           = obj.vel.getNode("vBody-fps");
+    	obj.wBody           = obj.vel.getNode("wBody-fps");
         obj.Callsign        = c.getNode("callsign");
         obj.name            = c.getNode("name");
         obj.validTree       = 0;
 
-        obj.valid           = c.getNode("valid");
+        obj.valid           = c.getNode("valid",1);
+        if(!obj.valid.getValue()){
+            return nil;
+        }
         obj.model           = "";
         obj.unique          = obj.Callsign.getValue()~c.getPath();# should be very very very unique
 
@@ -795,6 +853,7 @@ var Target = {
 				obj.YShift					= -9999.0;
 				obj.Rotation				= -9999.0;
         
+        obj.Chaff           = 0;
         obj.MyCallsign      = 0;
         obj.BBearing        = 0; #obj.TgtsFiles.getNode("bearing-deg", 1);
         obj.BHeading        = 0; #obj.TgtsFiles.getNode("true-heading-deg", 1);
@@ -819,7 +878,7 @@ var Target = {
           	me.model = me.remove_suffix(me.model, "-model");
           	me.model = me.remove_suffix(me.model, "-anim");
         } else {
-        	me.model = c.getNode("type").getValue();
+        	me.model = c.getNode("type",1).getValue();
         }
         if(me.model == nil)me.model = "";
         #obj.TimeLast.setValue(ElapsedSec.getValue());
@@ -827,7 +886,8 @@ var Target = {
         obj.RadarStandby    = c.getNode("sim/multiplay/generic/int[2]");
         
         obj.deviation       = nil;
-        
+        obj.chaffProp = c.getNode(chaffProp,1);
+        obj.flareProp = c.getNode(flareProp,1);
         return obj;
     },
 
@@ -969,6 +1029,33 @@ var Target = {
         return n;
     },
 
+    isValid: func(){
+        if(me == nil or !(me.parents[0] == radar.Target))return 0;
+        return me.valid.getBoolValue();
+    },
+
+    isPainted: func(){
+        if(me.isValid()){
+            return me.Display.getValue();
+        }
+        return 0;
+    },
+
+    getFlareNode: func {
+		#me.flareProp = me.prop.getNode(flareProp, 0);
+		return me.flareProp;
+	},
+
+	getChaffNode: func {
+		
+		#me.chaffProp = me.prop.getNode(chaffProp, 0);
+		return me.chaffProp;
+	},
+
+    isVirtual: func(){
+        return 0;
+    },
+
     get_Speed: func(){
         var n = me.Speed.getValue();
         #var alt = me.Alt.getValue();
@@ -1000,6 +1087,15 @@ var Target = {
         return n;
     },
 
+    get_Roll : func(){
+        var n = me.roll.getValue();
+        if(n == nil)
+        {
+            n = 0;
+        }
+        return n;
+    },
+
     get_bearing: func(){
         var n = 0;
         n = me.Bearing.getValue();
@@ -1009,6 +1105,38 @@ var Target = {
         }
         return n;
     },
+
+    get_type: func(){
+        return 0;
+    },
+
+    get_uBody: func {
+		var body = nil;
+		if (me.uBody != nil) {
+			body = me.uBody.getValue();
+		}
+		if(body == nil) {
+			body = me.get_Speed()*KT2FPS;
+		}
+		return body;
+	},
+	get_vBody: func {
+		if (me.vBody == nil) return 0;
+		var vB = me.vBody.getValue();
+		if (vB == nil) return 0;
+		return vB;
+	},
+	get_wBody: func {
+		if (me.wBody == nil) return 0;
+		var wB = me.wBody.getValue();
+		if (wB == nil) return 0;
+		return wB;
+	},
+
+    getElevation: func {
+		# This is an instant perfect result, so don't call this outside the radar system.
+		return vector.Math.getPitch(geo.aircraft_position(), me.getCoord());
+	},
 
     get_bearing_from_Coord: func(MyAircraftCoord){
         var myCoord = me.get_Coord();
@@ -1348,6 +1476,7 @@ next_Target_Index = func(){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
         lock = 0;
+        Target_Index = -1;
     }
 }
 
@@ -1363,6 +1492,7 @@ previous_Target_Index = func(){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
         lock = 0;
+        Target_Index = -1;
     }
 }
 

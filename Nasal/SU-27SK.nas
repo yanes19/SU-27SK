@@ -212,3 +212,14 @@
 	setlistener("sim/crashed",func{if(getprop("sim/crashed")){setprop("sim/explode","true");settimer(func{setprop("sim/explode","false");},2)}});
 	
 	#settimer(hydraulic_loop,2);
+
+var flares = func{
+	var flarerand = rand();
+props.globals.getNode("/rotors/main/blade[3]/flap-deg").setValue(flarerand);
+props.globals.getNode("/rotors/main/blade[3]/position-deg").setValue(flarerand);
+settimer(func   {
+    props.globals.getNode("/rotors/main/blade[3]/flap-deg").setValue(0);
+    props.globals.getNode("/rotors/main/blade[3]/position-deg").setValue(0);
+                },1);
+
+}

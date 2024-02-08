@@ -102,7 +102,7 @@
   <desc>Release Flares</desc>
   <binding>
  <command>nasal</command>
- <script>setprop("/ai/submodels/submodel/flare-release",1);damage.flare_released();settimer(func{setprop("/ai/submodels/submodel/flare-release",0);},0.1)</script>
+ <script>setprop("/ai/submodels/submodel/flare-release",1);su27.flares();damage.flare_released();settimer(func{setprop("/ai/submodels/submodel/flare-release",0);},0.1)</script>
 </binding>
  </key> 
  <key n="114">

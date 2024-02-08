@@ -5,6 +5,13 @@ print("LOADING ext_stores.nas .");
 #						Thanks to the m2005-5's developpers
 ################################################################################
 
+var type_missile = 0;
+var type_R27R  = 1;
+var type_R27ER = 2;
+var type_R27T  = 3;
+var type_R27ET = 4;
+var type_R73   = 5;
+
 # check then drop
 var dropTanks = func()
 {
@@ -513,10 +520,19 @@ dropMissile = func(number)
         {
             return;
         }
-        Current_missile = missile.MISSILE.new(number);
-        Current_missile.status = 0;
-        Current_missile.search(target);
-        Current_missile.release();
+        #Current_missile = missile.MISSILE.new(number);
+        Current_missile = missile.AIM.new(number, typeMissile, typeMissile, nil, nil);
+        if(Current_missile == -1){
+            print("failed to create AIM!");
+            return;
+        }
+        if(radar.GetTarget()!=nil){
+            Current_missile.release([radar.GetTarget()]);
+        }
+        else Current_missile.release(radar.tgts_list);
+        #Current_missile.status = 0;
+        #Current_missile.search(target);
+        #Current_missile.release();
         setprop("/sim/weight["~ number ~"]/weight-lb", 0);
         setprop("fdm/jsbsim/inertia/pointmass-weight-lbs["~ number ~"]", 0);
     }

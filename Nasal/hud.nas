@@ -332,8 +332,8 @@ var HUD = {
         var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
         target1_x = dist_O * math.sin(oriAngle - Rollrad);
         target1_z = dist_O * math.cos(oriAngle - Rollrad);
-        var kx = abs(target1_x/7.25);
-        var kz = abs(target1_z/6);
+        var kx = math.abs(target1_x/7.25);
+        var kz = math.abs(target1_z/6);
         if((kx > 1) or (kz > 1)){
           if(kx > kz){
             target1_x = target1_x / kx;
@@ -345,7 +345,8 @@ var HUD = {
         }
         if (radarON == 1){
               me.lockMarker.setVisible(1);
-              me.lockMarker.setTranslation(target1_x*18, -145+ -target1_z*15);}
+              #screen.log.write(sprintf("%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f", target1_x, target1_z, kx, kz, target1_x / kx, target1_x / kz, target1_z / kx, target1_z / kz));
+              me.lockMarker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
       }
     }
 
@@ -362,8 +363,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target1_x = dist_O * math.sin(oriAngle - Rollrad);
       target1_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target1_x/7.25);
-      var kz = abs(target1_z/6);
+      var kx = math.abs(target1_x/7.25);
+      var kz = math.abs(target1_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target1_x = target1_x / kx;
@@ -375,7 +376,7 @@ var HUD = {
       }
       if (radarON == 1){
 						me.tgt1Marker.setVisible(1);
-						me.tgt1Marker.setTranslation(target1_x*18, -145+ -target1_z*15);}
+						me.tgt1Marker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
 		}
 #		#**************TARGET2 MARKER *********************#
 		var target2_x = getprop("instrumentation/radar2/targets/multiplayer[1]/h-offset");
@@ -390,8 +391,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target2_x = dist_O * math.sin(oriAngle - Rollrad);
       target2_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target2_x/7.25);
-      var kz = abs(target2_z/6);
+      var kx = math.abs(target2_x/7.25);
+      var kz = math.abs(target2_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target2_x = target2_x / kx;
@@ -403,7 +404,8 @@ var HUD = {
       }
       if (radarON == 1){
 						me.tgt2Marker.setVisible(1);
-						me.tgt2Marker.setTranslation(target2_x*18, -145+ -target2_z*15);}
+            #screen.log.write(sprintf("%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f", target2_x, target2_z, kx, kz, target2_x / kx, target2_x / kz, target2_z / kx, target2_z / kz));
+						me.tgt2Marker.setTranslation(target2_x*18 - 10, -145+ -target2_z*15);}
 		}
 #		#**************TARGET3 MARKER *********************#
 		var target3_x = getprop("instrumentation/radar2/targets/multiplayer[2]/h-offset");
@@ -418,8 +420,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target3_x = dist_O * math.sin(oriAngle - Rollrad);
       target3_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target3_x/7.25);
-      var kz = abs(target3_z/6);
+      var kx = math.abs(target3_x/7.25);
+      var kz = math.abs(target3_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
           target3_x = target3_x / kx;
@@ -431,7 +433,7 @@ var HUD = {
       }
       if (radarON == 1){
 						me.tgt3Marker.setVisible(1);
-						me.tgt3Marker.setTranslation(target3_x*18, -145+ -target3_z*15);}
+						me.tgt3Marker.setTranslation(target3_x*18 - 10, -145+ -target3_z*15);}
 		}
 #		#**************TARGET4 MARKER *********************#
 		var target4_x = getprop("instrumentation/radar2/targets/multiplayer[3]/h-offset");
@@ -446,8 +448,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target4_x = dist_O * math.sin(oriAngle - Rollrad);
       target4_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target4_x/7.25);
-      var kz = abs(target4_z/6);
+      var kx = math.abs(target4_x/7.25);
+      var kz = math.abs(target4_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
           target4_z = target4_z / kx;
@@ -459,7 +461,7 @@ var HUD = {
       }
       if (radarON == 1){
 						me.tgt4Marker.setVisible(1);
-						me.tgt4Marker.setTranslation(target4_x*15, -145+ -target4_z*15);}
+						me.tgt4Marker.setTranslation(target4_x*18 - 10, -145+ -target4_z*15);}
 		}
 #		#**************TARGET5 MARKER *********************#
 		target1_x = getprop("instrumentation/radar2/targets/multiplayer[4]/h-offset");
@@ -474,8 +476,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target1_x = dist_O * math.sin(oriAngle - Rollrad);
       target1_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target1_x/7.25);
-      var kz = abs(target1_z/6);
+      var kx = math.abs(target1_x/7.25);
+      var kz = math.abs(target1_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target1_x = target1_x / kx;
@@ -487,7 +489,7 @@ var HUD = {
       }
 			if (radarON == 1){
 						me.tgt5Marker.setVisible(1);
-						me.tgt5Marker.setTranslation(target1_x*20, -145+ -target1_z*15);}
+						me.tgt5Marker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
 		}
 #		#**************TARGET6 MARKER *********************#
 		target1_x = getprop("instrumentation/radar2/targets/multiplayer[5]/h-offset");
@@ -502,8 +504,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target1_x = dist_O * math.sin(oriAngle - Rollrad);
       target1_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target1_x/7.25);
-      var kz = abs(target1_z/6);
+      var kx = math.abs(target1_x/7.25);
+      var kz = math.abs(target1_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target1_x = target1_x / kx;
@@ -515,7 +517,7 @@ var HUD = {
       }
 			if (radarON == 1){
 						me.tgt6Marker.setVisible(1);
-						me.tgt6Marker.setTranslation(target1_x*20, -145+ -target1_z*15);}
+						me.tgt6Marker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
 		}
 #		#**************TARGET7 MARKER *********************#
 		var target7_x = getprop("instrumentation/radar2/targets/tanker[0]/h-offset");
@@ -524,7 +526,7 @@ var HUD = {
 		{
 			if (radarON == 1){
 						me.tgt7Marker.setVisible(1);
-						me.tgt7Marker.setTranslation(target7_x*15, -145+ -target7_z*15);}
+						me.tgt7Marker.setTranslation(target7_x*18 - 10, -145+ -target7_z*15);}
 		}
 #		#**************TARGET8 MARKER *********************#
 		target1_x = getprop("instrumentation/radar2/targets/Mig-28[2]/h-offset");
@@ -539,8 +541,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target1_x = dist_O * math.sin(oriAngle - Rollrad);
       target1_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target1_x/7.25);
-      var kz = abs(target1_z/6);
+      var kx = math.abs(target1_x/7.25);
+      var kz = math.abs(target1_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target1_x = target1_x / kx;
@@ -552,7 +554,7 @@ var HUD = {
       }
 			if (radarON == 1){
 						me.tgt8Marker.setVisible(1);
-						me.tgt8Marker.setTranslation(target1_x*18, -145+ -target1_z*15);}
+						me.tgt8Marker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
 		}
 #		#**************TARGET9 MARKER *********************#
 		target1_x = getprop("instrumentation/radar2/targets/Mig-28[1]/h-offset");
@@ -567,8 +569,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target1_x = dist_O * math.sin(oriAngle - Rollrad);
       target1_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target1_x/7.25);
-      var kz = abs(target1_z/6);
+      var kx = math.abs(target1_x/7.25);
+      var kz = math.abs(target1_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target1_x = target1_x / kx;
@@ -580,7 +582,7 @@ var HUD = {
       }
       if (radarON == 1){
 						me.tgt9Marker.setVisible(1);
-						me.tgt9Marker.setTranslation(target1_x*18, -145+ -target1_z*15);}
+						me.tgt9Marker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
 		}
 #		#**************TARGET10 MARKER *********************#
 		target1_x = getprop("instrumentation/radar2/targets/Mig-28[0]/h-offset");
@@ -595,8 +597,8 @@ var HUD = {
       var Rollrad = (OurRoll.getValue() / 180) * 3.141592654;
       target1_x = dist_O * math.sin(oriAngle - Rollrad);
       target1_z = dist_O * math.cos(oriAngle - Rollrad);
-      var kx = abs(target1_x/7.25);
-      var kz = abs(target1_z/6);
+      var kx = math.abs(target1_x/7.25);
+      var kz = math.abs(target1_z/6);
       if((kx > 1) or (kz > 1)){
         if(kx > kz){
             target1_x = target1_x / kx;
@@ -608,7 +610,7 @@ var HUD = {
       }
 			if (radarON == 1){
 						me.tgt10Marker.setVisible(1);
-						me.tgt10Marker.setTranslation(target1_x*18, -145+ -target1_z*15);}
+						me.tgt10Marker.setTranslation(target1_x*18 - 10, -145+ -target1_z*15);}
 		}
  
     var speed_error = 0;
