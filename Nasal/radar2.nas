@@ -331,9 +331,13 @@ var Radar = {
         while(i < size(tgts_list))
         {
             var c = tgts_list[i];
-            if(c == nil or c.valid == nil or (!c.valid.getValue()) or (c.get_Validity() == 1 and getprop("sim/time/elapsed-sec") - c.get_TimeLast() > me.MyTimeLimit))
+            if(c == nil or c.valid == nil or (!c.valid.getValue()))
             {
-                c.set_nil();
+                if(c!=nil){
+                    print("killing target" ~ c.get_Callsign());
+                }
+                print("kill");
+                c.set_nill();
                 me.TargetList_RemovingTarget(u);
                 if(i == Target_Index){
                     lock = 0;
@@ -352,11 +356,11 @@ var Radar = {
             }
             if(size(tgts_list)-1 < Target_Index){
                 lock=0;
-                Target_Index=-1;
+                #Target_Index=-1;
                 return;
             }elsif(tgts_list[Target_Index] == nil){
                 lock=0;
-                Target_Index=-1;
+                #Target_Index=-1;
                 return;
             }elsif(!(tgts_list[Target_Index].Display != nil) or !tgts_list[Target_Index].Display.getValue()){
                 lock=0;
@@ -656,7 +660,7 @@ var Radar = {
 
     TargetList_AddingTarget: func(SelectedObject){
         # This is selectioned target management.
-        if(me.TargetList_LookingForATarget(SelectedObject) == 0)
+        if(me.TargetList_LookingForATarget(SelectedObject) == 9999)
         {
             append(tgts_list, SelectedObject);
         }
@@ -684,12 +688,12 @@ var Radar = {
         # Target list janitor
         foreach(var TempTarget ; tgts_list)
         {
-            if(TempTarget.get_shortring() == SelectedObject.get_shortring())
+            if(TempTarget != nil and TempTarget.get_shortring() == SelectedObject.get_shortring())
             {
                 return TempTarget.get_TimeLast();
             }
         }
-        return 0;
+        return 9999;
     },
 
     get_check: func(){
@@ -1493,6 +1497,7 @@ next_Target_Index = func(){
     if(GetTarget()!=nil){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
+        screen.log.write("Failed to lock!",1,1,0);
         lock = 0;
         #Target_Index = -1;
     }
@@ -1509,6 +1514,7 @@ previous_Target_Index = func(){
     if(GetTarget()!=nil){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
+        screen.log.write("Failed to lock!",1,1,0);
         lock = 0;
         #Target_Index = -1;
     }
@@ -1518,6 +1524,7 @@ GetTarget = func(){
     if(!lock)return nil;
     if(size(tgts_list) == 0)
     {
+        print("No target to lock.");
         return nil;
     }
     if(Target_Index < 0)
@@ -1528,6 +1535,7 @@ GetTarget = func(){
     {
         Target_Index = 0;
     }
+    
     return tgts_list[Target_Index];
 }
 

@@ -624,7 +624,7 @@
 
   <model>
     <name>Kh-23</name>
-    <path>/Aircraft/SU-27SK/Models/OPRF/KH-23/Kh-23-100.xml</path>
+    <path>/Aircraft/SU-27SK/Models/OPRF/KH-23/kh-23.xml</path>
     <offsets>
       <x-m> 13.550 </x-m>
       <y-m> -1.235 </y-m>
@@ -714,7 +714,7 @@
   </model>
   <model>
     <name>Kh-23</name>
-    <path>/Aircraft/SU-27SK/Models/OPRF/KH-23/Kh-23-100.xml</path>
+    <path>/Aircraft/SU-27SK/Models/OPRF/KH-23/kh-23.xml</path>
     <offsets>
 		<x-m> 13.550 </x-m>
 		<y-m>  1.235 </y-m>

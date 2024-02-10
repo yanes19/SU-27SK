@@ -763,6 +763,7 @@ var SelectNextPylon = func()
         }
 }
 var spamList = [];
+var spams = 0;
 var defeatSpamFilter = func (str) {
   #thread.lock(mutexMsg);
   spams += 1;
@@ -782,5 +783,6 @@ var defeatSpamFilter = func (str) {
     append(newList, spamList[i]);
   }
   spamList = newList;
+  setprop("/sim/messages/atc",str);
   #thread.unlock(mutexMsg);
 }

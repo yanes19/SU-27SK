@@ -6,7 +6,7 @@
         <emissive type="bool">false</emissive>
         <lighting type="bool">true</lighting>
         <condition>
-            <property>payload/armament/kh-23/flags/smoke-id-100</property>
+            1
         </condition>
         <attach>world</attach>
         <placer>
@@ -99,7 +99,7 @@
         <emissive type="bool">true</emissive>
         <lighting type="bool">false</lighting>
         <condition>
-            <property>payload/armament/kh-23/flags/smoke-id-100</property>
+            1
         </condition>
         <attach>world</attach>
         <placer>

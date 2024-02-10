@@ -8,14 +8,14 @@
             <property>payload/armament/kh-23/flags/msl-id-100</property>
         </condition>
     </animation>-->
-    <model>
+    <!--<model>
         <path>Aircraft/SU-27SK/Models/OPRF/KH-23/motor-smoke-1.xml</path>
         <offsets>
             <x-m>1.44</x-m>
             <y-m>0</y-m>
             <z-m>0</z-m>
         </offsets>
-    </model>
+    </model>-->
     <model>
         <name>explosion</name>
         <path>Aircraft/SU-27SK/Models/OPRF/KH-23/explosion-1.xml</path>
