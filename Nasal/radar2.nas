@@ -327,6 +327,24 @@ var Radar = {
             }
         }
         #check lock
+        var i = 0;
+        while(i < size(tgts_list))
+        {
+            var c = tgts_list[i];
+            if(c == nil or c.valid == nil or (!c.valid.getValue()) or (c.get_Validity() == 1 and getprop("sim/time/elapsed-sec") - c.get_TimeLast() > me.MyTimeLimit))
+            {
+                c.set_nil();
+                me.TargetList_RemovingTarget(u);
+                if(i == Target_Index){
+                    lock = 0;
+                    Target_Index = -1;
+                }
+                if( i < Target_Index){
+                    Target_index = Target_Index - 1;
+                }
+            }
+            i = i + 1;
+        }
         if(lock){
             if(Target_Index == -1){
                 lock = 0;
@@ -342,7 +360,7 @@ var Radar = {
                 return;
             }elsif(!(tgts_list[Target_Index].Display != nil) or !tgts_list[Target_Index].Display.getValue()){
                 lock=0;
-                Target_Index=-1;
+                #Target_Index=-1;
             }
         }
     },
@@ -1476,7 +1494,7 @@ next_Target_Index = func(){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
         lock = 0;
-        Target_Index = -1;
+        #Target_Index = -1;
     }
 }
 
@@ -1492,7 +1510,7 @@ previous_Target_Index = func(){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
         lock = 0;
-        Target_Index = -1;
+        #Target_Index = -1;
     }
 }
 

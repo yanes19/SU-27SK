@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+    <path>Kh-23.ac</path>
+    <animation>
+        <type>select</type>
+        <object-name>Kh-23</object-name>
+        <condition>
+            <property>payload/armament/kh-23/flags/msl-id-100</property>
+        </condition>
+    </animation>
+    <model>
+        <path>Aircraft/MiG-23MLD/Models/Stores/KH-23/motor-smoke-1.xml</path>
+        <offsets>
+            <x-m>1.44</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>explosion</name>
+        <path>Aircraft/MiG-23MLD/Models/Stores/KH-23/explosion-1.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </offsets>
+    </model>
+    <animation>
+        <object-name>Kh-23</object-name>
+        <enable-hot type="bool">false</enable-hot>
+    </animation>
+</PropertyList>

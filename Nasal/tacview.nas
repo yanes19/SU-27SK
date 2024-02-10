@@ -37,7 +37,7 @@ var get_primary_contact = func {
 
 # Radar range. May return nil if n/a
 var get_radar_range_nm = func {
-    return f22.myRadar.rangeTab[f22.myRadar.rangeIndex];
+    return su27.myRadar.rangeTab[su27.myRadar.rangeIndex];
 }
 
 ### End of parameters

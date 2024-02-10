@@ -604,7 +604,6 @@ var AIM = {
         }
 		m.weapon_model          = getprop("payload/armament/models")~m.weapon_model_type~"/"~m.weapon_model_type~"-smoke";
 		m.weapon_model2          = getprop("payload/armament/models")~m.weapon_model_type~"/"~m.weapon_model_type;
-
 		# Find the next index for "models/model" and create property node.
 		# Find the next index for "ai/models/aim-9" and create property node.
 		# (M. Franz, see Nasal/tanker.nas)
@@ -636,6 +635,7 @@ var AIM = {
 		
 		
 		var id_model = getprop("controls/armament/missile/address");
+		m.model_explode = getprop("controls/armament/missile/addressExplosion");
 		m.model.getNode("path", 1).setValue(id_model);
 		m.model.getNode("enable-hot", 1).setBoolValue(0);# This is if people forget to set it in xml.
 		m.model.getNode("name", 1).setValue(m.typeLong);# this helps in debugging.
@@ -913,6 +913,32 @@ var AIM = {
 		AIM.setETA(nil);
 		me.SwSoundVol.setDoubleValue(0);
 	},
+
+	reload_model: func(path){
+        # Delete the current model
+        me.model.remove();
+        
+        # Find the new model index
+        var n = props.globals.getNode("models", 1);
+        for(var i = 0 ; 1 ; i += 1)
+        {
+            if(n.getChild("model", i, 0) == nil)
+            {
+                break;
+            }
+        }
+        me.model = n.getChild("model", i, 1);
+        
+        # Put value in model :
+        me.model.getNode("path", 1).setValue(path);
+        me.model.getNode("latitude-deg-prop", 1).setValue(me.latN.getPath());
+        me.model.getNode("longitude-deg-prop", 1).setValue(me.lonN.getPath());
+        me.model.getNode("elevation-ft-prop", 1).setValue(me.altN.getPath());
+        me.model.getNode("heading-deg-prop", 1).setValue(me.hdgN.getPath());
+        me.model.getNode("pitch-deg-prop", 1).setValue(me.pitchN.getPath());
+        me.model.getNode("roll-deg-prop", 1).setValue(me.rollN.getPath());
+        me.model.getNode("load", 1).remove();
+    },
 
 	getCCRP: func (maxFallTime_sec, timeStep) {
 		# returns distance in meters to ideal release time.
@@ -4077,8 +4103,9 @@ var AIM = {
 					append(AIM.timerQueue, [AIM, AIM.notifyHit, [coordinates.alt() - (me.inacc?me.Tgt.get_Coord(0).alt():me.t_coord.alt()),range,me.callsign,coordinates.course_to(me.inacc?me.Tgt.get_Coord(0):me.t_coord),reason,me.typeID, me.typeLong, 0], -1]);
 					thread.unlock(mutexTimer);
                 } else {
+					#SendMessage(phrase);
 	                thread.lock(mutexTimer);
-					SendMessage(phrase);
+					#SendMessage(phrase);
 	                append(AIM.timerQueue, [AIM, AIM.log, [phrase], 0]);
 	                thread.unlock(mutexTimer);
 	            }
@@ -5055,6 +5082,7 @@ var AIM = {
 		#print (me.typeShort);
 
 		me.explode_prop.setBoolValue(TRUE);
+		me.reload_model(me.model_explode);
 		me.explode_angle_prop.setDoubleValue((rand() - 0.5) * 50);
 		thread.lock(mutexTimer);
 		append(AIM.timerQueue, [me, func me.explode_prop.setBoolValue(FALSE), [], 0.5]);

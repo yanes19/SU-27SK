@@ -5,7 +5,7 @@ var showPylonsDlg = func{
 			return;
 		}
 	}
-var (width,height) = (980,400);
+var (width,height) = (980,640);
 var title = 'Su-27 pylons loads editor :';
  
 # create a new window, dimensions are WIDTH x HEIGHT, using the dialog decoration (i.e. titlebar)
@@ -448,6 +448,21 @@ btn_P10_R27ET.listen("clicked", func {
 		});
 P10Ctls.addItem(btn_P10_R27ET);
 
+var btn_P10_KH23 = canvas.gui.widgets.Button.new(root, canvas.style, {})
+        .setText("Kh-23")
+        #.move(300, 300)
+        .setFixedSize(90, 25);
+
+btn_P10_KH23.listen("clicked", func {
+        # add code here to react on click on button.
+		print("P10: Kh-23");
+		setprop("sim/weight[9]/selected","Kh-23");
+		setprop("/controls/armament/station[9]/release","false");
+		setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[9]",637.136); # R-27ET = 343  KG
+		pylons_update();
+		});
+P10Ctls.addItem(btn_P10_KH23);
+
 ###############################
 ######### Pylon2 ##############	
 ###############################
@@ -696,6 +711,21 @@ btn_P9_R27ET.listen("clicked", func {
 		pylons_update();
 		});
 P9Ctls.addItem(btn_P9_R27ET);
+
+var btn_P9_KH23 = canvas.gui.widgets.Button.new(root, canvas.style, {})
+        .setText("Kh-23")
+        #.move(300, 300)
+        .setFixedSize(90, 25);
+
+btn_P9_KH23.listen("clicked", func {
+        # add code here to react on click on button.
+		print("P9: Kh-23");
+		setprop("sim/weight[8]/selected","Kh-23");
+		setprop("/controls/armament/station[8]/release","false");
+		setprop("fdm/jsbsim/inertia/pointmass-weight-lbs[8]",637.136); # R-27ET = 343  KG
+		pylons_update();
+		});
+P9Ctls.addItem(btn_P9_KH23);
 
 ###############################
 ######### Pylon3 ##############	

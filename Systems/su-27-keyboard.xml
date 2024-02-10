@@ -93,6 +93,19 @@
  <value>R-27T</value>
  <value>R-27ER</value>
  <value>R-27ET</value>
+ 
+</binding>
+  <binding><command>nasal</command><script>screen.log.write("Selected " ~ getprop("controls/armament/selected-weapon"),0.5,0.5,1);</script></binding>
+ </key> 
+
+ <key n="77">
+  <name>M</name>
+  <desc>Cycle selected A/G weapon</desc>
+  <binding>
+ <command>property-cycle</command>
+ <property>controls/armament/selected-weapon</property>
+ <value>Kh-23</value>
+ 
 </binding>
   <binding><command>nasal</command><script>screen.log.write("Selected " ~ getprop("controls/armament/selected-weapon"),0.5,0.5,1);</script></binding>
  </key> 

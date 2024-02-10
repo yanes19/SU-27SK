@@ -621,6 +621,32 @@
    </animation>
    </overlay>
   </model>
+
+  <model>
+    <name>Kh-23</name>
+    <path>/Aircraft/SU-27SK/Models/OPRF/KH-23/Kh-23-100.xml</path>
+    <offsets>
+      <x-m> 13.550 </x-m>
+      <y-m> -1.235 </y-m>
+      <z-m> -1.324 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[8]/selected</property>
+		    <value>Kh-23</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[8]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
   
   
 <!--Pylon 10 load-->
@@ -677,6 +703,31 @@
 		   <equals>
 		    <property>sim/weight[9]/selected</property>
 		    <value>R-27ER</value>
+		   </equals>
+				<not>
+		    <property>controls/armament/station[9]/release</property>
+				</not>
+		   </and>
+		  </condition>
+   </animation>
+   </overlay>
+  </model>
+  <model>
+    <name>Kh-23</name>
+    <path>/Aircraft/SU-27SK/Models/OPRF/KH-23/Kh-23-100.xml</path>
+    <offsets>
+		<x-m> 13.550 </x-m>
+		<y-m>  1.235 </y-m>
+		<z-m> -1.324 </z-m>
+    </offsets>
+    <overlay>
+    <animation>
+	    <type>select</type>
+		  <condition>
+			<and>
+		   <equals>
+		    <property>sim/weight[9]/selected</property>
+		    <value>Kh-23</value>
 		   </equals>
 				<not>
 		    <property>controls/armament/station[9]/release</property>
