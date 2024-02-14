@@ -337,8 +337,8 @@ var Radar = {
                     print("killing target" ~ c.get_Callsign());
                 }
                 print("kill");
-                c.set_nill();
-                me.TargetList_RemovingTarget(u);
+                #c.set_nill();
+                me.TargetList_RemovingTarget(c);
                 if(i == Target_Index){
                     lock = 0;
                     Target_Index = -1;
@@ -684,6 +684,7 @@ var Radar = {
     },
 
     TargetList_LookingForATarget: func(SelectedObject){
+        if(SelectedObject == nil)return 0;
         # This is selectioned target management.
         # Target list janitor
         foreach(var TempTarget ; tgts_list)
@@ -1497,7 +1498,7 @@ next_Target_Index = func(){
     if(GetTarget()!=nil){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
-        screen.log.write("Failed to lock!",1,1,0);
+        screen.log.write("Failed to lock: No Target!",1,1,0);
         lock = 0;
         #Target_Index = -1;
     }
@@ -1514,7 +1515,7 @@ previous_Target_Index = func(){
     if(GetTarget()!=nil){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
-        screen.log.write("Failed to lock!",1,1,0);
+        screen.log.write("Failed to lock: No Target!",1,1,0);
         lock = 0;
         #Target_Index = -1;
     }
