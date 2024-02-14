@@ -1,7 +1,7 @@
 #print("LOADING radar2.nas .");
 ################################################################################
 #
-#           Customized version of radar2 for the SU-27SK
+#           Customized version of radar2 for the Su-27SK
 # 
 ################################################################################
 
@@ -69,7 +69,7 @@ var our_alt           = 0;
 var Mp = props.globals.getNode("ai/models");
 var tgts_list         = [];
 var Target_Index      = 0 ; # for Target Selection
-var lock              = 0;
+var lock              = props.globals.getNode("instrumentation/radar/lock");   #maybe this should be this...
 var cnt               = 0 ; # counter used for the scan sweep pattern
 var cnt_hud           = 0 ; # counter used for the HUD update
 
@@ -208,15 +208,15 @@ var Radar = {
                 # creation of the tempo object Target
                 var u = Target.new(c);
                 if(u == nil)continue;
-                if(!u.valid.getValue())
-                {
+                #if(!u.valid.getValue())
+                #{
                         
                     # call Janitor
-                    u.set_nill();
-                    me.TargetList_RemovingTarget(u);
-                    continue;
+                    #u.set_nill();
+                    #me.TargetList_RemovingTarget(u);
+                    #continue;
                     #screen.log.write("janitor();");
-                }
+                #}
                 #screen.log.write("New target detected.",255,255,0);
                 
                 #print("Testing "~ u.get_Callsign()~"Type: " ~ type);
@@ -229,8 +229,7 @@ var Radar = {
                 
                 # then a function just check it all
                 if(me.get_check(u))
-                #if(1)
-                {
+                                {
                     #screen.log.write("checked!");
                     var HaveRadarNode = c.getNode("radar");
                     var u_rng = me.targetRange(u);
@@ -318,10 +317,9 @@ var Radar = {
                         if(getprop("sim/time/elapsed-sec") - u.get_TimeLast() > me.MyTimeLimit)
                         {
                             # call Janitor
-                            u.set_nill();
+                            #u.set_nill();
                             me.TargetList_RemovingTarget(u);
-                            #screen.log.write("janitor();");
-                        }
+                                                    }
                     }
                 }
             }
@@ -340,7 +338,7 @@ var Radar = {
                 #c.set_nill();
                 me.TargetList_RemovingTarget(c);
                 if(i == Target_Index){
-                    lock = 0;
+                    lock.setValue(0);
                     Target_Index = -1;
                 }
                 if( i < Target_Index){
@@ -1494,12 +1492,12 @@ next_Target_Index = func(){
     {
         Target_Index = 0;
     }
-    lock = 1;
+    lock.setValue(1);
     if(GetTarget()!=nil){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
         screen.log.write("Failed to lock: No Target!",1,1,0);
-        lock = 0;
+        lock.setValue(0);
         #Target_Index = -1;
     }
 }
@@ -1511,22 +1509,20 @@ previous_Target_Index = func(){
     {
         Target_Index = size(tgts_list) - 1;
     }
-    lock = 1;
+    lock.setValue(1);
     if(GetTarget()!=nil){
         screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
     }else{
         screen.log.write("Failed to lock: No Target!",1,1,0);
-        lock = 0;
-        #Target_Index = -1;
-    }
+        lock.setValue(0);
+            }
 }
 
 GetTarget = func(){
-    if(!lock)return nil;
+    if(!lock.getValue())return nil;
     if(size(tgts_list) == 0)
     {
-        print("No target to lock.");
-        return nil;
+                return nil;
     }
     if(Target_Index < 0)
     {
@@ -1536,8 +1532,7 @@ GetTarget = func(){
     {
         Target_Index = 0;
     }
-    
-    return tgts_list[Target_Index];
+        return tgts_list[Target_Index];
 }
 
 var switch_distance = func(){
@@ -1546,4 +1541,3 @@ var switch_distance = func(){
     RangeSelected.setValue(rangeTab[rangeIndex]);
     setprop("instrumentation/radar/range", rangeTab[rangeIndex]);
 }
-
