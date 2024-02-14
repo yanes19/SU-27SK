@@ -69,7 +69,7 @@ var our_alt           = 0;
 var Mp = props.globals.getNode("ai/models");
 var tgts_list         = [];
 var Target_Index      = 0 ; # for Target Selection
-var lock              = props.globals.getNode("instrumentation/radar/lock");   #maybe this should be this...
+var lock              = props.globals.getNode("instrumentation/radar/lock", 1);   #maybe this should be this...
 var cnt               = 0 ; # counter used for the scan sweep pattern
 var cnt_hud           = 0 ; # counter used for the HUD update
 
