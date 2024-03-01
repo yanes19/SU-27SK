@@ -238,8 +238,8 @@ var Radar = {
         
                     var beardeg = me.targetBearing(u) - me.OurHdg.getValue();
                     #screen.log.write(beardeg);
-                    if(beardeg < -180)beardeg = beardeg + 180;
-                    if(beardeg > 180)beardeg = beardeg - 180;
+                    if(beardeg < -180)beardeg = beardeg + 360;
+                    if(beardeg > 180)beardeg = beardeg - 360;
                     #screen.log.write(sprintf("%.2f  %.2f",beardeg,me.targetBearing(u)));
                     var altdist = (u.get_altitude() - me.our_alt.getValue()) * 0.3048;
                     var hdist = math.sqrt((u_rng * u_rng * NM2M * NM2M) - (altdist * altdist));
