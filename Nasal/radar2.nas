@@ -347,7 +347,7 @@ var Radar = {
             }
             i = i + 1;
         }
-        if(lock){
+        if(lock.getValue()){
             if(Target_Index == -1){
                 lock = 0;
                 return;
