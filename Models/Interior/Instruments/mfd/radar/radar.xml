@@ -172,7 +172,7 @@
 	 <condition>   
 		<and>
 			<equals>
-				<property>instrumentation/radar2/targets/aircraft/display</property>
+				<property>instrumentation/radar2/targets/multiplayer/display</property>
 				<value>1</value>
 			</equals>
 			<equals>
@@ -190,7 +190,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target0</object-name>
-	 <property>instrumentation/radar2/targets/aircraft/y-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer/y-shift</property>
 <!--
 	 <factor>0.001888</factor>
 -->
@@ -203,7 +203,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target0</object-name>
-	 <property>instrumentation/radar2/targets/aircraft/x-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer/x-shift</property>
 <!--
 		<factor>0.001888</factor>
 -->
@@ -216,7 +216,7 @@
  <animation>
 	 <type>rotate</type>
 	 <object-name>target0</object-name>
-	 <property>instrumentation/radar2/targets/aircraft/rotation</property>
+	 <property>instrumentation/radar2/targets/multiplayer/rotation</property>
 	 <axis>
 		 <x>-1</x>
 		 <y>0</y>
@@ -224,8 +224,10 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <!--<y-m>0.0050</y-m>
+		 <z-m>-0.0340</z-m>-->
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target1 air to air ++++++++++-->
@@ -235,7 +237,7 @@
 	 <condition>   
 		 <and>
 			 <equals>
-				 <property>instrumentation/radar2/targets/aircraft[1]/display</property>
+				 <property>instrumentation/radar2/targets/multiplayer[1]/display</property>
 				 <value>1</value>
 			 </equals>
 			 <equals>
@@ -253,7 +255,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target1</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[1]/y-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[1]/y-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>0</y>
@@ -263,7 +265,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target1</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[1]/x-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[1]/x-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>1</y>
@@ -273,7 +275,7 @@
  <animation>
 	 <type>rotate</type>
 	 <object-name>target1</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[1]/rotation</property>
+	 <property>instrumentation/radar2/targets/multiplayer[1]/rotation</property>
 	 <axis>
 		 <x>-1</x>
 		 <y>0</y>
@@ -281,8 +283,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target2 air to air ++++++++++-->
@@ -292,7 +294,7 @@
 	 <condition>   
 		 <and>
 			 <equals>
-				 <property>instrumentation/radar2/targets/aircraft[2]/display</property>
+				 <property>instrumentation/radar2/targets/multiplayer[2]/display</property>
 				 <value>1</value>
 			 </equals>
 			 <equals>
@@ -310,7 +312,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target2</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[2]/y-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[2]/y-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>0</y>
@@ -320,7 +322,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target2</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[2]/x-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[2]/x-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>1</y>
@@ -330,7 +332,7 @@
  <animation>
 	 <type>rotate</type>
 	 <object-name>target2</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[2]/rotation</property>
+	 <property>instrumentation/radar2/targets/multiplayer[2]/rotation</property>
 	 <axis>
 		 <x>-1</x>
 		 <y>0</y>
@@ -338,8 +340,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target3 air to air ++++++++++-->
@@ -349,7 +351,7 @@
 	 <condition>   
 		 <and>
 			 <equals>
-				 <property>instrumentation/radar2/targets/aircraft[3]/display</property>
+				 <property>instrumentation/radar2/targets/multiplayer[3]/display</property>
 				 <value>1</value>
 			 </equals>
 			 <equals>
@@ -367,7 +369,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target3</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[3]/y-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[3]/y-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>0</y>
@@ -377,7 +379,7 @@
  <animation>
 	 <type>translate</type>
 	 <object-name>target3</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[3]/x-shift</property>
+	 <property>instrumentation/radar2/targets/multiplayer[3]/x-shift</property>
 	 <axis>
 		 <x>0</x>
 		 <y>1</y>
@@ -387,7 +389,7 @@
  <animation>
 	 <type>rotate</type>
 	 <object-name>target3</object-name>
-	 <property>instrumentation/radar2/targets/aircraft[3]/rotation</property>
+	 <property>instrumentation/radar2/targets/multiplayer[3]/rotation</property>
 	 <axis>
 		 <x>-1</x>
 		 <y>0</y>
@@ -395,8 +397,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.0340</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target4 air to air ++++++++++-->
@@ -452,8 +454,8 @@
 	 </axis>
 	 <center>
 		 <x-m>0.00</x-m>
-		 <y-m>0.0050</y-m>
-		 <z-m>-0.0340</z-m>
+		 <y-m>0.00</y-m>
+		 <z-m>0.00</z-m>
 	</center>
  </animation>
  <!--++++++++++++ target5 air to air ++++++++++-->
@@ -631,5 +633,3 @@
 
  
 </PropertyList>
-
-

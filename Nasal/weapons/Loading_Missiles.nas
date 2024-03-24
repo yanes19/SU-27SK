@@ -40,7 +40,7 @@ var Loading_missile = func(name)
         fovdeg = 65;                                 # seeker optical FOV
         detectionfovdeg = 180;                       # Search pattern diameter (rosette scan)
         trackmaxdeg = 110;                           # Seeker max total angular rotation
-        maxg = 74;                                   # SEE :http://www.secretprojects.co.uk/forum/index.php?topic=60.60
+        maxg = 30;                                   # SEE :http://www.secretprojects.co.uk/forum/index.php?topic=60.60
         thrustlbs = 517;                             # guess
         thrustdurationsec = 44;                      # Not sure
         weightlaunchlbs = 216;
@@ -63,7 +63,7 @@ var Loading_missile = func(name)
         fovdeg = 75;                                  # seeker optical FOV
         detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
         trackmaxdeg = 110;                            # Seeker max total angular rotation
-        maxg = 15;                                    # In turn less than the MICA, coz it don't have vectorial thurst
+        maxg = 40;                                    # In turn less than the MICA, coz it don't have vectorial thurst
         thrustlbs = 701;                              # guess
         thrustdurationsec = 39;                       # Mk.36 Mod.7,8
         weightlaunchlbs = 291;
@@ -73,7 +73,7 @@ var Loading_missile = func(name)
         maxExplosionRange = 50;                       # in meter !!Due to the code, more the speed is important, more we need to have this figure high
         maxspeed = 4;                                 # In Mach
         life = 115;
-        fox = "Fox 3";
+        fox = "Fox 2";
         rail = "false";
         cruisealt = 0;
     }
@@ -86,7 +86,7 @@ var Loading_missile = func(name)
         fovdeg = 25;                                  # seeker optical FOV
         detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
         trackmaxdeg = 110;                            # Seeker max total angular rotation
-        maxg = 21;                                    # In turn
+        maxg = 30;                                    # In turn
         thrustlbs = 277;                              # guess
         thrustdurationsec = 12;                       # Mk.36 Mod.7,8
         weightlaunchlbs = 169;
@@ -109,7 +109,7 @@ var Loading_missile = func(name)
         fovdeg = 25;                                  # seeker optical FOV
         detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
         trackmaxdeg = 110;                            # Seeker max total angular rotation
-        maxg = 21;                                    # In turn
+        maxg = 30;                                    # In turn
         thrustlbs = 250;                              # guess
         thrustdurationsec =  15;                      # Mk.36 Mod.7,8
         weightlaunchlbs = 191;
@@ -322,6 +322,29 @@ var Loading_missile = func(name)
         maxspeed = 2.7;                               # In Mach
         life = 55;
         fox = "Fox 2";
+        rail = "false";
+        cruisealt = 0;
+    }
+    elsif(name == "Kh-23")
+    {
+        # R74 max range 40 km for actual version. ->21 nm.. at mach 2.5 it's about 47 sec. I put a life of 55, and thurst duration to 3/4 the travel time.
+        address = "/Aircraft/SU-27SK/Models/OPRF/KH-23/kh-23-100.xml";
+        NoSmoke = "/Aircraft/SU-27SK/Models/OPRF/KH-23/kh-23.xml";
+        maxdetectionrngnm = 10.8;                     # Not real Impact yet
+        fovdeg = 25;                                  # seeker optical FOV
+        detectionfovdeg = 180;                        # Search pattern diameter (rosette scan)
+        trackmaxdeg = 110;                            # Seeker max total angular rotation
+        maxg = 25;                                    # In turn
+        thrustlbs = 752;                              # guess  the doc says 17 000 = 83 lbs of thrust...need to readapt all the values.
+        thrustdurationsec = 35;                       # Mk.36 Mod.7,8
+        weightlaunchlbs = 214;
+        weightwarheadlbs = 16;
+        dragcoeff = 0.06;                             # guess; original 0.05
+        dragarea = 0.0552;                            # sq ft
+        maxExplosionRange =  40;                      # Due to the code, more the speed is important, more we need to have this figure high
+        maxspeed = 2.7;                               # In Mach
+        life = 55;
+        fox = "Fox 1";
         rail = "false";
         cruisealt = 0;
     }

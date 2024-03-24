@@ -2,17 +2,17 @@
 
 
 <PropertyList>
-	
+
 	<name>OC-Radio-panel</name>
 	<path>OC-Radio-panel-zh.ac</path>
-	
+
     <animation>
 		<type>knob</type>
 		<object-name>knob.program.selector</object-name>
-	  <property>su-27/instrumentation/PNK-10/active-mode</property>
-	  <factor>30</factor>
+	    <property>su-27/instrumentation/PNK-10/active-mode</property>
+	    <factor>30</factor>
 		<center>
-			<x-m>0.00786</x-m><y-m>0.05582</y-m><z-m>0.01863</z-m>
+			<x-m>-0.004407</x-m><y-m>0.066191</y-m><z-m>0.007268</z-m>
 		</center>
 		<axis>
 			<x>0</x><y>0</y><z>1</z>
@@ -23,7 +23,7 @@
 			  <property>su-27/instrumentation/PNK-10/active-mode</property>
 				  <factor>1</factor>
 	              <min>0</min>
-	              <max>4</max>                
+	              <max>4</max>
 	              <wrap>false</wrap>
 			</binding>
 		</action>
@@ -39,358 +39,12 @@
 	      <script>ACS.SAU_AutoLevel();</script>
 			</binding>
 		</action>
-	</animation>	
-	
-	
-	
-	<text>
-	<name>PPM_NumText-bkg</name>
-	<type type="string">literal</type>
-	<text type="string">8</text>
-	<draw-text type="bool">true</draw-text>
-	<font>7-Segment.ttf</font>
-	<character-size type="double">0.006</character-size>
-	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
-	<alignment>center-center</alignment>
-	<offsets>
-	<heading-deg>90</heading-deg>
-	<roll-deg>0</roll-deg>
-	<pitch-deg>-7</pitch-deg>
-	<x-m>-0.02633</x-m>
-	<y-m>-0.0610</y-m>
-	<z-m>-0.0085</z-m>
-	</offsets>
-	</text>
-	
-	<text>
-	<name>PPM_NumText</name>
-	<type type="string">text-value</type>
-	<property type="string">su-27/instrumentation/RSBN/active-PPM</property>
-	<draw-text type="bool">true</draw-text>
-	<font>7-Segment.ttf</font>
-	<character-size type="double">0.006</character-size>
-	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
-	<alignment>center-center</alignment>
-	<offsets>
-	<heading-deg>90</heading-deg>
-	<roll-deg>0</roll-deg>
-	<pitch-deg>-7</pitch-deg>
-	<x-m>-0.02633</x-m>
-	<y-m>-0.0610</y-m>
-	<z-m>-0.00848</z-m>
-	</offsets>
-	</text>
-	
-	<text>
-	<name>AER_NumText</name>
-	<type type="string">text-value</type>
-	<property type="string">su-27/instrumentation/RSBN/active-AER</property>
-	<draw-text type="bool">true</draw-text>
-	<font>7-Segment.ttf</font>
-	<character-size type="double">0.006</character-size>
-	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
-	<alignment>center-center</alignment>
-	<offsets>
-	<heading-deg>90</heading-deg>
-	<roll-deg>0</roll-deg>
-	<pitch-deg>-7</pitch-deg>
-	<x-m>-0.02573</x-m>
-	<y-m>0.0232</y-m>
-	<z-m>0.0148</z-m>
-	</offsets>
-	</text>
-	
-	<text>
-	<name>AER_NumText-bkg</name>
-	<type type="string">literal</type>
-	<text type="string">8</text>
-	<draw-text type="bool">true</draw-text>
-	<font>7-Segment.ttf</font>
-	<character-size type="double">0.006</character-size>
-	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
-	<alignment>center-center</alignment>
-	<offsets>
-	<heading-deg>90</heading-deg>
-	<roll-deg>0</roll-deg>
-	<pitch-deg>-7</pitch-deg>
-	<x-m>-0.02573</x-m>
-	<y-m>0.0232</y-m>
-	<z-m>0.0146</z-m>
-	</offsets>
-	</text>
-
-	<text>
-	<name>WPT_NumText-bkg</name>
-	<type type="string">literal</type>
-	<text type="string">888</text>
-	<draw-text type="bool">true</draw-text>
-	<font>7-Segment.ttf</font>
-	<character-size type="double">0.006</character-size>
-	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
-	<alignment>center-center</alignment>
-	<offsets>
-	<heading-deg>90</heading-deg>
-	<roll-deg>0</roll-deg>
-	<pitch-deg>-7</pitch-deg>
-	<x-m>-0.0228</x-m>
-	<y-m>0.05016</y-m>
-	<z-m>0.0238</z-m>
-	</offsets>
-	</text>
-
-	<text>
-	<name>WPT_NumText</name>
-	<type type="string">text-value</type>
-	<property type="string">su-27/instrumentation/OC-controller/active-wpt</property>
-	<draw-text type="bool">true</draw-text>
-	<font>7-Segment.ttf</font>
-	<character-size type="double">0.006</character-size>
-	<character-aspect-ratio type="double">1.0</character-aspect-ratio>
-	<alignment>center-center</alignment>
-	<offsets>
-	<heading-deg>90</heading-deg>
-	<roll-deg>0</roll-deg>
-	<pitch-deg>-7</pitch-deg>
-	<x-m>-0.0228</x-m>
-	<y-m>0.05016</y-m>
-	<z-m>0.0243</z-m>
-	</offsets>
-	</text>
-	
-	<animation>
-	<type>material</type>
-	<object-name>WPT_NumText</object-name>
-		<diffuse>
-		<red> 0.99</red>
-		<green>0.00</green>
-		<blue> 0.00</blue>
-		</diffuse>
-		<emission>
-		<red> 0.6</red>
-		<green>0.1</green>
-		<blue> 0.1</blue>
-		</emission>
-		<ambient>
-		<red>1.0</red>
-		<green>0.2</green>
-		<blue>0.0</blue>
-		</ambient>
-	</animation>
-	
-	<animation>
-	<type>material</type>
-	<object-name>AER_NumText</object-name>
-		<diffuse>
-		<red> 0.99</red>
-		<green>0.00</green>
-		<blue> 0.00</blue>
-		</diffuse>
-		<emission>
-		<red> 0.6</red>
-		<green>0.1</green>
-		<blue> 0.1</blue>
-		</emission>
-		<ambient>
-		<red>1.0</red>
-		<green>0.2</green>
-		<blue>0.0</blue>
-		</ambient>
-	</animation>
-
-	<animation>
-	<type>material</type>
-	<object-name>WPT_NumText-bkg</object-name>
-		<diffuse>
-		<red>  0.2</red>
-		<green>0.2</green>
-		<blue> 0.2</blue>
-		</diffuse>
-		<emission>
-		<red> 0.1</red>
-		<green>0.01</green>
-		<blue> 0.01</blue>
-		</emission>
-		<ambient>
-		<red>0.6</red>
-		<green>0.2</green>
-		<blue>0.2</blue>
-		</ambient>
-	</animation>
-
-	<animation>
-	<type>material</type>
-	<object-name>AER_NumText-bkg</object-name>
-		<diffuse>
-		<red>  0.2</red>
-		<green>0.2</green>
-		<blue> 0.2</blue>
-		</diffuse>
-		<emission>
-		<red> 0.1</red>
-		<green>0.01</green>
-		<blue> 0.01</blue>
-		</emission>
-		<ambient>
-		<red>0.6</red>
-		<green>0.2</green>
-		<blue>0.2</blue>
-		</ambient>
-	</animation>
-	
-	<animation>
-	<type>material</type>
-	<object-name>AER_NumText-bkg</object-name>
-		<diffuse>
-		<red>  0.2</red>
-		<green>0.2</green>
-		<blue> 0.2</blue>
-		</diffuse>
-		<emission>
-		<red> 0.1</red>
-		<green>0.01</green>
-		<blue> 0.01</blue>
-		</emission>
-		<ambient>
-		<red>0.6</red>
-		<green>0.2</green>
-		<blue>0.2</blue>
-		</ambient>
-	</animation>
-	
-	<animation>
-	<type>material</type>
-	<object-name>PPM_NumText-bkg</object-name>
-		<diffuse>
-		<red>  0.2</red>
-		<green>0.2</green>
-		<blue> 0.2</blue>
-		</diffuse>
-		<emission>
-		<red> 0.1</red>
-		<green>0.01</green>
-		<blue> 0.01</blue>
-		</emission>
-		<ambient>
-		<red>0.6</red>
-		<green>0.2</green>
-		<blue>0.2</blue>
-		</ambient>
-	</animation> 
-	
-	<animation>
-	<type>material</type>
-	<object-name>PPM_NumText</object-name>
-		<diffuse>
-		<red> 0.99</red>
-		<green>0.00</green>
-		<blue> 0.00</blue>
-		</diffuse>
-		<emission>
-		<red> 0.6</red>
-		<green>0.1</green>
-		<blue> 0.1</blue>
-		</emission>
-		<ambient>
-		<red>1.0</red>
-		<green>0.2</green>
-		<blue>0.0</blue>
-		</ambient>
 	</animation>
 
 
-	<animation>
-	 <type>select</type> 
-	 <object-name>PPM_NumText</object-name>
-	 <condition>
-		 <and>
-			 <greater-than>
-				 <property>systems/electrical/outputs/OC-controller</property>
-			   <value>22</value>
-			 </greater-than>
-		 <or>
-			<!-- The flashing animation --> 
-		 <and>
-	   <equals>
-	   <property>su-27/instrumentation/flasher-anim</property>
-	   <value>0</value>
-	   </equals>
-	   <equals>
-	   <property>su-27/instrumentation/OC-controller/status</property>
-	   <value>3</value>
-	   </equals>
-	   </and>
-	   <!-- The continuous animation -->
-	   <equals>
-	   <property>su-27/instrumentation/OC-controller/status</property>
-	   <value>1</value>
-	   </equals>
-	   </or>
-	   </and>
-	 </condition>
-	</animation>
-	
-	<animation>
-	 <type>select</type> 
-	 <object-name>AER_NumText</object-name>
-	 <condition>
-		 <and>
- 			 <greater-than>
-				 <property>systems/electrical/outputs/OC-controller</property>
-			   <value>22</value>
-			 </greater-than>
-		 <or>
-			<!-- The flashing animation --> 
-		 <and>
-	   <equals>
-	   <property>su-27/instrumentation/flasher-anim</property>
-	   <value>0</value>
-	   </equals>
-	   <equals>
-	   <property>su-27/instrumentation/OC-controller/status</property>
-	   <value>5</value>
-	   </equals>
-	   </and>
-	   <!-- The continuous animation -->
-	   <equals>
-	   <property>su-27/instrumentation/OC-controller/status</property>
-	   <value>1</value>
-	   </equals>
-	   </or>
-	   </and>
-	 </condition>
-	</animation>
-	
-	<animation>
-	 <type>select</type> 
-	 <object-name>WPT_NumText</object-name>
-	 <condition>
-		 <and>
- 			 <greater-than>
-				 <property>systems/electrical/outputs/OC-controller</property>
-			   <value>22</value>
-			 </greater-than>
-		 <or>
-			<!-- The flashing animation --> 
-		 <and>
-	   <equals>
-	   <property>su-27/instrumentation/flasher-anim</property>
-	   <value>0</value>
-	   </equals>
-	   <equals>
-	   <property>su-27/instrumentation/OC-controller/status</property>
-	   <value>7</value>
-	   </equals>
-	   </and>
-	   <!-- The continuous animation -->
-	   <equals>
-	   <property>su-27/instrumentation/OC-controller/status</property>
-	   <value>1</value>
-	   </equals>
-	   </or>
-	   </and>
-	 </condition>
-	</animation>
-	
+
+
+
  <animation><!-- +180-->
   <type>pick</type>
   <object-name>plus180</object-name>
@@ -417,8 +71,8 @@
 		  <script>instrumentation.PPM1btnPress();</script>
 		</binding>
   </action>
- </animation> 
- 
+ </animation>
+
   <animation><!--AER/2 oc bttn-->
   <type>pick</type>
   <object-name>OC-button-2</object-name>
@@ -432,7 +86,7 @@
 		</binding>
   </action>
  </animation>
- 
+
   <animation><!--RM/3 oc bttn-->
   <type>pick</type>
   <object-name>OC-button-3</object-name>
@@ -460,7 +114,7 @@
 		</binding>
   </action>
  </animation>
- 
+
  <animation><!--UPR/5 oc bttn-->
   <type>pick</type>
   <object-name>OC-button-5</object-name>
@@ -474,7 +128,7 @@
 		</binding>
   </action>
  </animation>
- 
+
  <animation><!-- oc6 bttn-->
   <type>pick</type>
   <object-name>OC-button-6</object-name>
@@ -488,7 +142,7 @@
 		</binding>
   </action>
  </animation>
- 
+
  <animation><!-- oc7 bttn-->
   <type>pick</type>
   <object-name>OC-button-7</object-name>
@@ -502,7 +156,7 @@
 		</binding>
   </action>
  </animation>
- 
+
  <animation><!-- oc8 bttn-->
   <type>pick</type>
   <object-name>OC-button-8</object-name>
@@ -516,7 +170,7 @@
 		</binding>
   </action>
  </animation>
- 
+
  <animation><!-- oc9 bttn-->
   <type>pick</type>
   <object-name>OC-button-9</object-name>
@@ -530,5 +184,5 @@
 		</binding>
   </action>
  </animation>
- 
+
 </PropertyList>

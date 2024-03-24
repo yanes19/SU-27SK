@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
  
 <!-- Hydraulic system -->
+<!-- A simple hydraulic system
+	TODO: enhance this!-->
 <PropertyList>
 	<serviceable type="bool">true</serviceable>
 	<pump>
 		<serviceable type="bool">true</serviceable>
+		<switch type="bool">true</switch>
+		<run type="bool">false</run>
+		<pressure type="double"></pressure>
 	</pump>
 	
 	

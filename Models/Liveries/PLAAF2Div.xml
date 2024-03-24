@@ -5,7 +5,7 @@
   <sim>
     <model>
       <livery>
-        <name type="string">People’s Liberation Army Air Force, 2 Div.</name>
+        <name type="string">People's Liberation Army Air Force, 2 Div.</name>
         <texture>Liveries/PLAAF2Div.png</texture>
 
       </livery>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+    <d-config>
+        <tacview-supported type="bool">true</tacview-supported>
+    </d-config>
+    <armament>
+        <enable-craters type="bool">true</enable-craters>
+        <MLW-bearing type="double">0</MLW-bearing>
+        <MLW-count type="int">0</MLW-count>
+        <MLW-launcher type="string"></MLW-launcher>
+        <MAW-bearing type="double">0</MAW-bearing>
+        <MAW-active type="bool">false</MAW-active>
+        <spike type="bool">false</spike>
+        <station-name type="string">weight</station-name>
+        <pylon-stations type="string">/sim</pylon-stations>
+        <pylon-offset type="int">0</pylon-offset>
+        <modelsUpperCase type="bool">true</modelsUpperCase>
+        <modelsUseCase type="bool">true</modelsUseCase>
+        <models type="string">Aircraft/SU-27SK/Models/OPRF/</models>
+        <r-73>
+            <type-id type="int">70</type-id>
+            <short-name type="string">R-73</short-name>
+            <long-name type="string">R-73 Archer</long-name>
+            <vol-search type="double">0.0</vol-search>
+            <vol-track type="double">1.0</vol-track>
+            <guidance type="string">heat</guidance> <!-- heat, radar or semi-radar -->
+            <navigation type="string">APN</navigation>
+            <all-aspect type="bool">true</all-aspect> <!-- all or rear-only -->
+            <max-fire-range-nm type="double">12</max-fire-range-nm>
+            <FCS-field-deg type="int">50</FCS-field-deg>
+            <seeker-field-deg type="int">75</seeker-field-deg>
+            <max-g type="int">40</max-g>
+            <thrust-lbf-stage-1 type="double">3000</thrust-lbf-stage-1>
+            <thrust-lbf-stage-2 type="double">0.0</thrust-lbf-stage-2>
+            <stage-1-duration-sec type="double">5.23</stage-1-duration-sec>
+            <stage-2-duration-sec type="double">0.0</stage-2-duration-sec>
+            <weight-launch-lbs type="double">231</weight-launch-lbs>
+            <weight-warhead-lbs type="double">16.3</weight-warhead-lbs>
+            <weight-fuel-lbm type="double">50</weight-fuel-lbm>
+            <drag-coeff type="double">0.43</drag-coeff>
+            <cross-section-sqft type="double">0.12</cross-section-sqft> <!-- sq ft -->
+            <arming-time-sec type="double">1.4</arming-time-sec>
+            <min-speed-for-guiding-mach type="double">0.8</min-speed-for-guiding-mach>
+            <self-destruct-time-sec type="double">43</self-destruct-time-sec>
+            <seeker-angular-speed-dps type="double">30</seeker-angular-speed-dps> <!-- deg/sec guess-->
+            <lock-on-sun-deg type="double">5</lock-on-sun-deg>
+            <loft-altitude type="int">0</loft-altitude>
+            <min-fire-range-nm type="double">0.001</min-fire-range-nm>
+            <rail type="bool">true</rail>
+            <rail-length-m type="double">2.667</rail-length-m>
+            <rail-point-forward type="bool">true</rail-point-forward>
+            <max-report-distance type="double">65</max-report-distance>
+            <class type="string">A</class>
+            <fire-msg type="string">Fox 2</fire-msg>
+            <DLZ type="bool">true</DLZ>
+            <DLZ-optimal-alt-feet type="double">25000</DLZ-optimal-alt-feet>
+            <DLZ-optimal-closing-mach type="double">2.0</DLZ-optimal-closing-mach>
+            <seeker-beam-width-deg type="double">4</seeker-beam-width-deg>
+            <reaquire type="bool">true</reaquire>
+            <lock-on-after-launch type="bool">true</lock-on-after-launch>
+            <auto-switch-target-allowed type="bool">true</auto-switch-target-allowed>
+            <prowl-flight type="string">gyro-pitch</prowl-flight>
+            <switch-time-sec type="double">5</switch-time-sec>
+            <coolable type="bool">true</coolable>
+            <cool-time type="double">5</cool-time>
+            <cool-duration type="int">3600</cool-duration>
+            <warm-detect-range-nm type="double">6.5</warm-detect-range-nm>
+            <detect-range-nm type="double">9.7</detect-range-nm>
+            <ready-time type="double">0.5</ready-time>
+        </r-73>
+        <r-27r>
+            <type-id type="int">70</type-id>
+            <short-name type="string">R-27R</short-name>
+            <long-name type="string">R-27R</long-name>
+            <vol-search type="double">0.0</vol-search>
+            <vol-track type="double">1.0</vol-track>
+            <guidance type="string">semi-radar</guidance> <!-- heat, radar or semi-radar -->
+            <navigation type="string">APN</navigation>
+            <all-aspect type="bool">true</all-aspect> <!-- all or rear-only -->
+            <max-fire-range-nm type="double">45</max-fire-range-nm>
+            <FCS-field-deg type="int">110</FCS-field-deg>
+            <seeker-field-deg type="int">120</seeker-field-deg>
+            <max-g type="int">35</max-g>
+            <thrust-lbf-stage-1 type="double">3000</thrust-lbf-stage-1>
+            <thrust-lbf-stage-2 type="double">0.0</thrust-lbf-stage-2>
+            <stage-1-duration-sec type="double">5.23</stage-1-duration-sec>
+            <stage-2-duration-sec type="double">0.0</stage-2-duration-sec>
+            <weight-launch-lbs type="double">216</weight-launch-lbs>
+            <weight-warhead-lbs type="double">30</weight-warhead-lbs>
+            <weight-fuel-lbm type="double">50</weight-fuel-lbm>
+            <drag-coeff type="double">0.43</drag-coeff>
+            <cross-section-sqft type="double">0.12</cross-section-sqft> <!-- sq ft -->
+            <arming-time-sec type="double">1.4</arming-time-sec>
+            <min-speed-for-guiding-mach type="double">0.8</min-speed-for-guiding-mach>
+            <self-destruct-time-sec type="double">43</self-destruct-time-sec>
+            <seeker-angular-speed-dps type="double">30</seeker-angular-speed-dps> <!-- deg/sec guess-->
+            <lock-on-sun-deg type="double">5</lock-on-sun-deg>
+            <loft-altitude type="int">0</loft-altitude>
+            <min-fire-range-nm type="double">0.001</min-fire-range-nm>
+            <rail type="bool">true</rail>
+            <rail-length-m type="double">2.667</rail-length-m>
+            <rail-point-forward type="bool">true</rail-point-forward>
+            <max-report-distance type="double">65</max-report-distance>
+            <class type="string">A</class>
+            <fire-msg type="string">Fox 2</fire-msg>
+            <DLZ type="bool">true</DLZ>
+            <DLZ-optimal-alt-feet type="double">25000</DLZ-optimal-alt-feet>
+            <DLZ-optimal-closing-mach type="double">2.0</DLZ-optimal-closing-mach>
+            <reaquire type="bool">true</reaquire>
+            <lock-on-after-launch type="bool">true</lock-on-after-launch>
+            <auto-switch-target-allowed type="bool">true</auto-switch-target-allowed>
+            <prowl-flight type="string">gyro-pitch</prowl-flight>
+            <switch-time-sec type="double">5</switch-time-sec>
+            <ready-time type="double">0.5</ready-time>
+        </r-27r>
+        <r-27t>
+            <type-id type="int">70</type-id>
+            <short-name type="string">R-27R</short-name>
+            <long-name type="string">R-27R</long-name>
+            <vol-search type="double">0.0</vol-search>
+            <vol-track type="double">1.0</vol-track>
+            <guidance type="string">heat</guidance> <!-- heat, radar or semi-radar -->
+            <navigation type="string">APN</navigation>
+            <all-aspect type="bool">true</all-aspect> <!-- all or rear-only -->
+            <max-fire-range-nm type="double">45</max-fire-range-nm>
+            <FCS-field-deg type="int">110</FCS-field-deg>
+            <seeker-field-deg type="int">120</seeker-field-deg>
+            <max-g type="int">35</max-g>
+            <thrust-lbf-stage-1 type="double">3000</thrust-lbf-stage-1>
+            <thrust-lbf-stage-2 type="double">0.0</thrust-lbf-stage-2>
+            <stage-1-duration-sec type="double">5.23</stage-1-duration-sec>
+            <stage-2-duration-sec type="double">0.0</stage-2-duration-sec>
+            <weight-launch-lbs type="double">216</weight-launch-lbs>
+            <weight-warhead-lbs type="double">30</weight-warhead-lbs>
+            <weight-fuel-lbm type="double">50</weight-fuel-lbm>
+            <drag-coeff type="double">0.43</drag-coeff>
+            <cross-section-sqft type="double">0.12</cross-section-sqft> <!-- sq ft -->
+            <arming-time-sec type="double">1.4</arming-time-sec>
+            <min-speed-for-guiding-mach type="double">0.8</min-speed-for-guiding-mach>
+            <self-destruct-time-sec type="double">43</self-destruct-time-sec>
+            <seeker-angular-speed-dps type="double">30</seeker-angular-speed-dps> <!-- deg/sec guess-->
+            <lock-on-sun-deg type="double">5</lock-on-sun-deg>
+            <loft-altitude type="int">0</loft-altitude>
+            <min-fire-range-nm type="double">0.001</min-fire-range-nm>
+            <rail type="bool">true</rail>
+            <rail-length-m type="double">2.667</rail-length-m>
+            <rail-point-forward type="bool">true</rail-point-forward>
+            <max-report-distance type="double">65</max-report-distance>
+            <class type="string">A</class>
+            <fire-msg type="string">Fox 2</fire-msg>
+            <DLZ type="bool">true</DLZ>
+            <DLZ-optimal-alt-feet type="double">25000</DLZ-optimal-alt-feet>
+            <DLZ-optimal-closing-mach type="double">2.0</DLZ-optimal-closing-mach>
+            <reaquire type="bool">true</reaquire>
+            <lock-on-after-launch type="bool">true</lock-on-after-launch>
+            <auto-switch-target-allowed type="bool">true</auto-switch-target-allowed>
+            <prowl-flight type="string">gyro-pitch</prowl-flight>
+            <switch-time-sec type="double">5</switch-time-sec>
+            <ready-time type="double">0.5</ready-time>
+        </r-27t>
+        <kh-23>                <!-- lots of info at http://survincity.com/2012/08/x-66-the-product-66-the-first-russian-tactical/ -->
+            <!--detection and firing-->
+            <type-id type="int">27</type-id>
+            <max-fire-range-nm type="double">100.0</max-fire-range-nm> <!-- max range that the FCS allows firing -->
+            <min-fire-range-nm type="double">0.5</min-fire-range-nm> <!-- it wont get solid lock before the target has this range -->
+            <FCS-field-deg type="int">15</FCS-field-deg> <!-- fire control system total field of view diameter for when searching and getting lock before launch. -->
+            <class type="string">AGM</class> <!-- put in letters here that represent the types the missile can fire at. A=air, M=marine, G=ground -->
+            <fire-msg type="string">Fox 1</fire-msg> <!-- what the pilot will call out over the comm when he fires this weapon -->
+            <coolable type="bool">false</coolable> <!-- If the seeker supports being cooled. (AIM-9L or later supports) -->
+            <cool-time type="double">0.0</cool-time> <!-- Time to cold the seeker from fully warm. -->
+            <cool-duration type="int">0.0</cool-duration> <!-- Typically 2.5 hours for cooling fluids. Much higher for electrical. -->
+            <warm-detect-range-nm type="double">100.0</warm-detect-range-nm> <!-- Current guidance mode detect range. (when warm) -->
+            <detect-range-nm type="double">100.0</detect-range-nm> <!-- Current guidance mode default detect range. (when cold) -->
+            <seeker-beam-width-deg type="double">20.0</seeker-beam-width-deg> <!-- Seeker detector field of view diameter -->
+            <ready-time type="double">0.3</ready-time> <!-- time to get ready after standby mode. -->
+            <!--navigation, guiding and seekerhead-->
+            <seeker-field-deg type="int">20.0</seeker-field-deg> <!-- missiles own seekers total FOV diameter. -->
+            <guidance type="string">remote</guidance> <!-- heat/radar/semi-radar/laser/gps/vision/unguided/pitch/gyro-pitch/radiation/inertial -->
+            <navigation type="string">direct</navigation> <!-- guidance-law: direct/PN/APN/PNxxyy/APNxxyy (use direct for gravity bombs, use PN for very old missiles, use APN for modern missiles, use PNxxyy/APNxxyy for surface to air where xx is degrees to aim above target, yy is seconds it will do that) -->
+            <all-aspect type="bool">true</all-aspect> <!-- bool. set to false if missile only locks on reliably to rear of target aircraft -->
+            <seeker-angular-speed-dps type="double"></seeker-angular-speed-dps> <!-- only for heat/vision seeking missiles. Max angular speed that the target can move as seen from seeker, before seeker loses lock. -->
+            <lock-on-sun-deg type="double"></lock-on-sun-deg> <!-- only for heat seeking missiles. If it looks at sun within this angle, it will lose lock on target. -->
+            <loft-altitude type="int">0</loft-altitude> <!-- if 0 then no snap up. Below 10000 then cruise altitude above ground. Above 10000 max altitude it will snap up to. -->
+            <terrain-follow type="bool">false</terrain-follow> <!-- bool. used for anti-ship missiles that should be able to terrain follow instead of purely sea skimming. -->
+            <reaquire type="bool">true</reaquire> <!-- bool. If weapon will try to reaquire lock after losing it. [optional] -->
+            <!--engine-->
+            <thrust-lbf-stage-1 type="double">8000</thrust-lbf-stage-1> <!-- stage 1 thrust [optional] -->
+            <thrust-lbf-stage-2 type="double">0.0</thrust-lbf-stage-2> <!-- stage 2 thrust [optional] -->
+            <stage-1-duration-sec type="double">6.0</stage-1-duration-sec> <!-- stage 1 duration [optional] -->
+            <stage-2-duration-sec type="double">0.0</stage-2-duration-sec> <!-- stage 2 duration [optional] -->
+            <weight-fuel-lbm type="double">61</weight-fuel-lbm> <!-- fuel weight [optional]. If this property is not present, it won't lose weight as the fuel is used. -->
+            <vector-thrust type="bool">false</vector-thrust> <!-- Boolean. [optional] -->
+            <!--aerodynamic-->
+            <weight-launch-lbs type="double">633</weight-launch-lbs> <!-- total weight of armament, including fuel and warhead. -->
+            <drag-coeff type="double">0.5</drag-coeff> <!-- drag coefficient -->
+            <cross-section-sqft type="double">0.64</cross-section-sqft> <!-- normally is crosssection area of munition (without fins) -->
+            <max-g type="int">15</max-g> <!-- max G-force the missile can pull at sealevel -->
+            <min-speed-for-guiding-mach type="double">0.3</min-speed-for-guiding-mach> <!-- minimum speed before the missile steers, before it reaches this speed it will fly ballistic. -->
+            <!--detonation-->
+            <weight-warhead-lbs type="double">245</weight-warhead-lbs> <!-- warhead weight -->
+            <arming-time-sec type="double">0.4</arming-time-sec> <!-- time for weapon to arm -->
+            <self-destruct-time-sec type="double">40</self-destruct-time-sec> <!-- time before selfdestruct -->
+            <self-destruct-at-lock-lost type="double">40</self-destruct-at-lock-lost> <!-- selfdestruct if lose target -->
+            <max-report-distance type="double">200</max-report-distance> <!-- Interpolation hit: max distance from target it report it exploded, not passed. Trig hit: Distance where it will trigger. -->
+            <hit-everything-nearby type="bool">true</hit-everything-nearby> <!-- acts like a bomb, will check for nearby targets if true (99% of the time should be false) -->
+            <!--avionics sounds-->
+            <vol-search type="double">0.0</vol-search> <!-- sound volume when searcing -->
+            <vol-track type="double">0.0</vol-track> <!-- sound volume when having lock -->
+            <!--launching conditions-->
+            <rail type="bool">true</rail> <!-- if the weapon is rail or tube fired set to true. If dropped 7ft before ignited set to false. -->
+            <rail-length-m type="double">1.5</rail-length-m> <!-- length of tube/rail -->
+            <rail-point-forward type="bool">true</rail-point-forward> <!-- true for rail, false for rail/tube with a pitch -->
+            <drop-time type="double">0.0</drop-time> <!-- Time to fall before stage 1 thrust starts. -->
+            <deploy-time type="double">0.0</deploy-time> <!-- Time to deploy wings etc. Time starts when drop ends or rail passed. -->
+            <!--countermeasures-->
+            <chaff-resistnace type="double">0.950</chaff-resistnace> <!-- Float 0-1. Amount of resistance to chaff. Default 0.950. [optional] -->
+            <flare-resistance type="double">0.950</flare-resistance> <!-- Float 0-1. Amount of resistance to flare. Default 0.950. [optional] -->
+            <!--datalink-->
+            <telemetry type="bool">false</telemetry> <!-- Boolean. Data link back to aircraft when missile is flying. [optional] -->
+            <DLZ type="bool">false</DLZ> <!-- Supports dynamic launch zone info. For now only works with A/A. [optional] -->
+        </kh-23>
+    </armament>
+</PropertyList>

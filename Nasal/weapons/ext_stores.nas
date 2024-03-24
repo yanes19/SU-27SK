@@ -5,6 +5,13 @@ print("LOADING ext_stores.nas .");
 #						Thanks to the m2005-5's developpers
 ################################################################################
 
+var type_missile = 0;
+var type_R27R  = 1;
+var type_R27ER = 2;
+var type_R27T  = 3;
+var type_R27ET = 4;
+var type_R73   = 5;
+
 # check then drop
 var dropTanks = func()
 {
@@ -511,14 +518,36 @@ dropMissile = func(number)
     {
         if(target == nil)
         {
+            #return;
+        }
+        #Current_missile = missile.MISSILE.new(number);
+        Current_missile = missile.AIM.new(number, typeMissile, typeMissile, nil, nil);
+        if(Current_missile == -1){
+            print("failed to create AIM!");
             return;
         }
-        Current_missile = missile.MISSILE.new(number);
-        Current_missile.status = 0;
-        Current_missile.search(target);
-        Current_missile.release();
+        if(radar.GetTarget()!=nil){
+            Current_missile.release([radar.GetTarget()]);
+        }
+        else Current_missile.release(radar.tgts_list);
+        #Current_missile.status = 0;
+        #Current_missile.search(target);
+        #Current_missile.release();
         setprop("/sim/weight["~ number ~"]/weight-lb", 0);
         setprop("fdm/jsbsim/inertia/pointmass-weight-lbs["~ number ~"]", 0);
+        var phrase = "";
+        if(target != nil){
+            phrase = getprop("/controls/armament/missile/fox") ~ " at: " ~ target.get_Callsign();
+        }else{
+            phrase = getprop("/controls/armament/missile/fox");
+        }
+        
+        if(getprop("/payload/armament/msg")){
+            damage.damageLog.push(phrase);
+        }
+        else{
+            defeatSpamFilter(phrase);
+        }
     }
     setprop("/controls/armament/station["~ number ~"]/release", 1);
     #after_fire_next();
@@ -721,15 +750,39 @@ var SelectNextPylon = func()
 		
 		for(var i = 0 ; i < 10 ; i += 1)
         {
-					print(i);
-					print("Selected at i :  " ~ getprop("sim/weight["~ i ~"]/selected"));
+					#print(i);
+					#print("Selected at i :  " ~ getprop("sim/weight["~ i ~"]/selected"));
 					
-					if(getprop("sim/weight["~ i ~"]/selected") == Selectedweapon and getprop("controls/armament/station["~ i ~"]/release") == 0)
+					if(getprop("/sim/weight["~ i ~"]/selected") == Selectedweapon and getprop("/controls/armament/station["~ i ~"]/release") == 0)
 					{
 							SelectedPylon.setValue(i);
-							print("Next selected = pylon",i);
-							setprop("/sim/messages/atc", "Next selected = pylon"~ SelectedPylon.getValue(i));
+							#print("Next selected = pylon",i);
+							#setprop("/sim/messages/atc", "Next selected = pylon"~ SelectedPylon.getValue(i));
 							break;
 					}
         }
+}
+var spamList = [];
+var spams = 0;
+var defeatSpamFilter = func (str) {
+  #thread.lock(mutexMsg);
+  spams += 1;
+  if (spams == 15) {
+    spams = 1;
+  }
+  str = str~":";
+  for (var i = 1; i <= spams; i+=1) {
+    str = str~".";
+  }
+  var myCallsign = getprop("sim/multiplay/callsign");
+  if (myCallsign != nil and find(myCallsign, str) != -1) {
+  	str = myCallsign~": "~str;
+  }
+  var newList = [str];
+  for (var i = 0; i < size(spamList); i += 1) {
+    append(newList, spamList[i]);
+  }
+  spamList = newList;
+  setprop("/sim/messages/atc",str);
+  #thread.unlock(mutexMsg);
 }

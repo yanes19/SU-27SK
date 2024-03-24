@@ -365,11 +365,12 @@ livery_update.stop();
   <!-- panel -->
   
 	<model>
+        <name>panel</name>
 		<path>Aircraft/SU-27SK/Models/Interior/panel-zh.xml</path>
 			<offsets>
 				<x-m>0.3</x-m>
-					<y-m>-0.01</y-m>
-				<z-m>0</z-m>
+				<y-m>-0.01</y-m>
+				<z-m>-0.03</z-m>
 			<pitch-deg>0</pitch-deg>
 		</offsets>
 	</model>
@@ -2792,13 +2793,13 @@ livery_update.stop();
   
   <!-- Impact fire -->
   <model>
-  <path>Aircraft/SU-27SK/Models/Effects/Explosion/ImpactFire.xml</path>
-  <condition>
-    <equals>
-      <property>sim/multiplay/generic/int[7]</property>
-      <value>1</value>
-    </equals>
-  </condition>
+    <path>Aircraft/SU-27SK/Models/Effects/DamageSmoke/explosion.xml</path>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[1]</property>
+        <value>1</value>
+      </equals>
+    </condition>
   <offsets>
     <x-m>12</x-m>
     <y-m>0</y-m>
@@ -2854,5 +2855,8 @@ livery_update.stop();
   </offsets>
  </model>
 
+ <model>
+  <path>Aircraft/SU-27SK/Models/Effects/DamageSmoke/damage-smoke.xml</path>
+ </model>
 
 </PropertyList>

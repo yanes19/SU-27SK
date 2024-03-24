@@ -1261,6 +1261,13 @@
        inkscape:label="#path4382"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="scscs" />
+   <path
+       id="lock-marker"
+       style="fill:none;fill-rule:evenodd;stroke:#00d400;stroke-width:0.94046926px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 127.38779,1069.9116 c 8,-0.1 15,-5 14,-15 -0.1,-8 -5,-14 -14,-15 -6,-0.1 -14,5 -14,15 0.1,7 5,15 14,15 z"
+       inkscape:label="#path4382"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scscs" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#00ff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 34.5,845.86083 -26,0"

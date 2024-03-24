@@ -1,0 +1,6 @@
+VERSION 1.0 TODO LIST
+1. Finish the simple radar system
+2. External model enhancements
+3. Cockpit lights
+4. RWR finalize
+5. Sounds (explosion/missiles/gun)

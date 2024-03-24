@@ -11,6 +11,9 @@
   <description> Models a Su-27SKM. </description>
  </fileheader>
 
+<property>/controls/ctrl/output/elevator</property>
+<property>/controls/ctrl/output/l-aileron</property>
+<property>/controls/ctrl/output/r-aileron</property>
 <!--
   File:     Su-27SK.xml
   Inputs:
@@ -186,7 +189,7 @@
   
    <pointmass name="Payload">
     <description> 17126 LBS + full (13898 LBS) fuel should bring model up to entered max weight</description>
-    <weight unit="LBS">   8563.0 </weight>
+    <weight unit="LBS">   0 </weight>
     <location name="POINTMASS" unit="IN">
       <x> 517.35 </x>
       <y>   0.00 </y>
@@ -267,6 +270,55 @@
     <dynamic_friction> 1.00 </dynamic_friction>
     <spring_coeff unit="LBS/FT">      67142.25 </spring_coeff>
     <damping_coeff unit="LBS/FT/SEC"> 67142.25 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="BODY-LEFT">
+    <location unit="IN">
+     <x> 0 </x>
+     <y> -24.12 </y>
+     <z> -21.56 </z>
+    </location>
+            <static_friction>1.2</static_friction>
+            <dynamic_friction>1.212</dynamic_friction>
+            <rolling_friction>1.413</rolling_friction>
+            <spring_coeff unit="LBS/FT">25200</spring_coeff>
+            <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
+  </contact>
+  <contact type="STRUCTURE" name="BODY-RIGHT">
+    <location unit="IN">
+     <x> 0 </x>
+     <y> 24.12 </y>
+     <z> -21.56 </z>
+    </location>
+    <static_friction>1.2</static_friction>
+    <dynamic_friction>1.212</dynamic_friction>
+    <rolling_friction>1.413</rolling_friction>
+    <spring_coeff unit="LBS/FT">25200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
+  </contact>
+  <contact type="STRUCTURE" name="BODY-NOSE">
+    <location unit="IN">
+     <x> 112.09 </x>
+     <y> 0 </y>
+     <z> -21.56 </z>
+    </location>
+    <static_friction>1.2</static_friction>
+    <dynamic_friction>1.212</dynamic_friction>
+    <rolling_friction>1.413</rolling_friction>
+    <spring_coeff unit="LBS/FT">25200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
+  </contact>
+    <contact type="STRUCTURE" name="BODY-REAR">
+    <location unit="IN">
+     <x> 802.25 </x>
+     <y> 0 </y>
+     <z> -21.56 </z>
+    </location>
+    <static_friction>1.2</static_friction>
+    <dynamic_friction>1.212</dynamic_friction>
+    <rolling_friction>1.413</rolling_friction>
+    <spring_coeff unit="LBS/FT">25200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">5600</damping_coeff>
   </contact>
 
  </ground_reactions>
@@ -362,6 +414,7 @@
      </location>
      <capacity unit="LBS"> 7010.70 </capacity>
      <contents unit="LBS"> 3505.35 </contents>
+     <priority>2</priority>
 
   </tank>
 
@@ -373,6 +426,7 @@
      </location>
      <capacity unit="LBS"> 9171.23 </capacity>
      <contents unit="LBS"> 4585.61 </contents>
+     <priority>1</priority>
 
   </tank>
 
@@ -384,6 +438,7 @@
      </location>
      <capacity unit="LBS"> 1168.45 </capacity>
      <contents unit="LBS"> 584.22 </contents>
+     <priority>3</priority>
      
   </tank>
   
@@ -395,6 +450,7 @@
      </location>
      <capacity unit="LBS"> 1168.45 </capacity>
      <contents unit="LBS"> 584.22 </contents>
+     <priority>3</priority>
 
   </tank>
   
@@ -406,6 +462,7 @@
      </location>
      <capacity unit="LBS"> 2204.62 </capacity>
      <contents unit="LBS"> 1102.31 </contents>
+     <priority>4</priority>
 
   </tank>
 
@@ -413,6 +470,7 @@
  
 <system file="fuel"/>
 <system file="SDU-10"/>
+<system file="Su-27-Electrics"/>
  
  <flight_control name="FCS: Su-27SK">
 	 
@@ -499,7 +557,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="elevator normalization">
-      <input>fcs/elevator-pos-rad</input>
+      <input>/controls/ctrl/output/elevator</input>
       <domain>
         <min> -0.50 </min>
         <max>  0.50 </max>
@@ -543,7 +601,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="left aileron normalization">
-      <input>fcs/left-aileron-pos-rad</input>
+      <input>/controls/ctrl/output/l-aileron</input>
       <domain>
         <min> -0.35 </min>
         <max>  0.35 </max>
@@ -556,7 +614,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="right aileron normalization">
-      <input>fcs/right-aileron-pos-rad</input>
+      <input>/controls/ctrl/output/r-aileron</input>
       <domain>
         <min> -0.35 </min>
         <max>  0.35 </max>
@@ -617,7 +675,7 @@
    </aerosurface_scale>
 
    <aerosurface_scale name="rudder normalization">
-      <input>fcs/rudder-pos-rad</input>
+      <input>/controls/ctrl/output/rudder-pos-rad</input>
       <domain>
         <min> -0.35 </min>
         <max>  0.35 </max>
@@ -746,11 +804,8 @@ Need testing :experimental brake parachute
 
   <axis name="LIFT">
 
-    <function name="aero/force/Lift_alpha">
-      <description>Lift due to alpha</description>
-      <product>
-          <property>aero/qbar-psf</property>
-          <property>metrics/Sw-sqft</property>
+    
+    <function name="aero/calpha">
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
             <!--Need of further testing -->
@@ -759,6 +814,8 @@ Need testing :experimental brake parachute
                0.000  0.120
                0.087  0.460
                0.260  1.120
+               0.419  1.968
+               0.500  1.700
                0.600  0.448
             </tableData>
 <!--
@@ -770,6 +827,22 @@ Need testing :experimental brake parachute
             </tableData>
 -->
           </table>
+    </function>
+    
+    <function name="aero/force/Lift_alpha">
+      <description>Lift due to alpha</description>
+      <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <property>aero/calpha</property>
+<!--
+            <tableData>
+              -0.20 -0.640
+               0.00  0.080
+               0.26  1.000
+               0.60  0.448
+            </tableData>
+-->
       </product>
     </function>
 
@@ -798,7 +871,7 @@ Need testing :experimental brake parachute
        <product>
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
-           <property>fcs/elevator-pos-rad</property>
+           <property>/controls/ctrl/output/elevator</property>
            <value>0.6</value>
        </product>
     </function>
@@ -825,10 +898,12 @@ Need testing :experimental brake parachute
 -->
             <tableData>
              -1.57    0.840
-             -0.26    0.016
-              0.00    0.0067
-              0.26    0.012
+             -0.26    0.027
+              0.00    0.020
+              0.26    0.030
+              0.42    0.500
               1.57    0.640
+
             </tableData>
           </table>
        </product>
@@ -852,10 +927,13 @@ Need testing :experimental brake parachute
           <table>
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
-                0.00      0.000
-                0.81      0.000
-                1.10      0.023
-                1.80      0.015
+              0.00      0.000
+              0.81      0.004
+              0.95      0.015
+              1.20      0.022
+              1.80      0.018
+              2.00      0.015
+              2.35      0.010
             </tableData>
           </table>
         </product>
@@ -978,7 +1056,7 @@ Need testing :experimental brake parachute
           <property>aero/qbar-psf</property>
           <property>metrics/Sw-sqft</property>
           <property>metrics/bw-ft</property>
-          <property>fcs/left-aileron-pos-rad</property>
+          <property>/controls/ctrl/output/l-aileron</property>
           <value>0.12</value>
        </product>
     </function>
@@ -1015,7 +1093,7 @@ Need testing :experimental brake parachute
           <property>aero/qbar-psf</property>
           <property>metrics/Sw-sqft</property>
           <property>metrics/cbarw-ft</property>
-          <property>fcs/elevator-pos-rad</property>
+          <property>/controls/ctrl/output/elevator</property>
           <table>
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
@@ -1094,7 +1172,7 @@ Need testing :experimental brake parachute
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
-           <property>fcs/left-aileron-pos-rad</property>
+           <property>/controls/ctrl/output/l-aileron</property>
            <value>0</value>
        </product>
     </function>
@@ -1118,9 +1196,9 @@ Need testing :experimental brake parachute
          aft), so this location describes a point 1 foot aft
          of the origin. In this case, the origin is the center. -->
     <location unit="FT">
-      <x>1</x>
+      <x>20</x>
       <y>0</y>
-      <z>0</z>
+      <z>-0.4</z>
     </location>
     <!-- The direction describes a unit vector. In this case, since
          the selected frame is the WIND frame, the "-1" x component

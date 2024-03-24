@@ -70,6 +70,45 @@
 			</binding>
 		</item>
 
+		<item>
+			<label>Reload GSh-30 Cannon</label>
+			<binding>
+				<command>nasal</command>
+				<script>if(!getprop("/payload/armament/msg") or getprop("/gear/gear/compression-ft") > 0.01){setprop("/ai/submodels/submodel[3]/count",150); screen.log.write("GSh-30 Reloaded.",1,0,0);damage.damageLog.push("Cannon reloaded.");}else{screen.log.write("Reloading is disabled at the moment!",255,0,0);}</script>
+			</binding>
+		</item>
+		
+		<item>
+			<label>Toggle Damage</label>
+			<binding>
+				<command>nasal</command>
+				<script>
+					if(getprop("/gear/gear/compression-ft") > 0.01){
+						if(getprop("/payload/armament/msg")){screen.log.write("Damage OFF",1,0,0);setprop("/payload/armament/msg",0);}else{screen.log.write("Damage ON",1,0,0);setprop("/payload/armament/msg",1);}
+					}else{
+						screen.log.write("Damage can be toggled only when on the ground!",1,0,0);
+					}
+				</script>
+			</binding>
+		</item>
+
+		<item>
+			<label>Combat Event Log</label>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>flightlog</dialog-name>
+			</binding>
+		</item>
+
+		<item>
+			<label>Training</label>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>scenario28</dialog-name>
+			</binding>
+		</item>
+		
+
 	</menu>
   </default>
 

@@ -28,6 +28,7 @@ Su-27-jsb-Electricals
   <property value="1">/systems/electrical/GP-21-Alternators/GP-21-left-serviceable</property>
   <property value="1">/controls/electric/engine[1]/GP-21Right</property>
   <property value="1">/systems/electrical/GP-21-Alternators/GP-21-right-serviceable</property>
+  <property value="1">/sim/failure-manager/systems/electrical/failure-level</property>
 
 
     <channel execrate="4" name="AC-Sources">
@@ -113,7 +114,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
             <default value="0"/>
             <test logic="AND" value="115">
                 /controls/electric/external-power == 1  
-
+				/sim/failure-manager/systems/electrical/failure-level == 0
             </test>
         </switch>		
 	</channel>
@@ -137,6 +138,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="115">
 				/controls/electric/external-power == 1   
 				/systems/electrical/sources/GP-21-Alternators/GP-21Left-AC-Voltage GE 112
+				
 			</test>
 		</switch>	
 		<!-- Right Contactor box -->
@@ -150,6 +152,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="115">
 				/controls/electric/external-power == 1   
 				/systems/electrical/sources/GP-21-Alternators/GP-21Right-AC-Voltage GE 112
+				
 			</test>
 		</switch>
 	</channel>
@@ -171,6 +174,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="115">
 				/systems/electrical/Main-Left-Contactor-box-volts GE 112
 				/systems/electrical/PTC-800-volts[0] GE 112
+				
 			</test>
 		</switch>	
 		<!-- Right AC distribution  box RU N2-->
@@ -183,6 +187,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="115">
 				/systems/electrical/Main-Right-Contactor-box-volts GE 112
 				/systems/electrical/PTC-800-volts[1] GE 112
+				
 			</test>
 		</switch>		
 		
@@ -204,6 +209,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="27">
 				/systems/electrical/Left-Distrib-box-volts GE 112
+				
 			</test>
 		</switch>	
 		
@@ -216,6 +222,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="27">
 				/systems/electrical/Right-Distrib-box-volts GE 112
+				
 			</test>
 		</switch>	
 		
@@ -228,6 +235,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="27">
 				/systems/electrical/Right-Distrib-box-volts GE 112
+				
 			</test>
 		</switch>
 		
@@ -278,6 +286,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="/systems/electrical/CH-RU-Bus-volts[0]">
 				/systems/electrical/CH-RU-Bus-volts[0]  GT 24 
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			
 			<test logic="AND" value="/systems/electrical/Battery-Volts[0]">
@@ -297,6 +306,8 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="24">
 				/systems/electrical/sources/Battery-serviceable[0] GT 0
+				/sim/failure-manager/systems/electrical/failure-level == 0
+				
 			</test>
 		</switch>
 		
@@ -310,6 +321,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="/systems/electrical/CH-RU-Bus-volts[1]">
 				/systems/electrical/CH-RU-Bus-volts[1]  GT 24 
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			
 			<test logic="AND" value="/systems/electrical/Battery-Volts[1]">
@@ -328,6 +340,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<default value="0"/>
 			<test logic="AND" value="24">
 				/systems/electrical/sources/Battery-serviceable[1] GT 0
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 		</switch>	
 		
@@ -344,6 +357,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="AND" value="115">
 				/controls/electric/Battery-breakers[0] GT 0
 				/controls/electric/PTC-800-inverter-on[0] GT 0
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 		</switch>		
 		
@@ -355,6 +369,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="AND" value="115">
 				/controls/electric/Battery-breakers[1] GT 0
 				/controls/electric/PTC-800-inverter-on[1] GT 0
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 		</switch>		
 		
@@ -386,6 +401,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[0]">
 				/controls/electric/Battery-breakers[0] GT 0
 				/systems/electrical/Battery-breakers-volts[0]  GT 22
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[1]">
 				/controls/electric/Battery-breakers[0] LE 1
@@ -402,6 +418,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[0]">
 				/controls/electric/Battery-breakers[0] GT 0
 				/systems/electrical/Battery-breakers-volts[0]  GT 22
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 
 			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[1]">
@@ -420,6 +437,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[0]">
 				/controls/electric/Battery-breakers[0] GT 0
 				/systems/electrical/Battery-breakers-volts[0]  GT 22
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[1]">
 				/controls/electric/Battery-breakers[0] LE 1
@@ -437,6 +455,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[1]">
 				/controls/electric/Battery-breakers[1] GT 0
 				/systems/electrical/Battery-breakers-volts[1]  GT 22
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[0]">
 				/controls/electric/Battery-breakers[1] LE 1
@@ -453,6 +472,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[1]">
 				/controls/electric/Battery-breakers[1] GT 0
 				/systems/electrical/Battery-breakers-volts[1]  GT 22
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[0]">
 				/controls/electric/Battery-breakers[1] LE 1
@@ -469,6 +489,7 @@ Ground / Airfield provided Electical power , via a 115v AC .
 			<test logic="OR" value="/systems/electrical/Battery-breakers-volts[1]">
 				/controls/electric/Battery-breakers[1] GT 0
 				/systems/electrical/Battery-breakers-volts[1]  GT 22
+				/sim/failure-manager/systems/electrical/failure-level == 0
 			</test>
 			<test logic="AND" value="/systems/electrical/Battery-breakers-volts[0]">
 				/controls/electric/Battery-breakers[1] LE 1
@@ -528,6 +549,17 @@ OLD DEPRECATED SYSTEM
 			<output>/systems/electrical/outputs/mk-viii</output>
 			<output>/systems/electrical/outputs/radar</output>	
 			<output>/systems/electrical/outputs/PNK-10</output>	
+			
+		</switch>	
+
+		<switch name="/systems/electrical/outputs/SPO-15LM">
+			<description>
+					power for SPO-15LM
+			</description>
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/VDC-bus[1] GT 20
+			</test>
 			
 		</switch>	
 		
